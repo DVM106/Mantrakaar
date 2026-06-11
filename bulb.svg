@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="100%" height="100%" class="bulb-svg">
+  <defs>
+    <!-- Metal Screw Base Gradients (Chrome/Aluminum reflection) -->
+    <linearGradient id="metal-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4a4a4a"/>
+      <stop offset="15%" stop-color="#8c8c8c"/>
+      <stop offset="30%" stop-color="#e0e0e0"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#ababab"/>
+      <stop offset="85%" stop-color="#6b6b6b"/>
+      <stop offset="100%" stop-color="#3b3b3b"/>
+    </linearGradient>
+    <linearGradient id="metal-base-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1f1f1f"/>
+      <stop offset="50%" stop-color="#4d4d4d"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+    <linearGradient id="brass-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#735600"/>
+      <stop offset="30%" stop-color="#e6b800"/>
+      <stop offset="50%" stop-color="#ffe680"/>
+      <stop offset="70%" stop-color="#cca300"/>
+      <stop offset="100%" stop-color="#4d3d00"/>
+    </linearGradient>
+
+    <!-- Glass 3D Spherical Radial Gradient -->
+    <radialGradient id="glass-sphere" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.15)"/>
+      <stop offset="50%" stop-color="rgba(255, 255, 255, 0.05)"/>
+      <stop offset="85%" stop-color="rgba(255, 255, 255, 0.12)"/>
+      <stop offset="97%" stop-color="rgba(255, 255, 255, 0.45)"/>
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.6)"/>
+    </radialGradient>
+
+    <!-- Glass Glow State Gradient (changes in CSS/animations) -->
+    <radialGradient id="glass-glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="20%" stop-color="#ffb700" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#aa00d3" stop-opacity="0.6"/>
+      <stop offset="80%" stop-color="#aa00d3" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#aa00d3" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Glass Stem/Mount Gradients -->
+    <linearGradient id="stem-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.4)"/>
+      <stop offset="30%" stop-color="rgba(255,255,255,0.1)"/>
+      <stop offset="70%" stop-color="rgba(255,255,255,0.1)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.5)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 1. Background Glow Circle (Fades in on timeline) -->
+  <circle class="bulb-glow-circle" cx="60" cy="55" r="45" fill="url(#glass-glow)" opacity="0" style="mix-blend-mode: screen; transition: opacity 0.5s ease;" />
+
+  <!-- 2. Inside structure: Glass Stem & Support Wires -->
+  <g class="bulb-internal-mount">
+    <!-- Center Glass Stem (3D glass pillar) -->
+    <path d="M54 110 L56 75 C56 73, 64 73, 64 75 L66 110 Z" fill="url(#stem-grad)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" />
+    <ellipse cx="60" cy="75" rx="4" ry="1.5" fill="rgba(255,255,255,0.3)" />
+
+    <!-- Supporting Copper/Nickel Wires -->
+    <path d="M48 110 L48 85 L52 65" fill="none" stroke="#8c8c8c" stroke-width="1.2" />
+    <path d="M72 110 L72 85 L68 65" fill="none" stroke="#8c8c8c" stroke-width="1.2" />
+  </g>
+
+  <!-- 3. Glowing Filament (Detailed spiral/loop wire) -->
+  <g class="bulb-filament-group">
+    <!-- Copper wire connections -->
+    <path class="bulb-filament-wire" d="M52 65 C54 62, 55 60, 56 60" fill="none" stroke="#a0a0a0" stroke-width="0.8" />
+    <path class="bulb-filament-wire" d="M68 65 C66 62, 65 60, 64 60" fill="none" stroke="#a0a0a0" stroke-width="0.8" />
+    <!-- Glowing Loop -->
+    <path class="bulb-filament" id="filament-path" d="M56 60 C52 50, 54 38, 60 38 C66 38, 68 50, 64 60" fill="none" stroke="#ff8c00" stroke-width="2" stroke-linecap="round" />
+  </g>
+
+  <!-- 4. Glass Bulb Shell (The outer glass silhouette with specular highlights) -->
+  <g class="bulb-glass-shell">
+    <!-- Glass Body with 3D spherical gradient -->
+    <path class="bulb-glass" d="M60 15 C34 15, 22 32, 22 55 C22 75, 36 88, 42 110 L78 110 C84 88, 98 75, 98 55 C98 32, 86 15, 60 15 Z" fill="url(#glass-sphere)" stroke="rgba(255,255,255,0.25)" stroke-width="1" />
+
+    <!-- Specular Highlight Left (Simulates curved gloss reflection) -->
+    <path d="M30 40 C28 50, 31 60, 37 68 C35 60, 33 50, 34 40 C36 30, 42 22, 50 19 C42 21, 34 29, 30 40 Z" fill="#ffffff" opacity="0.3" />
+
+    <!-- Specular Highlight Top Right Dot (Direct reflection of light source) -->
+    <ellipse cx="82" cy="36" rx="4" ry="7" transform="rotate(-30 82 36)" fill="#ffffff" opacity="0.25" />
+  </g>
+
+  <!-- 5. Metal Socket Base (3D screw base) -->
+  <g class="bulb-base">
+    <!-- Thread 1 -->
+    <path d="M42 110 C42 110, 42 116, 45 116 L75 116 C78 116, 78 110, 78 110 Z" fill="url(#metal-grad)"/>
+    <ellipse cx="60" cy="110" rx="18" ry="3" fill="#3a3a3a"/>
+
+    <!-- Thread 2 -->
+    <path d="M43 116 C43 116, 43 122, 46 122 L74 122 C77 122, 77 116, 77 116 Z" fill="url(#metal-grad)"/>
+    <ellipse cx="60" cy="116" rx="17" ry="3" fill="#2d2d2d"/>
+
+    <!-- Thread 3 -->
+    <path d="M44 122 C44 122, 44 128, 47 128 L73 128 C76 128, 76 122, 76 122 Z" fill="url(#metal-grad)"/>
+    <ellipse cx="60" cy="122" rx="16" ry="3" fill="#202020"/>
+
+    <!-- Thread 4 -->
+    <path d="M45 128 C45 128, 45 134, 48 134 L72 134 C75 134, 75 128, 75 128 Z" fill="url(#brass-grad)"/>
+    <ellipse cx="60" cy="128" rx="15" ry="3" fill="#4d3d00"/>
+
+    <!-- Bottom Contact -->
+    <path d="M49 134 C50 140, 70 140, 71 134 Z" fill="url(#metal-base-grad)"/>
+    <path d="M54 138 C56 142, 64 142, 66 138 Z" fill="#151515"/>
+  </g>
+</svg>
