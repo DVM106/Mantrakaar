@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Mantrakaar - Reimagined Digital Geek Agency</title>
+  <meta name="description" content="Mantrakaar is an independent and forward-thinking digital agency. Reimagining premium web experiences through high-fidelity CSS animations, accessible UX design, and customized development.">
+  <meta property="og:title" content="Mantrakaar - Reimagined Digital Geek Agency">
+  <meta property="og:description" content="Transforming imaginations into digital reality with premium animations, carousels, and responsive layouts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mantrakaar.com/">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png" type="image/png">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css?v=4.5">
+  
+  <!-- Third-Party CDN Libraries -->
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+  
+  <!-- GSAP for animations (sequential timeline sequencing) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+  <!-- Keyboard Navigation Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+
+
+  <!-- ==========================================================================
+       1. Navigation Bar (Visually identical to original layout, updated items)
+       ========================================================================== */ -->
+  <header id="header-section" data-style="style-2" class="ha-header ut-header-floating fullwidth ut-primary-custom-skin">
+    <div class="grid-container">
+      <div class="ha-header-perspective">
+        <div class="ha-header-front">
+          
+          <!-- Site Brand Logo -->
+          <div class="site-logo-wrap">
+            <div class="site-logo">
+              <a href="#top" rel="home" aria-label="Mantrakaar Home">
+                <img src="LOGO_white_120.png" alt="Mantrakaar logo" width="120" height="40" class="brand-logo-img">
+              </a>
+            </div>
+          </div>
+          
+          <!-- Desktop Horizontal Navigation Menu -->
+          <nav id="navigation" class="ut-horizontal-navigation grid-70" aria-label="Main Navigation">
+            <ul id="menu-main-menu_mantrakaar" class="ut-navigation-menu menu">
+              <li class="menu-item current-menu-item"><a href="#top" class="ut-main-navigation-link"><span data-i18n="nav_home">Home</span></a></li>
+              <li class="menu-item"><a href="https://mantrakaar.com/about/" class="ut-main-navigation-link"><span data-i18n="nav_about">About</span></a></li>
+              <li class="menu-item menu-item-has-children">
+                <a href="#" class="ut-main-navigation-link" aria-expanded="false" aria-haspopup="true"><span data-i18n="nav_services">Services</span></a>
+                <ul class="sub-menu" aria-label="Services Sub-menu">
+                  <li><a href="https://mantrakaar.com/design/">Design</a></li>
+                  <li><a href="https://mantrakaar.com/development/">Development</a></li>
+                  <li><a href="https://mantrakaar.com/marketing/">Marketing</a></li>
+                  <li><a href="https://mantrakaar.com/consultancy/">Consultancy</a></li>
+                </ul>
+              </li>
+              <li class="menu-item"><a href="https://mantrakaar.com/projects/" class="ut-main-navigation-link"><span data-i18n="nav_projects">Projects</span></a></li>
+              <li class="menu-item menu-item-has-children">
+                <a href="#" class="ut-main-navigation-link" aria-expanded="false" aria-haspopup="true"><span data-i18n="nav_clients">Clients</span></a>
+                <ul class="sub-menu" aria-label="Clients Sub-menu">
+                  <li><a href="#clients-section">Clients</a></li>
+                  <li><a href="#testimonials-section">Testimonials</a></li>
+                </ul>
+              </li>
+              <li class="menu-item"><a href="https://mantrakaar.com/career/" class="ut-main-navigation-link"><span data-i18n="nav_career">Career</span></a></li>
+              <li class="menu-item"><a href="https://mantrakaar.com/blog/" class="ut-main-navigation-link"><span data-i18n="nav_blogs">Blogs</span></a></li>
+              <li class="menu-item"><a href="https://mantrakaar.com/contact/" class="ut-main-navigation-link"><span data-i18n="nav_contact">Contact</span></a></li>
+            </ul>
+          </nav>
+          
+          <!-- Controls Area (Search, Toggles, Language, Hamburger) -->
+          <div class="nav-controls">
+            <!-- Inline Search Field (Expandable) -->
+            <div class="nav-search-container" role="search">
+              <div class="search-input-wrapper">
+                <input type="text" placeholder="Search site..." aria-label="Search through site content">
+              </div>
+              <button class="nav-search-btn" aria-label="Search" aria-expanded="false">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+            
+            <!-- Dark Mode Toggle button -->
+            <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            
+            <!-- Language Selector Dropdown -->
+            <div class="lang-selector">
+              <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+                <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
+              </button>
+              <ul class="lang-dropdown" aria-label="Languages">
+                <li><a href="#" data-lang="en">English</a></li>
+                <li><a href="#" data-lang="hi">Hindi (हिंदी)</a></li>
+                <li><a href="#" data-lang="es">Spanish (Español)</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Mobile Menu Trigger -->
+          <div class="tablet-grid-20 mobile-grid-30 hide-on-desktop">
+            <div class="ut-mm-trigger">
+              <button id="ut-open-mobile-menu" class="ut-hamburger" aria-label="Toggle Mobile Navigation" aria-expanded="false">
+                <span></span>
+              </button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Dropdown -->
+  <nav class="mobile-nav-menu hide-on-desktop" aria-label="Mobile Navigation">
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="https://mantrakaar.com/about/">About</a></li>
+      <li>
+        <a href="#">Services</a>
+        <ul class="sub-menu">
+          <li><a href="https://mantrakaar.com/design/">Design</a></li>
+          <li><a href="https://mantrakaar.com/development/">Development</a></li>
+          <li><a href="https://mantrakaar.com/marketing/">Marketing</a></li>
+          <li><a href="https://mantrakaar.com/consultancy/">Consultancy</a></li>
+        </ul>
+      </li>
+      <li><a href="https://mantrakaar.com/projects/">Projects</a></li>
+      <li>
+        <a href="#">Clients</a>
+        <ul class="sub-menu">
+          <li><a href="#clients-section">Clients</a></li>
+          <li><a href="#testimonials-section">Testimonials</a></li>
+        </ul>
+      </li>
+      <li><a href="https://mantrakaar.com/career/">Career</a></li>
+      <li><a href="https://mantrakaar.com/blog/">Blogs</a></li>
+      <li><a href="https://mantrakaar.com/contact/">Contact</a></li>
+    </ul>
+    <div class="mobile-nav-controls">
+      <div>
+        <button class="theme-toggle-btn" style="font-size: 20px; display: inline-flex; gap: 10px; align-items: center; background: none; border: none; color: var(--text-heading);">
+          <i class="fa-solid fa-moon"></i> Toggle Theme
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       Main Content Container
+       ========================================================================== */ -->
+  <main id="main-content" style="padding-top: 80px;">
+
+    <!-- ==========================================================================
+         2. Hero Section (Replaces original header slider with custom animations)
+         ========================================================================== */ -->
+    <section id="hero-section-container">
+      
+      <!-- Initial state overlay: Black Background -->
+      <div class="hero-mask">
+        <!-- Realistic 3D Bulb Asset (Fades-in & scale, filament glows, flashes) -->
+        <div class="bulb-container">
+          <img src="assets/realistic_3d_bulb.png" alt="Realistic 3D Light Bulb" class="bulb-img">
+        </div>
+      </div>
+      
+      <!-- Flashbang overlay (Quick bloom transition to default theme bg) -->
+      <div class="flashbang-overlay"></div>
+      
+      <!-- Technical Agency Grid overlay -->
+      <div class="hero-layout-grid"></div>
+      
+      <!-- Dotted Spotlight Grid overlay -->
+      <div class="hero-dotted-spotlight"></div>
+      
+      <!-- Ceiling Hanging Lamp (Left) -->
+      <div class="hanging-lamp" id="hero-lamp">
+        <div class="lamp-cord"></div>
+        <img src="assets/hanging_lamp.png" alt="Hanging Lamp" class="lamp-image" />
+        <svg viewBox="0 0 100 150" width="200" height="300" style="position: absolute; top: 405px; left: 50%; transform: translateX(-50%); pointer-events: none;">
+          <polygon points="45,0 55,0 100,150 0,150" fill="rgba(255, 229, 127, 0.12)" style="mix-blend-mode: screen;" />
+          <circle cx="50" cy="0" r="8" fill="#ffffff" filter="drop-shadow(0 0 10px #ffe57f)" />
+        </svg>
+      </div>
+
+      <!-- Elegant Wall Clock (Right) -->
+      <div class="wall-clock" id="wall-clock">
+        <img src="assets/clock_face.png?v=4.8" alt="Wall Clock" style="width: 140px; height: 140px; display: block; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.25));" />
+        <svg viewBox="0 0 200 200" width="140" height="140" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+          <circle cx="100" cy="100" r="5" fill="var(--brand-purple)" style="z-index: 10;" />
+          <line id="clock-hour" x1="100" y1="100" x2="100" y2="60" stroke="#000000" stroke-width="4" stroke-linecap="round" style="transform-origin: 100px 100px;" />
+          <line id="clock-minute" x1="100" y1="100" x2="100" y2="40" stroke="#000000" stroke-width="2.5" stroke-linecap="round" style="transform-origin: 100px 100px;" />
+          <line id="clock-second" x1="100" y1="100" x2="100" y2="25" stroke="var(--brand-purple)" stroke-width="1.5" stroke-linecap="round" style="transform-origin: 100px 100px;" />
+        </svg>
+      </div>
+      
+      <!-- Main Content Block -->
+      <div class="hero-content-wrapper">
+        <div class="typed-headline-container" aria-live="polite">
+          <!-- Trailing Dots Matrix Grid (Positions above IMAGINE, matching photo) -->
+          <div class="headline-line-1-container">
+            <div class="trailing-dot-matrix">
+              <!-- 3x8 = 24 dot matrix -->
+              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
+              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
+              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
+              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
+              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
+              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
+              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
+              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
+            </div>
+            <h1 class="headline-line" id="line-1"></h1>
+          </div>
+        </div>
+        
+        <!-- Tagline -->
+        <div class="hero-tagline">
+          <span>innovate</span>
+          <span style="color: var(--brand-purple); font-size: 8px;">&bull;</span>
+          <span>simplify</span>
+          <span style="color: var(--brand-purple); font-size: 8px;">&bull;</span>
+          <span>thrive</span>
+        </div>
+        
+        <!-- Call To Action -->
+        <div class="hero-cta-button-wrap" style="z-index: 10;">
+          <div class="btn-magnetic-wrap">
+            <a href="https://mantrakaar.com/about/" class="btn-magnetic">
+              <span>Know More</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Floating wall-mounted desk shelf -->
+        <div class="hero-desk">
+          <div class="desk-table">
+            <img src="assets/wood_desk_final.png?v=5.0" alt="Wooden Desk" class="desk-image" />
+          </div>
+        </div>
+      </div>
+      
+      <!-- Floating Digital Marketing elements -->
+      <div class="marketing-icon-floating m-icon-seo" title="Search Engine Optimization" aria-hidden="true">
+        <i class="fa-solid fa-magnifying-glass-chart"></i>
+      </div>
+      <div class="marketing-icon-floating m-icon-social" title="Social Media Campaigns" aria-hidden="true">
+        <i class="fa-solid fa-share-nodes"></i>
+      </div>
+      <div class="marketing-icon-floating m-icon-ad" title="Paid Ads Management" aria-hidden="true">
+        <i class="fa-solid fa-rectangle-ad"></i>
+      </div>
+      <div class="marketing-icon-floating m-icon-strategy" title="Brand Strategy Consulting" aria-hidden="true">
+        <i class="fa-solid fa-lightbulb"></i>
+      </div>
+      <div class="marketing-icon-floating m-icon-analytics" title="Google Analytics & Reporting" aria-hidden="true">
+        <i class="fa-solid fa-chart-line"></i>
+      </div>
+      
+      <!-- Scroll Down Guide -->
+      <div class="hero-scroll-down" aria-hidden="true">
+        <i class="fa-solid fa-arrow-down"></i>
+      </div>
+      
+    </section>
+
+    <!-- ==========================================================================
+         3. Blogs Slideshow Section (New Section placement)
+         ========================================================================== */ -->
+    <section class="vc_section" id="services-section">
+      <div class="grid-container">
+        
+        <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 50px;">
+          <h2 data-i18n="service_title">Our Services</h2>
+          <p class="lead" style="max-width: 800px; margin: 0 auto; line-height: 28px;" data-i18n="service_lead">
+            We realize that your competition is always just a click away and creating a professional, informative and easy-to-use website, on your budget, is our main goal.
+          </p>
+        </div>
+        
+        <!-- Bento Services Grid Container -->
+        <div class="services-section-grid bento-grid">
+          
+          <!-- Card 1: Design (Double-width) -->
+          <div class="service-column-card card-design reveal-element reveal-skew-up" data-delay="0ms">
+            <!-- Spotlight outer wrapper for hover neon border -->
+            <div class="spotlight-border-glow"></div>
+            <div class="card-inner-content">
+              <div class="card-text-side">
+                <div class="service-icon">
+                  <svg version="1.1" class="ut-vivus-draw" id="ut-svg-design" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                    <circle fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="31"/>
+                    <circle fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="15"/>
+                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="26" y1="18" x2="26" y2="1"/>
+                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="38" y1="18" x2="38" y2="1"/>
+                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="26" y1="63" x2="26" y2="46"/>
+                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="38" y1="63" x2="38" y2="46"/>
+                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="46" y1="26" x2="63" y2="26"/>
+                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="46" y1="38" x2="63" y2="38"/>
+                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="1" y1="26" x2="18" y2="26"/>
+                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="1" y1="38" x2="18" y2="38"/>
+                  </svg>
+                </div>
+                <h3 class="service-title">Design</h3>
+                <div class="service-tags-container">
+                  <span class="service-tag">User Experience</span>
+                  <span class="service-tag">Brand Identity</span>
+                  <span class="service-tag">Print Design</span>
+                  <span class="service-tag">Digital Design</span>
+                  <span class="service-tag">Logo Designing</span>
+                </div>
+                <div class="service-btn-wrap" style="margin-top: auto;">
+                  <div class="btn-magnetic-wrap">
+                    <a href="https://mantrakaar.com/design/" class="btn-magnetic btn-magnetic-outline btn-services-column" style="font-size: 11px; padding: 10px 24px;">
+                      <span>Know More</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- UX/UI Prototyping Sandbox Widget -->
+              <div class="card-widget-side ux-sandbox-widget">
+                <div class="mock-canvas">
+                  <div class="canvas-header">
+                    <span class="canvas-dot red"></span>
+                    <span class="canvas-dot yellow"></span>
+                    <span class="canvas-dot green"></span>
+                    <div class="canvas-title">figma_mockup.ux</div>
+                  </div>
+                  <div class="canvas-workspace">
+                    <div class="canvas-layer-list">
+                      <div class="layer-item layer-hero active"><i class="fa-regular fa-square"></i> Hero Frame</div>
+                      <div class="layer-item layer-cover"><i class="fa-regular fa-image"></i> Cover Image</div>
+                      <div class="layer-item layer-text"><i class="fa-solid fa-align-left"></i> Header Text</div>
+                      <div class="layer-item layer-cta"><i class="fa-regular fa-circle-play"></i> Call To Action</div>
+                    </div>
+                    <div class="canvas-viewport">
+                      <div class="mock-figma-cursor" aria-hidden="true">
+                        <i class="fa-solid fa-arrow-pointer"></i>
+                      </div>
+                      <div class="mock-phone-frame">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                          <div class="screen-navbar">
+                            <div class="mock-logo">MANTRAKAAR</div>
+                            <div class="mock-burger"><span></span><span></span></div>
+                          </div>
+                          <div class="screen-hero">
+                            <div class="hero-image-placeholder">
+                              <i class="fa-regular fa-image"></i>
+                            </div>
+                            <div class="hero-text-block">
+                              <div class="bar-title"></div>
+                              <div class="bar-desc1"></div>
+                              <div class="bar-desc2"></div>
+                            </div>
+                            <div class="hero-button-placeholder"></div>
+                          </div>
+                          <div class="screen-cards">
+                            <div class="mock-small-card"></div>
+                            <div class="mock-small-card"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 2: Development (Double-height) -->
+          <div class="service-column-card card-development reveal-element reveal-skew-up" data-delay="150ms">
+            <div class="spotlight-border-glow"></div>
+            <div class="card-inner-content vertical-stack">
+              <div class="service-icon">
+                <svg version="1.1" class="ut-vivus-draw" id="ut-svg-development" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                  <g>
+                    <rect x="1" y="10" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="62" height="41"/>
+                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="22" y1="63" x2="42" y2="63"/>
+                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="32" y1="63" x2="32" y2="51"/>
+                  </g>
+                  <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="1" y1="43" x2="64" y2="43"/>
+                </svg>
+              </div>
+              <h3 class="service-title">Development</h3>
+              <div class="service-tags-container">
+                <span class="service-tag">Websites & Microsites</span>
+                <span class="service-tag">Content Management</span>
+                <span class="service-tag">Ecommerce Solutions</span>
+                <span class="service-tag">Blogs Portal</span>
+              </div>
+              
+              <!-- Mock IDE Editor Terminal Widget -->
+              <div class="terminal-widget">
+                <div class="terminal-header">
+                  <span class="terminal-dot red"></span>
+                  <span class="terminal-dot yellow"></span>
+                  <span class="terminal-dot green"></span>
+                  <div class="terminal-tab">main.js</div>
+                </div>
+                <div class="terminal-body">
+                  <div class="code-lines-wrapper">
+                    <!-- Lines will be dynamically generated by JS, fallback placeholder below -->
+                    <pre class="code-line"><span class="code-keyword">const</span> app = <span class="code-keyword">new</span> <span class="code-class">Mantrakaar</span>();</pre>
+                    <pre class="code-line"><span class="code-keyword">await</span> app.<span class="code-func">launch</span>({ bento: <span class="code-keyword">true</span> });</pre>
+                  </div>
+                  <div class="terminal-status-line">
+                    <span class="status-indicator active"></span>
+                    <span class="status-text">Deploying...</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-btn-wrap" style="margin-top: auto;">
+                <div class="btn-magnetic-wrap">
+                  <a href="https://mantrakaar.com/development/" class="btn-magnetic btn-magnetic-outline btn-services-column" style="font-size: 11px; padding: 10px 24px;">
+                    <span>Know More</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 3: Marketing (Single-width) -->
+          <div class="service-column-card card-marketing reveal-element reveal-skew-up" data-delay="300ms">
+            <div class="spotlight-border-glow"></div>
+            <div class="card-inner-content vertical-stack">
+              <div class="service-icon">
+                <svg version="1.0" class="ut-vivus-draw" id="ut-svg-marketing" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                  <rect x="10" y="45" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="12" height="18"/>
+                  <rect x="42" y="18" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="12" height="45"/>
+                  <rect x="26" y="32" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="12" height="31"/>
+                  <g>
+                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="14" y1="38" x2="51" y2="1"/>
+                    <polyline fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="40,1 51,1 51,12"/>
+                  </g>
+                </svg>
+              </div>
+              <h3 class="service-title">Marketing</h3>
+              <div class="service-tags-container">
+                <span class="service-tag">SEO</span>
+                <span class="service-tag">Social Campaigns</span>
+                <span class="service-tag">Analytics Audits</span>
+              </div>
+              
+              <!-- Analytics Graph Widget -->
+              <div class="analytics-widget">
+                <div class="analytics-chart-container">
+                  <svg class="analytics-chart-svg" viewBox="0 0 100 45">
+                    <defs>
+                      <linearGradient id="chart-glow" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--brand-purple)" stop-opacity="0.35"/>
+                        <stop offset="100%" stop-color="var(--brand-purple)" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Graph grid lines -->
+                    <line x1="0" y1="10" x2="100" y2="10" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+                    <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+                    <line x1="0" y1="40" x2="100" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+                    
+                    <!-- Area overlay -->
+                    <path class="chart-area-path" d="M 0 45 Q 25 35 50 20 T 100 5 L 100 45 Z" fill="url(#chart-glow)"/>
+                    <!-- Curved trend line -->
+                    <path class="chart-line-path" d="M 0 45 Q 25 35 50 20 T 100 5" fill="none" stroke="var(--brand-purple)" stroke-width="2.5" stroke-linecap="round"/>
+                    
+                    <!-- Vertical hover line indicator -->
+                    <line class="chart-hover-line" x1="0" y1="0" x2="0" y2="45" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2,2" style="display: none;"/>
+                    <!-- Pulsing tracker dot -->
+                    <circle class="chart-tracker-dot" cx="100" cy="5" r="3" fill="#ffffff" filter="drop-shadow(0 0 5px var(--brand-purple))"/>
+                  </svg>
+                  <div class="chart-hover-tooltip" style="display: none;">
+                    <div class="tooltip-label">Traffic</div>
+                    <div class="tooltip-val">+240%</div>
+                  </div>
+                </div>
+                <div class="analytics-overlay-badge">+240% Growth</div>
+              </div>
+              
+              <div class="service-btn-wrap" style="margin-top: auto;">
+                <div class="btn-magnetic-wrap">
+                  <a href="https://mantrakaar.com/marketing/" class="btn-magnetic btn-magnetic-outline btn-services-column" style="font-size: 11px; padding: 10px 24px;">
+                    <span>Know More</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 4: Consultancy (Single-width) -->
+          <div class="service-column-card card-consultancy reveal-element reveal-skew-up" data-delay="450ms">
+            <div class="spotlight-border-glow"></div>
+            <div class="card-inner-content vertical-stack">
+              <div class="service-icon">
+                <svg version="1.1" class="ut-vivus-draw" id="ut-svg-consultancy" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                  <rect x="14" y="1" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="36" height="4"/>
+                  <rect x="14" y="59" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="36" height="4"/>
+                  <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M18,59c0,0,0-8,0-14s29-19,29-25c0-2,0-15,0-15"/>
+                  <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M47,59c0,0,0-8,0-14S18,26,18,20c0-2,0-15,0-15"/>
+                </svg>
+              </div>
+              <h3 class="service-title">Consultancy</h3>
+              <div class="service-tags-container">
+                <span class="service-tag">CX Strategy</span>
+                <span class="service-tag">Audit Analysis</span>
+                <span class="service-tag">Data Insights</span>
+              </div>
+              
+              <!-- Strategy Dashboard Widget -->
+              <div class="dashboard-widget">
+                <div class="dashboard-inner">
+                  <!-- Left Column: Metrics -->
+                  <div class="db-metrics">
+                    <div class="db-metric-item">
+                      <span class="db-metric-label">CONVERSION</span>
+                      <span class="db-metric-value">+142%</span>
+                      <div class="db-progress-bar">
+                        <div class="db-progress-fill p-conv"></div>
+                      </div>
+                    </div>
+                    <div class="db-metric-item">
+                      <span class="db-metric-label">BOUNCE RATE</span>
+                      <span class="db-metric-value">-38%</span>
+                      <div class="db-progress-bar">
+                        <div class="db-progress-fill p-bounce"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Right Column: Health Status Ring -->
+                  <div class="db-health">
+                    <div class="health-ring-wrapper">
+                      <svg class="health-ring-svg" viewBox="0 0 36 36">
+                        <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="ring-fill" stroke-dasharray="94, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                      </svg>
+                      <div class="health-ring-text">
+                        <span class="health-num">94%</span>
+                        <span class="health-lbl">SCORE</span>
+                      </div>
+                    </div>
+                    <div class="health-status-badge">
+                      <span class="pulse-dot"></span>
+                      <span class="status-lbl">AUDIT DONE</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-btn-wrap" style="margin-top: auto;">
+                <div class="btn-magnetic-wrap">
+                  <a href="https://mantrakaar.com/consultancy/" class="btn-magnetic btn-magnetic-outline btn-services-column" style="font-size: 11px; padding: 10px 24px;">
+                    <span>Know More</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. Our Happy Clients Section (Renamed, brought up beneath Services, slideshow)
+         ========================================================================== */ -->
+    <!-- ==========================================================================
+         5. Our Happy Clients Section (Renamed, brought up beneath Services, slideshow)
+         ========================================================================== */ -->
+    <section class="vc_section" id="clients-section" style="background-color: var(--bg-secondary);">
+      <div class="grid-container">
+        
+        <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 30px;">
+          <h2 data-i18n="client_title">Our Happy Clients</h2>
+        </div>
+        
+        <!-- Arrow-Controlled Swiper Carousel with Autoplay Toggle -->
+        <div class="carousel-outer-wrapper reveal-element reveal-slide-up" data-delay="100ms">
+          <div class="swiper clients-swiper">
+            <div class="swiper-wrapper">
+              
+              <!-- 12 Client Logo Slides -->
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co. logo" loading="lazy">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors logo" loading="lazy">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora logo" loading="lazy">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds logo" loading="lazy">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States logo" loading="lazy">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading logo" loading="lazy">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah logo" loading="lazy">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda logo" loading="lazy">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Unikgifts logo" loading="lazy">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/MURUGAN.jpg" alt="Murugan logo" loading="lazy">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ATMOSSECURE.jpg" alt="Atmossecure logo" loading="lazy">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo-card">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan logo" loading="lazy">
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+          <!-- Control Actions Area (Autoplay play/pause, arrows) -->
+          <div class="swiper-control-bar">
+            <button class="clients-prev swiper-autoplay-toggle" style="padding: 10px; border-radius: 50%; width: 40px; height: 40px; justify-content: center;" aria-label="Previous Client Logo">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            
+            <button id="clients-autoplay-toggle" class="swiper-autoplay-toggle" aria-label="Pause Client Autoplay">
+              <i class="fa-solid fa-pause"></i> <span>Pause</span>
+            </button>
+            
+            <button class="clients-next swiper-autoplay-toggle" style="padding: 10px; border-radius: 50%; width: 40px; height: 40px; justify-content: center;" aria-label="Next Client Logo">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. Our Work Section (Unchanged content ordering)
+         ========================================================================== */ -->
+    <section class="vc_section" id="work-section">
+      <div class="grid-container">
+        
+        <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 30px;">
+          <h2 data-i18n="work_title">Our Work</h2>
+        </div>
+        
+        <!-- Minimalist Category Filters -->
+        <div class="portfolio-filters reveal-element reveal-slide-up" data-delay="100ms">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="ai-saas">AI & SaaS</button>
+          <button class="filter-btn" data-filter="branding-3d">Branding & 3D</button>
+          <button class="filter-btn" data-filter="mobile-ui">Mobile UI</button>
+        </div>
+        
+        <!-- Asymmetric Bento Grid -->
+        <div class="work-bento-grid">
+          
+          <!-- Card 1: Interactive Web Systems (Span 8) -->
+          <div class="work-bento-card card-wide reveal-element reveal-skew-up" data-category="ai-saas" data-delay="0ms">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <span class="project-tag">Web Applications</span>
+              <h3 class="project-title">Interactive Web Systems</h3>
+              <p class="project-description">Crafting scalable, high-performance web applications equipped with responsive UI frameworks, modern design tokens, and real-time frontend compiling interfaces.</p>
+              <div class="project-capsules">
+                <span class="project-capsule">TypeScript</span>
+                <span class="project-capsule">NextJS</span>
+                <span class="project-capsule">CSS Grid</span>
+              </div>
+              <div class="btn-magnetic-wrap">
+                <a href="#" class="btn-magnetic project-link">
+                  <span>Explore Demo</span>
+                </a>
+              </div>
+            </div>
+            <div class="card-widget widget-nova">
+              <div class="terminal-container">
+                <div class="terminal-header">
+                  <div class="terminal-dots">
+                    <span class="dot-red"></span>
+                    <span class="dot-yellow"></span>
+                    <span class="dot-green"></span>
+                  </div>
+                  <div class="terminal-title">web-terminal.sh</div>
+                </div>
+                <div class="terminal-body">
+                  <div class="terminal-prompt">$ <span class="prompt-text"></span><span class="terminal-cursor">|</span></div>
+                  <div class="terminal-output"></div>
+                </div>
+              </div>
+              <div class="terminal-triggers">
+                <button class="trigger-btn" data-prompt="Build dashboard screen">Dashboard</button>
+                <button class="trigger-btn" data-prompt="Generate styling guide">Theme</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 2: 3D Brand Experiences (Span 4) -->
+          <div class="work-bento-card card-tall reveal-element reveal-skew-up" data-category="branding-3d" data-delay="100ms">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <span class="project-tag">3D & Creative</span>
+              <h3 class="project-title">3D Brand Experiences</h3>
+              <p class="project-description">Shaping immersive spatial brand identities combining physical graphic guidelines with interactive 3D WebGL virtual assets.</p>
+              <div class="project-capsules">
+                <span class="project-capsule">WebGL</span>
+                <span class="project-capsule">ThreeJS</span>
+                <span class="project-capsule">Blender</span>
+              </div>
+              <div class="btn-magnetic-wrap">
+                <a href="#" class="btn-magnetic project-link">
+                  <span>View Design</span>
+                </a>
+              </div>
+            </div>
+            <div class="card-widget widget-aether">
+              <div class="sphere-wrapper">
+                <svg class="sphere-svg" viewBox="0 0 200 200">
+                  <defs>
+                    <radialGradient id="sphere-glow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="var(--brand-purple)" stop-opacity="0.3"></stop>
+                      <stop offset="100%" stop-color="var(--brand-purple)" stop-opacity="0"></stop>
+                    </radialGradient>
+                  </defs>
+                  <!-- Background Glow -->
+                  <circle cx="100" cy="100" r="80" fill="url(#sphere-glow)"></circle>
+                  <!-- Rotating Rings -->
+                  <ellipse class="ring ring-1" cx="100" cy="100" rx="70" ry="25" fill="none" stroke="var(--brand-purple)" stroke-width="1.5" stroke-opacity="0.8"></ellipse>
+                  <ellipse class="ring ring-2" cx="100" cy="100" rx="70" ry="25" fill="none" stroke="#e200ff" stroke-width="1.5" stroke-opacity="0.6" transform="rotate(60, 100, 100)"></ellipse>
+                  <ellipse class="ring ring-3" cx="100" cy="100" rx="70" ry="25" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.5" transform="rotate(120, 100, 100)"></ellipse>
+                  <circle class="sphere-core" cx="100" cy="100" r="15" fill="none" stroke="#ffffff" stroke-width="2"></circle>
+                </svg>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 3: Smart IoT Dashboards (Span 4) -->
+          <div class="work-bento-card card-standard reveal-element reveal-skew-up" data-category="ai-saas" data-delay="200ms">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <span class="project-tag">IoT & SaaS</span>
+              <h3 class="project-title">Smart IoT Dashboards</h3>
+              <p class="project-description">Building telematics visualization grids for hardware, electric vehicle networks, and real-time industrial sensor coordinates.</p>
+              <div class="project-capsules">
+                <span class="project-capsule">IoT</span>
+                <span class="project-capsule">Telemetry</span>
+                <span class="project-capsule">SVG</span>
+              </div>
+              <div class="btn-magnetic-wrap">
+                <a href="#" class="btn-magnetic project-link">
+                  <span>Open Console</span>
+                </a>
+              </div>
+            </div>
+            <div class="card-widget widget-veloce">
+              <div class="gauge-container">
+                <svg class="gauge-svg" viewBox="0 0 120 120">
+                  <circle class="gauge-bg" cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"></circle>
+                  <circle class="gauge-fill" cx="60" cy="60" r="45" fill="none" stroke="var(--brand-purple)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="283"></circle>
+                  <g class="gauge-needle-wrap">
+                    <line class="gauge-needle" x1="60" y1="60" x2="60" y2="25" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></line>
+                    <circle cx="60" cy="60" r="4" fill="#ffffff"></circle>
+                  </g>
+                </svg>
+                <div class="gauge-value">0%</div>
+              </div>
+              <div class="battery-container">
+                <div class="battery-head"></div>
+                <div class="battery-body">
+                  <div class="battery-level"></div>
+                </div>
+                <div class="battery-label">12%</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 4: iOS Mobile Interfaces (Span 4) -->
+          <div class="work-bento-card card-standard reveal-element reveal-skew-up" data-category="mobile-ui" data-delay="300ms">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <span class="project-tag">Mobile UI/UX</span>
+              <h3 class="project-title">iOS Mobile Interfaces</h3>
+              <p class="project-description">Designing active mobile viewport frames, health integrations, and dynamic ring charts tailored for native mobile platforms.</p>
+              <div class="project-capsules">
+                <span class="project-capsule">SwiftUI</span>
+                <span class="project-capsule">iOS</span>
+                <span class="project-capsule">Biometrics</span>
+              </div>
+              <div class="btn-magnetic-wrap">
+                <a href="#" class="btn-magnetic project-link">
+                  <span>Interactive Mockup</span>
+                </a>
+              </div>
+            </div>
+            <div class="card-widget widget-apex">
+              <div class="phone-frame">
+                <div class="phone-screen">
+                  <div class="phone-notch"></div>
+                  <div class="phone-app">
+                    <div class="app-header">
+                      <span class="app-title">Health Tracker</span>
+                      <i class="fa-solid fa-bell app-bell"></i>
+                    </div>
+                    <div class="app-rings">
+                      <svg class="ring-svg" viewBox="0 0 100 100">
+                        <!-- Red Ring -->
+                        <circle class="ring-bg-circle red-bg" cx="50" cy="50" r="40" fill="none" stroke="rgba(255, 0, 77, 0.15)" stroke-width="8"></circle>
+                        <circle class="ring-fill-circle red-fill" cx="50" cy="50" r="40" fill="none" stroke="#ff004d" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"></circle>
+                        <!-- Purple Ring -->
+                        <circle class="ring-bg-circle purple-bg" cx="50" cy="50" r="28" fill="none" stroke="rgba(170, 0, 211, 0.15)" stroke-width="8"></circle>
+                        <circle class="ring-fill-circle purple-fill" cx="50" cy="50" r="28" fill="none" stroke="var(--brand-purple)" stroke-width="8" stroke-dasharray="175.9" stroke-dashoffset="175.9" stroke-linecap="round"></circle>
+                      </svg>
+                      <div class="rings-data">
+                        <div class="data-item"><span class="dot-marker red"></span> 420 Cal</div>
+                        <div class="data-item"><span class="dot-marker purple"></span> 2.4k Steps</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 5: Editorial & Brutalist Layouts (Span 4) -->
+          <div class="work-bento-card card-standard reveal-element reveal-skew-up" data-category="branding-3d" data-delay="400ms">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <span class="project-tag">Editorial Design</span>
+              <h3 class="project-title">Editorial & Brutalist Layouts</h3>
+              <p class="project-description">Structuring minimal, high-impact layouts utilizing raw typography systems, modular grids, and interactive vector guidelines.</p>
+              <div class="project-capsules">
+                <span class="project-capsule">Brutalist</span>
+                <span class="project-capsule">Typography</span>
+                <span class="project-capsule">Grid Canvas</span>
+              </div>
+              <div class="btn-magnetic-wrap">
+                <a href="#" class="btn-magnetic project-link">
+                  <span>Explore Blueprint</span>
+                </a>
+              </div>
+            </div>
+            <div class="card-widget widget-solas">
+              <div class="blueprint-canvas">
+                <div class="blueprint-grid-lines"></div>
+                <div class="blueprint-crosshair-h"></div>
+                <div class="blueprint-crosshair-v"></div>
+                <svg class="blueprint-svg" viewBox="0 0 150 150">
+                  <rect class="bp-border" x="15" y="15" width="120" height="120" fill="none" stroke="rgba(170, 0, 211, 0.3)" stroke-width="1" stroke-dasharray="4"></rect>
+                  <circle class="bp-circle" cx="75" cy="75" r="40" fill="none" stroke="var(--brand-purple)" stroke-width="1.5" stroke-opacity="0.8"></circle>
+                  <line class="bp-diag-1" x1="15" y1="15" x2="135" y2="135" stroke="rgba(255,255,255,0.15)" stroke-width="1"></line>
+                  <line class="bp-diag-2" x1="135" y1="15" x2="15" y2="135" stroke="rgba(255,255,255,0.15)" stroke-width="1"></line>
+                  <rect class="bp-inner-box" x="50" y="50" width="50" height="50" fill="none" stroke="#ffffff" stroke-width="1" stroke-opacity="0.5"></rect>
+                </svg>
+                <div class="blueprint-coord">X: 000 | Y: 000</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 6: Web3 & FinTech Platforms (Span 8) -->
+          <div class="work-bento-card card-full reveal-element reveal-skew-up" data-category="ai-saas" data-delay="500ms">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <span class="project-tag">Web3 & FinTech</span>
+              <h3 class="project-title">Web3 & FinTech Platforms</h3>
+              <p class="project-description">Designing low-latency digital asset trading dashboards complete with neon candlestick trend graphs, pricing markers, and fluid ratio selectors.</p>
+              <div class="project-capsules">
+                <span class="project-capsule">Web3 API</span>
+                <span class="project-capsule">Data Charts</span>
+                <span class="project-capsule">High-Performance</span>
+              </div>
+              <div class="btn-magnetic-wrap">
+                <a href="#" class="btn-magnetic project-link">
+                  <span>Enter Exchange</span>
+                </a>
+              </div>
+            </div>
+            <div class="card-widget widget-zenith">
+              <div class="trading-terminal">
+                <div class="chart-header">
+                  <span class="pair">BTC / USDT</span>
+                  <span class="price green-text">$98,420.00 <i class="fa-solid fa-caret-up"></i> (+12.4%)</span>
+                </div>
+                <div class="chart-canvas-wrap">
+                  <div class="chart-grid"></div>
+                  <div class="chart-laser-line-h"></div>
+                  <div class="chart-laser-line-v"></div>
+                  <svg class="chart-svg" viewBox="0 0 350 120" preserveAspectRatio="none">
+                    <!-- Grid Lines -->
+                    <line x1="0" y1="30" x2="350" y2="30" stroke="rgba(255,255,255,0.05)" stroke-width="1"></line>
+                    <line x1="0" y1="60" x2="350" y2="60" stroke="rgba(255,255,255,0.05)" stroke-width="1"></line>
+                    <line x1="0" y1="90" x2="350" y2="90" stroke="rgba(255,255,255,0.05)" stroke-width="1"></line>
+                    <!-- Candlesticks -->
+                    <line x1="30" y1="70" x2="30" y2="100" stroke="#ff004d" stroke-width="1.5"></line>
+                    <rect x="25" y="75" width="10" height="20" fill="#ff004d"></rect>
+                    <line x1="70" y1="50" x2="70" y2="90" stroke="#00ffcc" stroke-width="1.5"></line>
+                    <rect x="65" y="55" width="10" height="25" fill="#00ffcc"></rect>
+                    <line x1="110" y1="40" x2="110" y2="80" stroke="#00ffcc" stroke-width="1.5"></line>
+                    <rect x="105" y="45" width="10" height="25" fill="#00ffcc"></rect>
+                    <line x1="150" y1="60" x2="150" y2="95" stroke="#ff004d" stroke-width="1.5"></line>
+                    <rect x="145" y="65" width="10" height="25" fill="#ff004d"></rect>
+                    <line x1="190" y1="30" x2="190" y2="70" stroke="#00ffcc" stroke-width="1.5"></line>
+                    <rect x="185" y="35" width="10" height="30" fill="#00ffcc"></rect>
+                    <line x1="230" y1="20" x2="230" y2="55" stroke="#00ffcc" stroke-width="1.5"></line>
+                    <rect x="225" y="25" width="10" height="25" fill="#00ffcc"></rect>
+                    <line x1="270" y1="15" x2="270" y2="45" stroke="#00ffcc" stroke-width="1.5"></line>
+                    <rect x="265" y="20" width="10" height="20" fill="#00ffcc"></rect>
+                    <line x1="310" y1="10" x2="310" y2="35" stroke="#00ffcc" stroke-width="1.5"></line>
+                    <rect x="305" y="12" width="10" height="18" fill="#00ffcc"></rect>
+                  </svg>
+                  <div class="chart-tooltip">BTC: $98,420.00</div>
+                </div>
+                <div class="slider-control-wrap">
+                  <span class="label">TRADE RATIO:</span>
+                  <div class="custom-slider-track">
+                    <div class="custom-slider-fill"></div>
+                    <div class="custom-slider-thumb"></div>
+                  </div>
+                  <span class="ratio-val">50%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- View More Work Button -->
+        <div class="work-more-btn-wrap reveal-element reveal-slide-up" data-delay="100ms">
+          <div class="btn-magnetic-wrap">
+            <a href="https://mantrakaar.com/projects/" class="btn-magnetic" data-i18n="work_more">
+              <span>View More Work</span>
+            </a>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         7. Testimonials Section (Unchanged quote content, styled layout)
+         ========================================================================== */ -->
+    <section class="vc_section" id="blogs-slideshow-section" style="background-color: var(--bg-secondary);">
+      <div class="grid-container">
+        
+        <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 50px;">
+          <h2 data-i18n="nav_blogs">Blogs</h2>
+          <p class="lead" style="max-width: 700px; margin: 0 auto; line-height: 28px;">
+            Explore our latest thoughts, insights, and guides on website designs, digital media, brand identity, and technology.
+          </p>
+        </div>
+        
+        <!-- Swiper Slideshow -->
+        <div class="carousel-outer-wrapper">
+          <div class="swiper blogs-swiper">
+            <div class="swiper-wrapper">
+              
+              <!-- Slide 1 -->
+              <div class="swiper-slide">
+                <article class="blog-card reveal-element reveal-skew-up" data-delay="0ms">
+                  <div class="blog-thumb-wrap">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2026/02/blog-.jpg-1500x1250.jpeg" loading="lazy" alt="Building a Human Brand: The “About Us” Section as Your Website’s Heart">
+                  </div>
+                  <div class="blog-card-content">
+                    <div class="blog-card-date">February 18, 2026</div>
+                    <h3 class="blog-card-title">Building a Human Brand: The “About Us” Section as Your Website’s Heart</h3>
+                    <p class="blog-card-excerpt">In an increasingly automated digital landscape, your website's 'About Us' section is its heartbeat. Learn how humanizing your brand builds credibility and trust.</p>
+                    <a href="https://mantrakaar.com/building-a-human-brand-the-about-us-section-as-your-websites-heart/" class="blog-card-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </article>
+              </div>
+              
+              <!-- Slide 2 -->
+              <div class="swiper-slide">
+                <article class="blog-card reveal-element reveal-skew-up" data-delay="150ms">
+                  <div class="blog-thumb-wrap">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-2-1500x1250.jpg" loading="lazy" alt="Your Digital Practice: Why Doctors Need a Strong Online Presence">
+                  </div>
+                  <div class="blog-card-content">
+                    <div class="blog-card-date">May 29, 2025</div>
+                    <h3 class="blog-card-title">Your Digital Practice: Why Doctors Need a Strong Online Presence</h3>
+                    <p class="blog-card-excerpt">Discover why a strong website and search engine visibility are crucial for medical professionals to build trust and connect with prospective patients.</p>
+                    <a href="https://mantrakaar.com/your-digital-practice-why-doctors-need-a-strong-online-presence/" class="blog-card-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </article>
+              </div>
+              
+              <!-- Slide 3 -->
+              <div class="swiper-slide">
+                <article class="blog-card reveal-element reveal-skew-up" data-delay="300ms">
+                  <div class="blog-thumb-wrap">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-1-1500x1250.jpg" loading="lazy" alt="Your Digital Portfolio: How SEO Elevates Specialist Doctors Online">
+                  </div>
+                  <div class="blog-card-content">
+                    <div class="blog-card-date">May 20, 2025</div>
+                    <h3 class="blog-card-title">Your Digital Portfolio: How SEO Elevates Specialist Doctors Online</h3>
+                    <p class="blog-card-excerpt">For specialist doctors, SEO is the key to driving visibility. Learn how optimizing your digital portfolio secures search rankings and patient leads.</p>
+                    <a href="https://mantrakaar.com/your-digital-portfolio-how-seo-elevates-specialist-doctors-online/" class="blog-card-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </article>
+              </div>
+              
+            </div>
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Navigation Arrows -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+        
+        <!-- View All Blogs Button Link -->
+        <div class="reveal-element reveal-slide-up" style="text-align: center; margin-top: 40px;" data-delay="100ms">
+          <div class="btn-magnetic-wrap">
+            <a href="https://mantrakaar.com/blog/" class="btn-magnetic btn-magnetic-outline" data-i18n="view_all_blogs">
+              <span>View All Blogs</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. Our Services Section (Placed immediately after Blogs, unchanged content)
+         ========================================================================== */ -->
+    <section class="testimonials-section-wrapper" id="testimonials-section">
+      <div class="grid-container">
+        
+        <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 60px;">
+          <h2 data-i18n="testimonial_title" style="color: #ffffff;">Testimonial</h2>
+        </div>
+        
+        <!-- Testimonial Slideshow Swiper -->
+        <div class="swiper testimonial-swiper reveal-element reveal-slide-up" data-delay="100ms">
+          <div class="swiper-wrapper">
+            
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <div class="testimonial-slide-content">
+                <p class="testimonial-quote-text">
+                  "Working with Mantrakaar to develop our company Paintora Group’s website was a smooth and well structured experience. Their professionalism, technical understanding and attention to detail stood out at every stage. We are pleased with the final outcome."
+                </p>
+                <div class="testimonial-author-avatar">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/12/jhanvi-pallicha-1-280x280.webp" alt="Jhanvi Pallicha avatar">
+                </div>
+                <h3 class="testimonial-author-name">Jhanvi Pallicha</h3>
+                <div class="testimonial-author-company">CEO, Paintora Group</div>
+              </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+              <div class="testimonial-slide-content">
+                <p class="testimonial-quote-text">
+                  "Mantrakaar exceeded our expectations in creating both our brand logo and website. Their expertise in technology and content presentation truly set them apart. We are thrilled with the results and highly recommend Mantrakaar for design and web solutions."
+                </p>
+                <div class="testimonial-author-avatar">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Keyur_gupta-280x280.jpg" alt="Keyur Gupta avatar">
+                </div>
+                <h3 class="testimonial-author-name">Keyur Gupta</h3>
+                <div class="testimonial-author-company">Owner, Ashtavinayak Traders</div>
+              </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+              <div class="testimonial-slide-content">
+                <p class="testimonial-quote-text">
+                  "Parag Gogari from Mantrakaar did an exceptional job in creating a website that not only looks great but functions flawlessly. They understood our needs and delivered a website that exceeded our expectations. We highly recommend Parag Gogari for their expertise and dedication to providing successful digital solutions."
+                </p>
+                <div class="testimonial-author-avatar">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Satish-Sumbad-280x280.jpg" alt="Satish Sumbad avatar">
+                </div>
+                <h3 class="testimonial-author-name">Satish Sumbad</h3>
+                <div class="testimonial-author-company">Owner, Chembur Mobile Zone</div>
+              </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+              <div class="testimonial-slide-content">
+                <p class="testimonial-quote-text">
+                  "Customer service, website Aesthetic & content creation was top notch, I highly appreciate his quality of being ethical and passion for his work."
+                </p>
+                <div class="testimonial-author-avatar">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/RightSourceAviation-testimonial-280x280.jpg" alt="Capt. Vishal Vijay Gandhi avatar">
+                </div>
+                <h3 class="testimonial-author-name">Capt. Vishal Vijay Gandhi</h3>
+                <div class="testimonial-author-company">Owner, Right Source Aviation</div>
+              </div>
+            </div>
+            
+            <!-- Slide 5 -->
+            <div class="swiper-slide">
+              <div class="testimonial-slide-content">
+                <p class="testimonial-quote-text">
+                  "Mantrakaar truly understood our vision and business ethos when we sought to redesign the logos for Shree Online & WOW Trip Makers. Their creativity, color selection, and logo design perfectly captured our brands’ essence. We were thoroughly impressed with their work and highly recommend Mantrakaar not only for logo designing but also for website development."
+                </p>
+                <div class="testimonial-author-avatar">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Hemant-vyas-280x280.jpg" alt="Hemant Vyas avatar">
+                </div>
+                <h3 class="testimonial-author-name">Hemant Vyas</h3>
+                <div class="testimonial-author-company">Owner, Shree Online</div>
+              </div>
+            </div>
+            
+            <!-- Slide 6 -->
+            <div class="swiper-slide">
+              <div class="testimonial-slide-content">
+                <p class="testimonial-quote-text">
+                  "Just want to share my experience with Mantrakar. I had a vision for my portfolio and I just did not know how to do it graphically. So that’s where Mantrakar came in the picture. Parag got in touch with me soon after And I think he helped me build my portfolio within a week’s time And he actually delivered me the kind of vision I had for my portfolio. So highly recommended, guys."
+                </p>
+                <div class="testimonial-author-avatar">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Siddhi-penkar-280x280.jpg" alt="Siddhi Penkar avatar">
+                </div>
+                <h3 class="testimonial-author-name">Siddhi Penkar</h3>
+                <div class="testimonial-author-company">Fashion Designer</div>
+              </div>
+            </div>
+            
+            <!-- Slide 7 -->
+            <div class="swiper-slide">
+              <div class="testimonial-slide-content">
+                <p class="testimonial-quote-text">
+                  "Mr Parag & team from Mantrakar has made our Website www.royalprinters.in, they are very professional and made the website very SEO friendly guiding us to select the right keywords and also they delivered the website as per commitment!"
+                </p>
+                <div class="testimonial-author-avatar">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2024/07/Lal-Sabnani.png" alt="Lal Sabnani avatar">
+                </div>
+                <h3 class="testimonial-author-name">Lal Sabnani</h3>
+                <div class="testimonial-author-company">Owner, Royal Printers</div>
+              </div>
+            </div>
+            
+            <!-- Slide 8 -->
+            <div class="swiper-slide">
+              <div class="testimonial-slide-content">
+                <p class="testimonial-quote-text">
+                  "Mr. Parag Gogari has been an absolute game-changer for my business. He completely revamped my website, transforming it into visually stunning platform. The new design is not only modern and attractive but also highly functional and accessible across all gadgets. Parag’s expertise and attention to detail ensured that the site runs smoothly and efficiently. I am happy with the results and highly recommend to anyone."
+                </p>
+                <div class="testimonial-author-avatar">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2024/07/VIshal-bhuta.png" alt="Vishal Bhuta avatar">
+                </div>
+                <h3 class="testimonial-author-name">Vishal Bhuta</h3>
+                <div class="testimonial-author-company">Owner, AIM Financial Services</div>
+              </div>
+            </div>
+            
+            <!-- Slide 9 -->
+            <div class="swiper-slide">
+              <div class="testimonial-slide-content">
+                <p class="testimonial-quote-text">
+                  "Working with Mantrakaar Digital for the development of our website has been an excellent experience. I am really happy with the final output – the website has turned out exactly as I had envisioned, both in terms of design and functionality. The project was delivered on time, and the entire process was handled very professionally. What I truly appreciate is the commendable follow-up and constant support provided by the Mantrakaar Digital team, ensuring that every detail was taken care of. I highly recommend their services to anyone looking for a reliable and creative digital partner."
+                </p>
+                <div class="testimonial-author-avatar">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/08/Kalpesh-Karia-280x280.webp" alt="Mr. Kalpesh Karia avatar">
+                </div>
+                <h3 class="testimonial-author-name">Mr. Kalpesh Karia</h3>
+                <div class="testimonial-author-company">Owner, Pure Mist</div>
+              </div>
+            </div>
+            
+            <!-- Slide 10 -->
+            <div class="swiper-slide">
+              <div class="testimonial-slide-content">
+                <p class="testimonial-quote-text">
+                  "Working with Parag Gogari and the Mantrakaar team was an absolute pleasure. They delivered a truly wonderful website for Samadhan Diagnostic Centre that perfectly aligns with our brand colors and vision, developed precisely as per our expectations and brief. The site is fast-loading, offers a fantastic look & feel, and is commendably through the point. Our users find it incredibly easy to navigate, making their experience seamless. Mantrakaar Digital LLP truly transformed our online presence!"
+                </p>
+                <div class="testimonial-author-avatar">
+                  <img src="https://mantrakaar.com/wp-content/uploads/2025/08/Dr.-Dhanashree-More-280x280.webp" alt="Dr. Dhanashree More avatar">
+                </div>
+                <h3 class="testimonial-author-name">Dr. Dhanashree More</h3>
+                <div class="testimonial-author-company">Owner, Samadhan Diagnostic Centre</div>
+              </div>
+            </div>
+            
+          </div>
+          
+          <!-- Testimonials Nav Elements -->
+          <div class="swiper-pagination testimonial-pagination" style="bottom: -20px;"></div>
+        </div>
+        
+        <!-- View All Testimonials Button Link -->
+        <div class="reveal-element reveal-slide-up" style="text-align: center; margin-top: 15px;" data-delay="100ms">
+          <div class="btn-magnetic-wrap">
+            <a href="https://mantrakaar.com/testimonials/" class="btn-magnetic btn-white-outline" data-i18n="view_all_testimonials">
+              <span>View All Testimonials</span>
+            </a>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. Merged Contact Block (Ready to take step + Get Connected, Prominent CTA)
+         ========================================================================== */ -->
+    <section class="contact-section-wrapper" id="contact-section">
+      <div class="grid-container">
+        
+        <div class="contact-layout">
+          
+          <!-- Left Office Information block -->
+          <div class="contact-info-block reveal-element reveal-slide-right" data-delay="0ms">
+            <h2 class="contact-slogan-title" data-i18n="contact_title">
+              Ready to take the big step towards Digital World? Get Connected
+            </h2>
+            <p style="font-size: 16px; line-height: 28px; margin-bottom: 40px; color: var(--text-primary);" data-i18n="contact_lead">
+              We welcome you to contact us for more information about any of our services. Let's make something amazing together.
+            </p>
+            
+            <!-- Offices grid -->
+            <div class="contact-offices-grid">
+              
+              <!-- India Office -->
+              <div class="office-info-card">
+                <h3 class="office-title">India Office</h3>
+                <ul class="office-details">
+                  <li><i class="fa-solid fa-phone"></i> +91 90910 91903</li>
+                  <li><i class="fa-solid fa-envelope"></i> <a href="mailto:parag@mantrakaar.com">parag@mantrakaar.com</a></li>
+                </ul>
+              </div>
+              
+              <!-- UK Office -->
+              <div class="office-info-card">
+                <h3 class="office-title">UK Office</h3>
+                <ul class="office-details">
+                  <li><i class="fa-solid fa-phone"></i> +44 7411 334480</li>
+                  <li><i class="fa-solid fa-envelope"></i> <a href="mailto:dipesh@mantrakaar.com">dipesh@mantrakaar.com</a></li>
+                </ul>
+              </div>
+              
+            </div>
+          </div>
+          
+          <!-- Right Contact Form Card -->
+          <div class="contact-form-card reveal-element reveal-slide-left" data-delay="150ms">
+            <form id="mantrakaar-contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
+              <div class="contact-form-grid">
+                
+                <!-- Name -->
+                <div class="form-group">
+                  <label for="form-name" data-i18n="contact_name">Name</label>
+                  <input type="text" id="form-name" class="form-control" placeholder="Your Name" required>
+                </div>
+                
+                <!-- Email -->
+                <div class="form-group">
+                  <label for="form-email" data-i18n="contact_email">Email</label>
+                  <input type="email" id="form-email" class="form-control" placeholder="Your Email Address" required>
+                </div>
+                
+                <!-- Phone -->
+                <div class="form-group">
+                  <label for="form-phone" data-i18n="contact_phone">Phone</label>
+                  <input type="tel" id="form-phone" class="form-control" placeholder="Your Phone Number">
+                </div>
+                
+                <!-- Subject -->
+                <div class="form-group">
+                  <label for="form-subject" data-i18n="contact_subject">Subject</label>
+                  <input type="text" id="form-subject" class="form-control" placeholder="How can we help?" required>
+                </div>
+                
+                <!-- Message -->
+                <div class="form-group contact-span-2">
+                  <label for="form-message" data-i18n="contact_message">Message</label>
+                  <textarea id="form-message" class="form-control" placeholder="Write your message here..." required></textarea>
+                </div>
+                
+                <!-- Submit -->
+                <div class="form-submit-btn-wrap contact-span-2">
+                  <div class="btn-magnetic-wrap">
+                    <button type="submit" class="btn-magnetic" data-i18n="contact_submit">
+                      <span>Get In Touch</span>
+                    </button>
+                  </div>
+                </div>
+                
+              </div>
+            </form>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       9. Footer Widgets (Identical structure to original)
+       ========================================================================== */ -->
+  <footer data-cursor-skin="global" class="footer-widgets-wrapper">
+    <div class="grid-container">
+      <div class="footer-grid">
+        
+        <!-- Column 1: Logo & Social links (LinkedIn spelling corrected) -->
+        <div class="footer-widget-column">
+          <div class="footer-logo">
+            <img src="https://mantrakaar.com/wp-content/uploads/2024/01/LOGO_white_60.png" style="max-height: 40px;" alt="Mantrakaar White Logo">
+          </div>
+          <ul class="footer-social-links">
+            <li><a href="https://facebook.com/mantrakaar" target="_blank" aria-label="Facebook Page"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/mantrakaar/" target="_blank" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/mantrakaar" target="_blank" aria-label="LinkedIn Company Page"><i class="fa-brands fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 2: India Office -->
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">India Office</h3>
+          <p style="margin-bottom: 8px;"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +91 90910 91903</p>
+          <p><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> <a href="mailto:parag@mantrakaar.com" style="color:#888888;">parag@mantrakaar.com</a></p>
+        </div>
+        
+        <!-- Column 3: UK Office -->
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">UK Office</h3>
+          <p style="margin-bottom: 8px;"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +44 7411 334480</p>
+          <p><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> <a href="mailto:dipesh@mantrakaar.com" style="color:#888888;">dipesh@mantrakaar.com</a></p>
+        </div>
+        
+        <!-- Column 4: Links -->
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">Navigation</h3>
+          <ul class="footer-links-list">
+            <li><a href="https://mantrakaar.com/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="https://mantrakaar.com/terms-and-conditions/">Terms and Conditions</a></li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sub-footer (Copyright block) -->
+  <div class="sub-footer-wrapper">
+    <div class="grid-container">
+      <div class="sub-footer-content">
+        <div>Copyright &copy; 2026 Mantrakaar. All rights reserved</div>
+        <div>Mantrakaar POWERED BY <a href="http://unitedthemes.com/" target="_blank" rel="designer">United Themes</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       10. Floating Social Controls Stack (WhatsApp, LinkedIn, Instagram)
+       ========================================================================== */ -->
+  <div class="floating-social-stack">
+    <!-- WhatsApp (Top) -->
+    <a href="https://wa.me/919091091903" target="_blank" class="floating-social-btn floating-whatsapp" data-social="whatsapp" aria-label="Chat with us on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <!-- LinkedIn (Middle) -->
+    <a href="https://www.linkedin.com/company/mantrakaar" target="_blank" class="floating-social-btn floating-linkedin" data-social="linkedin" aria-label="Connect with us on LinkedIn">
+      <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+    <!-- Instagram (Bottom) -->
+    <a href="https://www.instagram.com/mantrakaar/" target="_blank" class="floating-social-btn floating-instagram" data-social="instagram" aria-label="Follow us on Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+  </div>
+
+  <!-- Cursor Visual Ring (Follows real pointer, hidden for a11y focus) -->
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="custom-cursor-dot" aria-hidden="true"></div>
+
+  <!-- Swiper.js Javascript -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <!-- Vivus.js for SVG path animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.6/vivus.min.js"></script>
+  <!-- Core Custom Javascript -->
+  <script src="js/main.js?v=4.5"></script>
+
+</body>
+</html>
