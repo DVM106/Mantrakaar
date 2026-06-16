@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollDown = document.querySelector('.hero-scroll-down');
     const dotMatrix = document.querySelector('.trailing-dot-matrix');
 
-    const line1 = document.getElementById('line-1');
+    const brandEl = document.getElementById('hero-brand-shimmer');
 
     if (!heroContainer) {
       logDebug("Error: #hero-section-container not found in DOM!");
@@ -464,14 +464,17 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollDown.style.opacity = '0';
       scrollDown.style.transform = 'translateX(-50%) translateY(20px)';
     }
-    if (line1) line1.textContent = '';
+    if (brandEl) {
+      brandEl.style.opacity = '0';
+      brandEl.style.transform = 'translateY(12px)';
+    }
 
     floatingIcons.forEach(icon => {
       icon.style.opacity = '0';
       icon.style.transform = 'scale(0.6)';
     });
 
-    logDebug("DOM Elements status: bulb=" + !!bulb + ", mask=" + !!mask + ", flash=" + !!flash + ", grid=" + !!grid + ", line1=" + !!line1 + ", dotMatrix=" + !!dotMatrix);
+    logDebug("DOM Elements status: bulb=" + !!bulb + ", mask=" + !!mask + ", flash=" + !!flash + ", grid=" + !!grid + ", brandEl=" + !!brandEl + ", dotMatrix=" + !!dotMatrix);
     logDebug("System prefers-reduced-motion: " + window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
     // Helper: Resilient Native CSS/JS Animation Fallback (when GSAP is offline/blocked)
@@ -550,26 +553,30 @@ document.addEventListener('DOMContentLoaded', () => {
           dottedSpotlight.style.opacity = '1';
         }
         
-        // Start sequential typing
-        if (line1) {
-          executeTypewriterSequence(() => {
-            logDebug("Fallback sequential typing complete.");
-            if (tagline) {
-              tagline.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-              tagline.style.opacity = '1';
-              tagline.style.transform = 'translateY(0)';
-            }
+        // Reveal gradient shimmer brand logo
+        if (dotMatrix) {
+          dotMatrix.style.transition = 'opacity 0.5s ease';
+          dotMatrix.style.opacity = '0.6';
+          dotMatrix.classList.add('active');
+        }
+        const brandElFallback = document.getElementById('hero-brand-shimmer');
+        if (brandElFallback) {
+          brandElFallback.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+          brandElFallback.style.opacity = '1';
+          brandElFallback.style.transform = 'translateY(0)';
+          setTimeout(() => {
+            startHeroTypewriter();
             if (scrollDown) {
               scrollDown.style.transition = 'opacity 0.6s ease';
               scrollDown.style.opacity = '1';
             }
             floatingIcons.forEach(icon => {
               icon.style.transition = 'opacity 1s ease, transform 1s ease';
-              icon.style.opacity = isDarkMode ? '0.35' : '0.25';
+              icon.style.opacity = '0.75';
               icon.style.transform = 'scale(1)';
             });
-            logDebug("All hero typing and reveals complete.");
-          });
+            logDebug("All hero reveals complete.");
+          }, 900);
         }
       }, 1600);
     }
@@ -609,10 +616,13 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollDown.style.opacity = '1';
         scrollDown.style.transform = 'translateX(-50%) translateY(0)';
       }
-      if (line1) line1.textContent = 'WITH MANTRAKAAR';
+      const brandElStatic = document.getElementById('hero-brand-shimmer');
+      if (brandElStatic) { brandElStatic.style.opacity = '1'; brandElStatic.style.transform = 'translateY(0)'; }
+      const twWrapStatic = document.getElementById('hero-typewriter-wrap');
+      if (twWrapStatic) { twWrapStatic.classList.add('visible'); document.getElementById('hero-typewriter-text').textContent = 'We Build What You Imagine.'; }
 
       floatingIcons.forEach(icon => {
-        icon.style.opacity = '0.25';
+        icon.style.opacity = '0.75';
         icon.style.transform = 'scale(1)';
       });
     }
@@ -739,29 +749,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }, '-=0.1');
     }
 
-    // Phase 7: Sequential Typewriting (1.95s onwards)
+    // Phase 7: Reveal gradient shimmer brand logo
     tl.add(() => {
-      logDebug("GSAP: Starting typewriter sequence");
-      executeTypewriterSequence(() => {
-        // Post-typing animations
+      logDebug("GSAP: Revealing brand shimmer logo");
+      if (dotMatrix) {
+        gsap.to(dotMatrix, { opacity: 0.6, duration: 0.5 });
+        dotMatrix.classList.add('active');
+      }
+      if (brandEl) {
+        gsap.to(brandEl, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power2.out',
+          onComplete: () => {
+            startHeroTypewriter();
+            if (scrollDown) gsap.to(scrollDown, { opacity: 1, y: 0, duration: 0.6 });
+            floatingIcons.forEach((icon, i) => {
+              gsap.to(icon, { opacity: 0.75, scale: 1, y: 0, duration: 1, delay: i * 0.15, ease: 'power2.out' });
+              floatIconLoop(icon);
+            });
+            logDebug("GSAP: Hero sequence completed");
+          }
+        });
+      } else {
         if (tagline) gsap.to(tagline, { opacity: 1, y: 0, duration: 0.6, ease: 'back.out(1.7)' });
         if (scrollDown) gsap.to(scrollDown, { opacity: 1, y: 0, duration: 0.6 });
-        
-        // Animate floating digital marketing icons
-        floatingIcons.forEach((icon, i) => {
-          gsap.to(icon, {
-            opacity: isDarkMode ? 0.35 : 0.25,
-            scale: 1,
-            y: 0,
-            duration: 1,
-            delay: i * 0.15,
-            ease: 'power2.out'
-          });
-          // Start a slow float loop for each icon
-          floatIconLoop(icon);
-        });
-        logDebug("GSAP: Hero sequence completed");
-      });
+      }
     });
 
     // Sequence runner for single-line typewriter effect (defined inside scope for closure access)
@@ -864,6 +878,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  /* ==========================================================================
+     Hero Typewriter Sentence Loop
+     ========================================================================== */
+  function startHeroTypewriter() {
+    const wrap = document.getElementById('hero-typewriter-wrap');
+    const textEl = document.getElementById('hero-typewriter-text');
+    if (!wrap || !textEl) return;
+
+    const sentences = [
+      'We Build What You Imagine.',
+      'We Design What You Dream.',
+      'We Craft What You Envision.',
+      'We Deliver What You Deserve.'
+    ];
+
+    let si = 0, ci = 0, deleting = false;
+
+    wrap.classList.add('visible');
+
+    function tick() {
+      const target = sentences[si];
+      if (!deleting) {
+        textEl.textContent = target.substring(0, ci + 1);
+        ci++;
+        if (ci === target.length) {
+          deleting = true;
+          setTimeout(tick, 1800);
+          return;
+        }
+        setTimeout(tick, 52);
+      } else {
+        textEl.textContent = target.substring(0, ci - 1);
+        ci--;
+        if (ci === 0) {
+          deleting = false;
+          si = (si + 1) % sentences.length;
+          setTimeout(tick, 320);
+          return;
+        }
+        setTimeout(tick, 28);
+      }
+    }
+
+    setTimeout(tick, 300);
+  }
+
   // Slow Floating Icon Motion
   function floatIconLoop(icon) {
     if (typeof gsap === 'undefined') return;
@@ -942,7 +1002,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const floatingIcons = document.querySelectorAll('.marketing-icon-floating');
         floatingIcons.forEach(icon => {
           if (icon.style.opacity > 0) {
-            icon.style.opacity = isDarkMode ? 0.35 : 0.25;
+            icon.style.opacity = 0.75;
           }
         });
 

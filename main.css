@@ -613,6 +613,62 @@ body.dark-mode .brand-logo-img {
 /* ==========================================================================
    Hero Section (Premium Custom Animation Canvas)
    ========================================================================== */
+/* ==========================================================================
+   Liquid Glass Utility
+   ========================================================================== */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border: none !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.10);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0)    40%,
+    rgba(255, 255, 255, 0)    60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hero Background Video */
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Hero CTA white button (on video background) */
+.btn-magnetic.hero-cta-glass {
+  background: #ffffff;
+  color: #000000;
+}
+.btn-magnetic.hero-cta-glass:hover,
+.btn-magnetic.hero-cta-glass:focus {
+  background: rgba(255, 255, 255, 0.88);
+  color: #000000;
+}
+
 #hero-section-container {
   position: relative;
   width: 100%;
@@ -621,6 +677,9 @@ body.dark-mode .brand-logo-img {
   background-color: #000000; /* Initial black state */
   overflow: hidden;
   z-index: 10;
+  /* Force white text — hero always sits on the dark video background */
+  --text-heading: #ffffff;
+  --text-primary: rgba(255, 255, 255, 0.65);
 }
 
 /* Initial Screen Mask (Bulb fade screen) */
@@ -755,16 +814,19 @@ body.dark-mode .hero-dotted-spotlight::after {
 
 /* Main Hero Typography & Content Area */
 .hero-content-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   z-index: 8;
-  padding: 0 20px;
-  text-align: center;
+  padding: 0 48px 64px;
+  max-width: 680px;
+}
+
+@media (max-width: 767px) {
+  .hero-content-wrapper {
+    padding: 0 24px 40px;
+    max-width: 100%;
+  }
 }
 
 /* Typed Headline Elements */
@@ -863,46 +925,102 @@ body.dark-mode .hero-dotted-spotlight::after {
   vertical-align: middle;
 }
 
-/* Tagline */
-.hero-tagline {
-  font-family: var(--font-primary);
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--text-heading);
+/* Hero Typewriter Sentence */
+.hero-typewriter-wrap {
+  font-family: var(--font-secondary);
+  font-size: clamp(13px, 1.4vw, 17px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.62);
+  letter-spacing: 0.01em;
   opacity: 0;
-  transform: translateY(20px);
-  margin-bottom: 40px;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  min-height: 1.5em;
+  margin-bottom: 28px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: flex-start;
+  gap: 3px;
 }
 
-@media (min-width: 768px) {
-  .hero-tagline {
-    font-size: 20px;
-    letter-spacing: 6px;
-  }
+.hero-typewriter-wrap.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.typewriter-cursor-bar {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--brand-purple);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: cursor-blink 0.7s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ==========================================================================
+   Hero Brand Shimmer (Gradient Shimmer + Tagline)
+   ========================================================================== */
+.hero-brand-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.hero-brand-shimmer {
+  font-family: var(--font-primary);
+  font-size: clamp(44px, 8vw, 100px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  background: linear-gradient(
+    120deg,
+    var(--text-heading) 5%,
+    #aa00d3 35%,
+    #e200ff 55%,
+    var(--text-heading) 85%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: brand-shimmer 4s linear infinite;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+@keyframes brand-shimmer {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 300% center; }
 }
 
 /* Digital Marketing Floating elements */
 .marketing-icon-floating {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px) saturate(1.3);
+  -webkit-backdrop-filter: blur(10px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--brand-purple);
-  font-size: 16px;
+  color: #ffffff;
+  font-size: 15px;
   opacity: 0;
   transform: scale(0.6);
   z-index: 6;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.15), 0 4px 20px rgba(0,0,0,0.2);
 }
 
 .m-icon-seo      { top: 20%; left: 15%; }

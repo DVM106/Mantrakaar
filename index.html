@@ -170,7 +170,10 @@
          2. Hero Section (Replaces original header slider with custom animations)
          ========================================================================== */ -->
     <section id="hero-section-container">
-      
+
+      <!-- Background Video -->
+      <video class="hero-bg-video" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_230229_7c9bc431-46cf-489a-948d-e8144d8eb5d4.mp4" autoplay muted loop playsinline></video>
+
       <!-- Initial state overlay: Black Background -->
       <div class="hero-mask">
         <!-- Realistic 3D Bulb Asset (Fades-in & scale, filament glows, flashes) -->
@@ -188,89 +191,28 @@
       <!-- Dotted Spotlight Grid overlay -->
       <div class="hero-dotted-spotlight"></div>
       
-      <!-- Ceiling Hanging Lamp (Left) -->
-      <div class="hanging-lamp" id="hero-lamp">
-        <div class="lamp-cord"></div>
-        <img src="assets/hanging_lamp.png" alt="Hanging Lamp" class="lamp-image" />
-        <svg viewBox="0 0 100 150" width="200" height="300" style="position: absolute; top: 405px; left: 50%; transform: translateX(-50%); pointer-events: none;">
-          <polygon points="45,0 55,0 100,150 0,150" fill="rgba(255, 229, 127, 0.12)" style="mix-blend-mode: screen;" />
-          <circle cx="50" cy="0" r="8" fill="#ffffff" filter="drop-shadow(0 0 10px #ffe57f)" />
-        </svg>
-      </div>
-
-      <!-- Elegant Wall Clock (Right) -->
-      <div class="wall-clock" id="wall-clock">
-        <img src="assets/clock_face.png?v=4.8" alt="Wall Clock" style="width: 140px; height: 140px; display: block; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.25));" />
-        <svg viewBox="0 0 200 200" width="140" height="140" style="position: absolute; top: 0; left: 0; pointer-events: none;">
-          <circle cx="100" cy="100" r="5" fill="var(--brand-purple)" style="z-index: 10;" />
-          <line id="clock-hour" x1="100" y1="100" x2="100" y2="60" stroke="#000000" stroke-width="4" stroke-linecap="round" style="transform-origin: 100px 100px;" />
-          <line id="clock-minute" x1="100" y1="100" x2="100" y2="40" stroke="#000000" stroke-width="2.5" stroke-linecap="round" style="transform-origin: 100px 100px;" />
-          <line id="clock-second" x1="100" y1="100" x2="100" y2="25" stroke="var(--brand-purple)" stroke-width="1.5" stroke-linecap="round" style="transform-origin: 100px 100px;" />
-        </svg>
-      </div>
       
       <!-- Main Content Block -->
       <div class="hero-content-wrapper">
-        <div class="typed-headline-container" aria-live="polite">
-          <!-- Trailing Dots Matrix Grid (Positions above IMAGINE, matching photo) -->
-          <div class="headline-line-1-container">
-            <div class="trailing-dot-matrix">
-              <!-- 3x8 = 24 dot matrix -->
-              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
-              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
-              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
-              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
-              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
-              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
-              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
-              <div class="matrix-dot"></div><div class="matrix-dot"></div><div class="matrix-dot"></div>
-            </div>
-            <h1 class="headline-line" id="line-1"></h1>
-          </div>
+        <div class="hero-brand-wrapper" aria-live="polite">
+          <h1 class="hero-brand-shimmer" id="hero-brand-shimmer">Mantrakaar</h1>
         </div>
-        
-        <!-- Tagline -->
-        <div class="hero-tagline">
-          <span>innovate</span>
-          <span style="color: var(--brand-purple); font-size: 8px;">&bull;</span>
-          <span>simplify</span>
-          <span style="color: var(--brand-purple); font-size: 8px;">&bull;</span>
-          <span>thrive</span>
+
+        <!-- Typewriter Sentence -->
+        <div class="hero-typewriter-wrap" id="hero-typewriter-wrap">
+          <span id="hero-typewriter-text"></span><span class="typewriter-cursor-bar"></span>
         </div>
-        
+
         <!-- Call To Action -->
         <div class="hero-cta-button-wrap" style="z-index: 10;">
           <div class="btn-magnetic-wrap">
-            <a href="https://mantrakaar.com/about/" class="btn-magnetic">
+            <a href="https://mantrakaar.com/about/" class="btn-magnetic hero-cta-glass">
               <span>Know More</span>
             </a>
           </div>
         </div>
-        
-        <!-- Floating wall-mounted desk shelf -->
-        <div class="hero-desk">
-          <div class="desk-table">
-            <img src="assets/wood_desk_final.png?v=5.0" alt="Wooden Desk" class="desk-image" />
-          </div>
-        </div>
       </div>
       
-      <!-- Floating Digital Marketing elements -->
-      <div class="marketing-icon-floating m-icon-seo" title="Search Engine Optimization" aria-hidden="true">
-        <i class="fa-solid fa-magnifying-glass-chart"></i>
-      </div>
-      <div class="marketing-icon-floating m-icon-social" title="Social Media Campaigns" aria-hidden="true">
-        <i class="fa-solid fa-share-nodes"></i>
-      </div>
-      <div class="marketing-icon-floating m-icon-ad" title="Paid Ads Management" aria-hidden="true">
-        <i class="fa-solid fa-rectangle-ad"></i>
-      </div>
-      <div class="marketing-icon-floating m-icon-strategy" title="Brand Strategy Consulting" aria-hidden="true">
-        <i class="fa-solid fa-lightbulb"></i>
-      </div>
-      <div class="marketing-icon-floating m-icon-analytics" title="Google Analytics & Reporting" aria-hidden="true">
-        <i class="fa-solid fa-chart-line"></i>
-      </div>
       
       <!-- Scroll Down Guide -->
       <div class="hero-scroll-down" aria-hidden="true">
