@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mantrakaar — Desk Alternatives Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Montserrat:wght@400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #aa00d3;
+      --magenta: #e200ff;
+      --cyan: #00e5ff;
+      --green: #00ff88;
+      --dark: #0a0a0a;
+    }
+
+    body {
+      background: #0a0a0a;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      padding: 40px 20px 100px;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 70px;
+    }
+    .page-title span { color: #aa00d3; }
+
+    /* ── Card shell ── */
+    .preview-card {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto 70px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 22px;
+      overflow: hidden;
+      background: #111;
+    }
+    .preview-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .card-label {
+      position: absolute;
+      top: 20px; left: 24px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); z-index: 10;
+    }
+    .card-label span { color: #aa00d3; }
+    .card-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      min-height: 380px;
+      padding: 60px 30px 0;
+      position: relative; z-index: 2;
+      overflow: hidden;
+    }
+
+    /* ── Current desk (for comparison) ── */
+    .current-desk img {
+      max-width: 100%;
+      width: 700px;
+      display: block;
+      margin: 0 auto;
+    }
+
+
+    /* ══════════════════════════════════════════════
+       OPTION 1 — Neon Wireframe Holographic Desk
+    ══════════════════════════════════════════════ */
+    .wireframe-scene {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      height: 260px;
+    }
+
+    /* Desk surface */
+    .wf-desk {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 680px;
+      height: 12px;
+      background: linear-gradient(90deg, transparent, rgba(170,0,211,0.15) 20%, rgba(170,0,211,0.3) 50%, rgba(170,0,211,0.15) 80%, transparent);
+      border-top: 1.5px solid rgba(170,0,211,0.8);
+      border-radius: 2px;
+      box-shadow: 0 0 20px rgba(170,0,211,0.4), 0 0 60px rgba(170,0,211,0.15);
+    }
+    .wf-desk::before, .wf-desk::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 2px;
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(170,0,211,0.8), transparent);
+    }
+    .wf-desk::before { left: 60px; }
+    .wf-desk::after  { right: 60px; }
+
+    /* Monitor */
+    .wf-monitor {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+    }
+    .wf-screen-frame {
+      width: 100%;
+      padding-top: 62%;
+      border: 1.5px solid rgba(0,229,255,0.7);
+      border-radius: 4px;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0,229,255,0.25), inset 0 0 30px rgba(0,229,255,0.05);
+      background: rgba(0,229,255,0.02);
+      overflow: hidden;
+    }
+    .wf-screen-content {
+      position: absolute;
+      inset: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .wf-code-line {
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(0,229,255,0.35);
+      animation: code-scan 3s ease-in-out infinite;
+    }
+    .wf-code-line:nth-child(1) { width: 70%; animation-delay: 0s; }
+    .wf-code-line:nth-child(2) { width: 45%; animation-delay: 0.1s; }
+    .wf-code-line:nth-child(3) { width: 85%; animation-delay: 0.2s; }
+    .wf-code-line:nth-child(4) { width: 30%; animation-delay: 0.3s; }
+    .wf-code-line:nth-child(5) { width: 60%; animation-delay: 0.4s; }
+    .wf-code-line:nth-child(6) { width: 75%; animation-delay: 0.5s; }
+    @keyframes code-scan {
+      0%, 100% { opacity: 0.35; }
+      50% { opacity: 0.8; }
+    }
+
+    /* Scan line */
+    .wf-scan {
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: rgba(0,229,255,0.6);
+      animation: scan-down 2.5s linear infinite;
+    }
+    @keyframes scan-down {
+      0%   { top: 0;    opacity: 1; }
+      90%  { top: 100%; opacity: 0.4; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    .wf-stand {
+      width: 60px;
+      height: 20px;
+      margin: 0 auto;
+      background: linear-gradient(to bottom, rgba(0,229,255,0.5), transparent);
+      clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+    }
+    .wf-base {
+      width: 130px;
+      height: 4px;
+      margin: 0 auto;
+      background: rgba(0,229,255,0.5);
+      box-shadow: 0 0 10px rgba(0,229,255,0.4);
+    }
+
+    /* Side keyboard wireframe */
+    .wf-keyboard {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      margin-left: 80px;
+      width: 180px;
+      height: 50px;
+      border: 1px solid rgba(170,0,211,0.5);
+      border-radius: 4px;
+      background: rgba(170,0,211,0.03);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 2px;
+      padding: 5px;
+    }
+    .wf-key {
+      background: rgba(170,0,211,0.2);
+      border-radius: 1px;
+      animation: key-blink 4s ease-in-out infinite;
+    }
+    .wf-key:nth-child(3n) { animation-delay: 0.5s; }
+    .wf-key:nth-child(5n) { animation-delay: 1s; }
+    @keyframes key-blink {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.6; }
+    }
+
+    /* Floating data orb left */
+    .wf-orb {
+      position: absolute;
+      bottom: 60px;
+      left: 60px;
+      width: 70px; height: 70px;
+      border: 1px solid rgba(170,0,211,0.6);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      color: rgba(170,0,211,0.8);
+      animation: orb-pulse 3s ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(170,0,211,0.2);
+    }
+    .wf-orb::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(170,0,211,0.3);
+      border-radius: 50%;
+    }
+    @keyframes orb-pulse {
+      0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 0 20px rgba(170,0,211,0.2); }
+      50% { transform: translateY(-8px) scale(1.04); box-shadow: 0 0 35px rgba(170,0,211,0.4); }
+    }
+
+    /* Plant wireframe right */
+    .wf-plant {
+      position: absolute;
+      bottom: 12px;
+      right: 50px;
+      width: 70px;
+      height: 100px;
+      opacity: 0.5;
+    }
+    .wf-plant-stem {
+      width: 2px;
+      height: 60px;
+      background: rgba(0,255,136,0.6);
+      margin: 0 auto;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+    }
+    .wf-plant-leaf {
+      position: absolute;
+      width: 40px; height: 24px;
+      border: 1px solid rgba(0,255,136,0.6);
+      border-radius: 0 50% 50% 0;
+    }
+    .wf-plant-leaf:nth-child(1) { top: 10px; left: 35px; transform: rotate(-20deg); }
+    .wf-plant-leaf:nth-child(2) { top: 24px; right: 35px; transform: rotate(200deg); }
+    .wf-plant-leaf:nth-child(3) { top: 38px; left: 30px; transform: rotate(-40deg); }
+
+
+    /* ══════════════════════════════════════════════
+       OPTION 2 — Floating Glassmorphism Panels
+    ══════════════════════════════════════════════ */
+    .glass-scene {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      height: 280px;
+      position: relative;
+    }
+
+    .glass-panel {
+      position: absolute;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      padding: 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(170,0,211,0.1);
+    }
+
+    /* Main browser panel */
+    .gp-main {
+      width: 380px;
+      height: 210px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: gp-float 5s ease-in-out infinite;
+    }
+    @keyframes gp-float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    .gp-topbar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .gp-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .gp-dot.r { background: #ff5f56; }
+    .gp-dot.y { background: #ffbd2e; }
+    .gp-dot.g { background: #27c93f; }
+    .gp-url {
+      flex: 1;
+      height: 18px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 30px;
+      margin-left: 4px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 8px;
+      color: rgba(170,0,211,0.8);
+      letter-spacing: 0.05em;
+    }
+    .gp-body { display: flex; flex-direction: column; gap: 7px; }
+    .gp-hero-banner {
+      height: 70px;
+      background: linear-gradient(135deg, rgba(170,0,211,0.15), rgba(226,0,255,0.08));
+      border: 1px solid rgba(170,0,211,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      background-clip: text;
+      color: transparent;
+      background: linear-gradient(90deg, #aa00d3, #e200ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.1em;
+      position: relative;
+    }
+    .gp-hero-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(170,0,211,0.12), rgba(226,0,255,0.06));
+      border: 1px solid rgba(170,0,211,0.2);
+      border-radius: 8px;
+    }
+    .gp-bars { display: flex; flex-direction: column; gap: 5px; }
+    .gp-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 3px;
+    }
+    .gp-bar:nth-child(1) { width: 80%; }
+    .gp-bar:nth-child(2) { width: 60%; }
+
+    /* Side analytics panel */
+    .gp-analytics {
+      width: 160px;
+      height: 140px;
+      bottom: 50px;
+      right: 30px;
+      animation: gp-float2 6s ease-in-out infinite;
+    }
+    @keyframes gp-float2 {
+      0%, 100% { transform: translateY(0) rotate(1deg); }
+      50% { transform: translateY(-14px) rotate(-0.5deg); }
+    }
+    .gp-analytics-title {
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 10px;
+    }
+    .gp-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      height: 60px;
+    }
+    .gp-bar-v {
+      flex: 1;
+      border-radius: 2px 2px 0 0;
+      background: linear-gradient(to top, #aa00d3, #e200ff);
+      animation: bar-grow 2s ease-out forwards;
+      transform-origin: bottom;
+    }
+    @keyframes bar-grow {
+      from { transform: scaleY(0); }
+      to   { transform: scaleY(1); }
+    }
+    .gp-stat {
+      margin-top: 8px;
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #aa00d3, #e200ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Side code panel */
+    .gp-code {
+      width: 170px;
+      height: 120px;
+      bottom: 70px;
+      left: 20px;
+      animation: gp-float3 7s ease-in-out infinite;
+    }
+    @keyframes gp-float3 {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-12px) rotate(0.5deg); }
+    }
+    .gp-code pre {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 8px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+    .gp-code .kw { color: #aa00d3; }
+    .gp-code .fn { color: #00e5ff; }
+    .gp-code .st { color: #00ff88; }
+
+    /* Glow blob behind panels */
+    .glass-glow {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 200px;
+      background: radial-gradient(ellipse, rgba(170,0,211,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+
+    /* ══════════════════════════════════════════════
+       OPTION 3 — Cyberpunk Terminal
+    ══════════════════════════════════════════════ */
+    .terminal-scene {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      height: 270px;
+      position: relative;
+    }
+
+    .cyber-monitor {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 560px;
+    }
+
+    .cyber-frame {
+      border: 2px solid rgba(0,229,255,0.6);
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 0 30px rgba(0,229,255,0.2), inset 0 0 60px rgba(0,0,0,0.8);
+    }
+
+    .cyber-header {
+      background: rgba(0,229,255,0.08);
+      border-bottom: 1px solid rgba(0,229,255,0.3);
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cyber-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      color: rgba(0,229,255,0.8);
+      letter-spacing: 0.2em;
+    }
+    .cyber-status {
+      display: flex;
+      gap: 8px;
+    }
+    .cyber-status span {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 8px;
+      padding: 1px 6px;
+      border-radius: 2px;
+    }
+    .cyber-status .s-on { background: rgba(0,255,136,0.15); color: #00ff88; border: 1px solid rgba(0,255,136,0.3); }
+    .cyber-status .s-run { background: rgba(170,0,211,0.15); color: #aa00d3; border: 1px solid rgba(170,0,211,0.3); }
+
+    .cyber-body {
+      padding: 12px 16px;
+      height: 170px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cyber-line {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      line-height: 1.8;
+      opacity: 0;
+      animation: line-appear 0.1s ease forwards;
+    }
+    .cyber-line.p { color: rgba(0,229,255,0.6); }
+    .cyber-line.c { color: rgba(0,255,136,0.8); }
+    .cyber-line.e { color: rgba(170,0,211,0.9); }
+    .cyber-line.w { color: rgba(255,200,0,0.7); }
+    @keyframes line-appear {
+      from { opacity: 0; transform: translateX(-4px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .cyber-cursor-line {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      color: rgba(0,229,255,0.6);
+    }
+    .cyber-cursor-line::after {
+      content: '█';
+      color: rgba(0,229,255,0.9);
+      animation: blink 0.7s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* Scanline overlay */
+    .cyber-scanlines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.15) 2px,
+        rgba(0,0,0,0.15) 4px
+      );
+      pointer-events: none;
+    }
+
+    .cyber-base {
+      height: 10px;
+      background: linear-gradient(90deg, transparent, rgba(0,229,255,0.3) 50%, transparent);
+      border-bottom: 2px solid rgba(0,229,255,0.6);
+      box-shadow: 0 0 20px rgba(0,229,255,0.3);
+    }
+    .cyber-stand {
+      width: 80px;
+      height: 18px;
+      margin: 0 auto;
+      background: linear-gradient(to bottom, rgba(0,229,255,0.3), transparent);
+      clip-path: polygon(25% 0%, 75% 0%, 90% 100%, 10% 100%);
+    }
+    .cyber-foot {
+      width: 200px;
+      height: 4px;
+      margin: 0 auto;
+      background: linear-gradient(90deg, transparent, rgba(0,229,255,0.6) 50%, transparent);
+      box-shadow: 0 0 12px rgba(0,229,255,0.4);
+    }
+
+    /* Side HUD elements */
+    .cyber-hud-left {
+      position: absolute;
+      bottom: 30px;
+      left: 20px;
+      width: 100px;
+    }
+    .hud-ring {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(170,0,211,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: hud-spin 8s linear infinite;
+    }
+    .hud-ring::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px dashed rgba(170,0,211,0.3);
+    }
+    .hud-ring-val {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: #aa00d3;
+      animation: hud-spin-rev 8s linear infinite;
+    }
+    @keyframes hud-spin { to { transform: rotate(360deg); } }
+    @keyframes hud-spin-rev { to { transform: rotate(-360deg); } }
+
+    .cyber-hud-right {
+      position: absolute;
+      bottom: 40px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .hud-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hud-bar-lbl {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 7px;
+      color: rgba(255,255,255,0.3);
+      width: 20px;
+    }
+    .hud-bar-track {
+      width: 80px;
+      height: 4px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .hud-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #aa00d3, #e200ff);
+      border-radius: 2px;
+      animation: bar-fill-anim 3s ease-in-out infinite alternate;
+    }
+    @keyframes bar-fill-anim {
+      from { opacity: 0.5; }
+      to   { opacity: 1; }
+    }
+
+
+    /* ══════════════════════════════════════════════
+       OPTION 4 — 3D Isometric Desk
+    ══════════════════════════════════════════════ */
+    .iso-scene {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      height: 300px;
+      position: relative;
+      perspective: 800px;
+    }
+
+    .iso-wrap {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) rotateX(30deg) rotateY(-20deg);
+      transform-style: preserve-3d;
+      width: 500px;
+    }
+
+    /* Desk surface */
+    .iso-top {
+      width: 500px;
+      height: 200px;
+      background: linear-gradient(135deg, #1a0a22, #2a0a3a);
+      border: 1px solid rgba(170,0,211,0.4);
+      border-radius: 4px;
+      position: relative;
+      box-shadow: 0 0 40px rgba(170,0,211,0.15);
+    }
+
+    /* Front face */
+    .iso-front {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(to bottom, #150820, #0d0515);
+      border: 1px solid rgba(170,0,211,0.2);
+      transform: rotateX(-90deg);
+      transform-origin: top center;
+    }
+
+    /* Items on desk */
+    .iso-monitor {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 130px;
+      background: #000;
+      border: 2px solid rgba(0,229,255,0.6);
+      border-radius: 4px;
+      box-shadow: 0 0 20px rgba(0,229,255,0.2), inset 0 0 40px rgba(0,229,255,0.05);
+      overflow: hidden;
+    }
+    .iso-screen-content {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .iso-s-line {
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(0,229,255,0.4);
+    }
+    .iso-s-line:nth-child(1) { width: 80%; }
+    .iso-s-line:nth-child(2) { width: 50%; background: rgba(170,0,211,0.5); }
+    .iso-s-line:nth-child(3) { width: 70%; }
+    .iso-s-line:nth-child(4) { width: 35%; background: rgba(0,255,136,0.4); }
+    .iso-s-line:nth-child(5) { width: 65%; }
+
+    .iso-monitor-stand {
+      position: absolute;
+      top: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 14px;
+      background: rgba(0,229,255,0.2);
+      clip-path: polygon(20%0%,80%0%,100%100%,0%100%);
+    }
+
+    .iso-keyboard {
+      position: absolute;
+      top: 160px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 28px;
+      background: rgba(170,0,211,0.08);
+      border: 1px solid rgba(170,0,211,0.3);
+      border-radius: 3px;
+      display: grid;
+      grid-template-columns: repeat(14, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 1px;
+      padding: 3px;
+    }
+    .iso-key {
+      background: rgba(170,0,211,0.2);
+      border-radius: 1px;
+    }
+
+    .iso-mug {
+      position: absolute;
+      top: 40px;
+      left: 30px;
+      width: 36px;
+      height: 44px;
+      background: rgba(170,0,211,0.15);
+      border: 1px solid rgba(170,0,211,0.5);
+      border-radius: 2px 2px 4px 4px;
+      box-shadow: 0 0 10px rgba(170,0,211,0.2);
+    }
+    .iso-mug::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      right: -10px;
+      width: 10px;
+      height: 20px;
+      border: 1px solid rgba(170,0,211,0.4);
+      border-left: none;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .iso-plant-pot {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 40px;
+      height: 50px;
+    }
+    .iso-pot {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 26px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 2px;
+      clip-path: polygon(10%0%,90%0%,100%100%,0%100%);
+    }
+    .iso-leaf {
+      position: absolute;
+      border-radius: 0 50% 50% 0;
+      border: 1px solid rgba(0,255,136,0.5);
+    }
+    .iso-leaf:nth-child(1) { width:28px; height:16px; top:4px; left:6px; transform:rotate(-30deg); }
+    .iso-leaf:nth-child(2) { width:24px; height:14px; top:10px; right:2px; transform:rotate(150deg); }
+    .iso-leaf:nth-child(3) { width:22px; height:12px; top:18px; left:4px; transform:rotate(-50deg); }
+
+    /* Desk glow */
+    .iso-glow {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 560px;
+      height: 40px;
+      background: radial-gradient(ellipse, rgba(170,0,211,0.25) 0%, transparent 70%);
+      filter: blur(10px);
+    }
+
+
+    /* ══════════════════════════════════════════════
+       OPTION 5 — Abstract Data Sphere + Grid Floor
+    ══════════════════════════════════════════════ */
+    .sphere-scene {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grid floor */
+    .sphere-floor {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 120px;
+      background-image:
+        linear-gradient(to right, rgba(170,0,211,0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(170,0,211,0.15) 1px, transparent 1px);
+      background-size: 40px 30px;
+      transform: perspective(400px) rotateX(55deg);
+      transform-origin: bottom center;
+    }
+    .sphere-floor::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, transparent 0%, #111 80%);
+    }
+
+    /* Central sphere */
+    .sphere-orb {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 160px;
+    }
+
+    .sphere-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid transparent;
+    }
+    .sphere-ring.r1 {
+      border-color: rgba(170,0,211,0.7);
+      box-shadow: 0 0 20px rgba(170,0,211,0.3), inset 0 0 20px rgba(170,0,211,0.1);
+      animation: sphere-rot1 6s linear infinite;
+    }
+    .sphere-ring.r2 {
+      inset: 16px;
+      border-color: rgba(226,0,255,0.5);
+      animation: sphere-rot2 4s linear infinite;
+    }
+    .sphere-ring.r3 {
+      inset: 32px;
+      border-color: rgba(0,229,255,0.5);
+      animation: sphere-rot1 8s linear infinite reverse;
+    }
+    @keyframes sphere-rot1 {
+      from { transform: rotate(0deg) rotateY(60deg); }
+      to   { transform: rotate(360deg) rotateY(60deg); }
+    }
+    @keyframes sphere-rot2 {
+      from { transform: rotate(0deg) rotateX(60deg); }
+      to   { transform: rotate(360deg) rotateX(60deg); }
+    }
+
+    .sphere-core {
+      position: absolute;
+      inset: 48px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(170,0,211,0.6), rgba(100,0,150,0.3) 50%, transparent);
+      box-shadow: 0 0 30px rgba(170,0,211,0.4);
+    }
+
+    .sphere-glow-ring {
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(170,0,211,0.12) 0%, transparent 70%);
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%,100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+
+    /* Orbiting data nodes */
+    .sphere-node {
+      position: absolute;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #aa00d3;
+      box-shadow: 0 0 10px #aa00d3;
+    }
+    .sphere-node:nth-child(1) { top: 10px; left: 50%; animation: orbit1 3s linear infinite; }
+    .sphere-node:nth-child(2) { top: 50%; left: 10px; animation: orbit2 4s linear infinite; }
+    @keyframes orbit1 {
+      from { transform: translateX(-50%) rotate(0deg) translateX(80px) rotate(0deg); }
+      to   { transform: translateX(-50%) rotate(360deg) translateX(80px) rotate(-360deg); }
+    }
+    @keyframes orbit2 {
+      from { transform: translateY(-50%) rotate(0deg) translateY(80px) rotate(0deg); }
+      to   { transform: translateY(-50%) rotate(360deg) translateY(80px) rotate(-360deg); }
+    }
+
+    /* Floating data tags */
+    .sphere-tag {
+      position: absolute;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      padding: 3px 8px;
+      border: 1px solid rgba(170,0,211,0.4);
+      border-radius: 3px;
+      background: rgba(170,0,211,0.08);
+      color: rgba(170,0,211,0.9);
+      white-space: nowrap;
+      animation: tag-float 4s ease-in-out infinite;
+    }
+    .sphere-tag:nth-child(1) { top: 30px; left: 0; animation-delay: 0s; }
+    .sphere-tag:nth-child(2) { top: 80px; right: 0; animation-delay: 1s; }
+    .sphere-tag:nth-child(3) { bottom: 80px; left: 20px; animation-delay: 2s; }
+    .sphere-tag:nth-child(4) { bottom: 60px; right: 10px; animation-delay: 0.5s; }
+    @keyframes tag-float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Shadow under sphere */
+    .sphere-shadow {
+      position: absolute;
+      bottom: 52px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 20px;
+      background: radial-gradient(ellipse, rgba(170,0,211,0.3) 0%, transparent 70%);
+      filter: blur(8px);
+    }
+
+  </style>
+</head>
+<body>
+
+<p class="page-title">Mantrakaar &nbsp;/&nbsp; <span>Desk Section Alternatives</span> — Futuristic CSS Only</p>
+
+<!-- ══════════════════════════
+     CURRENT (for comparison)
+══════════════════════════ -->
+<div class="preview-card">
+  <div class="card-label">Current <span style="color:rgba(255,255,255,0.2);font-weight:400">(PNG image)</span></div>
+  <div class="card-inner current-desk" style="justify-content:flex-end;padding-top:40px;">
+    <img src="assets/image-Photoroom.png" alt="Current desk">
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     OPTION 1 — Neon Wireframe
+══════════════════════════ -->
+<div class="preview-card">
+  <div class="card-label"><span>Option 1</span> — Neon Wireframe Holographic Desk</div>
+  <div class="card-inner">
+    <div class="wireframe-scene">
+
+      <div class="wf-orb">SYS<br>94%</div>
+
+      <div class="wf-plant">
+        <div class="wf-plant-leaf"></div>
+        <div class="wf-plant-leaf"></div>
+        <div class="wf-plant-leaf"></div>
+        <div class="wf-plant-stem"></div>
+      </div>
+
+      <div class="wf-monitor">
+        <div class="wf-screen-frame">
+          <div class="wf-screen-content">
+            <div class="wf-code-line"></div>
+            <div class="wf-code-line"></div>
+            <div class="wf-code-line"></div>
+            <div class="wf-code-line"></div>
+            <div class="wf-code-line"></div>
+            <div class="wf-code-line"></div>
+          </div>
+          <div class="wf-scan"></div>
+        </div>
+        <div class="wf-stand"></div>
+        <div class="wf-base"></div>
+      </div>
+
+      <div class="wf-keyboard">
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+        <div class="wf-key"></div><div class="wf-key"></div><div class="wf-key"></div>
+      </div>
+
+      <div class="wf-desk"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     OPTION 2 — Floating Glass Panels
+══════════════════════════ -->
+<div class="preview-card">
+  <div class="card-label"><span>Option 2</span> — Floating Glassmorphism Panels</div>
+  <div class="card-inner">
+    <div class="glass-scene">
+      <div class="glass-glow"></div>
+
+      <div class="glass-panel gp-code">
+        <pre><span class="kw">const</span> agency = {
+  name: <span class="st">'Mantrakaar'</span>,
+  <span class="fn">build</span>: (dream) =>
+    reality(dream)
+};</pre>
+      </div>
+
+      <div class="glass-panel gp-analytics">
+        <div class="gp-analytics-title">Growth</div>
+        <div class="gp-chart">
+          <div class="gp-bar-v" style="height:30%;animation-delay:0s"></div>
+          <div class="gp-bar-v" style="height:55%;animation-delay:0.1s"></div>
+          <div class="gp-bar-v" style="height:40%;animation-delay:0.2s"></div>
+          <div class="gp-bar-v" style="height:75%;animation-delay:0.3s"></div>
+          <div class="gp-bar-v" style="height:60%;animation-delay:0.4s"></div>
+          <div class="gp-bar-v" style="height:90%;animation-delay:0.5s"></div>
+          <div class="gp-bar-v" style="height:100%;animation-delay:0.6s"></div>
+        </div>
+        <div class="gp-stat">+240%</div>
+      </div>
+
+      <div class="glass-panel gp-main">
+        <div class="gp-topbar">
+          <span class="gp-dot r"></span>
+          <span class="gp-dot y"></span>
+          <span class="gp-dot g"></span>
+          <div class="gp-url">mantrakaar.com</div>
+        </div>
+        <div class="gp-body">
+          <div class="gp-hero-banner">MANTRAKAAR</div>
+          <div class="gp-bars">
+            <div class="gp-bar"></div>
+            <div class="gp-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     OPTION 3 — Cyberpunk Terminal
+══════════════════════════ -->
+<div class="preview-card">
+  <div class="card-label"><span>Option 3</span> — Cyberpunk Terminal Monitor</div>
+  <div class="card-inner">
+    <div class="terminal-scene">
+
+      <div class="cyber-hud-left">
+        <div class="hud-ring"><span class="hud-ring-val">98%</span></div>
+      </div>
+
+      <div class="cyber-hud-right">
+        <div class="hud-bar-wrap">
+          <span class="hud-bar-lbl">CPU</span>
+          <div class="hud-bar-track"><div class="hud-bar-fill" style="width:72%;animation-delay:0s"></div></div>
+        </div>
+        <div class="hud-bar-wrap">
+          <span class="hud-bar-lbl">RAM</span>
+          <div class="hud-bar-track"><div class="hud-bar-fill" style="width:55%;animation-delay:0.5s"></div></div>
+        </div>
+        <div class="hud-bar-wrap">
+          <span class="hud-bar-lbl">NET</span>
+          <div class="hud-bar-track"><div class="hud-bar-fill" style="width:88%;animation-delay:1s"></div></div>
+        </div>
+      </div>
+
+      <div class="cyber-monitor">
+        <div class="cyber-frame">
+          <div class="cyber-header">
+            <span class="cyber-title">MANTRAKAAR — SYSTEM v4.5</span>
+            <div class="cyber-status">
+              <span class="s-on">ONLINE</span>
+              <span class="s-run">RUNNING</span>
+            </div>
+          </div>
+          <div class="cyber-body" id="cyber-body">
+            <div class="cyber-scanlines"></div>
+          </div>
+        </div>
+        <div class="cyber-base"></div>
+        <div class="cyber-stand"></div>
+        <div class="cyber-foot"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     OPTION 4 — 3D Isometric Desk
+══════════════════════════ -->
+<div class="preview-card">
+  <div class="card-label"><span>Option 4</span> — 3D Isometric Purple Workstation</div>
+  <div class="card-inner" style="padding-bottom:20px;">
+    <div class="iso-scene">
+      <div class="iso-glow"></div>
+      <div class="iso-wrap">
+        <div class="iso-top">
+
+          <div class="iso-mug"></div>
+
+          <div class="iso-monitor">
+            <div class="iso-screen-content">
+              <div class="iso-s-line"></div>
+              <div class="iso-s-line"></div>
+              <div class="iso-s-line"></div>
+              <div class="iso-s-line"></div>
+              <div class="iso-s-line"></div>
+            </div>
+          </div>
+          <div class="iso-monitor-stand"></div>
+
+          <div class="iso-keyboard">
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+            <div class="iso-key"></div><div class="iso-key"></div><div class="iso-key"></div>
+          </div>
+
+          <div class="iso-plant-pot">
+            <div class="iso-leaf"></div>
+            <div class="iso-leaf"></div>
+            <div class="iso-leaf"></div>
+            <div class="iso-pot"></div>
+          </div>
+
+          <div class="iso-front"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     OPTION 5 — Data Sphere
+══════════════════════════ -->
+<div class="preview-card">
+  <div class="card-label"><span>Option 5</span> — Holographic Data Sphere + Grid Floor</div>
+  <div class="card-inner" style="padding-bottom:0;">
+    <div class="sphere-scene">
+      <div class="sphere-floor"></div>
+
+      <span class="sphere-tag">Design</span>
+      <span class="sphere-tag">Development</span>
+      <span class="sphere-tag">Marketing</span>
+      <span class="sphere-tag">Consultancy</span>
+
+      <div class="sphere-shadow"></div>
+      <div class="sphere-orb">
+        <div class="sphere-glow-ring"></div>
+        <div class="sphere-ring r1"></div>
+        <div class="sphere-ring r2"></div>
+        <div class="sphere-ring r3"></div>
+        <div class="sphere-core"></div>
+        <div class="sphere-node"></div>
+        <div class="sphere-node"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Option 3 — Cyberpunk terminal auto-type */
+(function() {
+  const body = document.getElementById('cyber-body');
+  if (!body) return;
+
+  const lines = [
+    { text: '> INITIALIZING MANTRAKAAR SYSTEMS...', cls: 'p' },
+    { text: '✓ Design engine loaded [OK]',          cls: 'c' },
+    { text: '✓ Development stack ready [OK]',       cls: 'c' },
+    { text: '✓ Marketing pipeline online [OK]',     cls: 'c' },
+    { text: '⚡ Running diagnostics...',            cls: 'w' },
+    { text: '✓ All systems operational.',           cls: 'c' },
+    { text: '> READY TO BUILD YOUR VISION_',        cls: 'e' },
+  ];
+
+  let li = 0;
+  const scanlines = body.querySelector('.cyber-scanlines');
+
+  function addLine() {
+    if (li >= lines.length) {
+      setTimeout(() => {
+        const allLines = body.querySelectorAll('.cyber-line');
+        allLines.forEach(l => l.remove());
+        li = 0;
+        setTimeout(addLine, 500);
+      }, 3000);
+      return;
+    }
+    const d = document.createElement('div');
+    d.className = 'cyber-line ' + lines[li].cls;
+    d.textContent = lines[li].text;
+    d.style.animationDelay = '0s';
+    body.insertBefore(d, scanlines);
+    li++;
+    setTimeout(addLine, 380);
+  }
+
+  setTimeout(addLine, 600);
+})();
+</script>
+
+</body>
+</html>
