@@ -29,81 +29,6 @@
   
   <!-- GSAP for animations (sequential timeline sequencing) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-  <style>
-    /* ── Hover-Pause Client Marquee ── */
-    .clients-marquee-outer {
-      position: relative;
-      overflow: hidden;
-    }
-    /* Fade-out edges */
-    .clients-marquee-outer::before,
-    .clients-marquee-outer::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 160px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .clients-marquee-outer::before {
-      left: 0;
-      background: linear-gradient(to right, var(--bg-secondary), transparent);
-    }
-    .clients-marquee-outer::after {
-      right: 0;
-      background: linear-gradient(to left, var(--bg-secondary), transparent);
-    }
-
-    .clients-marquee-track {
-      display: flex;
-      width: max-content;
-      animation: clientsMarquee 30s linear infinite;
-    }
-    /* Entire carousel pauses + logos brighten on hover */
-    .clients-marquee-outer:hover .clients-marquee-track {
-      animation-play-state: paused;
-    }
-    @keyframes clientsMarquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    .clients-marquee-item {
-      flex: 0 0 190px;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 30px;
-      border-right: 1px solid var(--border-color);
-    }
-    .clients-marquee-item img {
-      max-width: 120px;
-      max-height: 48px;
-      object-fit: contain;
-      filter: opacity(0.85);
-      transition: filter 0.3s ease;
-      display: block;
-    }
-    .clients-marquee-item:hover img {
-      filter: opacity(1);
-    }
-
-    .clients-marquee-hint {
-      text-align: center;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-top: 20px;
-    }
-    .clients-marquee-hint i {
-      margin-right: 6px;
-      color: var(--brand-purple);
-    }
-  </style>
 </head>
 <body>
 
@@ -296,7 +221,133 @@
       
     </section>
 
-    <!-- Services section removed — see service-options.html for layout alternatives -->
+    <!-- ==========================================================================
+         3. Blogs Slideshow Section (New Section placement)
+         ========================================================================== */ -->
+    <!-- ==========================================================================
+         3. Services Section (Concept 1: Editorial Typography Spotlight)
+         ========================================================================== */ -->
+    <section class="services-spotlight-section" id="services-section">
+      <div class="grid-container">
+        
+        <!-- Header matching the mockup layout -->
+        <div class="services-spotlight-header reveal-element reveal-scale-up">
+          <div class="services-header-left">
+            <h2 class="services-spotlight-title" data-i18n="services_we_offer">SERVICES WE OFFER</h2>
+            <p class="services-spotlight-subtitle" data-i18n="elevate_your_vision">ELEVATE YOUR VISION</p>
+          </div>
+        </div>
+        
+        <!-- Split Layout container -->
+        <div class="services-spotlight-layout">
+          
+          <!-- Left side: vertical giant menu items -->
+          <div class="services-spotlight-list reveal-element reveal-slide-up">
+            
+            <div class="spotlight-list-item active" data-service="design">
+              <span class="spotlight-item-num">01</span>
+              <span class="spotlight-item-text" data-i18n="spotlight_design">DESIGN</span>
+            </div>
+            
+            <div class="spotlight-list-item" data-service="development">
+              <span class="spotlight-item-num">02</span>
+              <span class="spotlight-item-text" data-i18n="spotlight_development">DEVELOPMENT</span>
+            </div>
+            
+            <div class="spotlight-list-item" data-service="marketing">
+              <span class="spotlight-item-num">03</span>
+              <span class="spotlight-item-text" data-i18n="spotlight_marketing">MARKETING</span>
+            </div>
+            
+            <div class="spotlight-list-item" data-service="strategy">
+              <span class="spotlight-item-num">04</span>
+              <span class="spotlight-item-text" data-i18n="spotlight_strategy">STRATEGY</span>
+            </div>
+            
+          </div>
+          
+          <!-- Right side: Viewport for representation -->
+          <div class="services-spotlight-viewport reveal-element reveal-scale-up" data-delay="100ms">
+            <div class="spotlight-viewport-glow"></div>
+            
+            <!-- Preview Card 1: DESIGN -->
+            <div class="spotlight-preview-card active" id="preview-design">
+              <div class="preview-card-image-underlay" style="background-image: url('assets/service_design.png');"></div>
+              <div class="preview-card-glass-overlay"></div>
+              <div class="preview-card-info">
+                <span class="preview-card-tag" data-i18n="service_card_1_tag">UX/UI Design</span>
+                <p class="preview-card-desc" data-i18n="service_card_1_desc">Creating beautiful, user-centered digital interfaces. We prototype fluid journeys, map clean layouts, and craft cohesive brand systems that resonate with users.</p>
+                <div class="preview-card-capsules">
+                  <span class="preview-card-capsule">Figma</span>
+                  <span class="preview-card-capsule">Wireframing</span>
+                  <span class="preview-card-capsule">Design Systems</span>
+                </div>
+                <a href="https://mantrakaar.com/design/" class="service-card-link"><span data-i18n="service_btn">Know More</span> <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            
+            <!-- Preview Card 2: DEVELOPMENT -->
+            <div class="spotlight-preview-card" id="preview-development">
+              <div class="preview-card-image-underlay" style="background-image: url('assets/service_development.png');"></div>
+              <div class="preview-card-glass-overlay"></div>
+              <div class="preview-card-info">
+                <span class="preview-card-tag" data-i18n="service_card_2_tag">Website Development</span>
+                <p class="preview-card-desc" data-i18n="service_card_2_desc">Building modern, fast, and responsive websites from scratch. We write high-quality code, configure domain routing, set up content management, and optimize sites for peak performance.</p>
+                <div class="preview-card-capsules">
+                  <span class="preview-card-capsule">React / NextJS</span>
+                  <span class="preview-card-capsule">TypeScript</span>
+                  <span class="preview-card-capsule">CSS / Animations</span>
+                </div>
+                <a href="https://mantrakaar.com/development/" class="service-card-link"><span data-i18n="service_btn">Know More</span> <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            
+            <!-- Preview Card 3: MARKETING -->
+            <div class="spotlight-preview-card" id="preview-marketing">
+              <div class="preview-card-image-underlay" style="background-image: url('assets/service_marketing.png');"></div>
+              <div class="preview-card-glass-overlay"></div>
+              <div class="preview-card-info">
+                <span class="preview-card-tag" data-i18n="service_card_3_tag">Marketing</span>
+                <p class="preview-card-desc" data-i18n="service_card_3_desc">Boosting online visibility and lead conversion. We optimize structural SEO metadata, run analytical campaigns, and chart user growth metrics.</p>
+                <div class="preview-card-capsules">
+                  <span class="preview-card-capsule">SEO Optimization</span>
+                  <span class="preview-card-capsule">Google Analytics</span>
+                  <span class="preview-card-capsule">Content Strategy</span>
+                </div>
+                <a href="https://mantrakaar.com/marketing/" class="service-card-link"><span data-i18n="service_btn">Know More</span> <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            
+            <!-- Preview Card 4: STRATEGY -->
+            <div class="spotlight-preview-card" id="preview-strategy">
+              <div class="preview-card-image-underlay" style="background-image: url('assets/service_strategy.png');"></div>
+              <div class="preview-card-glass-overlay"></div>
+              <div class="preview-card-info">
+                <span class="preview-card-tag" data-i18n="service_card_4_tag">Consulting</span>
+                <p class="preview-card-desc" data-i18n="service_card_4_desc">Delivering actionable architectural analysis, codebase health checks, conversion audits, and data-driven product strategies.</p>
+                <div class="preview-card-capsules">
+                  <span class="preview-card-capsule">Tech Audits</span>
+                  <span class="preview-card-capsule">Product Strategy</span>
+                  <span class="preview-card-capsule">Conversion Rate</span>
+                </div>
+                <a href="https://mantrakaar.com/consultancy/" class="service-card-link"><span data-i18n="service_btn">Know More</span> <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        <!-- Explore Work Button at the bottom of the section -->
+        <div class="services-explore-btn-wrap reveal-element reveal-slide-up" data-delay="100ms" style="text-align: center; margin-top: 50px;">
+          <div class="btn-magnetic-wrap">
+            <a href="#work-section" class="btn-magnetic">
+              <span data-i18n="explore_our_work">Explore Our Work</span>
+            </a>
+          </div>
+        </div>
+        
+      </div>
+    </section>
 
     <!-- ==========================================================================
          5. Our Happy Clients Section (Renamed, brought up beneath Services, slideshow)
@@ -304,99 +355,138 @@
     <!-- ==========================================================================
          5. Our Happy Clients Section (Renamed, brought up beneath Services, slideshow)
          ========================================================================== */ -->
-    <section class="vc_section" id="clients-section" style="background-color: var(--bg-secondary);">
+    <section class="vc_section" id="clients-section" style="background-color: var(--bg-secondary); overflow: hidden;">
       <div class="grid-container">
 
         <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 40px;">
           <h2 data-i18n="client_title">Our Happy Clients</h2>
         </div>
 
-        <!-- Hover-Pause Marquee -->
-        <div class="clients-marquee-outer reveal-element reveal-slide-up" data-delay="100ms" aria-label="Client logos">
-          <div class="clients-marquee-track">
+      </div>
 
-            <!-- Set 1 -->
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co." loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Unikgifts" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/MURUGAN.jpg" alt="Murugan" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ATMOSSECURE.jpg" alt="Atmossecure" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan" loading="lazy">
-            </div>
+      <!-- 3D Carousel Viewport (Placed outside grid-container to span full viewport width) -->
+      <div class="clients-carousel-viewport reveal-element reveal-slide-up" data-delay="100ms" aria-label="Client logos">
+        <div class="clients-carousel-track" style="--rotate-y: 0deg;">
 
-            <!-- Set 2 — exact duplicate for seamless loop -->
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co." loading="lazy">
+          <div class="clients-carousel-card" style="--card-index: 0;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co.">
             </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Unikgifts" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/MURUGAN.jpg" alt="Murugan" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ATMOSSECURE.jpg" alt="Atmossecure" loading="lazy">
-            </div>
-            <div class="clients-marquee-item">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan" loading="lazy">
-            </div>
-
           </div>
+          <div class="clients-carousel-card" style="--card-index: 1;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 2;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 3;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 4;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 5;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 6;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 7;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 8;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Unikgifts">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 9;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/MURUGAN.jpg" alt="Murugan">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 10;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ATMOSSECURE.jpg" alt="Atmossecure">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 11;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 12;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co.">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 13;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 14;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 15;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 16;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 17;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 18;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 19;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda">
+            </div>
+          </div>
+
         </div>
 
-        <p class="clients-marquee-hint">
-          <i class="fa-solid fa-hand-pointer"></i> Hover to pause
+      </div>
+
+      <div class="grid-container">
+
+        <p class="clients-carousel-hint" style="margin-top: 30px; text-align: center;">
+          <i class="fa-solid fa-circle-info"></i> <span data-i18n="client_hint">HOVER AT THE LOGO TO PAUSE</span>
         </p>
+
+        <!-- Magnetic CTA Button -->
+        <div class="clients-cta-btn-wrap reveal-element reveal-slide-up" data-delay="150ms" style="text-align: center; margin-top: 40px;">
+          <div class="btn-magnetic-wrap">
+            <a href="https://mantrakaar.com/about/" class="btn-magnetic">
+              <span data-i18n="client_cta">VIEW ALL CLIENTS</span>
+            </a>
+          </div>
+        </div>
 
       </div>
     </section>
