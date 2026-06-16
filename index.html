@@ -29,6 +29,81 @@
   
   <!-- GSAP for animations (sequential timeline sequencing) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <style>
+    /* ── Hover-Pause Client Marquee ── */
+    .clients-marquee-outer {
+      position: relative;
+      overflow: hidden;
+    }
+    /* Fade-out edges */
+    .clients-marquee-outer::before,
+    .clients-marquee-outer::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 160px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .clients-marquee-outer::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg-secondary), transparent);
+    }
+    .clients-marquee-outer::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg-secondary), transparent);
+    }
+
+    .clients-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: clientsMarquee 30s linear infinite;
+    }
+    /* Entire carousel pauses + logos brighten on hover */
+    .clients-marquee-outer:hover .clients-marquee-track {
+      animation-play-state: paused;
+    }
+    @keyframes clientsMarquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .clients-marquee-item {
+      flex: 0 0 190px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 30px;
+      border-right: 1px solid var(--border-color);
+    }
+    .clients-marquee-item img {
+      max-width: 120px;
+      max-height: 48px;
+      object-fit: contain;
+      filter: opacity(0.85);
+      transition: filter 0.3s ease;
+      display: block;
+    }
+    .clients-marquee-item:hover img {
+      filter: opacity(1);
+    }
+
+    .clients-marquee-hint {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-top: 20px;
+    }
+    .clients-marquee-hint i {
+      margin-right: 6px;
+      color: var(--brand-purple);
+    }
+  </style>
 </head>
 <body>
 
@@ -221,301 +296,7 @@
       
     </section>
 
-    <!-- ==========================================================================
-         3. Blogs Slideshow Section (New Section placement)
-         ========================================================================== */ -->
-    <section class="vc_section" id="services-section">
-      <div class="grid-container">
-        
-        <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 50px;">
-          <h2 data-i18n="service_title">Our Services</h2>
-          <p class="lead" style="max-width: 800px; margin: 0 auto; line-height: 28px;" data-i18n="service_lead">
-            We realize that your competition is always just a click away and creating a professional, informative and easy-to-use website, on your budget, is our main goal.
-          </p>
-        </div>
-        
-        <!-- Bento Services Grid Container -->
-        <div class="services-section-grid bento-grid">
-          
-          <!-- Card 1: Design (Double-width) -->
-          <div class="service-column-card card-design reveal-element reveal-skew-up" data-delay="0ms">
-            <!-- Spotlight outer wrapper for hover neon border -->
-            <div class="spotlight-border-glow"></div>
-            <div class="card-inner-content">
-              <div class="card-text-side">
-                <div class="service-icon">
-                  <svg version="1.1" class="ut-vivus-draw" id="ut-svg-design" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                    <circle fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="31"/>
-                    <circle fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="15"/>
-                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="26" y1="18" x2="26" y2="1"/>
-                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="38" y1="18" x2="38" y2="1"/>
-                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="26" y1="63" x2="26" y2="46"/>
-                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="38" y1="63" x2="38" y2="46"/>
-                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="46" y1="26" x2="63" y2="26"/>
-                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="46" y1="38" x2="63" y2="38"/>
-                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="1" y1="26" x2="18" y2="26"/>
-                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="1" y1="38" x2="18" y2="38"/>
-                  </svg>
-                </div>
-                <h3 class="service-title">Design</h3>
-                <div class="service-tags-container">
-                  <span class="service-tag">User Experience</span>
-                  <span class="service-tag">Brand Identity</span>
-                  <span class="service-tag">Print Design</span>
-                  <span class="service-tag">Digital Design</span>
-                  <span class="service-tag">Logo Designing</span>
-                </div>
-                <div class="service-btn-wrap" style="margin-top: auto;">
-                  <div class="btn-magnetic-wrap">
-                    <a href="https://mantrakaar.com/design/" class="btn-magnetic btn-magnetic-outline btn-services-column" style="font-size: 11px; padding: 10px 24px;">
-                      <span>Know More</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- UX/UI Prototyping Sandbox Widget -->
-              <div class="card-widget-side ux-sandbox-widget">
-                <div class="mock-canvas">
-                  <div class="canvas-header">
-                    <span class="canvas-dot red"></span>
-                    <span class="canvas-dot yellow"></span>
-                    <span class="canvas-dot green"></span>
-                    <div class="canvas-title">figma_mockup.ux</div>
-                  </div>
-                  <div class="canvas-workspace">
-                    <div class="canvas-layer-list">
-                      <div class="layer-item layer-hero active"><i class="fa-regular fa-square"></i> Hero Frame</div>
-                      <div class="layer-item layer-cover"><i class="fa-regular fa-image"></i> Cover Image</div>
-                      <div class="layer-item layer-text"><i class="fa-solid fa-align-left"></i> Header Text</div>
-                      <div class="layer-item layer-cta"><i class="fa-regular fa-circle-play"></i> Call To Action</div>
-                    </div>
-                    <div class="canvas-viewport">
-                      <div class="mock-figma-cursor" aria-hidden="true">
-                        <i class="fa-solid fa-arrow-pointer"></i>
-                      </div>
-                      <div class="mock-phone-frame">
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                          <div class="screen-navbar">
-                            <div class="mock-logo">MANTRAKAAR</div>
-                            <div class="mock-burger"><span></span><span></span></div>
-                          </div>
-                          <div class="screen-hero">
-                            <div class="hero-image-placeholder">
-                              <i class="fa-regular fa-image"></i>
-                            </div>
-                            <div class="hero-text-block">
-                              <div class="bar-title"></div>
-                              <div class="bar-desc1"></div>
-                              <div class="bar-desc2"></div>
-                            </div>
-                            <div class="hero-button-placeholder"></div>
-                          </div>
-                          <div class="screen-cards">
-                            <div class="mock-small-card"></div>
-                            <div class="mock-small-card"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Card 2: Development (Double-height) -->
-          <div class="service-column-card card-development reveal-element reveal-skew-up" data-delay="150ms">
-            <div class="spotlight-border-glow"></div>
-            <div class="card-inner-content vertical-stack">
-              <div class="service-icon">
-                <svg version="1.1" class="ut-vivus-draw" id="ut-svg-development" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                  <g>
-                    <rect x="1" y="10" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="62" height="41"/>
-                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="22" y1="63" x2="42" y2="63"/>
-                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="32" y1="63" x2="32" y2="51"/>
-                  </g>
-                  <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="1" y1="43" x2="64" y2="43"/>
-                </svg>
-              </div>
-              <h3 class="service-title">Development</h3>
-              <div class="service-tags-container">
-                <span class="service-tag">Websites & Microsites</span>
-                <span class="service-tag">Content Management</span>
-                <span class="service-tag">Ecommerce Solutions</span>
-                <span class="service-tag">Blogs Portal</span>
-              </div>
-              
-              <!-- Mock IDE Editor Terminal Widget -->
-              <div class="terminal-widget">
-                <div class="terminal-header">
-                  <span class="terminal-dot red"></span>
-                  <span class="terminal-dot yellow"></span>
-                  <span class="terminal-dot green"></span>
-                  <div class="terminal-tab">main.js</div>
-                </div>
-                <div class="terminal-body">
-                  <div class="code-lines-wrapper">
-                    <!-- Lines will be dynamically generated by JS, fallback placeholder below -->
-                    <pre class="code-line"><span class="code-keyword">const</span> app = <span class="code-keyword">new</span> <span class="code-class">Mantrakaar</span>();</pre>
-                    <pre class="code-line"><span class="code-keyword">await</span> app.<span class="code-func">launch</span>({ bento: <span class="code-keyword">true</span> });</pre>
-                  </div>
-                  <div class="terminal-status-line">
-                    <span class="status-indicator active"></span>
-                    <span class="status-text">Deploying...</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="service-btn-wrap" style="margin-top: auto;">
-                <div class="btn-magnetic-wrap">
-                  <a href="https://mantrakaar.com/development/" class="btn-magnetic btn-magnetic-outline btn-services-column" style="font-size: 11px; padding: 10px 24px;">
-                    <span>Know More</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Card 3: Marketing (Single-width) -->
-          <div class="service-column-card card-marketing reveal-element reveal-skew-up" data-delay="300ms">
-            <div class="spotlight-border-glow"></div>
-            <div class="card-inner-content vertical-stack">
-              <div class="service-icon">
-                <svg version="1.0" class="ut-vivus-draw" id="ut-svg-marketing" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                  <rect x="10" y="45" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="12" height="18"/>
-                  <rect x="42" y="18" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="12" height="45"/>
-                  <rect x="26" y="32" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="12" height="31"/>
-                  <g>
-                    <line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="14" y1="38" x2="51" y2="1"/>
-                    <polyline fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="40,1 51,1 51,12"/>
-                  </g>
-                </svg>
-              </div>
-              <h3 class="service-title">Marketing</h3>
-              <div class="service-tags-container">
-                <span class="service-tag">SEO</span>
-                <span class="service-tag">Social Campaigns</span>
-                <span class="service-tag">Analytics Audits</span>
-              </div>
-              
-              <!-- Analytics Graph Widget -->
-              <div class="analytics-widget">
-                <div class="analytics-chart-container">
-                  <svg class="analytics-chart-svg" viewBox="0 0 100 45">
-                    <defs>
-                      <linearGradient id="chart-glow" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="var(--brand-purple)" stop-opacity="0.35"/>
-                        <stop offset="100%" stop-color="var(--brand-purple)" stop-opacity="0"/>
-                      </linearGradient>
-                    </defs>
-                    <!-- Graph grid lines -->
-                    <line x1="0" y1="10" x2="100" y2="10" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-                    <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-                    <line x1="0" y1="40" x2="100" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-                    
-                    <!-- Area overlay -->
-                    <path class="chart-area-path" d="M 0 45 Q 25 35 50 20 T 100 5 L 100 45 Z" fill="url(#chart-glow)"/>
-                    <!-- Curved trend line -->
-                    <path class="chart-line-path" d="M 0 45 Q 25 35 50 20 T 100 5" fill="none" stroke="var(--brand-purple)" stroke-width="2.5" stroke-linecap="round"/>
-                    
-                    <!-- Vertical hover line indicator -->
-                    <line class="chart-hover-line" x1="0" y1="0" x2="0" y2="45" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="2,2" style="display: none;"/>
-                    <!-- Pulsing tracker dot -->
-                    <circle class="chart-tracker-dot" cx="100" cy="5" r="3" fill="#ffffff" filter="drop-shadow(0 0 5px var(--brand-purple))"/>
-                  </svg>
-                  <div class="chart-hover-tooltip" style="display: none;">
-                    <div class="tooltip-label">Traffic</div>
-                    <div class="tooltip-val">+240%</div>
-                  </div>
-                </div>
-                <div class="analytics-overlay-badge">+240% Growth</div>
-              </div>
-              
-              <div class="service-btn-wrap" style="margin-top: auto;">
-                <div class="btn-magnetic-wrap">
-                  <a href="https://mantrakaar.com/marketing/" class="btn-magnetic btn-magnetic-outline btn-services-column" style="font-size: 11px; padding: 10px 24px;">
-                    <span>Know More</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Card 4: Consultancy (Single-width) -->
-          <div class="service-column-card card-consultancy reveal-element reveal-skew-up" data-delay="450ms">
-            <div class="spotlight-border-glow"></div>
-            <div class="card-inner-content vertical-stack">
-              <div class="service-icon">
-                <svg version="1.1" class="ut-vivus-draw" id="ut-svg-consultancy" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                  <rect x="14" y="1" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="36" height="4"/>
-                  <rect x="14" y="59" fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="36" height="4"/>
-                  <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M18,59c0,0,0-8,0-14s29-19,29-25c0-2,0-15,0-15"/>
-                  <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M47,59c0,0,0-8,0-14S18,26,18,20c0-2,0-15,0-15"/>
-                </svg>
-              </div>
-              <h3 class="service-title">Consultancy</h3>
-              <div class="service-tags-container">
-                <span class="service-tag">CX Strategy</span>
-                <span class="service-tag">Audit Analysis</span>
-                <span class="service-tag">Data Insights</span>
-              </div>
-              
-              <!-- Strategy Dashboard Widget -->
-              <div class="dashboard-widget">
-                <div class="dashboard-inner">
-                  <!-- Left Column: Metrics -->
-                  <div class="db-metrics">
-                    <div class="db-metric-item">
-                      <span class="db-metric-label">CONVERSION</span>
-                      <span class="db-metric-value">+142%</span>
-                      <div class="db-progress-bar">
-                        <div class="db-progress-fill p-conv"></div>
-                      </div>
-                    </div>
-                    <div class="db-metric-item">
-                      <span class="db-metric-label">BOUNCE RATE</span>
-                      <span class="db-metric-value">-38%</span>
-                      <div class="db-progress-bar">
-                        <div class="db-progress-fill p-bounce"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Right Column: Health Status Ring -->
-                  <div class="db-health">
-                    <div class="health-ring-wrapper">
-                      <svg class="health-ring-svg" viewBox="0 0 36 36">
-                        <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="ring-fill" stroke-dasharray="94, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                      </svg>
-                      <div class="health-ring-text">
-                        <span class="health-num">94%</span>
-                        <span class="health-lbl">SCORE</span>
-                      </div>
-                    </div>
-                    <div class="health-status-badge">
-                      <span class="pulse-dot"></span>
-                      <span class="status-lbl">AUDIT DONE</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="service-btn-wrap" style="margin-top: auto;">
-                <div class="btn-magnetic-wrap">
-                  <a href="https://mantrakaar.com/consultancy/" class="btn-magnetic btn-magnetic-outline btn-services-column" style="font-size: 11px; padding: 10px 24px;">
-                    <span>Know More</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-        
-      </div>
-    </section>
+    <!-- Services section removed — see service-options.html for layout alternatives -->
 
     <!-- ==========================================================================
          5. Our Happy Clients Section (Renamed, brought up beneath Services, slideshow)
@@ -525,98 +306,98 @@
          ========================================================================== */ -->
     <section class="vc_section" id="clients-section" style="background-color: var(--bg-secondary);">
       <div class="grid-container">
-        
-        <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 30px;">
+
+        <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 40px;">
           <h2 data-i18n="client_title">Our Happy Clients</h2>
         </div>
-        
-        <!-- Arrow-Controlled Swiper Carousel with Autoplay Toggle -->
-        <div class="carousel-outer-wrapper reveal-element reveal-slide-up" data-delay="100ms">
-          <div class="swiper clients-swiper">
-            <div class="swiper-wrapper">
-              
-              <!-- 12 Client Logo Slides -->
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co. logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Unikgifts logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/MURUGAN.jpg" alt="Murugan logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ATMOSSECURE.jpg" alt="Atmossecure logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan logo" loading="lazy">
-                </div>
-              </div>
-              
+
+        <!-- Hover-Pause Marquee -->
+        <div class="clients-marquee-outer reveal-element reveal-slide-up" data-delay="100ms" aria-label="Client logos">
+          <div class="clients-marquee-track">
+
+            <!-- Set 1 -->
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co." loading="lazy">
             </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Unikgifts" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/MURUGAN.jpg" alt="Murugan" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ATMOSSECURE.jpg" alt="Atmossecure" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan" loading="lazy">
+            </div>
+
+            <!-- Set 2 — exact duplicate for seamless loop -->
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co." loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Unikgifts" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/MURUGAN.jpg" alt="Murugan" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ATMOSSECURE.jpg" alt="Atmossecure" loading="lazy">
+            </div>
+            <div class="clients-marquee-item">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan" loading="lazy">
+            </div>
+
           </div>
-          
-          <!-- Control Actions Area (Autoplay play/pause, arrows) -->
-          <div class="swiper-control-bar">
-            <button class="clients-prev swiper-autoplay-toggle" style="padding: 10px; border-radius: 50%; width: 40px; height: 40px; justify-content: center;" aria-label="Previous Client Logo">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            
-            <button id="clients-autoplay-toggle" class="swiper-autoplay-toggle" aria-label="Pause Client Autoplay">
-              <i class="fa-solid fa-pause"></i> <span>Pause</span>
-            </button>
-            
-            <button class="clients-next swiper-autoplay-toggle" style="padding: 10px; border-radius: 50%; width: 40px; height: 40px; justify-content: center;" aria-label="Next Client Logo">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-          </div>
-          
         </div>
-        
+
+        <p class="clients-marquee-hint">
+          <i class="fa-solid fa-hand-pointer"></i> Hover to pause
+        </p>
+
       </div>
     </section>
 
