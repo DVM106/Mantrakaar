@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mantrakaar — Hero Background Alternatives</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --purple: #aa00d3; --magenta: #e200ff; --cyan: #00e5ff; }
+
+    body { background: #050505; font-family: 'Poppins', sans-serif; color: #fff; padding: 40px 20px 80px; }
+
+    .page-title {
+      text-align: center; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); margin-bottom: 60px;
+    }
+    .page-title span { color: #aa00d3; }
+
+    /* ── Each hero card ── */
+    .hero-card {
+      position: relative; max-width: 960px; margin: 0 auto 60px;
+      border-radius: 20px; overflow: hidden; height: 500px;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .card-badge {
+      position: absolute; top: 18px; left: 22px; z-index: 100;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.4); padding: 4px 12px; border-radius: 20px;
+      backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.08);
+    }
+    .card-badge span { color: #aa00d3; }
+
+    /* ── Shared hero content overlay ── */
+    .hero-content {
+      position: absolute; inset: 0; z-index: 20;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 14px;
+      text-align: center; padding: 20px;
+    }
+    .hc-brand {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(38px, 6.5vw, 76px);
+      font-weight: 800; letter-spacing: -0.04em; line-height: 1.05;
+      background: linear-gradient(120deg, #fff 5%, #aa00d3 35%, #e200ff 55%, #fff 85%);
+      background-size: 300% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+    @keyframes shimmer { 0%{background-position:0% center} 100%{background-position:300% center} }
+
+    .hc-type {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(13px, 1.6vw, 17px);
+      font-weight: 500; color: rgba(255,255,255,0.65);
+      letter-spacing: 0.04em; min-height: 1.5em;
+    }
+    .hc-type .cur {
+      display: inline-block; width: 2px; height: 1em;
+      background: #aa00d3; margin-left: 2px; vertical-align: middle;
+      animation: blink 0.7s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .hc-btn {
+      display: inline-block; padding: 12px 32px;
+      border: 1.5px solid rgba(170,0,211,0.6);
+      border-radius: 50px; font-size: 13px; font-weight: 600;
+      color: #fff; letter-spacing: 0.06em;
+      background: rgba(170,0,211,0.1);
+      backdrop-filter: blur(6px);
+      text-decoration: none; margin-top: 6px;
+      transition: all 0.2s ease;
+    }
+    .hc-btn:hover { background: rgba(170,0,211,0.3); border-color: #aa00d3; }
+
+    /* ── scroll arrow ── */
+    .hc-scroll {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      font-size: 14px; color: rgba(255,255,255,0.3); z-index: 20;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+
+    /* ══════════════════════════════════════════════════════
+       BG 1 — Aurora / Gradient Mesh
+    ══════════════════════════════════════════════════════ */
+    .bg-aurora {
+      background: #08000f;
+      position: absolute; inset: 0;
+    }
+    .aurora-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); opacity: 0.55; animation: blob-drift 10s ease-in-out infinite alternate;
+    }
+    .aurora-blob.b1 {
+      width: 500px; height: 400px; top: -100px; left: -100px;
+      background: radial-gradient(circle, #aa00d3, transparent 70%);
+      animation-duration: 12s;
+    }
+    .aurora-blob.b2 {
+      width: 450px; height: 380px; top: -80px; right: -80px;
+      background: radial-gradient(circle, #e200ff, transparent 70%);
+      animation-duration: 9s; animation-delay: -3s;
+    }
+    .aurora-blob.b3 {
+      width: 400px; height: 350px; bottom: -80px; left: 30%;
+      background: radial-gradient(circle, #5500aa, transparent 70%);
+      animation-duration: 14s; animation-delay: -6s;
+    }
+    .aurora-blob.b4 {
+      width: 300px; height: 280px; bottom: 20px; right: 10%;
+      background: radial-gradient(circle, #00e5ff, transparent 70%);
+      opacity: 0.2; animation-duration: 11s; animation-delay: -2s;
+    }
+    @keyframes blob-drift {
+      0%   { transform: translate(0,0) scale(1); }
+      33%  { transform: translate(40px,-30px) scale(1.08); }
+      66%  { transform: translate(-20px,40px) scale(0.95); }
+      100% { transform: translate(30px,20px) scale(1.04); }
+    }
+    /* Noise grain overlay */
+    .aurora-noise {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+
+    /* ══════════════════════════════════════════════════════
+       BG 2 — Particle Network (canvas)
+    ══════════════════════════════════════════════════════ */
+    .bg-particles { background: #06000e; position: absolute; inset: 0; }
+    #canvas-particles { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+
+    /* ══════════════════════════════════════════════════════
+       BG 3 — Perspective Grid / Tron
+    ══════════════════════════════════════════════════════ */
+    .bg-grid { background: #03000a; position: absolute; inset: 0; overflow: hidden; }
+
+    .grid-horizon {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 65%;
+      background-image:
+        linear-gradient(to right, rgba(170,0,211,0.3) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(170,0,211,0.3) 1px, transparent 1px);
+      background-size: 60px 40px;
+      transform: perspective(380px) rotateX(52deg);
+      transform-origin: bottom center;
+    }
+    .grid-fade {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 65%;
+      background: linear-gradient(to top, transparent 0%, #03000a 70%);
+    }
+    .grid-glow-line {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, #aa00d3 30%, #e200ff 50%, #aa00d3 70%, transparent);
+      box-shadow: 0 0 30px rgba(170,0,211,0.8), 0 0 80px rgba(170,0,211,0.4);
+    }
+    .grid-v-lines {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 65%;
+      overflow: hidden;
+    }
+    .grid-v-line {
+      position: absolute; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to top, rgba(170,0,211,0.5), transparent);
+      animation: v-line-grow 3s ease-out infinite;
+    }
+    @keyframes v-line-grow {
+      0%   { height: 0; opacity: 1; }
+      80%  { height: 120%; opacity: 0.6; }
+      100% { height: 120%; opacity: 0; }
+    }
+    .grid-scan-h {
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(170,0,211,0.5) 50%, transparent);
+      animation: h-scan 4s linear infinite;
+    }
+    @keyframes h-scan {
+      0%   { bottom: 0%;   opacity: 0; }
+      10%  { opacity: 1; }
+      80%  { opacity: 0.3; }
+      100% { bottom: 65%;  opacity: 0; }
+    }
+    /* Stars */
+    .grid-stars {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 35%;
+      overflow: hidden;
+    }
+    .grid-star {
+      position: absolute; border-radius: 50%;
+      background: #fff; animation: twinkle 3s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle { 0%{opacity:0.1} 100%{opacity:0.8} }
+
+    /* Sun / horizon glow */
+    .grid-sun {
+      position: absolute; bottom: 33%; left: 50%; transform: translateX(-50%);
+      width: 200px; height: 90px;
+      background: radial-gradient(ellipse at 50% 100%, rgba(170,0,211,0.6) 0%, transparent 70%);
+      filter: blur(10px);
+    }
+
+
+    /* ══════════════════════════════════════════════════════
+       BG 4 — Floating Geometric Shapes
+    ══════════════════════════════════════════════════════ */
+    .bg-geo { background: #060010; position: absolute; inset: 0; overflow: hidden; }
+
+    .geo-shape {
+      position: absolute; border: 1px solid rgba(170,0,211,0.35);
+      animation: geo-float 8s ease-in-out infinite alternate;
+    }
+    .geo-shape.circle { border-radius: 50%; }
+    .geo-shape.s1 {
+      width: 180px; height: 180px; top: 5%; right: 8%;
+      border-color: rgba(226,0,255,0.3);
+      animation-duration: 9s;
+      box-shadow: 0 0 40px rgba(226,0,255,0.08), inset 0 0 40px rgba(226,0,255,0.04);
+    }
+    .geo-shape.s2 {
+      width: 120px; height: 120px; bottom: 15%; left: 5%;
+      transform: rotate(45deg); border-color: rgba(170,0,211,0.4);
+      animation-duration: 11s; animation-delay: -2s;
+    }
+    .geo-shape.s3 {
+      width: 80px; height: 80px; top: 20%; left: 12%;
+      transform: rotate(20deg); border-color: rgba(0,229,255,0.3);
+      animation-duration: 7s; animation-delay: -4s;
+    }
+    .geo-shape.s4 {
+      width: 220px; height: 220px; bottom: -40px; right: 15%;
+      border-color: rgba(170,0,211,0.2); border-radius: 30px;
+      animation-duration: 13s; animation-delay: -1s;
+    }
+    .geo-shape.s5 {
+      width: 60px; height: 60px; top: 55%; right: 22%;
+      transform: rotate(60deg); border-color: rgba(226,0,255,0.5);
+      animation-duration: 6s; animation-delay: -3s;
+    }
+    .geo-shape.s6 {
+      width: 100px; height: 100px; top: 8%; left: 35%;
+      border-radius: 50%; border-color: rgba(170,0,211,0.25);
+      animation-duration: 10s; animation-delay: -5s;
+    }
+    @keyframes geo-float {
+      0%   { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-30px) rotate(15deg); }
+    }
+    .geo-shape.s2 { animation: geo-float-sq 11s ease-in-out infinite alternate; }
+    @keyframes geo-float-sq {
+      0%   { transform: translateY(0) rotate(45deg); }
+      100% { transform: translateY(-24px) rotate(60deg); }
+    }
+
+    /* Ambient glow blobs */
+    .geo-glow {
+      position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.18;
+    }
+    .geo-glow.g1 {
+      width: 400px; height: 300px; top: -50px; right: -50px;
+      background: #aa00d3;
+    }
+    .geo-glow.g2 {
+      width: 350px; height: 280px; bottom: -60px; left: -40px;
+      background: #5500aa;
+    }
+    /* Dot grid */
+    .geo-dots {
+      position: absolute; inset: 0; opacity: 0.12;
+      background-image: radial-gradient(circle, rgba(170,0,211,0.8) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+
+    /* ══════════════════════════════════════════════════════
+       BG 5 — Matrix Code Rain (canvas)
+    ══════════════════════════════════════════════════════ */
+    .bg-matrix { background: #000; position: absolute; inset: 0; }
+    #canvas-matrix { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.6; }
+    /* Radial fade to keep center readable */
+    .matrix-vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.85) 80%);
+    }
+
+
+    /* ══════════════════════════════════════════════════════
+       BG 6 — Deep Space / Constellation
+    ══════════════════════════════════════════════════════ */
+    .bg-space { background: #020008; position: absolute; inset: 0; overflow: hidden; }
+    #canvas-space { position: absolute; inset: 0; width: 100%; height: 100%; }
+    /* Nebula blobs */
+    .space-nebula {
+      position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none;
+    }
+    .space-nebula.n1 {
+      width: 500px; height: 300px; top: -80px; left: -100px;
+      background: radial-gradient(ellipse, rgba(80,0,120,0.5), transparent 70%);
+    }
+    .space-nebula.n2 {
+      width: 400px; height: 260px; bottom: -60px; right: -80px;
+      background: radial-gradient(ellipse, rgba(170,0,211,0.3), transparent 70%);
+    }
+    .space-nebula.n3 {
+      width: 300px; height: 200px; top: 30%; left: 30%;
+      background: radial-gradient(ellipse, rgba(0,50,100,0.3), transparent 70%);
+    }
+
+  </style>
+</head>
+<body>
+
+<p class="page-title">Mantrakaar &nbsp;/&nbsp; <span>Hero Background Alternatives</span> — Full Section Preview</p>
+
+<!-- ═══════════════════════════════════
+     BG 1 — Aurora Gradient Mesh
+═══════════════════════════════════ -->
+<div class="hero-card">
+  <div class="card-badge"><span>Option 1</span> — Aurora Gradient Mesh</div>
+  <div class="bg-aurora">
+    <div class="aurora-blob b1"></div>
+    <div class="aurora-blob b2"></div>
+    <div class="aurora-blob b3"></div>
+    <div class="aurora-blob b4"></div>
+    <div class="aurora-noise"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hc-brand">Mantrakaar</div>
+    <div class="hc-type" id="tw1">We Build What You Imagine.<span class="cur"></span></div>
+    <a class="hc-btn" href="#">Know More</a>
+  </div>
+  <div class="hc-scroll"><i class="fa-solid fa-arrow-down"></i></div>
+</div>
+
+<!-- ═══════════════════════════════════
+     BG 2 — Particle Network
+═══════════════════════════════════ -->
+<div class="hero-card">
+  <div class="card-badge"><span>Option 2</span> — Particle Network</div>
+  <div class="bg-particles">
+    <canvas id="canvas-particles"></canvas>
+  </div>
+  <div class="hero-content">
+    <div class="hc-brand">Mantrakaar</div>
+    <div class="hc-type" id="tw2">We Build What You Imagine.<span class="cur"></span></div>
+    <a class="hc-btn" href="#">Know More</a>
+  </div>
+  <div class="hc-scroll"><i class="fa-solid fa-arrow-down"></i></div>
+</div>
+
+<!-- ═══════════════════════════════════
+     BG 3 — Perspective Grid / Tron
+═══════════════════════════════════ -->
+<div class="hero-card">
+  <div class="card-badge"><span>Option 3</span> — Retro Perspective Grid</div>
+  <div class="bg-grid">
+    <div class="grid-stars" id="grid-stars"></div>
+    <div class="grid-sun"></div>
+    <div class="grid-horizon"></div>
+    <div class="grid-scan-h"></div>
+    <div class="grid-fade"></div>
+    <div class="grid-glow-line"></div>
+    <div class="grid-v-lines" id="grid-vlines"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hc-brand">Mantrakaar</div>
+    <div class="hc-type" id="tw3">We Build What You Imagine.<span class="cur"></span></div>
+    <a class="hc-btn" href="#">Know More</a>
+  </div>
+  <div class="hc-scroll"><i class="fa-solid fa-arrow-down"></i></div>
+</div>
+
+<!-- ═══════════════════════════════════
+     BG 4 — Floating Geometric Shapes
+═══════════════════════════════════ -->
+<div class="hero-card">
+  <div class="card-badge"><span>Option 4</span> — Floating Geometric Shapes</div>
+  <div class="bg-geo">
+    <div class="geo-dots"></div>
+    <div class="geo-glow g1"></div>
+    <div class="geo-glow g2"></div>
+    <div class="geo-shape circle s1"></div>
+    <div class="geo-shape s2"></div>
+    <div class="geo-shape s3"></div>
+    <div class="geo-shape circle s4" style="border-radius:24px;"></div>
+    <div class="geo-shape s5"></div>
+    <div class="geo-shape circle s6"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hc-brand">Mantrakaar</div>
+    <div class="hc-type" id="tw4">We Build What You Imagine.<span class="cur"></span></div>
+    <a class="hc-btn" href="#">Know More</a>
+  </div>
+  <div class="hc-scroll"><i class="fa-solid fa-arrow-down"></i></div>
+</div>
+
+<!-- ═══════════════════════════════════
+     BG 5 — Matrix Code Rain
+═══════════════════════════════════ -->
+<div class="hero-card">
+  <div class="card-badge"><span>Option 5</span> — Purple Code Rain</div>
+  <div class="bg-matrix">
+    <canvas id="canvas-matrix"></canvas>
+    <div class="matrix-vignette"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hc-brand">Mantrakaar</div>
+    <div class="hc-type" id="tw5">We Build What You Imagine.<span class="cur"></span></div>
+    <a class="hc-btn" href="#">Know More</a>
+  </div>
+  <div class="hc-scroll"><i class="fa-solid fa-arrow-down"></i></div>
+</div>
+
+<!-- ═══════════════════════════════════
+     BG 6 — Deep Space Constellation
+═══════════════════════════════════ -->
+<div class="hero-card">
+  <div class="card-badge"><span>Option 6</span> — Deep Space Constellation</div>
+  <div class="bg-space">
+    <div class="space-nebula n1"></div>
+    <div class="space-nebula n2"></div>
+    <div class="space-nebula n3"></div>
+    <canvas id="canvas-space"></canvas>
+  </div>
+  <div class="hero-content">
+    <div class="hc-brand">Mantrakaar</div>
+    <div class="hc-type" id="tw6">We Build What You Imagine.<span class="cur"></span></div>
+    <a class="hc-btn" href="#">Know More</a>
+  </div>
+  <div class="hc-scroll"><i class="fa-solid fa-arrow-down"></i></div>
+</div>
+
+<script>
+/* ─────────────────────────────────────────
+   Shared typewriter for all cards
+───────────────────────────────────────── */
+const sentences = [
+  'We Build What You Imagine.',
+  'We Design What You Dream.',
+  'We Craft What You Envision.',
+  'We Deliver What You Deserve.'
+];
+function makeTypewriter(id) {
+  const wrap = document.getElementById(id);
+  if (!wrap) return;
+  const cursor = wrap.querySelector('.cur');
+  let si = 0, ci = 0, del = false;
+  const textNode = document.createTextNode('');
+  wrap.insertBefore(textNode, cursor);
+  function tick() {
+    const t = sentences[si];
+    if (!del) {
+      textNode.textContent = t.substring(0, ++ci);
+      if (ci === t.length) { del = true; setTimeout(tick, 1800); return; }
+      setTimeout(tick, 52);
+    } else {
+      textNode.textContent = t.substring(0, --ci);
+      if (ci === 0) { del = false; si = (si + 1) % sentences.length; setTimeout(tick, 300); return; }
+      setTimeout(tick, 28);
+    }
+  }
+  tick();
+}
+['tw1','tw2','tw3','tw4','tw5','tw6'].forEach(makeTypewriter);
+
+
+/* ─────────────────────────────────────────
+   BG 2 — Particle Network
+───────────────────────────────────────── */
+(function() {
+  const canvas = document.getElementById('canvas-particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const card = canvas.closest('.hero-card');
+
+  function resize() {
+    canvas.width  = card.offsetWidth;
+    canvas.height = card.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const PARTICLES = 70;
+  const MAX_DIST  = 140;
+  const particles = Array.from({ length: PARTICLES }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.5,
+    vy: (Math.random() - 0.5) * 0.5,
+    r: Math.random() * 2 + 1
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(170,0,211,0.7)';
+      ctx.fill();
+    });
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < MAX_DIST) {
+          const alpha = (1 - dist / MAX_DIST) * 0.4;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(170,0,211,${alpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+
+/* ─────────────────────────────────────────
+   BG 3 — Grid Stars & V-lines
+───────────────────────────────────────── */
+(function() {
+  const starsContainer = document.getElementById('grid-stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.className = 'grid-star';
+    const size = Math.random() * 2 + 0.5;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%;
+      left:${Math.random()*100}%;
+      animation-delay:${Math.random()*3}s;
+      animation-duration:${2+Math.random()*3}s;
+    `;
+    starsContainer.appendChild(s);
+  }
+
+  const vlContainer = document.getElementById('grid-vlines');
+  for (let i = 0; i < 12; i++) {
+    const v = document.createElement('div');
+    v.className = 'grid-v-line';
+    v.style.cssText = `
+      left:${(i / 11) * 100}%;
+      animation-delay:${i * 0.25}s;
+      animation-duration:${3 + Math.random()}s;
+    `;
+    vlContainer.appendChild(v);
+  }
+})();
+
+
+/* ─────────────────────────────────────────
+   BG 5 — Purple Matrix Rain
+───────────────────────────────────────── */
+(function() {
+  const canvas = document.getElementById('canvas-matrix');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const card = canvas.closest('.hero-card');
+
+  function resize() {
+    canvas.width  = card.offsetWidth;
+    canvas.height = card.offsetHeight;
+  }
+  resize();
+
+  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&<>/{}[]';
+  const COL_W = 18;
+  const cols  = Math.floor(canvas.width / COL_W);
+  const drops = Array(cols).fill(1);
+
+  function draw() {
+    ctx.fillStyle = 'rgba(0,0,0,0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    drops.forEach((y, i) => {
+      const char = CHARS[Math.floor(Math.random() * CHARS.length)];
+      const brightness = Math.random();
+      ctx.fillStyle = brightness > 0.95
+        ? '#ffffff'
+        : `rgba(${170 + Math.floor(brightness * 56)}, 0, ${180 + Math.floor(brightness * 75)}, ${0.5 + brightness * 0.5})`;
+      ctx.font = `${12 + Math.floor(Math.random()*4)}px monospace`;
+      ctx.fillText(char, i * COL_W, y * COL_W);
+      if (y * COL_W > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    });
+  }
+  setInterval(draw, 40);
+})();
+
+
+/* ─────────────────────────────────────────
+   BG 6 — Space Constellation
+───────────────────────────────────────── */
+(function() {
+  const canvas = document.getElementById('canvas-space');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const card = canvas.closest('.hero-card');
+
+  function resize() {
+    canvas.width  = card.offsetWidth;
+    canvas.height = card.offsetHeight;
+  }
+  resize();
+
+  const STARS = 120;
+  const stars = Array.from({ length: STARS }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5 + 0.3,
+    phase: Math.random() * Math.PI * 2,
+    speed: 0.005 + Math.random() * 0.01
+  }));
+
+  const CONSTELLATIONS = [
+    [0,4,9,3,7,12],
+    [20,25,31,28,22],
+    [40,45,50,43,48,55],
+    [60,65,70,68,62]
+  ];
+
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    t += 0.01;
+
+    // Draw constellation lines
+    CONSTELLATIONS.forEach(group => {
+      ctx.beginPath();
+      group.forEach((idx, i) => {
+        const s = stars[idx % stars.length];
+        if (i === 0) ctx.moveTo(s.x, s.y);
+        else ctx.lineTo(s.x, s.y);
+      });
+      ctx.strokeStyle = 'rgba(170,0,211,0.15)';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+    });
+
+    // Draw stars
+    stars.forEach(s => {
+      const brightness = 0.4 + 0.6 * Math.abs(Math.sin(s.phase + t * s.speed * 10));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${brightness * 0.9})`;
+      ctx.fill();
+
+      // Occasional purple-tinted star
+      if (s.r > 1.2) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(170,0,211,${brightness * 0.12})`;
+        ctx.fill();
+      }
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>

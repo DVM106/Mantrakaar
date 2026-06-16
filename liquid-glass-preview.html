@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mantrakaar — Liquid Glass Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #000; overflow: hidden;
+    }
+
+    /* ── Liquid Glass utility ── */
+    .liquid-glass {
+      background: rgba(255,255,255,0.01);
+      background-blend-mode: luminosity;
+      backdrop-filter: blur(12px) saturate(1.4);
+      -webkit-backdrop-filter: blur(12px) saturate(1.4);
+      border: none;
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.10);
+      position: relative;
+      overflow: hidden;
+    }
+    .liquid-glass::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.4px;
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.45) 0%,
+        rgba(255,255,255,0.15) 20%,
+        rgba(255,255,255,0)    40%,
+        rgba(255,255,255,0)    60%,
+        rgba(255,255,255,0.15) 80%,
+        rgba(255,255,255,0.45) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* ── Root hero wrapper ── */
+    #hero-root {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ── Background video ── */
+    #bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    /* subtle dark vignette over video */
+    #hero-root::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.25) 0%,
+        rgba(0,0,0,0.10) 40%,
+        rgba(0,0,0,0.45) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 32px;
+    }
+
+    /* Logo */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo-icon {
+      width: 26px; height: 26px;
+      background: linear-gradient(135deg, #aa00d3, #e200ff);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff;
+    }
+
+    /* Nav pill */
+    .nav-pill {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border-radius: 14px;
+      padding: 8px 8px;
+    }
+    .nav-pill button {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 400;
+      border: none;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+      color: rgba(255,255,255,0.65);
+      background: transparent;
+      font-family: inherit;
+    }
+    .nav-pill button:hover { color: #fff; }
+    .nav-pill button.active {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+    .nav-pill button svg { opacity: 0.6; }
+
+    /* Nav CTAs */
+    .nav-ctas {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-login {
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 10px 18px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      background: transparent;
+      font-family: inherit;
+      transition: background 0.18s;
+    }
+    .btn-login:hover { background: rgba(255,255,255,0.08); }
+    .btn-login.liquid-glass { }
+
+    .btn-cta-white {
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      background: #fff;
+      color: #000;
+      font-family: inherit;
+      transition: background 0.18s, opacity 0.18s;
+    }
+    .btn-cta-white:hover { background: rgba(255,255,255,0.88); }
+
+    /* ── Hero text block (bottom-left) ── */
+    #hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 20;
+      padding: 0 48px 64px;
+      max-width: 680px;
+    }
+
+    /* Shimmer brand heading */
+    .hero-brand {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      background: linear-gradient(120deg, #fff 5%, #aa00d3 35%, #e200ff 55%, #fff 85%);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: brand-shimmer 4s linear infinite;
+      margin-bottom: 10px;
+    }
+    @keyframes brand-shimmer {
+      0%   { background-position: 0%   center; }
+      100% { background-position: 300% center; }
+    }
+
+    /* Sub-headline */
+    .hero-sub {
+      font-size: clamp(18px, 2.2vw, 28px);
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    /* Typewriter line */
+    .hero-typewriter {
+      font-size: clamp(13px, 1.4vw, 17px);
+      font-weight: 400;
+      color: rgba(255,255,255,0.62);
+      letter-spacing: 0.01em;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      min-height: 1.5em;
+    }
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: #aa00d3;
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: cur-blink 0.7s step-end infinite;
+    }
+    @keyframes cur-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* CTA buttons */
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-start {
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 30px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      background: #fff;
+      color: #000;
+      font-family: inherit;
+      transition: background 0.18s;
+    }
+    .btn-start:hover { background: rgba(255,255,255,0.88); }
+
+    .btn-discover {
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 30px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-family: inherit;
+      transition: background 0.18s;
+    }
+    .btn-discover:hover { background: rgba(255,255,255,0.08); }
+    .btn-discover.liquid-glass {}
+
+    /* ── Floating tag chips (top-right, replacing the decorative elements) ── */
+    #floating-tags {
+      position: absolute;
+      top: 110px;
+      right: 40px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-end;
+    }
+
+    .service-card {
+      border-radius: 16px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 210px;
+      cursor: default;
+      transition: transform 0.25s ease;
+    }
+    .service-card:hover { transform: translateX(-4px); }
+
+    .sc-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .sc-icon.purple { background: rgba(170,0,211,0.25); }
+    .sc-icon.cyan   { background: rgba(0,200,220,0.2); }
+    .sc-icon.white  { background: rgba(255,255,255,0.12); }
+
+    .sc-text {}
+    .sc-title {
+      font-size: 13px; font-weight: 600; color: #fff; line-height: 1;
+      margin-bottom: 3px;
+    }
+    .sc-sub {
+      font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1;
+    }
+
+    /* stat pill */
+    .stat-pill {
+      border-radius: 50px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+    }
+    .stat-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #aa00d3;
+      box-shadow: 0 0 6px rgba(170,0,211,0.8);
+      animation: dot-pulse 2s ease-in-out infinite;
+    }
+    @keyframes dot-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+
+    /* scroll indicator */
+    #scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      right: 48px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,0.35);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    #scroll-hint svg {
+      animation: scroll-bounce 1.6s ease-in-out infinite;
+    }
+    @keyframes scroll-bounce {
+      0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)}
+    }
+
+    /* ── Preview label ── */
+    #preview-badge {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99;
+      background: rgba(170,0,211,0.85);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="hero-root">
+
+  <!-- Background video -->
+  <video
+    id="bg-video"
+    src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_230229_7c9bc431-46cf-489a-948d-e8144d8eb5d4.mp4"
+    autoplay muted loop playsinline
+  ></video>
+
+  <!-- Preview badge -->
+  <div id="preview-badge">Preview — Liquid Glass Hero</div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav id="navbar">
+    <!-- Logo -->
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">M</div>
+      <span>Mantrakaar</span>
+    </a>
+
+    <!-- Nav pill -->
+    <div class="nav-pill liquid-glass">
+      <button class="active">Home</button>
+      <button>Services
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+      <button>Portfolio</button>
+      <button>Our Team</button>
+    </div>
+
+    <!-- CTAs -->
+    <div class="nav-ctas">
+      <button class="btn-login liquid-glass">Log in</button>
+      <button class="btn-cta-white">Get Started</button>
+    </div>
+  </nav>
+
+  <!-- ══ FLOATING SERVICE CARDS (right side, replacing clock/lamp/desk) ══ -->
+  <div id="floating-tags">
+
+    <div class="stat-pill liquid-glass">
+      <div class="stat-dot"></div>
+      200+ Projects Delivered
+    </div>
+
+    <div class="service-card liquid-glass">
+      <div class="sc-icon purple">✦</div>
+      <div class="sc-text">
+        <div class="sc-title">Brand Strategy</div>
+        <div class="sc-sub">Identity · Design Systems</div>
+      </div>
+    </div>
+
+    <div class="service-card liquid-glass">
+      <div class="sc-icon cyan">⬡</div>
+      <div class="sc-text">
+        <div class="sc-title">Web Development</div>
+        <div class="sc-sub">React · Node · Full-Stack</div>
+      </div>
+    </div>
+
+    <div class="service-card liquid-glass">
+      <div class="sc-icon white">◈</div>
+      <div class="sc-text">
+        <div class="sc-title">Digital Marketing</div>
+        <div class="sc-sub">SEO · Content · Growth</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ HERO CONTENT ══ -->
+  <div id="hero-content">
+    <div class="hero-brand">Mantrakaar</div>
+    <div class="hero-sub">We Build What You Imagine</div>
+    <div class="hero-typewriter">
+      <span id="tw-text"></span>
+      <span class="typewriter-cursor"></span>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-start">Start a Project</button>
+      <button class="btn-discover liquid-glass">Discover How</button>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div id="scroll-hint">
+    <span>Scroll</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </div>
+
+</div>
+
+<script>
+  /* ── Typewriter ── */
+  const sentences = [
+    'Crafting digital experiences that last.',
+    'Designing brands that leave an impression.',
+    'Building products people love to use.',
+    'Turning bold ideas into sharp reality.'
+  ];
+  const twEl = document.getElementById('tw-text');
+  let si = 0, ci = 0, deleting = false;
+  function tick() {
+    const target = sentences[si];
+    if (!deleting) {
+      twEl.textContent = target.substring(0, ++ci);
+      if (ci === target.length) { deleting = true; setTimeout(tick, 2000); return; }
+      setTimeout(tick, 45);
+    } else {
+      twEl.textContent = target.substring(0, --ci);
+      if (ci === 0) { deleting = false; si = (si + 1) % sentences.length; setTimeout(tick, 350); return; }
+      setTimeout(tick, 24);
+    }
+  }
+  setTimeout(tick, 800);
+</script>
+</body>
+</html>
