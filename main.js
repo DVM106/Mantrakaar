@@ -52,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
       view_all_blogs: 'VIEW ALL BLOGS',
       view_all_testimonials: 'VIEW ALL TESTIMONIOS',
       client_title: 'Our Happy Clients',
+      client_hint: 'HOVER AT THE LOGO TO PAUSE',
+      client_cta: 'VIEW ALL CLIENTS',
       testimonial_title: 'Testimonial',
       contact_title: 'Get Connected',
       contact_lead: 'We welcome you to contact us for more information about any of our services.',
@@ -100,6 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
       view_all_blogs: 'सभी ब्लॉग देखें',
       view_all_testimonials: 'सभी प्रशंसापत्र देखें',
       client_title: 'हमारे खुशहाल ग्राहक',
+      client_hint: 'रोकने के लिए लोगो पर होवर करें',
+      client_cta: 'सभी ग्राहक देखें',
       testimonial_title: 'प्रशंसापत्र',
       contact_title: 'कनेक्टेड रहें',
       contact_lead: 'हम हमारी किसी भी सेवा के बारे में अधिक जानकारी के लिए हमसे संपर्क करने का स्वागत करते हैं।',
@@ -148,6 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
       view_all_blogs: 'VER TODOS LOS BLOGS',
       view_all_testimonials: 'VER TODOS LOS TESTIMONIOS',
       client_title: 'Nuestros Clientes Felices',
+      client_hint: 'CERNIR EN EL LOGO PARA PAUSAR',
+      client_cta: 'VER TODOS LOS CLIENTES',
       testimonial_title: 'Testimonios',
       contact_title: 'Conectarse',
       contact_lead: 'Le invitamos a ponerse en contacto con nosotros para obtener más información sobre cualquiera de nuestros servicios.',
@@ -1156,58 +1162,191 @@ document.addEventListener('DOMContentLoaded', () => {
         nextSlideMessage: 'Next blog post',
       }
     });
+    // 2. Our Happy Clients Section: 3D Cylindrical Curved Carousel
+    function initClients3DCarousel() {
+      const viewport = document.querySelector('.clients-carousel-viewport');
+      const track = document.querySelector('.clients-carousel-track');
+      const cards = document.querySelectorAll('.clients-carousel-card');
+      const prevBtn = document.querySelector('.clients-carousel-btn.prev');
+      const nextBtn = document.querySelector('.clients-carousel-btn.next');
 
-    // 2. Our Happy Clients Swiper
-    const clientsSwiper = new Swiper('.clients-swiper', {
-      slidesPerView: 2,
-      spaceBetween: 20,
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      navigation: {
-        nextEl: '.clients-next',
-        prevEl: '.clients-prev',
-      },
-      breakpoints: {
-        480: {
-          slidesPerView: 3,
-        },
-        768: {
-          slidesPerView: 4,
-        },
-        1025: {
-          slidesPerView: 5,
-        }
-      },
-      a11y: {
-        enabled: true,
-        prevSlideMessage: 'Previous client logo',
-        nextSlideMessage: 'Next client logo',
+      if (!viewport || !track || cards.length === 0) return;
+
+      const cardCount = cards.length;
+      const angleStep = 360 / cardCount; // 30 degrees
+      let currentRotation = 0; // in degrees
+      let isDragging = false;
+      let isHovered = false;
+      let isTransitioning = false;
+      let startX = 0;
+      let startRotation = 0;
+      let animationFrameId = null;
+      let transitionTimeout = null;
+
+      // Speed: degrees per frame (negative rotates left/counter-clockwise, about -3 degrees per second at 60fps)
+      const spinSpeed = -0.05;
+
+      function updateCardActiveState() {
+        // Track Rotation = -CardIndex * angleStep => CardIndex = Math.round(-currentRotation / angleStep)
+        const normalizedRotation = ((currentRotation % 360) + 360) % 360; // 0 to 360
+        const cardIndexFacingFront = Math.round((360 - normalizedRotation) / angleStep) % cardCount;
+
+        cards.forEach((card, idx) => {
+          // Calculate the card's current angle in world space (relative to view front)
+          const cardAngle = (idx * angleStep) + currentRotation;
+          const cardAngleRad = cardAngle * Math.PI / 180;
+          const cosAngle = Math.cos(cardAngleRad); // 1 at front, 0 at sides, -1 at back
+
+          if (idx === cardIndexFacingFront) {
+            card.classList.add('active-card');
+          } else {
+            card.classList.remove('active-card');
+          }
+
+          // Shading and depth of field based on Z-depth (cosAngle)
+          const depthProgress = Math.max(0, cosAngle); // clamp to [0, 1] for front half
+          
+          // Smooth opacity curve: front is 1.0, sides fade to 0.12, back is 0
+          const opacity = cosAngle > 0 
+            ? (0.12 + 0.88 * Math.pow(depthProgress, 1.5)) 
+            : 0.12 * (1 + cosAngle); // fades to 0 at back
+
+          // Depth blur (out of focus on sides)
+          const blurVal = (1 - depthProgress) * 2.5; // up to 2.5px blur
+          // Depth brightness (darker on sides)
+          const brightnessVal = 0.45 + 0.55 * depthProgress;
+          // Scale offset slightly to enhance perspective projection
+          const scaleVal = 0.82 + 0.18 * depthProgress;
+
+          card.style.setProperty('--card-opacity', opacity.toFixed(3));
+          card.style.setProperty('--card-blur', `${blurVal.toFixed(2)}px`);
+          card.style.setProperty('--card-brightness', brightnessVal.toFixed(3));
+          card.style.setProperty('--card-scale', scaleVal.toFixed(3));
+        });
       }
-    });
 
-    // Autoplay Play/Pause Controller for Clients (Accessibility requirement)
-    const playPauseBtn = document.getElementById('clients-autoplay-toggle');
-    if (playPauseBtn && clientsSwiper.autoplay) {
-      playPauseBtn.addEventListener('click', () => {
-        const icon = playPauseBtn.querySelector('i');
-        const textSpan = playPauseBtn.querySelector('span');
+      function rotateCarousel(angle) {
+        currentRotation = angle;
+        track.style.setProperty('--rotate-y', `${currentRotation}deg`);
+        updateCardActiveState();
+      }
 
-        if (clientsSwiper.autoplay.running) {
-          clientsSwiper.autoplay.stop();
-          if (icon) icon.classList.replace('fa-pause', 'fa-play');
-          if (textSpan) textSpan.textContent = 'Play';
-          playPauseBtn.setAttribute('aria-label', 'Start client carousel autoplay');
-        } else {
-          clientsSwiper.autoplay.start();
-          if (icon) icon.classList.replace('fa-play', 'fa-pause');
-          if (textSpan) textSpan.textContent = 'Pause';
-          playPauseBtn.setAttribute('aria-label', 'Stop client carousel autoplay');
-        }
+      function snapCarousel() {
+        isTransitioning = true;
+        track.classList.add('transitioning');
+        
+        // Snap to nearest 30deg increment
+        const snappedRotation = Math.round(currentRotation / angleStep) * angleStep;
+        rotateCarousel(snappedRotation);
+
+        if (transitionTimeout) clearTimeout(transitionTimeout);
+        transitionTimeout = setTimeout(() => {
+          track.classList.remove('transitioning');
+          isTransitioning = false;
+        }, 400); // matches the 0.4s transition duration
+      }
+
+      function rotateByCardCount(direction) {
+        isTransitioning = true;
+        track.classList.add('transitioning');
+
+        // direction: 1 for prev (clockwise/right), -1 for next (counter-clockwise/left)
+        const targetRotation = Math.round(currentRotation / angleStep) * angleStep + (direction * angleStep);
+        rotateCarousel(targetRotation);
+
+        if (transitionTimeout) clearTimeout(transitionTimeout);
+        transitionTimeout = setTimeout(() => {
+          track.classList.remove('transitioning');
+          isTransitioning = false;
+        }, 400); // matches the 0.4s transition duration
+      }
+
+      // Drag / Touch handlers
+      function handleDragStart(e) {
+        isDragging = true;
+        isTransitioning = false;
+        track.classList.remove('transitioning');
+        track.classList.add('dragging');
+
+        startX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+        startRotation = currentRotation;
+      }
+
+      function handleDragMove(e) {
+        if (!isDragging) return;
+        
+        const currentX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+        const deltaX = currentX - startX;
+        
+        // 1px drag = 0.15 degrees rotation
+        const rotationDelta = deltaX * 0.15;
+        const targetRotation = startRotation + rotationDelta;
+        
+        track.style.setProperty('--rotate-y', `${targetRotation}deg`);
+        currentRotation = targetRotation;
+        updateCardActiveState();
+      }
+
+      function handleDragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        track.classList.remove('dragging');
+        snapCarousel();
+      }
+
+      // Mouse drag event bindings
+      viewport.addEventListener('mousedown', handleDragStart);
+      window.addEventListener('mousemove', handleDragMove);
+      window.addEventListener('mouseup', handleDragEnd);
+
+      // Touch swipe event bindings
+      viewport.addEventListener('touchstart', handleDragStart, { passive: true });
+      viewport.addEventListener('touchmove', handleDragMove, { passive: true });
+      viewport.addEventListener('touchend', handleDragEnd);
+
+      // Prevent images from ghost-dragging
+      viewport.addEventListener('dragstart', (e) => e.preventDefault());
+
+      // Navigation buttons
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          rotateByCardCount(1);
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          rotateByCardCount(-1);
+        });
+      }
+
+      // Hover triggers
+      viewport.addEventListener('mouseenter', () => {
+        isHovered = true;
       });
+      viewport.addEventListener('mouseleave', () => {
+        isHovered = false;
+      });
+
+      // Smooth continuous animation loop
+      function animate() {
+        if (!isDragging && !isHovered && !isTransitioning) {
+          currentRotation += spinSpeed;
+          track.style.setProperty('--rotate-y', `${currentRotation}deg`);
+          updateCardActiveState();
+        }
+        animationFrameId = requestAnimationFrame(animate);
+      }
+
+      // Initial state
+      rotateCarousel(0);
+      animate();
     }
+
+    // Initialize 3D carousel
+    initClients3DCarousel();
+
 
     // 3. Testimonials Swiper
     const testSwiper = new Swiper('.testimonial-swiper', {

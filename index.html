@@ -355,100 +355,139 @@
     <!-- ==========================================================================
          5. Our Happy Clients Section (Renamed, brought up beneath Services, slideshow)
          ========================================================================== */ -->
-    <section class="vc_section" id="clients-section" style="background-color: var(--bg-secondary);">
+    <section class="vc_section" id="clients-section" style="background-color: var(--bg-secondary); overflow: hidden;">
       <div class="grid-container">
-        
-        <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 30px;">
+
+        <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 40px;">
           <h2 data-i18n="client_title">Our Happy Clients</h2>
         </div>
-        
-        <!-- Arrow-Controlled Swiper Carousel with Autoplay Toggle -->
-        <div class="carousel-outer-wrapper reveal-element reveal-slide-up" data-delay="100ms">
-          <div class="swiper clients-swiper">
-            <div class="swiper-wrapper">
-              
-              <!-- 12 Client Logo Slides -->
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co. logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Unikgifts logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/MURUGAN.jpg" alt="Murugan logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ATMOSSECURE.jpg" alt="Atmossecure logo" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="client-logo-card">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan logo" loading="lazy">
-                </div>
-              </div>
-              
+
+      </div>
+
+      <!-- 3D Carousel Viewport (Placed outside grid-container to span full viewport width) -->
+      <div class="clients-carousel-viewport reveal-element reveal-slide-up" data-delay="100ms" aria-label="Client logos">
+        <div class="clients-carousel-track" style="--rotate-y: 0deg;">
+
+          <div class="clients-carousel-card" style="--card-index: 0;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co.">
             </div>
           </div>
-          
-          <!-- Control Actions Area (Autoplay play/pause, arrows) -->
-          <div class="swiper-control-bar">
-            <button class="clients-prev swiper-autoplay-toggle" style="padding: 10px; border-radius: 50%; width: 40px; height: 40px; justify-content: center;" aria-label="Previous Client Logo">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            
-            <button id="clients-autoplay-toggle" class="swiper-autoplay-toggle" aria-label="Pause Client Autoplay">
-              <i class="fa-solid fa-pause"></i> <span>Pause</span>
-            </button>
-            
-            <button class="clients-next swiper-autoplay-toggle" style="padding: 10px; border-radius: 50%; width: 40px; height: 40px; justify-content: center;" aria-label="Next Client Logo">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
+          <div class="clients-carousel-card" style="--card-index: 1;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors">
+            </div>
           </div>
-          
+          <div class="clients-carousel-card" style="--card-index: 2;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 3;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 4;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 5;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 6;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 7;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 8;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Unikgifts">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 9;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/MURUGAN.jpg" alt="Murugan">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 10;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ATMOSSECURE.jpg" alt="Atmossecure">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 11;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 12;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co.">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 13;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 14;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 15;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 16;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 17;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 18;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah">
+            </div>
+          </div>
+          <div class="clients-carousel-card" style="--card-index: 19;">
+            <div class="card-inner">
+              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda">
+            </div>
+          </div>
+
         </div>
-        
+
+      </div>
+
+      <div class="grid-container">
+
+        <p class="clients-carousel-hint" style="margin-top: 30px; text-align: center;">
+          <i class="fa-solid fa-circle-info"></i> <span data-i18n="client_hint">HOVER AT THE LOGO TO PAUSE</span>
+        </p>
+
+        <!-- Magnetic CTA Button -->
+        <div class="clients-cta-btn-wrap reveal-element reveal-slide-up" data-delay="150ms" style="text-align: center; margin-top: 40px;">
+          <div class="btn-magnetic-wrap">
+            <a href="https://mantrakaar.com/about/" class="btn-magnetic">
+              <span data-i18n="client_cta">VIEW ALL CLIENTS</span>
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
 
