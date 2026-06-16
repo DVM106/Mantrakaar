@@ -24,14 +24,36 @@ document.addEventListener('DOMContentLoaded', () => {
       nav_career: 'Career',
       nav_blogs: 'Blogs',
       nav_contact: 'Contact',
+      services_we_offer: 'SERVICES WE OFFER',
+      elevate_your_vision: 'ELEVATE YOUR VISION',
+      explore_our_work: 'Explore Our Work',
+      spotlight_design: 'DESIGN',
+      spotlight_development: 'DEVELOPMENT',
+      spotlight_marketing: 'MARKETING',
+      spotlight_strategy: 'STRATEGY',
+      service_pretitle: 'EXPERTISE',
       service_title: 'Our Services',
       service_lead: 'We realize that your competition is always just a click away and creating a professional, informative and easy-to-use website, on your budget, is our main goal.',
       service_btn: 'Know More',
+      service_card_1_tag: 'UX/UI Design',
+      service_card_1_title: 'Brand & Interface Design',
+      service_card_1_desc: 'Creating beautiful, user-centered digital interfaces. We prototype fluid journeys, map clean layouts, and craft cohesive brand systems that resonate with users.',
+      service_card_2_tag: 'Website Development',
+      service_card_2_title: 'Frontend & Core Dev',
+      service_card_2_desc: 'Building modern, fast, and responsive websites from scratch. We write high-quality code, configure domain routing, set up content management, and optimize sites for peak performance.',
+      service_card_3_tag: 'Marketing',
+      service_card_3_title: 'Growth & SEO Strategy',
+      service_card_3_desc: 'Boosting online visibility and lead conversion. We optimize structural SEO metadata, run analytical campaigns, and chart user growth metrics.',
+      service_card_4_tag: 'Consulting',
+      service_card_4_title: 'Consultancy & Audits',
+      service_card_4_desc: 'Delivering actionable architectural analysis, codebase health checks, conversion audits, and data-driven product strategies.',
       work_title: 'Our Work',
       work_more: 'View More Work',
       view_all_blogs: 'VIEW ALL BLOGS',
-      view_all_testimonials: 'VIEW ALL TESTIMONIALS',
+      view_all_testimonials: 'VIEW ALL TESTIMONIOS',
       client_title: 'Our Happy Clients',
+      client_hint: 'HOVER AT THE LOGO TO PAUSE',
+      client_cta: 'VIEW ALL CLIENTS',
       testimonial_title: 'Testimonial',
       contact_title: 'Get Connected',
       contact_lead: 'We welcome you to contact us for more information about any of our services.',
@@ -52,14 +74,36 @@ document.addEventListener('DOMContentLoaded', () => {
       nav_career: 'कैरियर',
       nav_blogs: 'ब्लॉग',
       nav_contact: 'संपर्क',
+      services_we_offer: 'हमारी सेवाएं',
+      elevate_your_vision: 'अपनी दृष्टि को उन्नत करें',
+      explore_our_work: 'हमारा कार्य देखें',
+      spotlight_design: 'डिजाइन',
+      spotlight_development: 'डेवलपमेंट',
+      spotlight_marketing: 'मार्केटिंग',
+      spotlight_strategy: 'रणनीति',
+      service_pretitle: 'विशेषज्ञता',
       service_title: 'हमारी सेवाएं',
       service_lead: 'हम समझते हैं कि आपकी प्रतिस्पर्धा हमेशा सिर्फ एक क्लिक दूर है और आपके बजट में एक पेशेवर, सूचनात्मक वेबसाइट बनाना हमारा मुख्य लक्ष्य है।',
       service_btn: 'अधिक जानें',
+      service_card_1_tag: 'यूएक्स/यूआई डिजाइन',
+      service_card_1_title: 'ब्रांड और इंटरफ़ेस डिज़ाइन',
+      service_card_1_desc: 'सुंदर, उपयोगकर्ता-केंद्रित डिजिटल इंटरफेस बनाना। हम तरल यात्राओं का प्रोटोटाइप बनाते हैं, स्वच्छ लेआउट का नक्शा बनाते हैं, और उपयोगकर्ताओं के साथ प्रतिध्वनित होने वाली ब्रांड प्रणालियों को तैयार करते हैं।',
+      service_card_2_tag: 'वेबसाइट डेवलपमेंट',
+      service_card_2_title: 'फ्रंटएंड और कोर देव',
+      service_card_2_desc: 'शुरुआत से आधुनिक, तेज़ और उत्तरदायी वेबसाइटों का निर्माण। हम उच्च गुणवत्ता वाले कोड लिखते हैं, डोमेन रूटिंग कॉन्फ़िगर करते हैं, सामग्री प्रबंधन सेट करते हैं, और चरम प्रदर्शन के लिए साइटों को अनुकूलित करते हैं।',
+      service_card_3_tag: 'विपणन',
+      service_card_3_title: 'ग्रोथ और एसईओ रणनीति',
+      service_card_3_desc: 'ऑनलाइन दृश्यता और लीड रूपांतरण को बढ़ावा देना। हम संरचनात्मक एसईओ मेटाडेटा को अनुकूलित करते हैं, विश्लेषणात्मक अभियान चलाते हैं, और उपयोगकर्ता विकास मीट्रिक का चार्ट बनाते हैं।',
+      service_card_4_tag: 'परामर्श',
+      service_card_4_title: 'परामर्श और ऑडिट',
+      service_card_4_desc: 'कार्रवाई योग्य वास्तुकला विश्लेषण, कोडबेस स्वास्थ्य जांच, रूपांतरण ऑडिट और डेटा-संचालित उत्पाद रणनीतियों को वितरित करना।',
       work_title: 'हमारा कार्य',
       work_more: 'अधिक कार्य देखें',
       view_all_blogs: 'सभी ब्लॉग देखें',
       view_all_testimonials: 'सभी प्रशंसापत्र देखें',
       client_title: 'हमारे खुशहाल ग्राहक',
+      client_hint: 'रोकने के लिए लोगो पर होवर करें',
+      client_cta: 'सभी ग्राहक देखें',
       testimonial_title: 'प्रशंसापत्र',
       contact_title: 'कनेक्टेड रहें',
       contact_lead: 'हम हमारी किसी भी सेवा के बारे में अधिक जानकारी के लिए हमसे संपर्क करने का स्वागत करते हैं।',
@@ -80,14 +124,36 @@ document.addEventListener('DOMContentLoaded', () => {
       nav_career: 'Carrera',
       nav_blogs: 'Blogs',
       nav_contact: 'Contacto',
+      services_we_offer: 'SERVICIOS QUE OFRECEMOS',
+      elevate_your_vision: 'ELEVATE TU VISIÓN',
+      explore_our_work: 'Explorar Nuestro Trabajo',
+      spotlight_design: 'DISEÑO',
+      spotlight_development: 'DESARROLLO',
+      spotlight_marketing: 'MARKETING',
+      spotlight_strategy: 'ESTRATEGIA',
+      service_pretitle: 'EXPERIENCIA',
       service_title: 'Nuestros Servicios',
       service_lead: 'Sabemos que su competencia está a solo un clic de distancia y crear un sitio profesional, informativo y fácil de usar, en su presupuesto, es nuestra meta principal.',
       service_btn: 'Saber Más',
+      service_card_1_tag: 'Diseño UX/UI',
+      service_card_1_title: 'Diseño de Marca e Interfaz',
+      service_card_1_desc: 'Creando interfaces digitales hermosas y centradas en el usuario. Diseñamos flujos fluidos, estructuramos layouts limpios y creamos sistemas de marca cohesivos.',
+      service_card_2_tag: 'Desarrollo de Sitios Web',
+      service_card_2_title: 'Desarrollo Frontend y Core',
+      service_card_2_desc: 'Construcción de sitios web modernos, rápidos y responsivos desde cero. Escribimos código de alta calidad, configuramos el enrutamiento de dominio, configuramos la gestión de contenido y optimizamos los sitios para un rendimiento óptimo.',
+      service_card_3_tag: 'Marketing',
+      service_card_3_title: 'Estrategia de Crecimiento y SEO',
+      service_card_3_desc: 'Aumentar la visibilidad online y la conversión de leads. Optimizamos metadatos SEO, ejecutamos campañas analíticas y medimos el crecimiento de usuarios.',
+      service_card_4_tag: 'Consultoría',
+      service_card_4_title: 'Consultoría y Auditorías',
+      service_card_4_desc: 'Entregar análisis arquitectónicos accionables, auditorías de salud de código, auditorías de conversión y estrategias de producto basadas en datos.',
       work_title: 'Nuestro Trabajo',
       work_more: 'Ver Más Trabajos',
       view_all_blogs: 'VER TODOS LOS BLOGS',
       view_all_testimonials: 'VER TODOS LOS TESTIMONIOS',
       client_title: 'Nuestros Clientes Felices',
+      client_hint: 'CERNIR EN EL LOGO PARA PAUSAR',
+      client_cta: 'VER TODOS LOS CLIENTES',
       testimonial_title: 'Testimonios',
       contact_title: 'Conectarse',
       contact_lead: 'Le invitamos a ponerse en contacto con nosotros para obtener más información sobre cualquiera de nuestros servicios.',
@@ -199,11 +265,11 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error("Hanging Lamp init error:", e);
   }
 
-  // 14. Bento Services Widgets & Spotlight
+  // 14. Editorial Services Spotlight
   try {
-    initBentoServicesWidgets();
+    initServicesSpotlight();
   } catch (e) {
-    console.error("Bento Services Widgets init error:", e);
+    console.error("Services Spotlight init error:", e);
   }
 
   // 15. Redesigned Bento Work Grid & Widgets
@@ -412,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollDown = document.querySelector('.hero-scroll-down');
     const dotMatrix = document.querySelector('.trailing-dot-matrix');
 
-    const line1 = document.getElementById('line-1');
+    const brandEl = document.getElementById('hero-brand-shimmer');
 
     if (!heroContainer) {
       logDebug("Error: #hero-section-container not found in DOM!");
@@ -464,14 +530,17 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollDown.style.opacity = '0';
       scrollDown.style.transform = 'translateX(-50%) translateY(20px)';
     }
-    if (line1) line1.textContent = '';
+    if (brandEl) {
+      brandEl.style.opacity = '0';
+      brandEl.style.transform = 'translateY(12px)';
+    }
 
     floatingIcons.forEach(icon => {
       icon.style.opacity = '0';
       icon.style.transform = 'scale(0.6)';
     });
 
-    logDebug("DOM Elements status: bulb=" + !!bulb + ", mask=" + !!mask + ", flash=" + !!flash + ", grid=" + !!grid + ", line1=" + !!line1 + ", dotMatrix=" + !!dotMatrix);
+    logDebug("DOM Elements status: bulb=" + !!bulb + ", mask=" + !!mask + ", flash=" + !!flash + ", grid=" + !!grid + ", brandEl=" + !!brandEl + ", dotMatrix=" + !!dotMatrix);
     logDebug("System prefers-reduced-motion: " + window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
     // Helper: Resilient Native CSS/JS Animation Fallback (when GSAP is offline/blocked)
@@ -550,26 +619,30 @@ document.addEventListener('DOMContentLoaded', () => {
           dottedSpotlight.style.opacity = '1';
         }
         
-        // Start sequential typing
-        if (line1) {
-          executeTypewriterSequence(() => {
-            logDebug("Fallback sequential typing complete.");
-            if (tagline) {
-              tagline.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-              tagline.style.opacity = '1';
-              tagline.style.transform = 'translateY(0)';
-            }
+        // Reveal gradient shimmer brand logo
+        if (dotMatrix) {
+          dotMatrix.style.transition = 'opacity 0.5s ease';
+          dotMatrix.style.opacity = '0.6';
+          dotMatrix.classList.add('active');
+        }
+        const brandElFallback = document.getElementById('hero-brand-shimmer');
+        if (brandElFallback) {
+          brandElFallback.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+          brandElFallback.style.opacity = '1';
+          brandElFallback.style.transform = 'translateY(0)';
+          setTimeout(() => {
+            startHeroTypewriter();
             if (scrollDown) {
               scrollDown.style.transition = 'opacity 0.6s ease';
               scrollDown.style.opacity = '1';
             }
             floatingIcons.forEach(icon => {
               icon.style.transition = 'opacity 1s ease, transform 1s ease';
-              icon.style.opacity = isDarkMode ? '0.35' : '0.25';
+              icon.style.opacity = '0.75';
               icon.style.transform = 'scale(1)';
             });
-            logDebug("All hero typing and reveals complete.");
-          });
+            logDebug("All hero reveals complete.");
+          }, 900);
         }
       }, 1600);
     }
@@ -609,10 +682,13 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollDown.style.opacity = '1';
         scrollDown.style.transform = 'translateX(-50%) translateY(0)';
       }
-      if (line1) line1.textContent = 'WITH MANTRAKAAR';
+      const brandElStatic = document.getElementById('hero-brand-shimmer');
+      if (brandElStatic) { brandElStatic.style.opacity = '1'; brandElStatic.style.transform = 'translateY(0)'; }
+      const twWrapStatic = document.getElementById('hero-typewriter-wrap');
+      if (twWrapStatic) { twWrapStatic.classList.add('visible'); document.getElementById('hero-typewriter-text').textContent = 'We Build What You Imagine.'; }
 
       floatingIcons.forEach(icon => {
-        icon.style.opacity = '0.25';
+        icon.style.opacity = '0.75';
         icon.style.transform = 'scale(1)';
       });
     }
@@ -739,29 +815,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }, '-=0.1');
     }
 
-    // Phase 7: Sequential Typewriting (1.95s onwards)
+    // Phase 7: Reveal gradient shimmer brand logo
     tl.add(() => {
-      logDebug("GSAP: Starting typewriter sequence");
-      executeTypewriterSequence(() => {
-        // Post-typing animations
+      logDebug("GSAP: Revealing brand shimmer logo");
+      if (dotMatrix) {
+        gsap.to(dotMatrix, { opacity: 0.6, duration: 0.5 });
+        dotMatrix.classList.add('active');
+      }
+      if (brandEl) {
+        gsap.to(brandEl, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power2.out',
+          onComplete: () => {
+            startHeroTypewriter();
+            if (scrollDown) gsap.to(scrollDown, { opacity: 1, y: 0, duration: 0.6 });
+            floatingIcons.forEach((icon, i) => {
+              gsap.to(icon, { opacity: 0.75, scale: 1, y: 0, duration: 1, delay: i * 0.15, ease: 'power2.out' });
+              floatIconLoop(icon);
+            });
+            logDebug("GSAP: Hero sequence completed");
+          }
+        });
+      } else {
         if (tagline) gsap.to(tagline, { opacity: 1, y: 0, duration: 0.6, ease: 'back.out(1.7)' });
         if (scrollDown) gsap.to(scrollDown, { opacity: 1, y: 0, duration: 0.6 });
-        
-        // Animate floating digital marketing icons
-        floatingIcons.forEach((icon, i) => {
-          gsap.to(icon, {
-            opacity: isDarkMode ? 0.35 : 0.25,
-            scale: 1,
-            y: 0,
-            duration: 1,
-            delay: i * 0.15,
-            ease: 'power2.out'
-          });
-          // Start a slow float loop for each icon
-          floatIconLoop(icon);
-        });
-        logDebug("GSAP: Hero sequence completed");
-      });
+      }
     });
 
     // Sequence runner for single-line typewriter effect (defined inside scope for closure access)
@@ -864,6 +944,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  /* ==========================================================================
+     Hero Typewriter Sentence Loop
+     ========================================================================== */
+  function startHeroTypewriter() {
+    const wrap = document.getElementById('hero-typewriter-wrap');
+    const textEl = document.getElementById('hero-typewriter-text');
+    if (!wrap || !textEl) return;
+
+    const sentences = [
+      'We Build What You Imagine.',
+      'We Design What You Dream.',
+      'We Craft What You Envision.',
+      'We Deliver What You Deserve.'
+    ];
+
+    let si = 0, ci = 0, deleting = false;
+
+    wrap.classList.add('visible');
+
+    function tick() {
+      const target = sentences[si];
+      if (!deleting) {
+        textEl.textContent = target.substring(0, ci + 1);
+        ci++;
+        if (ci === target.length) {
+          deleting = true;
+          setTimeout(tick, 1800);
+          return;
+        }
+        setTimeout(tick, 52);
+      } else {
+        textEl.textContent = target.substring(0, ci - 1);
+        ci--;
+        if (ci === 0) {
+          deleting = false;
+          si = (si + 1) % sentences.length;
+          setTimeout(tick, 320);
+          return;
+        }
+        setTimeout(tick, 28);
+      }
+    }
+
+    setTimeout(tick, 300);
+  }
+
   // Slow Floating Icon Motion
   function floatIconLoop(icon) {
     if (typeof gsap === 'undefined') return;
@@ -942,7 +1068,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const floatingIcons = document.querySelectorAll('.marketing-icon-floating');
         floatingIcons.forEach(icon => {
           if (icon.style.opacity > 0) {
-            icon.style.opacity = isDarkMode ? 0.35 : 0.25;
+            icon.style.opacity = 0.75;
           }
         });
 
@@ -1036,58 +1162,191 @@ document.addEventListener('DOMContentLoaded', () => {
         nextSlideMessage: 'Next blog post',
       }
     });
+    // 2. Our Happy Clients Section: 3D Cylindrical Curved Carousel
+    function initClients3DCarousel() {
+      const viewport = document.querySelector('.clients-carousel-viewport');
+      const track = document.querySelector('.clients-carousel-track');
+      const cards = document.querySelectorAll('.clients-carousel-card');
+      const prevBtn = document.querySelector('.clients-carousel-btn.prev');
+      const nextBtn = document.querySelector('.clients-carousel-btn.next');
 
-    // 2. Our Happy Clients Swiper
-    const clientsSwiper = new Swiper('.clients-swiper', {
-      slidesPerView: 2,
-      spaceBetween: 20,
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      navigation: {
-        nextEl: '.clients-next',
-        prevEl: '.clients-prev',
-      },
-      breakpoints: {
-        480: {
-          slidesPerView: 3,
-        },
-        768: {
-          slidesPerView: 4,
-        },
-        1025: {
-          slidesPerView: 5,
-        }
-      },
-      a11y: {
-        enabled: true,
-        prevSlideMessage: 'Previous client logo',
-        nextSlideMessage: 'Next client logo',
+      if (!viewport || !track || cards.length === 0) return;
+
+      const cardCount = cards.length;
+      const angleStep = 360 / cardCount; // 30 degrees
+      let currentRotation = 0; // in degrees
+      let isDragging = false;
+      let isHovered = false;
+      let isTransitioning = false;
+      let startX = 0;
+      let startRotation = 0;
+      let animationFrameId = null;
+      let transitionTimeout = null;
+
+      // Speed: degrees per frame (negative rotates left/counter-clockwise, about -3 degrees per second at 60fps)
+      const spinSpeed = -0.05;
+
+      function updateCardActiveState() {
+        // Track Rotation = -CardIndex * angleStep => CardIndex = Math.round(-currentRotation / angleStep)
+        const normalizedRotation = ((currentRotation % 360) + 360) % 360; // 0 to 360
+        const cardIndexFacingFront = Math.round((360 - normalizedRotation) / angleStep) % cardCount;
+
+        cards.forEach((card, idx) => {
+          // Calculate the card's current angle in world space (relative to view front)
+          const cardAngle = (idx * angleStep) + currentRotation;
+          const cardAngleRad = cardAngle * Math.PI / 180;
+          const cosAngle = Math.cos(cardAngleRad); // 1 at front, 0 at sides, -1 at back
+
+          if (idx === cardIndexFacingFront) {
+            card.classList.add('active-card');
+          } else {
+            card.classList.remove('active-card');
+          }
+
+          // Shading and depth of field based on Z-depth (cosAngle)
+          const depthProgress = Math.max(0, cosAngle); // clamp to [0, 1] for front half
+          
+          // Smooth opacity curve: front is 1.0, sides fade to 0.12, back is 0
+          const opacity = cosAngle > 0 
+            ? (0.12 + 0.88 * Math.pow(depthProgress, 1.5)) 
+            : 0.12 * (1 + cosAngle); // fades to 0 at back
+
+          // Depth blur (out of focus on sides)
+          const blurVal = (1 - depthProgress) * 2.5; // up to 2.5px blur
+          // Depth brightness (darker on sides)
+          const brightnessVal = 0.45 + 0.55 * depthProgress;
+          // Scale offset slightly to enhance perspective projection
+          const scaleVal = 0.82 + 0.18 * depthProgress;
+
+          card.style.setProperty('--card-opacity', opacity.toFixed(3));
+          card.style.setProperty('--card-blur', `${blurVal.toFixed(2)}px`);
+          card.style.setProperty('--card-brightness', brightnessVal.toFixed(3));
+          card.style.setProperty('--card-scale', scaleVal.toFixed(3));
+        });
       }
-    });
 
-    // Autoplay Play/Pause Controller for Clients (Accessibility requirement)
-    const playPauseBtn = document.getElementById('clients-autoplay-toggle');
-    if (playPauseBtn && clientsSwiper.autoplay) {
-      playPauseBtn.addEventListener('click', () => {
-        const icon = playPauseBtn.querySelector('i');
-        const textSpan = playPauseBtn.querySelector('span');
+      function rotateCarousel(angle) {
+        currentRotation = angle;
+        track.style.setProperty('--rotate-y', `${currentRotation}deg`);
+        updateCardActiveState();
+      }
 
-        if (clientsSwiper.autoplay.running) {
-          clientsSwiper.autoplay.stop();
-          if (icon) icon.classList.replace('fa-pause', 'fa-play');
-          if (textSpan) textSpan.textContent = 'Play';
-          playPauseBtn.setAttribute('aria-label', 'Start client carousel autoplay');
-        } else {
-          clientsSwiper.autoplay.start();
-          if (icon) icon.classList.replace('fa-play', 'fa-pause');
-          if (textSpan) textSpan.textContent = 'Pause';
-          playPauseBtn.setAttribute('aria-label', 'Stop client carousel autoplay');
-        }
+      function snapCarousel() {
+        isTransitioning = true;
+        track.classList.add('transitioning');
+        
+        // Snap to nearest 30deg increment
+        const snappedRotation = Math.round(currentRotation / angleStep) * angleStep;
+        rotateCarousel(snappedRotation);
+
+        if (transitionTimeout) clearTimeout(transitionTimeout);
+        transitionTimeout = setTimeout(() => {
+          track.classList.remove('transitioning');
+          isTransitioning = false;
+        }, 400); // matches the 0.4s transition duration
+      }
+
+      function rotateByCardCount(direction) {
+        isTransitioning = true;
+        track.classList.add('transitioning');
+
+        // direction: 1 for prev (clockwise/right), -1 for next (counter-clockwise/left)
+        const targetRotation = Math.round(currentRotation / angleStep) * angleStep + (direction * angleStep);
+        rotateCarousel(targetRotation);
+
+        if (transitionTimeout) clearTimeout(transitionTimeout);
+        transitionTimeout = setTimeout(() => {
+          track.classList.remove('transitioning');
+          isTransitioning = false;
+        }, 400); // matches the 0.4s transition duration
+      }
+
+      // Drag / Touch handlers
+      function handleDragStart(e) {
+        isDragging = true;
+        isTransitioning = false;
+        track.classList.remove('transitioning');
+        track.classList.add('dragging');
+
+        startX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+        startRotation = currentRotation;
+      }
+
+      function handleDragMove(e) {
+        if (!isDragging) return;
+        
+        const currentX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+        const deltaX = currentX - startX;
+        
+        // 1px drag = 0.15 degrees rotation
+        const rotationDelta = deltaX * 0.15;
+        const targetRotation = startRotation + rotationDelta;
+        
+        track.style.setProperty('--rotate-y', `${targetRotation}deg`);
+        currentRotation = targetRotation;
+        updateCardActiveState();
+      }
+
+      function handleDragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        track.classList.remove('dragging');
+        snapCarousel();
+      }
+
+      // Mouse drag event bindings
+      viewport.addEventListener('mousedown', handleDragStart);
+      window.addEventListener('mousemove', handleDragMove);
+      window.addEventListener('mouseup', handleDragEnd);
+
+      // Touch swipe event bindings
+      viewport.addEventListener('touchstart', handleDragStart, { passive: true });
+      viewport.addEventListener('touchmove', handleDragMove, { passive: true });
+      viewport.addEventListener('touchend', handleDragEnd);
+
+      // Prevent images from ghost-dragging
+      viewport.addEventListener('dragstart', (e) => e.preventDefault());
+
+      // Navigation buttons
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          rotateByCardCount(1);
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          rotateByCardCount(-1);
+        });
+      }
+
+      // Hover triggers
+      viewport.addEventListener('mouseenter', () => {
+        isHovered = true;
       });
+      viewport.addEventListener('mouseleave', () => {
+        isHovered = false;
+      });
+
+      // Smooth continuous animation loop
+      function animate() {
+        if (!isDragging && !isHovered && !isTransitioning) {
+          currentRotation += spinSpeed;
+          track.style.setProperty('--rotate-y', `${currentRotation}deg`);
+          updateCardActiveState();
+        }
+        animationFrameId = requestAnimationFrame(animate);
+      }
+
+      // Initial state
+      rotateCarousel(0);
+      animate();
     }
+
+    // Initialize 3D carousel
+    initClients3DCarousel();
+
 
     // 3. Testimonials Swiper
     const testSwiper = new Swiper('.testimonial-swiper', {
@@ -1501,13 +1760,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     14. Bento Services Widgets & Spotlight Animations
+     14. Editorial Services Spotlight (Concept 1)
      ========================================================================== */
-  function initBentoServicesWidgets() {
-    const cards = document.querySelectorAll('.service-column-card');
-    
-    // Spotlight Effect Tracker
-    cards.forEach(card => {
+  function initServicesSpotlight() {
+    const listItems = document.querySelectorAll('.spotlight-list-item');
+    const previewCards = document.querySelectorAll('.spotlight-preview-card');
+
+    if (!listItems.length || !previewCards.length) return;
+
+    // Mouse glow coordinate tracking for cards
+    previewCards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -1517,189 +1779,24 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // 1. Figma Wireframe Widget Cycling
-    const figmaPlaceholder = document.querySelector('.ux-sandbox-widget .hero-image-placeholder');
-    const figmaScreen = document.querySelector('.ux-sandbox-widget .phone-screen');
-    if (figmaPlaceholder && figmaScreen) {
-      figmaPlaceholder.addEventListener('click', () => {
-        // Cycle active color theme or design mock
-        const colors = ['#aa00d3', '#00b4d8', '#2a9d8f', '#e76f51'];
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        
-        const heroBtn = figmaScreen.querySelector('.hero-button-placeholder');
-        if (heroBtn) {
-          heroBtn.style.backgroundColor = randomColor;
-          heroBtn.style.transform = 'scale(1.1)';
-          setTimeout(() => heroBtn.style.transform = 'scale(1)', 200);
-        }
-      });
-    }
+    // Hover spotlight switcher logic
+    listItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        // Deactivate all
+        listItems.forEach(i => i.classList.remove('active'));
+        previewCards.forEach(c => c.classList.remove('active'));
 
-    // 2. Terminal Auto-Typing Simulation
-    const terminal = document.querySelector('.terminal-widget');
-    if (terminal) {
-      const codeWrapper = terminal.querySelector('.code-lines-wrapper');
-      const statusText = terminal.querySelector('.status-text');
-      const statusIndicator = terminal.querySelector('.status-indicator');
-      
-      const codeLines = [
-        "const app = new Mantrakaar();",
-        "await app.launch({ bento: true });",
-        "console.log('Production ready!');"
-      ];
-      
-      let typingTriggered = false;
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !typingTriggered) {
-            typingTriggered = true;
-            startTypingTerminal();
-          }
-        });
-      }, { threshold: 0.2 });
-      
-      observer.observe(terminal);
-      
-      function startTypingTerminal() {
-        if (!codeWrapper) return;
-        codeWrapper.innerHTML = '';
-        statusText.textContent = 'Deploying...';
-        statusIndicator.className = 'status-indicator active';
-        
-        let lineIdx = 0;
-        
-        function typeNextLine() {
-          if (lineIdx >= codeLines.length) {
-            // Success compilation state
-            setTimeout(() => {
-              statusText.textContent = '✓ Deployed successfully.';
-              statusText.style.color = '#98c379';
-              statusIndicator.className = 'status-indicator';
-              statusIndicator.style.backgroundColor = '#98c379';
-            }, 600);
-            return;
-          }
-          
-          const lineText = codeLines[lineIdx];
-          const pre = document.createElement('pre');
-          pre.className = 'code-line';
-          codeWrapper.appendChild(pre);
-          
-          let charIdx = 0;
-          
-          function typeChar() {
-            if (charIdx >= lineText.length) {
-              // Highlight code line syntax
-              highlightLine(pre, lineText);
-              lineIdx++;
-              setTimeout(typeNextLine, 400);
-              return;
-            }
-            
-            pre.textContent += lineText[charIdx];
-            charIdx++;
-            setTimeout(typeChar, 35);
-          }
-          
-          typeChar();
-        }
-        
-        typeNextLine();
-      }
-      
-      function highlightLine(preElement, rawText) {
-        let html = rawText;
-        // Simple regex replace for syntax highlighting using RegExp constructors to keep validator clean
-        html = html.replace(new RegExp("\\b(const|await)\\b", "g"), '<span class="code-keyword">$1</span>');
-        html = html.replace(new RegExp("\\b(Mantrakaar)\\b", "g"), '<span class="code-class">$1</span>');
-        html = html.replace(new RegExp("\\b(launch|log)\\b", "g"), '<span class="code-func">$1</span>');
-        html = html.replace(new RegExp("'[^']*'", "g"), '<span class="code-str">$&</span>');
-        preElement.innerHTML = html;
-      }
-    }
+        // Activate current item
+        item.classList.add('active');
 
-    // 3. Interactive Analytics SVG Chart
-    const chartContainer = document.querySelector('.analytics-chart-container');
-    if (chartContainer) {
-      const svg = chartContainer.querySelector('.analytics-chart-svg');
-      const hoverLine = chartContainer.querySelector('.chart-hover-line');
-      const trackerDot = chartContainer.querySelector('.chart-tracker-dot');
-      const tooltip = chartContainer.querySelector('.chart-hover-tooltip');
-      const tooltipVal = chartContainer.querySelector('.tooltip-val');
-      
-      function getCurveY(x) {
-        if (x < 50) {
-          const t = x / 50;
-          return (1 - t) * (1 - t) * 45 + 2 * (1 - t) * t * 35 + t * t * 20;
-        } else {
-          const t = (x - 50) / 50;
-          return (1 - t) * (1 - t) * 20 + 2 * (1 - t) * t * 5 + t * t * 5;
-        }
-      }
-      
-      chartContainer.addEventListener('mousemove', (e) => {
-        const ctm = svg.getScreenCTM();
-        if (!ctm) return;
-        
-        // Create an SVGPoint in viewport pixel space
-        const pt = svg.createSVGPoint();
-        pt.x = e.clientX;
-        pt.y = e.clientY;
-        
-        // Transform the screen coordinates to the local SVG viewBox coordinates
-        const svgPt = pt.matrixTransform(ctm.inverse());
-        const xSVG = Math.max(0, Math.min(100, svgPt.x));
-        const ySVG = getCurveY(xSVG);
-        
-        // Update vertical guide
-        if (hoverLine) {
-          hoverLine.style.display = 'block';
-          hoverLine.setAttribute('x1', xSVG);
-          hoverLine.setAttribute('x2', xSVG);
-        }
-        
-        // Update pulsing dot
-        if (trackerDot) {
-          trackerDot.setAttribute('cx', xSVG);
-          trackerDot.setAttribute('cy', ySVG);
-        }
-        
-        // Update tooltip position and content
-        if (tooltip) {
-          tooltip.style.display = 'flex';
-          
-          // Map SVG coordinates back to screen pixels to position the DOM tooltip perfectly
-          const dotPt = svg.createSVGPoint();
-          dotPt.x = xSVG;
-          dotPt.y = ySVG;
-          const dotScreenPt = dotPt.matrixTransform(ctm);
-          
-          const rect = chartContainer.getBoundingClientRect();
-          const tooltipLeft = dotScreenPt.x - rect.left;
-          const tooltipTop = dotScreenPt.y - rect.top;
-          
-          tooltip.style.left = `${tooltipLeft}px`;
-          tooltip.style.top = `${tooltipTop}px`;
-          
-          const val = Math.round((45 - ySVG) * 7.5);
-          if (tooltipVal) {
-            tooltipVal.textContent = `+${val}%`;
-          }
+        // Activate corresponding preview card
+        const serviceId = item.getAttribute('data-service');
+        const targetCard = document.getElementById(`preview-${serviceId}`);
+        if (targetCard) {
+          targetCard.classList.add('active');
         }
       });
-      
-      chartContainer.addEventListener('mouseleave', () => {
-        if (hoverLine) hoverLine.style.display = 'none';
-        if (tooltip) tooltip.style.display = 'none';
-        
-        // Settle tracker dot back to end of curve
-        if (trackerDot) {
-          trackerDot.setAttribute('cx', 100);
-          trackerDot.setAttribute('cy', 5);
-        }
-      });
-    }
+    });
   }
 
   /* ==========================================================================
