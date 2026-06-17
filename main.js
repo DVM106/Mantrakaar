@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
       work_title: 'Our Work',
       work_more: 'View More Work',
       view_all_blogs: 'VIEW ALL BLOGS',
-      view_all_testimonials: 'VIEW ALL TESTIMONIOS',
+      view_all_testimonials: 'VIEW ALL TESTIMONIALS',
       client_title: 'Our Happy Clients',
       client_hint: 'HOVER AT THE LOGO TO PAUSE',
       client_cta: 'VIEW ALL CLIENTS',
@@ -467,125 +467,147 @@ document.addEventListener('DOMContentLoaded', () => {
   function initHeroSequence(forcePlay = false) {
     logDebug("Starting initHeroSequence... forcePlay=" + forcePlay);
     const isReducedMotion = false; // Always run the animation by default as requested
+    
+    // Selectors
     const heroContainer = document.getElementById('hero-section-container');
-    const bulb = document.querySelector('.bulb-container');
+    const phrase1 = document.getElementById('phrase-1');
+    const phrase2 = document.getElementById('phrase-2');
+    const phrase3 = document.getElementById('phrase-3');
+    const flare = document.querySelector('.cinematic-anamorphic-flare');
     const mask = document.querySelector('.hero-mask');
     const flash = document.querySelector('.flashbang-overlay');
+    const brandEl = document.getElementById('hero-brand-shimmer');
+    const dotMatrix = document.querySelector('.trailing-dot-matrix');
     const grid = document.querySelector('.hero-layout-grid');
     const dottedSpotlight = document.querySelector('.hero-dotted-spotlight');
-    const tagline = document.querySelector('.hero-tagline');
-    const floatingIcons = document.querySelectorAll('.marketing-icon-floating');
     const scrollDown = document.querySelector('.hero-scroll-down');
-    const dotMatrix = document.querySelector('.trailing-dot-matrix');
-
-    const brandEl = document.getElementById('hero-brand-shimmer');
-
-    if (!heroContainer) {
-      logDebug("Error: #hero-section-container not found in DOM!");
-      return;
-    }
-
-    // Clear any previous animation runs
-    clearAllHeroAnimations();
-
-    // Reset styles
-    if (mask) {
-      mask.style.display = 'flex';
-      mask.style.backgroundColor = '#000000';
-      mask.style.opacity = '1';
-    }
-    if (heroContainer) {
-      heroContainer.style.backgroundColor = '#000000';
-    }
-    const desk = document.querySelector('.hero-desk');
-    if (desk) {
-      desk.style.opacity = '0';
-      desk.style.transform = 'translateY(20px)';
-    }
-    if (bulb) {
-      bulb.style.display = 'block';
-      bulb.style.opacity = '0';
-      bulb.style.transform = 'scale(0.85)';
-      bulb.classList.remove('filament-glow');
-    }
-    if (flash) {
-      flash.style.display = 'block';
-      flash.style.opacity = '0';
-    }
-    if (grid) {
-      grid.style.opacity = '0';
-    }
-    if (dottedSpotlight) {
-      dottedSpotlight.style.opacity = '0';
-    }
-    if (dotMatrix) {
-      dotMatrix.style.opacity = '0';
-      dotMatrix.classList.remove('active');
-    }
-    if (tagline) {
-      tagline.style.opacity = '0';
-      tagline.style.transform = 'translateY(20px)';
-    }
-    if (scrollDown) {
-      scrollDown.style.opacity = '0';
-      scrollDown.style.transform = 'translateX(-50%) translateY(20px)';
-    }
-    if (brandEl) {
-      brandEl.style.opacity = '0';
-      brandEl.style.transform = 'translateY(12px)';
-    }
-
-    floatingIcons.forEach(icon => {
-      icon.style.opacity = '0';
-      icon.style.transform = 'scale(0.6)';
-    });
-
-    logDebug("DOM Elements status: bulb=" + !!bulb + ", mask=" + !!mask + ", flash=" + !!flash + ", grid=" + !!grid + ", brandEl=" + !!brandEl + ", dotMatrix=" + !!dotMatrix);
-    logDebug("System prefers-reduced-motion: " + window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const floatingIcons = document.querySelectorAll('.marketing-icon-floating');
+    const tagline = document.querySelector('.hero-tagline');
+    const line1 = document.getElementById('hero-brand-shimmer');
 
     // Helper: Resilient Native CSS/JS Animation Fallback (when GSAP is offline/blocked)
     function runJSAnimationFallback() {
       logDebug("GSAP not detected. Running native CSS/JS transition animation timeline.");
       
-      // Step 1: Fade-in and scale bulb (0.0s -> 0.8s)
-      logDebug("Fallback Step 1: Fade-in and scale bulb start.");
+      // Step 1: Fade-in, scale, and focus phrase 1 (0.0s -> 1.4s)
       scheduleHeroTimeout(() => {
-        if (bulb) {
-          bulb.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.5s ease, color 0.5s ease';
-          bulb.style.opacity = '1';
-          bulb.style.transform = 'scale(1)';
-          logDebug("Fallback Step 1 complete: Bulb visible.");
+        if (phrase1) {
+          phrase1.style.transition = 'opacity 1.4s ease-in-out, transform 1.4s ease-in-out, letter-spacing 1.4s ease-in-out, filter 1.4s ease-in-out';
+          phrase1.style.opacity = '1';
+          phrase1.style.transform = 'scale(1)';
+          phrase1.style.letterSpacing = '0.35em';
+          phrase1.style.filter = 'blur(0px)';
         }
       }, 50);
 
-      // Step 2: Filament glow on (0.8s -> 1.2s)
+      // Step 1.2: Glitch phrase 1 in middle
       scheduleHeroTimeout(() => {
-        logDebug("Fallback Step 2: Filament glow ON.");
-        if (bulb) bulb.classList.add('filament-glow');
-      }, 800);
-
-      // Step 3: Flashbang overlay bloom (1.2s -> 1.35s)
+        if (phrase1) phrase1.classList.add('glitching');
+      }, 1000);
       scheduleHeroTimeout(() => {
-        logDebug("Fallback Step 3: Flashbang Peak start.");
-        if (flash) {
-          flash.style.transition = 'opacity 0.15s ease-in';
-          flash.style.opacity = '1';
-        }
-      }, 1200);
-
-      // Step 4: Hide mask/bulb & set container background (1.35s)
-      scheduleHeroTimeout(() => {
-        logDebug("Fallback Step 4: Mask hide, canvas transition to theme BG.");
-        if (mask) mask.style.display = 'none';
-        if (bulb) bulb.style.display = 'none';
-        if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
+        if (phrase1) phrase1.classList.remove('glitching');
       }, 1350);
 
-      // Step 5: Fade out flashbang and animate clock, lamp, and desk (1.4s -> 1.6s)
+      // Step 1.5: Fade-out and blur phrase 1 (2.2s -> 3.2s)
       scheduleHeroTimeout(() => {
-        logDebug("Fallback Step 5: Flashbang fadeout & desk/clock/lamp entry start.");
+        if (phrase1) {
+          phrase1.style.transition = 'opacity 1.0s ease-in-out, transform 1.0s ease-in-out, letter-spacing 1.0s ease-in-out, filter 1.0s ease-in-out';
+          phrase1.style.opacity = '0';
+          phrase1.style.transform = 'scale(1.08)';
+          phrase1.style.letterSpacing = '0.5em';
+          phrase1.style.filter = 'blur(20px)';
+        }
+      }, 2200);
+
+      // Step 2: Fade-in, scale, and focus phrase 2 (3.5s -> 4.9s)
+      scheduleHeroTimeout(() => {
+        if (phrase2) {
+          phrase2.style.transition = 'opacity 1.4s ease-in-out, transform 1.4s ease-in-out, letter-spacing 1.4s ease-in-out, filter 1.4s ease-in-out';
+          phrase2.style.opacity = '1';
+          phrase2.style.transform = 'scale(1)';
+          phrase2.style.letterSpacing = '0.35em';
+          phrase2.style.filter = 'blur(0px)';
+        }
+      }, 3500);
+
+      // Step 2.2: Glitch phrase 2 in middle
+      scheduleHeroTimeout(() => {
+        if (phrase2) phrase2.classList.add('glitching');
+      }, 4500);
+      scheduleHeroTimeout(() => {
+        if (phrase2) phrase2.classList.remove('glitching');
+      }, 4850);
+
+      // Step 2.5: Fade-out and blur phrase 2 (5.7s -> 6.7s)
+      scheduleHeroTimeout(() => {
+        if (phrase2) {
+          phrase2.style.transition = 'opacity 1.0s ease-in-out, transform 1.0s ease-in-out, letter-spacing 1.0s ease-in-out, filter 1.0s ease-in-out';
+          phrase2.style.opacity = '0';
+          phrase2.style.transform = 'scale(1.08)';
+          phrase2.style.letterSpacing = '0.5em';
+          phrase2.style.filter = 'blur(20px)';
+        }
+      }, 5700);
+
+      // Step 3: Fade-in, scale, and focus phrase 3 (7.0s -> 8.4s)
+      scheduleHeroTimeout(() => {
+        if (phrase3) {
+          phrase3.style.transition = 'opacity 1.4s ease-in-out, transform 1.4s ease-in-out, letter-spacing 1.4s ease-in-out, filter 1.4s ease-in-out';
+          phrase3.style.opacity = '1';
+          phrase3.style.transform = 'scale(1)';
+          phrase3.style.letterSpacing = '0.35em';
+          phrase3.style.filter = 'blur(0px)';
+        }
+        if (flare) {
+          flare.style.transition = 'opacity 1.4s ease-in-out';
+          flare.style.opacity = '0.85';
+        }
+      }, 7000);
+
+      // Step 3.2: Glitch phrase 3 in middle
+      scheduleHeroTimeout(() => {
+        if (phrase3) phrase3.classList.add('glitching');
+      }, 8000);
+      scheduleHeroTimeout(() => {
+        if (phrase3) phrase3.classList.remove('glitching');
+      }, 8350);
+
+      // Step 3.5: Fade-out, blur phrase 3 and flare (9.2s -> 10.2s)
+      scheduleHeroTimeout(() => {
+        if (phrase3) {
+          phrase3.style.transition = 'opacity 1.0s ease-in-out, transform 1.0s ease-in-out, letter-spacing 1.0s ease-in-out, filter 1.0s ease-in-out';
+          phrase3.style.opacity = '0';
+          phrase3.style.transform = 'scale(1.08)';
+          phrase3.style.letterSpacing = '0.5em';
+          phrase3.style.filter = 'blur(20px)';
+        }
+        if (flare) {
+          flare.style.transition = 'opacity 1.0s ease-out';
+          flare.style.opacity = '0';
+        }
+      }, 9200);
+
+      // Step 4: Flashbang overlay bloom (11.4s -> 11.65s)
+      scheduleHeroTimeout(() => {
+        logDebug("Fallback Step 4: Flashbang Peak start.");
         if (flash) {
-          flash.style.transition = 'opacity 0.2s ease-out';
+          flash.style.transition = 'opacity 0.25s ease-in';
+          flash.style.opacity = '1';
+        }
+      }, 11400);
+
+      // Step 5: Hide mask & set container background (11.65s)
+      scheduleHeroTimeout(() => {
+        logDebug("Fallback Step 5: Mask hide, canvas transition to theme BG.");
+        if (mask) mask.style.display = 'none';
+        if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
+      }, 11650);
+
+      // Step 6: Fade out flashbang and animate clock, lamp, and desk (11.65s -> 12.15s)
+      scheduleHeroTimeout(() => {
+        logDebug("Fallback Step 6: Flashbang fadeout & desk/clock/lamp entry start.");
+        if (flash) {
+          flash.style.transition = 'opacity 0.5s ease-out';
           flash.style.opacity = '0';
         }
         
@@ -594,22 +616,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const deskEl = document.querySelector('.hero-desk');
         
         if (lamp) {
+          lamp.style.transition = 'top 1.2s cubic-bezier(0.25, 0.8, 0.25, 1.15), opacity 1.2s ease';
           lamp.style.top = '0';
           lamp.style.opacity = '1';
         }
         if (clock) {
+          clock.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1.5), opacity 0.8s ease';
           clock.style.opacity = '1';
           clock.style.transform = 'scale(1)';
         }
         if (deskEl) {
+          deskEl.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease';
           deskEl.style.opacity = '1';
           deskEl.style.transform = 'translateY(0)';
         }
-      }, 1400);
+      }, 11650);
 
-      // Step 6: Reveal grid and start typewriter text loops (1.6s)
+      // Step 7: Reveal grid and start typewriter text loops (12.15s)
       scheduleHeroTimeout(() => {
-        logDebug("Fallback Step 6: Grid reveal & start typewriter loops.");
+        logDebug("Fallback Step 7: Grid reveal & start typewriter loops.");
         if (grid) {
           grid.style.transition = 'opacity 0.4s ease-out';
           grid.style.opacity = '1';
@@ -644,14 +669,13 @@ document.addEventListener('DOMContentLoaded', () => {
             logDebug("All hero reveals complete.");
           }, 900);
         }
-      }, 1600);
+      }, 12150);
     }
 
     // Helper: Static Instant Reveal (for prefers-reduced-motion users)
     function runStaticFallback() {
       console.log("Running static content fallback (reduced-motion).");
       if (mask) mask.style.display = 'none';
-      if (bulb) bulb.style.display = 'none';
       if (flash) flash.style.display = 'none';
       if (grid) grid.style.opacity = '1';
       if (dottedSpotlight) dottedSpotlight.style.opacity = '1';
@@ -710,62 +734,168 @@ document.addEventListener('DOMContentLoaded', () => {
     const tl = gsap.timeline();
     heroSequenceTimeline = tl;
 
-    // Phase 1: Bulb Fade-in & Scale (0.0s -> 0.8s)
-    if (bulb) {
-      tl.to(bulb, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.8,
-        ease: 'power2.out',
-        onStart: () => {
-          logDebug("GSAP: Bulb fade-in start");
-        },
-        onComplete: () => {
-          logDebug("GSAP: Bulb visible");
-        }
-      });
-
-      // Phase 2: Filament hold & glow (0.8s -> 1.2s)
-      tl.to(bulb, {
-        opacity: 1,
-        duration: 0.4,
-        onStart: () => {
-          logDebug("GSAP: Filament glow ON");
-          bulb.classList.add('filament-glow');
-        }
-      });
+    // Helper to add glitch to a phrase
+    function queueGlitch(phrase, delayFromStart) {
+      tl.add(() => {
+        if (phrase) phrase.classList.add('glitching');
+      }, delayFromStart);
+      tl.add(() => {
+        if (phrase) phrase.classList.remove('glitching');
+      }, delayFromStart + 0.35);
     }
 
-    // Phase 3: Flashbang overlay & transition screen (1.2s -> 1.35s)
+    // Phase 1: Phrase 1 ("GET READY!") - 0.0s -> 3.2s
+    if (phrase1) {
+      tl.to(phrase1, {
+        opacity: 1,
+        scale: 1.0,
+        letterSpacing: '0.45em',
+        filter: 'blur(0px)',
+        duration: 1.4,
+        ease: 'sine.inOut',
+        onStart: () => {
+          logDebug("GSAP: phrase1 fade-in start");
+        }
+      }, 0.0);
+      
+      // Trigger a glitch in the middle
+      queueGlitch(phrase1, 1.0);
+
+      // Letter-spacing drift & zoom hold
+      tl.to(phrase1, {
+        scale: 1.03,
+        letterSpacing: '0.55em',
+        duration: 0.8,
+        ease: 'none'
+      }, 1.4);
+
+      // Defocus & fade-out
+      tl.to(phrase1, {
+        opacity: 0,
+        scale: 1.08,
+        letterSpacing: '0.65em',
+        filter: 'blur(20px)',
+        duration: 1.0,
+        ease: 'sine.inOut'
+      }, 2.2);
+    }
+
+    // Phase 2: Phrase 2 ("TO DIVE IN") - 3.5s -> 6.7s
+    if (phrase2) {
+      tl.to(phrase2, {
+        opacity: 1,
+        scale: 1.0,
+        letterSpacing: '0.45em',
+        filter: 'blur(0px)',
+        duration: 1.4,
+        ease: 'sine.inOut'
+      }, 3.5);
+      
+      // Trigger a glitch in the middle
+      queueGlitch(phrase2, 4.5);
+
+      // Letter-spacing drift & zoom hold
+      tl.to(phrase2, {
+        scale: 1.03,
+        letterSpacing: '0.55em',
+        duration: 0.8,
+        ease: 'none'
+      }, 4.9);
+
+      // Defocus & fade-out
+      tl.to(phrase2, {
+        opacity: 0,
+        scale: 1.08,
+        letterSpacing: '0.65em',
+        filter: 'blur(20px)',
+        duration: 1.0,
+        ease: 'sine.inOut'
+      }, 5.7);
+    }
+
+    // Phase 3: Phrase 3 ("THE WORLD OF") - 7.0s -> 10.2s
+    if (phrase3) {
+      tl.to(phrase3, {
+        opacity: 1,
+        scale: 1.0,
+        letterSpacing: '0.45em',
+        filter: 'blur(0px)',
+        duration: 1.4,
+        ease: 'sine.inOut'
+      }, 7.0);
+      
+      if (flare) {
+        tl.to(flare, {
+          opacity: 0.85,
+          scaleX: 1.2,
+          duration: 1.4,
+          ease: 'sine.inOut'
+        }, 7.0);
+      }
+      
+      // Trigger a glitch in the middle
+      queueGlitch(phrase3, 8.0);
+
+      // Letter-spacing drift & zoom hold
+      tl.to(phrase3, {
+        scale: 1.03,
+        letterSpacing: '0.55em',
+        duration: 0.8,
+        ease: 'none'
+      }, 8.4);
+
+      // Defocus & fade-out
+      tl.to(phrase3, {
+        opacity: 0,
+        scale: 1.08,
+        letterSpacing: '0.65em',
+        filter: 'blur(20px)',
+        duration: 1.0,
+        ease: 'sine.inOut'
+      }, 9.2);
+
+      if (flare) {
+        tl.to(flare, {
+          opacity: 0,
+          scaleX: 0.8,
+          duration: 1.0,
+          ease: 'sine.inOut'
+        }, 9.2);
+      }
+    }
+
+    // Phase 4: Suspenseful black screen pause before launch (10.2s -> 11.4s)
+    // Handled by adding the next animation at absolute timestamp 11.4s
+
+    // Phase 5: Flashbang overlay bloom - 11.4s -> 11.65s
     if (flash) {
       tl.to(flash, {
         opacity: 1,
-        duration: 0.15,
-        ease: 'power1.in',
+        duration: 0.25,
+        ease: 'power2.in',
         onStart: () => {
           logDebug("GSAP: Flashbang bloom peak");
         }
-      });
+      }, 11.4);
     }
 
-    // Phase 4: Settle background and hide mask instantly at flash peak (1.35s)
+    // Phase 6: Settle background and hide mask instantly at flash peak - 11.65s
     tl.add(() => {
       logDebug("GSAP: Transitioning mask canvas to theme");
       if (mask) mask.style.display = 'none';
-      if (bulb) bulb.style.display = 'none';
       if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
-    });
+    }, 11.65);
 
-    // Phase 5: Fade out flashbang and animate clock, lamp, and desk (1.35s -> 1.55s)
+    // Phase 6.5: Fade out flashbang and animate clock, lamp, and desk - 11.65s -> 12.15s
     if (flash) {
       tl.to(flash, {
         opacity: 0,
-        duration: 0.2,
+        duration: 0.5,
         ease: 'power1.out',
         onStart: () => {
           logDebug("GSAP: Fading out flashbang");
         }
-      });
+      }, 11.65);
     }
 
     // Parallel animations for clock, lamp, and desk
@@ -798,9 +928,9 @@ document.addEventListener('DOMContentLoaded', () => {
           ease: 'power2.out'
         });
       }
-    }, '-=0.1');
+    }, 11.65);
 
-    // Phase 6: Reveal grid (1.55s -> 1.95s)
+    // Phase 6.6: Reveal grid and spotlight (11.65s)
     if (grid || dottedSpotlight) {
       const revealTargets = [];
       if (grid) revealTargets.push(grid);
@@ -808,14 +938,14 @@ document.addEventListener('DOMContentLoaded', () => {
       
       tl.to(revealTargets, {
         opacity: 1,
-        duration: 0.4,
+        duration: 0.5,
         onStart: () => {
           logDebug("GSAP: Revealing technical grid and dotted spotlight");
         }
-      }, '-=0.1');
+      }, 11.65);
     }
 
-    // Phase 7: Reveal gradient shimmer brand logo
+    // Phase 7: Reveal gradient shimmer brand logo & start typewriter - 12.15s
     tl.add(() => {
       logDebug("GSAP: Revealing brand shimmer logo");
       if (dotMatrix) {
@@ -842,7 +972,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tagline) gsap.to(tagline, { opacity: 1, y: 0, duration: 0.6, ease: 'back.out(1.7)' });
         if (scrollDown) gsap.to(scrollDown, { opacity: 1, y: 0, duration: 0.6 });
       }
-    });
+    }, 12.15);
 
     // Sequence runner for single-line typewriter effect (defined inside scope for closure access)
     function executeTypewriterSequence(onComplete) {
@@ -1348,29 +1478,147 @@ document.addEventListener('DOMContentLoaded', () => {
     initClients3DCarousel();
 
 
-    // 3. Testimonials Swiper
-    const testSwiper = new Swiper('.testimonial-swiper', {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.testimonial-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.testimonial-next',
-        prevEl: '.testimonial-prev',
-      },
-      a11y: {
-        enabled: true,
-        prevSlideMessage: 'Previous testimonial',
-        nextSlideMessage: 'Next testimonial',
-      }
+    // 3. Custom Split-Screen Testimonials Slider
+    initSplitTestimonialsSlider();
+  }
+
+  /* ==========================================================================
+     Custom Split-Screen Testimonials Slider
+     ========================================================================== */
+  function initSplitTestimonialsSlider() {
+    const container = document.querySelector('.split-testimonials-container');
+    if (!container) return;
+
+    const leftSlides = container.querySelectorAll('.left-slide');
+    const rightSlides = container.querySelectorAll('.right-slide');
+    const dots = container.querySelectorAll('.nav-dot');
+    const btnUp = container.querySelector('.divider-nav-btn.btn-up');
+    const btnDown = container.querySelector('.divider-nav-btn.btn-down');
+    const dividerLogo = container.querySelector('.divider-active-logo');
+    const dividerLogoBadge = container.querySelector('.divider-logo-badge');
+    
+    let activeIndex = 0;
+    const totalSlides = leftSlides.length;
+    let autoplayInterval = null;
+
+    // Retrieve active logo sources from the left slides
+    const logoSources = [];
+    leftSlides.forEach(slide => {
+      const logoImg = slide.querySelector('.client-logo-overlay img');
+      logoSources.push(logoImg ? logoImg.getAttribute('src') : '');
     });
+
+    function showSlide(index, direction = 'next') {
+      if (index === activeIndex) return;
+
+      const prevActiveIndex = activeIndex;
+      activeIndex = index;
+
+      // Update divider logo badge animation
+      if (dividerLogoBadge && dividerLogo) {
+        dividerLogoBadge.classList.add('animating');
+        setTimeout(() => {
+          dividerLogo.setAttribute('src', logoSources[activeIndex]);
+          dividerLogo.setAttribute('alt', `Active Logo ${activeIndex + 1}`);
+          dividerLogoBadge.classList.remove('animating');
+        }, 400); // matches CSS rotation transition half-duration
+      }
+
+      // Update dots active class
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+
+      // Slide Transitions
+      leftSlides.forEach((slide, idx) => {
+        // Reset classes
+        slide.classList.remove('active', 'prev', 'next');
+        
+        if (idx === activeIndex) {
+          slide.classList.add('active');
+        } else if (idx === prevActiveIndex) {
+          slide.classList.add('prev');
+        } else {
+          slide.classList.add('next');
+        }
+      });
+
+      rightSlides.forEach((slide, idx) => {
+        // Reset classes
+        slide.classList.remove('active', 'prev', 'next');
+        
+        if (idx === activeIndex) {
+          slide.classList.add('active');
+        } else if (idx === prevActiveIndex) {
+          slide.classList.add('prev');
+        } else {
+          slide.classList.add('next');
+        }
+      });
+    }
+
+    function nextSlide() {
+      const nextIndex = (activeIndex + 1) % totalSlides;
+      showSlide(nextIndex, 'next');
+    }
+
+    // Explicit function for up arrow sliding in opposite direction
+    function prevSlide() {
+      const prevIndex = (activeIndex - 1 + totalSlides) % totalSlides;
+      showSlide(prevIndex, 'prev');
+    }
+
+    // Auto Rotation
+    function startAutoplay() {
+      stopAutoplay();
+      autoplayInterval = setInterval(nextSlide, 4000);
+    }
+
+    function stopAutoplay() {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+      }
+    }
+
+    // Nav Dot Clicks
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        stopAutoplay();
+        showSlide(idx, idx > activeIndex ? 'next' : 'prev');
+        startAutoplay();
+      });
+    });
+
+    // Arrow Nav Clicks
+    if (btnUp) {
+      btnUp.addEventListener('click', (e) => {
+        e.preventDefault();
+        stopAutoplay();
+        prevSlide();
+        startAutoplay();
+      });
+    }
+
+    if (btnDown) {
+      btnDown.addEventListener('click', (e) => {
+        e.preventDefault();
+        stopAutoplay();
+        nextSlide();
+        startAutoplay();
+      });
+    }
+
+    // Mouse Hover Listeners for Autoplay Pause
+    container.addEventListener('mouseenter', stopAutoplay);
+    container.addEventListener('mouseleave', startAutoplay);
+
+    // Initialize Autoplay
+    startAutoplay();
   }
 
   /* ==========================================================================

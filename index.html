@@ -29,83 +29,6 @@
   
   <!-- GSAP for animations (sequential timeline sequencing) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-  <style>
-    /* ── Work Photo Bento Grid ── */
-    .work-photo-bento {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 72px;
-      gap: 14px;
-      margin-bottom: 10px;
-    }
-    .wpb-card {
-      position: relative; border-radius: 14px; overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.07); cursor: pointer;
-      transition: border-color 0.35s, transform 0.35s;
-    }
-    .wpb-card:hover { border-color: rgba(170,0,211,0.5); transform: translateY(-5px); }
-    .wpb-card.c-wide { grid-column: span 7; grid-row: span 5; }
-    .wpb-card.c-tall { grid-column: span 5; grid-row: span 5; }
-    .wpb-card.c-std  { grid-column: span 4; grid-row: span 4; }
-    .wpb-card.c-med  { grid-column: span 6; grid-row: span 4; }
-    .wpb-card.c-full { grid-column: span 8; grid-row: span 4; }
-    .wpb-photo {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center top;
-      transition: transform 0.65s;
-    }
-    .wpb-card:hover .wpb-photo { transform: scale(1.06); }
-    .wpb-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.2) 55%, transparent 100%);
-    }
-    .wpb-glow {
-      position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
-      width: 200px; height: 100px;
-      background: radial-gradient(ellipse, rgba(170,0,211,0.55), transparent 70%);
-      opacity: 0; transition: opacity 0.4s; pointer-events: none;
-    }
-    .wpb-card:hover .wpb-glow { opacity: 1; }
-    .wpb-content {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 22px 26px; z-index: 2;
-    }
-    .wpb-tag {
-      display: inline-block; font-size: 9px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: rgba(255,255,255,0.4); margin-bottom: 6px;
-    }
-    .wpb-title {
-      font-size: clamp(15px, 1.8vw, 22px); font-weight: 700; color: #fff;
-      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 6px;
-    }
-    .wpb-desc {
-      font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5;
-      margin-bottom: 10px;
-      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-    }
-    .wpb-caps { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
-    .wpb-cap {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--brand-purple); background: rgba(170,0,211,0.1);
-      border: 1px solid rgba(170,0,211,0.2); padding: 3px 9px; border-radius: 100px;
-    }
-    .wpb-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.25s, gap 0.25s;
-    }
-    .wpb-card:hover .wpb-link { color: #fff; gap: 10px; }
-    @media (max-width: 900px) {
-      .work-photo-bento { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
-      .wpb-card.c-wide, .wpb-card.c-tall, .wpb-card.c-std, .wpb-card.c-med, .wpb-card.c-full { grid-column: span 2; grid-row: span 2; }
-    }
-    @media (max-width: 600px) {
-      .work-photo-bento { grid-template-columns: 1fr; grid-auto-rows: 220px; }
-      .wpb-card.c-wide, .wpb-card.c-tall, .wpb-card.c-std, .wpb-card.c-med, .wpb-card.c-full { grid-column: span 1; grid-row: span 1; }
-    }
-  </style>
 </head>
 <body>
 
@@ -145,7 +68,7 @@
                   <li><a href="https://mantrakaar.com/consultancy/">Consultancy</a></li>
                 </ul>
               </li>
-              <li class="menu-item"><a href="https://mantrakaar.com/projects/" class="ut-main-navigation-link"><span data-i18n="nav_projects">Projects</span></a></li>
+              <li class="menu-item"><a href="projects.html" class="ut-main-navigation-link"><span data-i18n="nav_projects">Projects</span></a></li>
               <li class="menu-item menu-item-has-children">
                 <a href="#" class="ut-main-navigation-link" aria-expanded="false" aria-haspopup="true"><span data-i18n="nav_clients">Clients</span></a>
                 <ul class="sub-menu" aria-label="Clients Sub-menu">
@@ -217,7 +140,7 @@
           <li><a href="https://mantrakaar.com/consultancy/">Consultancy</a></li>
         </ul>
       </li>
-      <li><a href="https://mantrakaar.com/projects/">Projects</a></li>
+      <li><a href="projects.html">Projects</a></li>
       <li>
         <a href="#">Clients</a>
         <ul class="sub-menu">
@@ -251,12 +174,14 @@
       <!-- Background Video -->
       <video class="hero-bg-video" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260511_230229_7c9bc431-46cf-489a-948d-e8144d8eb5d4.mp4" autoplay muted loop playsinline></video>
 
-      <!-- Initial state overlay: Black Background -->
-      <div class="hero-mask">
-        <!-- Realistic 3D Bulb Asset (Fades-in & scale, filament glows, flashes) -->
-        <div class="bulb-container">
-          <img src="assets/realistic_3d_bulb.png" alt="Realistic 3D Light Bulb" class="bulb-img">
+      <!-- Cinematic Intro State Overlay -->
+      <div class="hero-mask cinematic-intro">
+        <div class="intro-phrase-wrap">
+          <div class="intro-phrase" id="phrase-1" data-text="GET READY!">GET READY!</div>
+          <div class="intro-phrase" id="phrase-2" data-text="TO DIVE IN">TO DIVE IN</div>
+          <div class="intro-phrase" id="phrase-3" data-text="THE WORLD OF">THE WORLD OF</div>
         </div>
+        <div class="cinematic-anamorphic-flare"></div>
       </div>
       
       <!-- Flashbang overlay (Quick bloom transition to default theme bg) -->
@@ -569,8 +494,8 @@
     </section>
 
     <!-- ==========================================================================
-         6. Our Work Section — Bento Grid with Real Project Photos
-         ========================================================================== -->
+         6. Our Work Section (Unchanged content ordering)
+         ========================================================================== */ -->
     <section class="vc_section" id="work-section">
       <div class="grid-container">
 
@@ -581,7 +506,7 @@
 
         <div class="work-photo-bento">
 
-          <!-- Card 1 — Wide: WOW Trip Makers -->
+          <!-- Card 1 – Wide: WOW Trip Makers -->
           <div class="wpb-card c-wide reveal-element reveal-skew-up" data-category="branding" data-delay="0ms">
             <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/Wow-1.jpg');"></div>
             <div class="wpb-overlay"></div>
@@ -589,7 +514,7 @@
             <div class="wpb-content">
               <span class="wpb-tag">Travel Agency</span>
               <div class="wpb-title">WOW Trip Makers</div>
-              <div class="wpb-desc">Complete brand collateral for an air ticketing agency — crafting a visual identity that captures the excitement of travel and builds instant client trust.</div>
+              <div class="wpb-desc">Complete brand collateral for an air ticketing agency – crafting a visual identity that captures the excitement of travel and builds instant client trust.</div>
               <div class="wpb-caps">
                 <span class="wpb-cap">Branding</span><span class="wpb-cap">Brand Collateral</span>
               </div>
@@ -597,7 +522,7 @@
             </div>
           </div>
 
-          <!-- Card 2 — Tall: Bliss By Bhadra -->
+          <!-- Card 2 – Tall: Bliss By Bhadra -->
           <div class="wpb-card c-tall reveal-element reveal-skew-up" data-category="branding" data-delay="100ms">
             <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/Bliss-01.jpg');"></div>
             <div class="wpb-overlay"></div>
@@ -605,7 +530,7 @@
             <div class="wpb-content">
               <span class="wpb-tag">Skincare</span>
               <div class="wpb-title">Bliss By Bhadra</div>
-              <div class="wpb-desc">Handcrafted skincare brand collateral — elegant packaging design and visual identity for a boutique beauty label.</div>
+              <div class="wpb-desc">Handcrafted skincare brand collateral – elegant packaging design and visual identity for a boutique beauty label.</div>
               <div class="wpb-caps">
                 <span class="wpb-cap">Brand Collateral</span>
               </div>
@@ -613,7 +538,7 @@
             </div>
           </div>
 
-          <!-- Card 3 — Standard: Chembur Mobile Zone -->
+          <!-- Card 3 – Standard: Chembur Mobile Zone -->
           <div class="wpb-card c-med reveal-element reveal-skew-up" data-category="web" data-delay="200ms">
             <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/CemburMobilezone.jpg');"></div>
             <div class="wpb-overlay"></div>
@@ -627,7 +552,7 @@
             </div>
           </div>
 
-          <!-- Card 4 — Standard: Shree Online -->
+          <!-- Card 4 – Standard: Shree Online -->
           <div class="wpb-card c-med reveal-element reveal-skew-up" data-category="branding" data-delay="300ms">
             <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/Shree-Online-1.jpg');"></div>
             <div class="wpb-overlay"></div>
@@ -641,21 +566,21 @@
             </div>
           </div>
 
-          <!-- Card 5 — Full wide: Right Source Aviation -->
+          <!-- Card 5 – Full wide: Right Source Aviation -->
           <div class="wpb-card c-full reveal-element reveal-skew-up" data-category="web" data-delay="400ms">
             <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/RSA1300x837.jpg');"></div>
             <div class="wpb-overlay"></div>
             <div class="wpb-glow"></div>
             <div class="wpb-content">
-              <span class="wpb-tag">Aviation · Pilot Training Academy</span>
+              <span class="wpb-tag">Aviation – Pilot Training Academy</span>
               <div class="wpb-title">Right Source Aviation</div>
-              <div class="wpb-desc">Website &amp; brand collateral for a pilot training academy — professional digital presence built for credibility in the aviation sector.</div>
+              <div class="wpb-desc">Website &amp; brand collateral for a pilot training academy – professional digital presence built for credibility in the aviation sector.</div>
               <div class="wpb-caps"><span class="wpb-cap">Web Dev</span><span class="wpb-cap">Brand Collateral</span></div>
               <a href="https://mantrakaar.com/portfolio-item/right-source-aviation/" target="_blank" class="wpb-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </div>
 
-          <!-- Card 6 — Standard: Verma Enterprise -->
+          <!-- Card 6 – Standard: Verma Enterprise -->
           <div class="wpb-card c-std reveal-element reveal-skew-up" data-category="web" data-delay="500ms">
             <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/VE1300x837.jpg');"></div>
             <div class="wpb-overlay"></div>
@@ -770,173 +695,352 @@
     <!-- ==========================================================================
          4. Our Services Section (Placed immediately after Blogs, unchanged content)
          ========================================================================== */ -->
-    <section class="testimonials-section-wrapper" id="testimonials-section">
-      <div class="grid-container">
-        
-        <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 60px;">
-          <h2 data-i18n="testimonial_title" style="color: #ffffff;">Testimonial</h2>
+    <section class="split-testimonials-section" id="testimonials-section">
+      
+      <!-- Section Header -->
+      <div class="grid-container" style="padding-top: 80px; padding-bottom: 20px;">
+        <div class="section-header reveal-element reveal-scale-up" style="text-align: center;">
+          <h2 data-i18n="nav_testimonials">TESTIMONIALS</h2>
         </div>
+      </div>
+
+      <div class="split-testimonials-container">
         
-        <!-- Testimonial Slideshow Swiper -->
-        <div class="swiper testimonial-swiper reveal-element reveal-slide-up" data-delay="100ms">
-          <div class="swiper-wrapper">
+        <!-- Left Column: Photos (Slides DOWN) -->
+        <div class="testimonials-left-col">
+          <div class="left-slides-track">
             
-            <!-- Slide 1 -->
-            <div class="swiper-slide">
-              <div class="testimonial-slide-content">
+            <!-- Slide 1: Paintora Group -->
+            <div class="left-slide active" data-index="0">
+              <div class="left-slide-bg" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-1-1500x1250.jpg');"></div>
+              <div class="left-slide-overlay"></div>
+              <div class="left-slide-content">
+                <div class="avatar-ring-wrap">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2025/12/jhanvi-pallicha-1-280x280.webp" alt="Jhanvi Pallicha">
+                  <div class="client-logo-overlay">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora Group Logo">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2: Ashtavinayak Traders -->
+            <div class="left-slide next" data-index="1">
+              <div class="left-slide-bg" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2024/02/AT1300x1300-1500x1200.jpg');"></div>
+              <div class="left-slide-overlay"></div>
+              <div class="left-slide-content">
+                <div class="avatar-ring-wrap">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Keyur_gupta-280x280.jpg" alt="Keyur Gupta">
+                  <div class="client-logo-overlay">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="Ashtavinayak Traders Logo">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3: Chembur Mobile Zone -->
+            <div class="left-slide" data-index="2">
+              <div class="left-slide-bg" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2024/02/CemburMobilezonex1300-1500x1200.jpg');"></div>
+              <div class="left-slide-overlay"></div>
+              <div class="left-slide-content">
+                <div class="avatar-ring-wrap">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Satish-Sumbad-280x280.jpg" alt="Satish Sumbad">
+                  <div class="client-logo-overlay">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="Chembur Mobile Zone Logo">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4: Right Source Aviation -->
+            <div class="left-slide" data-index="3">
+              <div class="left-slide-bg" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2024/02/RSA1300x1300-1500x1200.jpg');"></div>
+              <div class="left-slide-overlay"></div>
+              <div class="left-slide-content">
+                <div class="avatar-ring-wrap">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/RightSourceAviation-testimonial-280x280.jpg" alt="Capt. Vishal Vijay Gandhi">
+                  <div class="client-logo-overlay">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="Right Source Aviation Logo">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5: Shree Online -->
+            <div class="left-slide" data-index="4">
+              <div class="left-slide-bg" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2024/02/Shreeonline-Stationery-1300-1500x1200.jpg');"></div>
+              <div class="left-slide-overlay"></div>
+              <div class="left-slide-content">
+                <div class="avatar-ring-wrap">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Hemant-vyas-280x280.jpg" alt="Hemant Vyas">
+                  <div class="client-logo-overlay">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Shree Online Logo">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 6: Siddhi Penkar -->
+            <div class="left-slide" data-index="5">
+              <div class="left-slide-bg" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2024/12/2.-COTTON-STATE-Website-Mockups-1300-x-1300-px-1500x1200.jpg');"></div>
+              <div class="left-slide-overlay"></div>
+              <div class="left-slide-content">
+                <div class="avatar-ring-wrap">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Siddhi-penkar-280x280.jpg" alt="Siddhi Penkar">
+                  <div class="client-logo-overlay">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Siddhi Penkar Logo">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 7: Royal Printers -->
+            <div class="left-slide" data-index="6">
+              <div class="left-slide-bg" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2024/07/Royalprinters-website-1300-1500x1200.jpg');"></div>
+              <div class="left-slide-overlay"></div>
+              <div class="left-slide-content">
+                <div class="avatar-ring-wrap">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/07/Lal-Sabnani.png" alt="Lal Sabnani">
+                  <div class="client-logo-overlay">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Royal Printers Logo">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 8: AIM Financial Services -->
+            <div class="left-slide" data-index="7">
+              <div class="left-slide-bg" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2024/07/AIM-for-website-1300x1300-1-1500x1200.jpg');"></div>
+              <div class="left-slide-overlay"></div>
+              <div class="left-slide-content">
+                <div class="avatar-ring-wrap">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/07/VIshal-bhuta.png" alt="Vishal Bhuta">
+                  <div class="client-logo-overlay">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="AIM Financial Services Logo">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 9: Pure Mist -->
+            <div class="left-slide" data-index="8">
+              <div class="left-slide-bg" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2025/09/Pure-mist-1300-1500x1200.webp');"></div>
+              <div class="left-slide-overlay"></div>
+              <div class="left-slide-content">
+                <div class="avatar-ring-wrap">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2025/08/Kalpesh-Karia-280x280.webp" alt="Mr. Kalpesh Karia">
+                  <div class="client-logo-overlay">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Pure Mist Logo">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 10: Samadhan Diagnostic Centre -->
+            <div class="left-slide" data-index="9">
+              <div class="left-slide-bg" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2025/04/Samadhan-1500x1200.jpg');"></div>
+              <div class="left-slide-overlay"></div>
+              <div class="left-slide-content">
+                <div class="avatar-ring-wrap">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2025/08/Dr.-Dhanashree-More-280x280.webp" alt="Dr. Dhanashree More">
+                  <div class="client-logo-overlay">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan Diagnostic Centre Logo">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Center Dividing Line & Active Logo (Badge twice) -->
+        <div class="testimonials-center-divider">
+          <div class="divider-line"></div>
+          <button class="divider-nav-btn btn-up" aria-label="Previous Testimonial">
+            <i class="fa-solid fa-chevron-up"></i>
+          </button>
+          <div class="divider-logo-badge">
+            <img class="divider-active-logo" src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Active Company Logo">
+          </div>
+          <button class="divider-nav-btn btn-down" aria-label="Next Testimonial">
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </div>
+
+        <!-- Right Column: Testimonial text (Slides UP) -->
+        <div class="testimonials-right-col">
+          <div class="right-slides-track">
+            
+            <!-- Slide 1: Paintora Group -->
+            <div class="right-slide active" data-index="0">
+              <div class="right-slide-content">
+                <div class="quote-symbol"><i class="fa-solid fa-quote-left"></i></div>
                 <p class="testimonial-quote-text">
                   "Working with Mantrakaar to develop our company Paintora Group’s website was a smooth and well structured experience. Their professionalism, technical understanding and attention to detail stood out at every stage. We are pleased with the final outcome."
                 </p>
-                <div class="testimonial-author-avatar">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/12/jhanvi-pallicha-1-280x280.webp" alt="Jhanvi Pallicha avatar">
+                <div class="testimonial-author-meta">
+                  <h3 class="testimonial-author-name">Jhanvi Pallicha</h3>
+                  <div class="testimonial-author-company">CEO, Paintora Group</div>
                 </div>
-                <h3 class="testimonial-author-name">Jhanvi Pallicha</h3>
-                <div class="testimonial-author-company">CEO, Paintora Group</div>
               </div>
             </div>
-            
-            <!-- Slide 2 -->
-            <div class="swiper-slide">
-              <div class="testimonial-slide-content">
+
+            <!-- Slide 2: Ashtavinayak Traders -->
+            <div class="right-slide next" data-index="1">
+              <div class="right-slide-content">
+                <div class="quote-symbol"><i class="fa-solid fa-quote-left"></i></div>
                 <p class="testimonial-quote-text">
                   "Mantrakaar exceeded our expectations in creating both our brand logo and website. Their expertise in technology and content presentation truly set them apart. We are thrilled with the results and highly recommend Mantrakaar for design and web solutions."
                 </p>
-                <div class="testimonial-author-avatar">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Keyur_gupta-280x280.jpg" alt="Keyur Gupta avatar">
+                <div class="testimonial-author-meta">
+                  <h3 class="testimonial-author-name">Keyur Gupta</h3>
+                  <div class="testimonial-author-company">Owner, Ashtavinayak Traders</div>
                 </div>
-                <h3 class="testimonial-author-name">Keyur Gupta</h3>
-                <div class="testimonial-author-company">Owner, Ashtavinayak Traders</div>
               </div>
             </div>
-            
-            <!-- Slide 3 -->
-            <div class="swiper-slide">
-              <div class="testimonial-slide-content">
+
+            <!-- Slide 3: Chembur Mobile Zone -->
+            <div class="right-slide" data-index="2">
+              <div class="right-slide-content">
+                <div class="quote-symbol"><i class="fa-solid fa-quote-left"></i></div>
                 <p class="testimonial-quote-text">
                   "Parag Gogari from Mantrakaar did an exceptional job in creating a website that not only looks great but functions flawlessly. They understood our needs and delivered a website that exceeded our expectations. We highly recommend Parag Gogari for their expertise and dedication to providing successful digital solutions."
                 </p>
-                <div class="testimonial-author-avatar">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Satish-Sumbad-280x280.jpg" alt="Satish Sumbad avatar">
+                <div class="testimonial-author-meta">
+                  <h3 class="testimonial-author-name">Satish Sumbad</h3>
+                  <div class="testimonial-author-company">Owner, Chembur Mobile Zone</div>
                 </div>
-                <h3 class="testimonial-author-name">Satish Sumbad</h3>
-                <div class="testimonial-author-company">Owner, Chembur Mobile Zone</div>
               </div>
             </div>
-            
-            <!-- Slide 4 -->
-            <div class="swiper-slide">
-              <div class="testimonial-slide-content">
+
+            <!-- Slide 4: Right Source Aviation -->
+            <div class="right-slide" data-index="3">
+              <div class="right-slide-content">
+                <div class="quote-symbol"><i class="fa-solid fa-quote-left"></i></div>
                 <p class="testimonial-quote-text">
                   "Customer service, website Aesthetic & content creation was top notch, I highly appreciate his quality of being ethical and passion for his work."
                 </p>
-                <div class="testimonial-author-avatar">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/RightSourceAviation-testimonial-280x280.jpg" alt="Capt. Vishal Vijay Gandhi avatar">
+                <div class="testimonial-author-meta">
+                  <h3 class="testimonial-author-name">Capt. Vishal Vijay Gandhi</h3>
+                  <div class="testimonial-author-company">Owner, Right Source Aviation</div>
                 </div>
-                <h3 class="testimonial-author-name">Capt. Vishal Vijay Gandhi</h3>
-                <div class="testimonial-author-company">Owner, Right Source Aviation</div>
               </div>
             </div>
-            
-            <!-- Slide 5 -->
-            <div class="swiper-slide">
-              <div class="testimonial-slide-content">
+
+            <!-- Slide 5: Shree Online -->
+            <div class="right-slide" data-index="4">
+              <div class="right-slide-content">
+                <div class="quote-symbol"><i class="fa-solid fa-quote-left"></i></div>
                 <p class="testimonial-quote-text">
                   "Mantrakaar truly understood our vision and business ethos when we sought to redesign the logos for Shree Online & WOW Trip Makers. Their creativity, color selection, and logo design perfectly captured our brands’ essence. We were thoroughly impressed with their work and highly recommend Mantrakaar not only for logo designing but also for website development."
                 </p>
-                <div class="testimonial-author-avatar">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Hemant-vyas-280x280.jpg" alt="Hemant Vyas avatar">
+                <div class="testimonial-author-meta">
+                  <h3 class="testimonial-author-name">Hemant Vyas</h3>
+                  <div class="testimonial-author-company">Owner, Shree Online</div>
                 </div>
-                <h3 class="testimonial-author-name">Hemant Vyas</h3>
-                <div class="testimonial-author-company">Owner, Shree Online</div>
               </div>
             </div>
-            
-            <!-- Slide 6 -->
-            <div class="swiper-slide">
-              <div class="testimonial-slide-content">
+
+            <!-- Slide 6: Siddhi Penkar -->
+            <div class="right-slide" data-index="5">
+              <div class="right-slide-content">
+                <div class="quote-symbol"><i class="fa-solid fa-quote-left"></i></div>
                 <p class="testimonial-quote-text">
                   "Just want to share my experience with Mantrakar. I had a vision for my portfolio and I just did not know how to do it graphically. So that’s where Mantrakar came in the picture. Parag got in touch with me soon after And I think he helped me build my portfolio within a week’s time And he actually delivered me the kind of vision I had for my portfolio. So highly recommended, guys."
                 </p>
-                <div class="testimonial-author-avatar">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Siddhi-penkar-280x280.jpg" alt="Siddhi Penkar avatar">
+                <div class="testimonial-author-meta">
+                  <h3 class="testimonial-author-name">Siddhi Penkar</h3>
+                  <div class="testimonial-author-company">Fashion Designer</div>
                 </div>
-                <h3 class="testimonial-author-name">Siddhi Penkar</h3>
-                <div class="testimonial-author-company">Fashion Designer</div>
               </div>
             </div>
-            
-            <!-- Slide 7 -->
-            <div class="swiper-slide">
-              <div class="testimonial-slide-content">
+
+            <!-- Slide 7: Royal Printers -->
+            <div class="right-slide" data-index="6">
+              <div class="right-slide-content">
+                <div class="quote-symbol"><i class="fa-solid fa-quote-left"></i></div>
                 <p class="testimonial-quote-text">
                   "Mr Parag & team from Mantrakar has made our Website www.royalprinters.in, they are very professional and made the website very SEO friendly guiding us to select the right keywords and also they delivered the website as per commitment!"
                 </p>
-                <div class="testimonial-author-avatar">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2024/07/Lal-Sabnani.png" alt="Lal Sabnani avatar">
+                <div class="testimonial-author-meta">
+                  <h3 class="testimonial-author-name">Lal Sabnani</h3>
+                  <div class="testimonial-author-company">Owner, Royal Printers</div>
                 </div>
-                <h3 class="testimonial-author-name">Lal Sabnani</h3>
-                <div class="testimonial-author-company">Owner, Royal Printers</div>
               </div>
             </div>
-            
-            <!-- Slide 8 -->
-            <div class="swiper-slide">
-              <div class="testimonial-slide-content">
+
+            <!-- Slide 8: AIM Financial Services -->
+            <div class="right-slide" data-index="7">
+              <div class="right-slide-content">
+                <div class="quote-symbol"><i class="fa-solid fa-quote-left"></i></div>
                 <p class="testimonial-quote-text">
                   "Mr. Parag Gogari has been an absolute game-changer for my business. He completely revamped my website, transforming it into visually stunning platform. The new design is not only modern and attractive but also highly functional and accessible across all gadgets. Parag’s expertise and attention to detail ensured that the site runs smoothly and efficiently. I am happy with the results and highly recommend to anyone."
                 </p>
-                <div class="testimonial-author-avatar">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2024/07/VIshal-bhuta.png" alt="Vishal Bhuta avatar">
+                <div class="testimonial-author-meta">
+                  <h3 class="testimonial-author-name">Vishal Bhuta</h3>
+                  <div class="testimonial-author-company">Owner, AIM Financial Services</div>
                 </div>
-                <h3 class="testimonial-author-name">Vishal Bhuta</h3>
-                <div class="testimonial-author-company">Owner, AIM Financial Services</div>
               </div>
             </div>
-            
-            <!-- Slide 9 -->
-            <div class="swiper-slide">
-              <div class="testimonial-slide-content">
+
+            <!-- Slide 9: Pure Mist -->
+            <div class="right-slide" data-index="8">
+              <div class="right-slide-content">
+                <div class="quote-symbol"><i class="fa-solid fa-quote-left"></i></div>
                 <p class="testimonial-quote-text">
                   "Working with Mantrakaar Digital for the development of our website has been an excellent experience. I am really happy with the final output – the website has turned out exactly as I had envisioned, both in terms of design and functionality. The project was delivered on time, and the entire process was handled very professionally. What I truly appreciate is the commendable follow-up and constant support provided by the Mantrakaar Digital team, ensuring that every detail was taken care of. I highly recommend their services to anyone looking for a reliable and creative digital partner."
                 </p>
-                <div class="testimonial-author-avatar">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/08/Kalpesh-Karia-280x280.webp" alt="Mr. Kalpesh Karia avatar">
+                <div class="testimonial-author-meta">
+                  <h3 class="testimonial-author-name">Mr. Kalpesh Karia</h3>
+                  <div class="testimonial-author-company">Owner, Pure Mist</div>
                 </div>
-                <h3 class="testimonial-author-name">Mr. Kalpesh Karia</h3>
-                <div class="testimonial-author-company">Owner, Pure Mist</div>
               </div>
             </div>
-            
-            <!-- Slide 10 -->
-            <div class="swiper-slide">
-              <div class="testimonial-slide-content">
+
+            <!-- Slide 10: Samadhan Diagnostic Centre -->
+            <div class="right-slide" data-index="9">
+              <div class="right-slide-content">
+                <div class="quote-symbol"><i class="fa-solid fa-quote-left"></i></div>
                 <p class="testimonial-quote-text">
                   "Working with Parag Gogari and the Mantrakaar team was an absolute pleasure. They delivered a truly wonderful website for Samadhan Diagnostic Centre that perfectly aligns with our brand colors and vision, developed precisely as per our expectations and brief. The site is fast-loading, offers a fantastic look & feel, and is commendably through the point. Our users find it incredibly easy to navigate, making their experience seamless. Mantrakaar Digital LLP truly transformed our online presence!"
                 </p>
-                <div class="testimonial-author-avatar">
-                  <img src="https://mantrakaar.com/wp-content/uploads/2025/08/Dr.-Dhanashree-More-280x280.webp" alt="Dr. Dhanashree More avatar">
+                <div class="testimonial-author-meta">
+                  <h3 class="testimonial-author-name">Dr. Dhanashree More</h3>
+                  <div class="testimonial-author-company">Owner, Samadhan Diagnostic Centre</div>
                 </div>
-                <h3 class="testimonial-author-name">Dr. Dhanashree More</h3>
-                <div class="testimonial-author-company">Owner, Samadhan Diagnostic Centre</div>
               </div>
             </div>
-            
+
           </div>
-          
-          <!-- Testimonials Nav Elements -->
-          <div class="swiper-pagination testimonial-pagination" style="bottom: -20px;"></div>
         </div>
-        
-        <!-- View All Testimonials Button Link -->
-        <div class="reveal-element reveal-slide-up" style="text-align: center; margin-top: 15px;" data-delay="100ms">
+
+        <!-- Progress/Dots Navigation -->
+        <div class="split-testimonials-nav">
+          <button class="nav-dot active" data-index="0" aria-label="Go to Slide 1"></button>
+          <button class="nav-dot" data-index="1" aria-label="Go to Slide 2"></button>
+          <button class="nav-dot" data-index="2" aria-label="Go to Slide 3"></button>
+          <button class="nav-dot" data-index="3" aria-label="Go to Slide 4"></button>
+          <button class="nav-dot" data-index="4" aria-label="Go to Slide 5"></button>
+          <button class="nav-dot" data-index="5" aria-label="Go to Slide 6"></button>
+          <button class="nav-dot" data-index="6" aria-label="Go to Slide 7"></button>
+          <button class="nav-dot" data-index="7" aria-label="Go to Slide 8"></button>
+          <button class="nav-dot" data-index="8" aria-label="Go to Slide 9"></button>
+          <button class="nav-dot" data-index="9" aria-label="Go to Slide 10"></button>
+        </div>
+
+      </div>
+
+      <!-- Bottom CTA Button -->
+      <div class="grid-container" style="padding-top: 45px; padding-bottom: 75px; text-align: center;">
+        <div class="reveal-element reveal-slide-up" data-delay="150ms">
           <div class="btn-magnetic-wrap">
-            <a href="https://mantrakaar.com/testimonials/" class="btn-magnetic btn-white-outline" data-i18n="view_all_testimonials">
-              <span>View All Testimonials</span>
+            <a href="https://mantrakaar.com/testimonials/" class="btn-magnetic">
+              <span data-i18n="view_all_testimonials">VIEW ALL TESTIMONIALS</span>
             </a>
           </div>
         </div>
-        
       </div>
+
     </section>
 
     <!-- ==========================================================================
