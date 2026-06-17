@@ -29,6 +29,83 @@
   
   <!-- GSAP for animations (sequential timeline sequencing) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <style>
+    /* ── Work Photo Bento Grid ── */
+    .work-photo-bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 72px;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+    .wpb-card {
+      position: relative; border-radius: 14px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07); cursor: pointer;
+      transition: border-color 0.35s, transform 0.35s;
+    }
+    .wpb-card:hover { border-color: rgba(170,0,211,0.5); transform: translateY(-5px); }
+    .wpb-card.c-wide { grid-column: span 7; grid-row: span 5; }
+    .wpb-card.c-tall { grid-column: span 5; grid-row: span 5; }
+    .wpb-card.c-std  { grid-column: span 4; grid-row: span 4; }
+    .wpb-card.c-med  { grid-column: span 6; grid-row: span 4; }
+    .wpb-card.c-full { grid-column: span 8; grid-row: span 4; }
+    .wpb-photo {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center top;
+      transition: transform 0.65s;
+    }
+    .wpb-card:hover .wpb-photo { transform: scale(1.06); }
+    .wpb-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.2) 55%, transparent 100%);
+    }
+    .wpb-glow {
+      position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
+      width: 200px; height: 100px;
+      background: radial-gradient(ellipse, rgba(170,0,211,0.55), transparent 70%);
+      opacity: 0; transition: opacity 0.4s; pointer-events: none;
+    }
+    .wpb-card:hover .wpb-glow { opacity: 1; }
+    .wpb-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 22px 26px; z-index: 2;
+    }
+    .wpb-tag {
+      display: inline-block; font-size: 9px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-bottom: 6px;
+    }
+    .wpb-title {
+      font-size: clamp(15px, 1.8vw, 22px); font-weight: 700; color: #fff;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 6px;
+    }
+    .wpb-desc {
+      font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5;
+      margin-bottom: 10px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .wpb-caps { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+    .wpb-cap {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--brand-purple); background: rgba(170,0,211,0.1);
+      border: 1px solid rgba(170,0,211,0.2); padding: 3px 9px; border-radius: 100px;
+    }
+    .wpb-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.25s, gap 0.25s;
+    }
+    .wpb-card:hover .wpb-link { color: #fff; gap: 10px; }
+    @media (max-width: 900px) {
+      .work-photo-bento { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+      .wpb-card.c-wide, .wpb-card.c-tall, .wpb-card.c-std, .wpb-card.c-med, .wpb-card.c-full { grid-column: span 2; grid-row: span 2; }
+    }
+    @media (max-width: 600px) {
+      .work-photo-bento { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+      .wpb-card.c-wide, .wpb-card.c-tall, .wpb-card.c-std, .wpb-card.c-med, .wpb-card.c-full { grid-column: span 1; grid-row: span 1; }
+    }
+  </style>
 </head>
 <body>
 
@@ -492,302 +569,117 @@
     </section>
 
     <!-- ==========================================================================
-         6. Our Work Section (Unchanged content ordering)
-         ========================================================================== */ -->
+         6. Our Work Section — Bento Grid with Real Project Photos
+         ========================================================================== -->
     <section class="vc_section" id="work-section">
       <div class="grid-container">
-        
+
         <div class="section-header reveal-element reveal-scale-up" style="text-align: center; margin-bottom: 30px;">
           <h2 data-i18n="work_title">Our Work</h2>
         </div>
-        
-        <!-- Minimalist Category Filters -->
-        <div class="portfolio-filters reveal-element reveal-slide-up" data-delay="100ms">
-          <button class="filter-btn active" data-filter="all">All Projects</button>
-          <button class="filter-btn" data-filter="ai-saas">AI & SaaS</button>
-          <button class="filter-btn" data-filter="branding-3d">Branding & 3D</button>
-          <button class="filter-btn" data-filter="mobile-ui">Mobile UI</button>
+
+
+        <div class="work-photo-bento">
+
+          <!-- Card 1 — Wide: WOW Trip Makers -->
+          <div class="wpb-card c-wide reveal-element reveal-skew-up" data-category="branding" data-delay="0ms">
+            <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/Wow-1.jpg');"></div>
+            <div class="wpb-overlay"></div>
+            <div class="wpb-glow"></div>
+            <div class="wpb-content">
+              <span class="wpb-tag">Travel Agency</span>
+              <div class="wpb-title">WOW Trip Makers</div>
+              <div class="wpb-desc">Complete brand collateral for an air ticketing agency — crafting a visual identity that captures the excitement of travel and builds instant client trust.</div>
+              <div class="wpb-caps">
+                <span class="wpb-cap">Branding</span><span class="wpb-cap">Brand Collateral</span>
+              </div>
+              <a href="https://mantrakaar.com/portfolio-item/wow-trip-makers/" target="_blank" class="wpb-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Card 2 — Tall: Bliss By Bhadra -->
+          <div class="wpb-card c-tall reveal-element reveal-skew-up" data-category="branding" data-delay="100ms">
+            <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/Bliss-01.jpg');"></div>
+            <div class="wpb-overlay"></div>
+            <div class="wpb-glow"></div>
+            <div class="wpb-content">
+              <span class="wpb-tag">Skincare</span>
+              <div class="wpb-title">Bliss By Bhadra</div>
+              <div class="wpb-desc">Handcrafted skincare brand collateral — elegant packaging design and visual identity for a boutique beauty label.</div>
+              <div class="wpb-caps">
+                <span class="wpb-cap">Brand Collateral</span>
+              </div>
+              <a href="https://mantrakaar.com/portfolio-item/bliss/" target="_blank" class="wpb-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Card 3 — Standard: Chembur Mobile Zone -->
+          <div class="wpb-card c-med reveal-element reveal-skew-up" data-category="web" data-delay="200ms">
+            <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/CemburMobilezone.jpg');"></div>
+            <div class="wpb-overlay"></div>
+            <div class="wpb-glow"></div>
+            <div class="wpb-content">
+              <span class="wpb-tag">Mobile Retail</span>
+              <div class="wpb-title">Chembur Mobile Zone</div>
+              <div class="wpb-desc">Web development &amp; brand collateral for a mobile retail shop.</div>
+              <div class="wpb-caps"><span class="wpb-cap">Web Dev</span><span class="wpb-cap">Branding</span></div>
+              <a href="https://mantrakaar.com/portfolio-item/chembur-mobile-zone/" target="_blank" class="wpb-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Card 4 — Standard: Shree Online -->
+          <div class="wpb-card c-med reveal-element reveal-skew-up" data-category="branding" data-delay="300ms">
+            <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/Shree-Online-1.jpg');"></div>
+            <div class="wpb-overlay"></div>
+            <div class="wpb-glow"></div>
+            <div class="wpb-content">
+              <span class="wpb-tag">Travel Agency</span>
+              <div class="wpb-title">Shree Online</div>
+              <div class="wpb-desc">Logo redesign &amp; brand collateral that perfectly captured the brand's essence.</div>
+              <div class="wpb-caps"><span class="wpb-cap">Branding</span><span class="wpb-cap">Logo Redesign</span></div>
+              <a href="https://mantrakaar.com/portfolio-item/shree-online/" target="_blank" class="wpb-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Card 5 — Full wide: Right Source Aviation -->
+          <div class="wpb-card c-full reveal-element reveal-skew-up" data-category="web" data-delay="400ms">
+            <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/RSA1300x837.jpg');"></div>
+            <div class="wpb-overlay"></div>
+            <div class="wpb-glow"></div>
+            <div class="wpb-content">
+              <span class="wpb-tag">Aviation · Pilot Training Academy</span>
+              <div class="wpb-title">Right Source Aviation</div>
+              <div class="wpb-desc">Website &amp; brand collateral for a pilot training academy — professional digital presence built for credibility in the aviation sector.</div>
+              <div class="wpb-caps"><span class="wpb-cap">Web Dev</span><span class="wpb-cap">Brand Collateral</span></div>
+              <a href="https://mantrakaar.com/portfolio-item/right-source-aviation/" target="_blank" class="wpb-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Card 6 — Standard: Verma Enterprise -->
+          <div class="wpb-card c-std reveal-element reveal-skew-up" data-category="web" data-delay="500ms">
+            <div class="wpb-photo" style="background-image:url('https://mantrakaar.com/wp-content/uploads/2024/02/VE1300x837.jpg');"></div>
+            <div class="wpb-overlay"></div>
+            <div class="wpb-glow"></div>
+            <div class="wpb-content">
+              <span class="wpb-tag">Construction</span>
+              <div class="wpb-title">Verma Enterprise</div>
+              <div class="wpb-desc">Professional website for a construction company establishing a strong online presence.</div>
+              <div class="wpb-caps"><span class="wpb-cap">Web Dev</span></div>
+              <a href="https://mantrakaar.com/portfolio-item/verma-enterprise/" target="_blank" class="wpb-link">View Project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
         </div>
-        
-        <!-- Asymmetric Bento Grid -->
-        <div class="work-bento-grid">
-          
-          <!-- Card 1: Interactive Web Systems (Span 8) -->
-          <div class="work-bento-card card-wide reveal-element reveal-skew-up" data-category="ai-saas" data-delay="0ms">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <span class="project-tag">Web Applications</span>
-              <h3 class="project-title">Interactive Web Systems</h3>
-              <p class="project-description">Crafting scalable, high-performance web applications equipped with responsive UI frameworks, modern design tokens, and real-time frontend compiling interfaces.</p>
-              <div class="project-capsules">
-                <span class="project-capsule">TypeScript</span>
-                <span class="project-capsule">NextJS</span>
-                <span class="project-capsule">CSS Grid</span>
-              </div>
-              <div class="btn-magnetic-wrap">
-                <a href="#" class="btn-magnetic project-link">
-                  <span>Explore Demo</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-widget widget-nova">
-              <div class="terminal-container">
-                <div class="terminal-header">
-                  <div class="terminal-dots">
-                    <span class="dot-red"></span>
-                    <span class="dot-yellow"></span>
-                    <span class="dot-green"></span>
-                  </div>
-                  <div class="terminal-title">web-terminal.sh</div>
-                </div>
-                <div class="terminal-body">
-                  <div class="terminal-prompt">$ <span class="prompt-text"></span><span class="terminal-cursor">|</span></div>
-                  <div class="terminal-output"></div>
-                </div>
-              </div>
-              <div class="terminal-triggers">
-                <button class="trigger-btn" data-prompt="Build dashboard screen">Dashboard</button>
-                <button class="trigger-btn" data-prompt="Generate styling guide">Theme</button>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Card 2: 3D Brand Experiences (Span 4) -->
-          <div class="work-bento-card card-tall reveal-element reveal-skew-up" data-category="branding-3d" data-delay="100ms">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <span class="project-tag">3D & Creative</span>
-              <h3 class="project-title">3D Brand Experiences</h3>
-              <p class="project-description">Shaping immersive spatial brand identities combining physical graphic guidelines with interactive 3D WebGL virtual assets.</p>
-              <div class="project-capsules">
-                <span class="project-capsule">WebGL</span>
-                <span class="project-capsule">ThreeJS</span>
-                <span class="project-capsule">Blender</span>
-              </div>
-              <div class="btn-magnetic-wrap">
-                <a href="#" class="btn-magnetic project-link">
-                  <span>View Design</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-widget widget-aether">
-              <div class="sphere-wrapper">
-                <svg class="sphere-svg" viewBox="0 0 200 200">
-                  <defs>
-                    <radialGradient id="sphere-glow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stop-color="var(--brand-purple)" stop-opacity="0.3"></stop>
-                      <stop offset="100%" stop-color="var(--brand-purple)" stop-opacity="0"></stop>
-                    </radialGradient>
-                  </defs>
-                  <!-- Background Glow -->
-                  <circle cx="100" cy="100" r="80" fill="url(#sphere-glow)"></circle>
-                  <!-- Rotating Rings -->
-                  <ellipse class="ring ring-1" cx="100" cy="100" rx="70" ry="25" fill="none" stroke="var(--brand-purple)" stroke-width="1.5" stroke-opacity="0.8"></ellipse>
-                  <ellipse class="ring ring-2" cx="100" cy="100" rx="70" ry="25" fill="none" stroke="#e200ff" stroke-width="1.5" stroke-opacity="0.6" transform="rotate(60, 100, 100)"></ellipse>
-                  <ellipse class="ring ring-3" cx="100" cy="100" rx="70" ry="25" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.5" transform="rotate(120, 100, 100)"></ellipse>
-                  <circle class="sphere-core" cx="100" cy="100" r="15" fill="none" stroke="#ffffff" stroke-width="2"></circle>
-                </svg>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Card 3: Smart IoT Dashboards (Span 4) -->
-          <div class="work-bento-card card-standard reveal-element reveal-skew-up" data-category="ai-saas" data-delay="200ms">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <span class="project-tag">IoT & SaaS</span>
-              <h3 class="project-title">Smart IoT Dashboards</h3>
-              <p class="project-description">Building telematics visualization grids for hardware, electric vehicle networks, and real-time industrial sensor coordinates.</p>
-              <div class="project-capsules">
-                <span class="project-capsule">IoT</span>
-                <span class="project-capsule">Telemetry</span>
-                <span class="project-capsule">SVG</span>
-              </div>
-              <div class="btn-magnetic-wrap">
-                <a href="#" class="btn-magnetic project-link">
-                  <span>Open Console</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-widget widget-veloce">
-              <div class="gauge-container">
-                <svg class="gauge-svg" viewBox="0 0 120 120">
-                  <circle class="gauge-bg" cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"></circle>
-                  <circle class="gauge-fill" cx="60" cy="60" r="45" fill="none" stroke="var(--brand-purple)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="283"></circle>
-                  <g class="gauge-needle-wrap">
-                    <line class="gauge-needle" x1="60" y1="60" x2="60" y2="25" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></line>
-                    <circle cx="60" cy="60" r="4" fill="#ffffff"></circle>
-                  </g>
-                </svg>
-                <div class="gauge-value">0%</div>
-              </div>
-              <div class="battery-container">
-                <div class="battery-head"></div>
-                <div class="battery-body">
-                  <div class="battery-level"></div>
-                </div>
-                <div class="battery-label">12%</div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Card 4: iOS Mobile Interfaces (Span 4) -->
-          <div class="work-bento-card card-standard reveal-element reveal-skew-up" data-category="mobile-ui" data-delay="300ms">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <span class="project-tag">Mobile UI/UX</span>
-              <h3 class="project-title">iOS Mobile Interfaces</h3>
-              <p class="project-description">Designing active mobile viewport frames, health integrations, and dynamic ring charts tailored for native mobile platforms.</p>
-              <div class="project-capsules">
-                <span class="project-capsule">SwiftUI</span>
-                <span class="project-capsule">iOS</span>
-                <span class="project-capsule">Biometrics</span>
-              </div>
-              <div class="btn-magnetic-wrap">
-                <a href="#" class="btn-magnetic project-link">
-                  <span>Interactive Mockup</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-widget widget-apex">
-              <div class="phone-frame">
-                <div class="phone-screen">
-                  <div class="phone-notch"></div>
-                  <div class="phone-app">
-                    <div class="app-header">
-                      <span class="app-title">Health Tracker</span>
-                      <i class="fa-solid fa-bell app-bell"></i>
-                    </div>
-                    <div class="app-rings">
-                      <svg class="ring-svg" viewBox="0 0 100 100">
-                        <!-- Red Ring -->
-                        <circle class="ring-bg-circle red-bg" cx="50" cy="50" r="40" fill="none" stroke="rgba(255, 0, 77, 0.15)" stroke-width="8"></circle>
-                        <circle class="ring-fill-circle red-fill" cx="50" cy="50" r="40" fill="none" stroke="#ff004d" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"></circle>
-                        <!-- Purple Ring -->
-                        <circle class="ring-bg-circle purple-bg" cx="50" cy="50" r="28" fill="none" stroke="rgba(170, 0, 211, 0.15)" stroke-width="8"></circle>
-                        <circle class="ring-fill-circle purple-fill" cx="50" cy="50" r="28" fill="none" stroke="var(--brand-purple)" stroke-width="8" stroke-dasharray="175.9" stroke-dashoffset="175.9" stroke-linecap="round"></circle>
-                      </svg>
-                      <div class="rings-data">
-                        <div class="data-item"><span class="dot-marker red"></span> 420 Cal</div>
-                        <div class="data-item"><span class="dot-marker purple"></span> 2.4k Steps</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Card 5: Editorial & Brutalist Layouts (Span 4) -->
-          <div class="work-bento-card card-standard reveal-element reveal-skew-up" data-category="branding-3d" data-delay="400ms">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <span class="project-tag">Editorial Design</span>
-              <h3 class="project-title">Editorial & Brutalist Layouts</h3>
-              <p class="project-description">Structuring minimal, high-impact layouts utilizing raw typography systems, modular grids, and interactive vector guidelines.</p>
-              <div class="project-capsules">
-                <span class="project-capsule">Brutalist</span>
-                <span class="project-capsule">Typography</span>
-                <span class="project-capsule">Grid Canvas</span>
-              </div>
-              <div class="btn-magnetic-wrap">
-                <a href="#" class="btn-magnetic project-link">
-                  <span>Explore Blueprint</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-widget widget-solas">
-              <div class="blueprint-canvas">
-                <div class="blueprint-grid-lines"></div>
-                <div class="blueprint-crosshair-h"></div>
-                <div class="blueprint-crosshair-v"></div>
-                <svg class="blueprint-svg" viewBox="0 0 150 150">
-                  <rect class="bp-border" x="15" y="15" width="120" height="120" fill="none" stroke="rgba(170, 0, 211, 0.3)" stroke-width="1" stroke-dasharray="4"></rect>
-                  <circle class="bp-circle" cx="75" cy="75" r="40" fill="none" stroke="var(--brand-purple)" stroke-width="1.5" stroke-opacity="0.8"></circle>
-                  <line class="bp-diag-1" x1="15" y1="15" x2="135" y2="135" stroke="rgba(255,255,255,0.15)" stroke-width="1"></line>
-                  <line class="bp-diag-2" x1="135" y1="15" x2="15" y2="135" stroke="rgba(255,255,255,0.15)" stroke-width="1"></line>
-                  <rect class="bp-inner-box" x="50" y="50" width="50" height="50" fill="none" stroke="#ffffff" stroke-width="1" stroke-opacity="0.5"></rect>
-                </svg>
-                <div class="blueprint-coord">X: 000 | Y: 000</div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Card 6: Web3 & FinTech Platforms (Span 8) -->
-          <div class="work-bento-card card-full reveal-element reveal-skew-up" data-category="ai-saas" data-delay="500ms">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <span class="project-tag">Web3 & FinTech</span>
-              <h3 class="project-title">Web3 & FinTech Platforms</h3>
-              <p class="project-description">Designing low-latency digital asset trading dashboards complete with neon candlestick trend graphs, pricing markers, and fluid ratio selectors.</p>
-              <div class="project-capsules">
-                <span class="project-capsule">Web3 API</span>
-                <span class="project-capsule">Data Charts</span>
-                <span class="project-capsule">High-Performance</span>
-              </div>
-              <div class="btn-magnetic-wrap">
-                <a href="#" class="btn-magnetic project-link">
-                  <span>Enter Exchange</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-widget widget-zenith">
-              <div class="trading-terminal">
-                <div class="chart-header">
-                  <span class="pair">BTC / USDT</span>
-                  <span class="price green-text">$98,420.00 <i class="fa-solid fa-caret-up"></i> (+12.4%)</span>
-                </div>
-                <div class="chart-canvas-wrap">
-                  <div class="chart-grid"></div>
-                  <div class="chart-laser-line-h"></div>
-                  <div class="chart-laser-line-v"></div>
-                  <svg class="chart-svg" viewBox="0 0 350 120" preserveAspectRatio="none">
-                    <!-- Grid Lines -->
-                    <line x1="0" y1="30" x2="350" y2="30" stroke="rgba(255,255,255,0.05)" stroke-width="1"></line>
-                    <line x1="0" y1="60" x2="350" y2="60" stroke="rgba(255,255,255,0.05)" stroke-width="1"></line>
-                    <line x1="0" y1="90" x2="350" y2="90" stroke="rgba(255,255,255,0.05)" stroke-width="1"></line>
-                    <!-- Candlesticks -->
-                    <line x1="30" y1="70" x2="30" y2="100" stroke="#ff004d" stroke-width="1.5"></line>
-                    <rect x="25" y="75" width="10" height="20" fill="#ff004d"></rect>
-                    <line x1="70" y1="50" x2="70" y2="90" stroke="#00ffcc" stroke-width="1.5"></line>
-                    <rect x="65" y="55" width="10" height="25" fill="#00ffcc"></rect>
-                    <line x1="110" y1="40" x2="110" y2="80" stroke="#00ffcc" stroke-width="1.5"></line>
-                    <rect x="105" y="45" width="10" height="25" fill="#00ffcc"></rect>
-                    <line x1="150" y1="60" x2="150" y2="95" stroke="#ff004d" stroke-width="1.5"></line>
-                    <rect x="145" y="65" width="10" height="25" fill="#ff004d"></rect>
-                    <line x1="190" y1="30" x2="190" y2="70" stroke="#00ffcc" stroke-width="1.5"></line>
-                    <rect x="185" y="35" width="10" height="30" fill="#00ffcc"></rect>
-                    <line x1="230" y1="20" x2="230" y2="55" stroke="#00ffcc" stroke-width="1.5"></line>
-                    <rect x="225" y="25" width="10" height="25" fill="#00ffcc"></rect>
-                    <line x1="270" y1="15" x2="270" y2="45" stroke="#00ffcc" stroke-width="1.5"></line>
-                    <rect x="265" y="20" width="10" height="20" fill="#00ffcc"></rect>
-                    <line x1="310" y1="10" x2="310" y2="35" stroke="#00ffcc" stroke-width="1.5"></line>
-                    <rect x="305" y="12" width="10" height="18" fill="#00ffcc"></rect>
-                  </svg>
-                  <div class="chart-tooltip">BTC: $98,420.00</div>
-                </div>
-                <div class="slider-control-wrap">
-                  <span class="label">TRADE RATIO:</span>
-                  <div class="custom-slider-track">
-                    <div class="custom-slider-fill"></div>
-                    <div class="custom-slider-thumb"></div>
-                  </div>
-                  <span class="ratio-val">50%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- View More Work Button -->
+
+        <!-- View All Projects Button -->
         <div class="work-more-btn-wrap reveal-element reveal-slide-up" data-delay="100ms">
           <div class="btn-magnetic-wrap">
-            <a href="https://mantrakaar.com/projects/" class="btn-magnetic" data-i18n="work_more">
-              <span>View More Work</span>
+            <a href="projects.html" class="btn-magnetic">
+              <span data-i18n="work_more">View All Projects</span>
             </a>
           </div>
         </div>
-        
+
       </div>
     </section>
 
