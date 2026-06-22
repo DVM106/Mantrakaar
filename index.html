@@ -16,7 +16,7 @@
   <link rel="icon" href="https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png" type="image/png">
   
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=4.5">
+  <link rel="stylesheet" href="css/main.css?v=5.3">
   
   <!-- Third-Party CDN Libraries -->
   <!-- Fonts -->
@@ -29,8 +29,55 @@
   
   <!-- GSAP for animations (sequential timeline sequencing) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- Structured Data (Schema.org JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mantrakaar",
+    "url": "https://mantrakaar.com/",
+    "logo": "https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png",
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-90910-91903",
+        "contactType": "sales",
+        "areaServed": "IN"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+44-7411-334480",
+        "contactType": "sales",
+        "areaServed": "GB"
+      }
+    ],
+    "sameAs": [
+      "https://facebook.com/mantrakaar",
+      "https://www.instagram.com/mantrakaar/",
+      "https://www.linkedin.com/company/mantrakaar"
+    ]
+  }
+  </script>
 </head>
 <body>
+
+  <!-- Lock scroll and force scroll to top during loader -->
+  <script>
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    window.scrollTo(0, 0);
+    
+    // Failsafe to unlock scroll after 15 seconds in case animation script is blocked/fails
+    setTimeout(function() {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }, 15000);
+    
+    // Ensure we reset to top on page unload so reload starts at y=0
+    window.addEventListener('beforeunload', function() {
+      window.scrollTo(0, 0);
+    });
+  </script>
 
   <!-- Keyboard Navigation Skip Link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -107,7 +154,6 @@
               <ul class="lang-dropdown" aria-label="Languages">
                 <li><a href="#" data-lang="en">English</a></li>
                 <li><a href="#" data-lang="hi">Hindi (हिंदी)</a></li>
-                <li><a href="#" data-lang="es">Spanish (Español)</a></li>
               </ul>
             </div>
           </div>
@@ -164,7 +210,7 @@
   <!-- ==========================================================================
        Main Content Container
        ========================================================================== */ -->
-  <main id="main-content" style="padding-top: 80px;">
+  <main id="main-content" style="padding-top: 0;">
 
     <!-- ==========================================================================
          2. Hero Section (Replaces original header slider with custom animations)
@@ -340,7 +386,7 @@
         </div>
         
         <!-- Explore Work Button at the bottom of the section -->
-        <div class="services-explore-btn-wrap reveal-element reveal-slide-up" data-delay="100ms" style="text-align: center; margin-top: 50px;">
+        <div class="services-explore-btn-wrap reveal-element reveal-slide-up" data-delay="100ms" style="text-align: center; margin-top: 25px;">
           <div class="btn-magnetic-wrap">
             <a href="#work-section" class="btn-magnetic">
               <span data-i18n="explore_our_work">Explore Our Work</span>
@@ -366,123 +412,19 @@
 
       </div>
 
-      <!-- 3D Carousel Viewport (Placed outside grid-container to span full viewport width) -->
-      <div class="clients-carousel-viewport reveal-element reveal-slide-up" data-delay="100ms" aria-label="Client logos">
-        <div class="clients-carousel-track" style="--rotate-y: 0deg;">
-
-          <div class="clients-carousel-card" style="--card-index: 0;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co.">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 1;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 2;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 3;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 4;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 5;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 6;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 7;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 8;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Unikgifts">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 9;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/MURUGAN.jpg" alt="Murugan">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 10;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ATMOSSECURE.jpg" alt="Atmossecure">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 11;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 12;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="U.S. Elevators Co.">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 13;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="PBC Distributors">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 14;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 15;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="R Diamonds">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 16;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Cotton States">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 17;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Dev Trading">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 18;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="Dr. Rajesh Shaah">
-            </div>
-          </div>
-          <div class="clients-carousel-card" style="--card-index: 19;">
-            <div class="card-inner">
-              <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Andromeda">
-            </div>
-          </div>
-
-        </div>
-
+      <!-- Circular Gallery Viewport (Spans full viewport width) -->
+      <div class="reveal-element reveal-slide-up" data-delay="100ms" style="height: 450px; position: relative; margin-bottom: 20px; width: 100%; overflow: hidden;">
+        <div id="circular-gallery-container" class="circular-gallery"></div>
       </div>
 
       <div class="grid-container">
 
         <p class="clients-carousel-hint" style="margin-top: 30px; text-align: center;">
-          <i class="fa-solid fa-circle-info"></i> <span data-i18n="client_hint">HOVER AT THE LOGO TO PAUSE</span>
+          <i class="fa-solid fa-circle-info"></i> <span data-i18n="client_hint">DRAG OR HOVER TO PAUSE GALLERY</span>
         </p>
 
         <!-- Magnetic CTA Button -->
-        <div class="clients-cta-btn-wrap reveal-element reveal-slide-up" data-delay="150ms" style="text-align: center; margin-top: 40px;">
+        <div class="clients-cta-btn-wrap reveal-element reveal-slide-up" data-delay="150ms" style="text-align: center; margin-top: 20px;">
           <div class="btn-magnetic-wrap">
             <a href="https://mantrakaar.com/about/" class="btn-magnetic">
               <span data-i18n="client_cta">VIEW ALL CLIENTS</span>
@@ -622,62 +564,141 @@
           </p>
         </div>
         
-        <!-- Swiper Slideshow -->
-        <div class="carousel-outer-wrapper">
-          <div class="swiper blogs-swiper">
-            <div class="swiper-wrapper">
-              
-              <!-- Slide 1 -->
-              <div class="swiper-slide">
-                <article class="blog-card reveal-element reveal-skew-up" data-delay="0ms">
-                  <div class="blog-thumb-wrap">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2026/02/blog-.jpg-1500x1250.jpeg" loading="lazy" alt="Building a Human Brand: The “About Us” Section as Your Website’s Heart">
+        <!-- Quantum Card Stack Container -->
+        <div class="quantum-deck-outer-wrap">
+          <div class="quantum-deck-container">
+            
+            <!-- Card 1 -->
+            <div class="quantum-card active" data-index="0">
+              <div class="quantum-card-inner">
+                <div class="quantum-card-thumb" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2026/02/blog-.jpg-1500x1250.jpeg');"></div>
+                <div class="quantum-card-glass"></div>
+                <div class="quantum-card-glow-accent"></div>
+                <div class="quantum-card-content">
+                  <span class="quantum-card-index">01</span>
+                  <div class="quantum-card-date">February 18, 2026</div>
+                  <h3 class="quantum-card-title">Building a Human Brand: The “About Us” Section as Your Website’s Heart</h3>
+                  <p class="quantum-card-excerpt">In an increasingly automated digital landscape, your website's 'About Us' section is its heartbeat. Learn how humanizing your brand builds credibility and trust.</p>
+                  <div class="quantum-card-action">
+                    <a href="https://mantrakaar.com/building-a-human-brand-the-about-us-section-as-your-websites-heart/" class="quantum-card-link">
+                      <span>Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
                   </div>
-                  <div class="blog-card-content">
-                    <div class="blog-card-date">February 18, 2026</div>
-                    <h3 class="blog-card-title">Building a Human Brand: The “About Us” Section as Your Website’s Heart</h3>
-                    <p class="blog-card-excerpt">In an increasingly automated digital landscape, your website's 'About Us' section is its heartbeat. Learn how humanizing your brand builds credibility and trust.</p>
-                    <a href="https://mantrakaar.com/building-a-human-brand-the-about-us-section-as-your-websites-heart/" class="blog-card-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                  </div>
-                </article>
+                </div>
               </div>
-              
-              <!-- Slide 2 -->
-              <div class="swiper-slide">
-                <article class="blog-card reveal-element reveal-skew-up" data-delay="150ms">
-                  <div class="blog-thumb-wrap">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-2-1500x1250.jpg" loading="lazy" alt="Your Digital Practice: Why Doctors Need a Strong Online Presence">
-                  </div>
-                  <div class="blog-card-content">
-                    <div class="blog-card-date">May 29, 2025</div>
-                    <h3 class="blog-card-title">Your Digital Practice: Why Doctors Need a Strong Online Presence</h3>
-                    <p class="blog-card-excerpt">Discover why a strong website and search engine visibility are crucial for medical professionals to build trust and connect with prospective patients.</p>
-                    <a href="https://mantrakaar.com/your-digital-practice-why-doctors-need-a-strong-online-presence/" class="blog-card-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                  </div>
-                </article>
-              </div>
-              
-              <!-- Slide 3 -->
-              <div class="swiper-slide">
-                <article class="blog-card reveal-element reveal-skew-up" data-delay="300ms">
-                  <div class="blog-thumb-wrap">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-1-1500x1250.jpg" loading="lazy" alt="Your Digital Portfolio: How SEO Elevates Specialist Doctors Online">
-                  </div>
-                  <div class="blog-card-content">
-                    <div class="blog-card-date">May 20, 2025</div>
-                    <h3 class="blog-card-title">Your Digital Portfolio: How SEO Elevates Specialist Doctors Online</h3>
-                    <p class="blog-card-excerpt">For specialist doctors, SEO is the key to driving visibility. Learn how optimizing your digital portfolio secures search rankings and patient leads.</p>
-                    <a href="https://mantrakaar.com/your-digital-portfolio-how-seo-elevates-specialist-doctors-online/" class="blog-card-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                  </div>
-                </article>
-              </div>
-              
             </div>
-            <!-- Pagination -->
-            <div class="swiper-pagination"></div>
-            <!-- Navigation Arrows -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+
+            <!-- Card 2 -->
+            <div class="quantum-card" data-index="1">
+              <div class="quantum-card-inner">
+                <div class="quantum-card-thumb" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-2-1500x1250.jpg');"></div>
+                <div class="quantum-card-glass"></div>
+                <div class="quantum-card-glow-accent"></div>
+                <div class="quantum-card-content">
+                  <span class="quantum-card-index">02</span>
+                  <div class="quantum-card-date">May 29, 2025</div>
+                  <h3 class="quantum-card-title">Your Digital Practice: Why Doctors Need a Strong Online Presence</h3>
+                  <p class="quantum-card-excerpt">Discover why a strong website and search engine visibility are crucial for medical professionals to build trust and connect with prospective patients.</p>
+                  <div class="quantum-card-action">
+                    <a href="https://mantrakaar.com/your-digital-practice-why-doctors-need-a-strong-online-presence/" class="quantum-card-link">
+                      <span>Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="quantum-card" data-index="2">
+              <div class="quantum-card-inner">
+                <div class="quantum-card-thumb" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-1-1500x1250.jpg');"></div>
+                <div class="quantum-card-glass"></div>
+                <div class="quantum-card-glow-accent"></div>
+                <div class="quantum-card-content">
+                  <span class="quantum-card-index">03</span>
+                  <div class="quantum-card-date">May 20, 2025</div>
+                  <h3 class="quantum-card-title">Your Digital Portfolio: How SEO Elevates Specialist Doctors Online</h3>
+                  <p class="quantum-card-excerpt">For specialist doctors, SEO is the key to driving visibility. Learn how optimizing your digital portfolio secures search rankings and patient leads.</p>
+                  <div class="quantum-card-action">
+                    <a href="https://mantrakaar.com/your-digital-portfolio-how-seo-elevates-specialist-doctors-online/" class="quantum-card-link">
+                      <span>Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="quantum-card" data-index="3">
+              <div class="quantum-card-inner">
+                <div class="quantum-card-thumb" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2025/04/4-1500x1250.jpg');"></div>
+                <div class="quantum-card-glass"></div>
+                <div class="quantum-card-glow-accent"></div>
+                <div class="quantum-card-content">
+                  <span class="quantum-card-index">04</span>
+                  <div class="quantum-card-date">April 7, 2025</div>
+                  <h3 class="quantum-card-title">Your Digital Footprint: How Social Media Can Land You Your Dream Job</h3>
+                  <p class="quantum-card-excerpt">As a digital agency owner, I've seen firsthand how social media has transformed the way we connect, communicate, and even land our dream jobs. Your online footprint is your resume.</p>
+                  <div class="quantum-card-action">
+                    <a href="https://mantrakaar.com/your-digital-footprint-how-social-media-can-land-you-your-dream-job/" class="quantum-card-link">
+                      <span>Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="quantum-card" data-index="4">
+              <div class="quantum-card-inner">
+                <div class="quantum-card-thumb" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2025/04/web-7-1500x1250.jpg');"></div>
+                <div class="quantum-card-glass"></div>
+                <div class="quantum-card-glow-accent"></div>
+                <div class="quantum-card-content">
+                  <span class="quantum-card-index">05</span>
+                  <div class="quantum-card-date">March 31, 2025</div>
+                  <h3 class="quantum-card-title">The Digital Forge: Why Indian Manufacturers Must Embrace the Power of a Website</h3>
+                  <p class="quantum-card-excerpt">Discover why Indian manufacturers must embrace digital transformation through a strong website for growth and resilience in a post-pandemic global business landscape.</p>
+                  <div class="quantum-card-action">
+                    <a href="https://mantrakaar.com/the-digital-forge-why-indian-manufacturers-must-embrace-the-power-of-a-website/" class="quantum-card-link">
+                      <span>Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="quantum-card" data-index="5">
+              <div class="quantum-card-inner">
+                <div class="quantum-card-thumb" style="background-image: url('https://mantrakaar.com/wp-content/uploads/2025/03/2-1500x1250.jpg');"></div>
+                <div class="quantum-card-glass"></div>
+                <div class="quantum-card-glow-accent"></div>
+                <div class="quantum-card-content">
+                  <span class="quantum-card-index">06</span>
+                  <div class="quantum-card-date">March 24, 2025</div>
+                  <h3 class="quantum-card-title">Your Digital Handshake: Why Your Website Defines You</h3>
+                  <p class="quantum-card-excerpt">As the owner of a Digital Agency, I've witnessed firsthand the transformative power of a well-crafted website. It's not just code; it's your first handshake with the world.</p>
+                  <div class="quantum-card-action">
+                    <a href="https://mantrakaar.com/so-why-are-we-more-scared-than-ever/" class="quantum-card-link">
+                      <span>Read Article</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Deck Control HUD Buttons (Manual Swipe Triggers) -->
+          <div class="quantum-deck-controls">
+            <button class="quantum-deck-btn prev-btn" aria-label="Previous Article">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <span class="quantum-deck-pagination"><span class="curr-idx">1</span> / <span class="total-count">3</span></span>
+            <button class="quantum-deck-btn next-btn" aria-label="Next Article">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
           </div>
         </div>
         
@@ -698,7 +719,7 @@
     <section class="split-testimonials-section" id="testimonials-section">
       
       <!-- Section Header -->
-      <div class="grid-container" style="padding-top: 80px; padding-bottom: 20px;">
+      <div class="grid-container" style="padding-top: 40px; padding-bottom: 10px;">
         <div class="section-header reveal-element reveal-scale-up" style="text-align: center;">
           <h2 data-i18n="nav_testimonials">TESTIMONIALS</h2>
         </div>
@@ -716,9 +737,9 @@
               <div class="left-slide-overlay"></div>
               <div class="left-slide-content">
                 <div class="avatar-ring-wrap">
-                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2025/12/jhanvi-pallicha-1-280x280.webp" alt="Jhanvi Pallicha">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2025/12/jhanvi-pallicha-1-280x280.webp" alt="Jhanvi Pallicha" loading="lazy">
                   <div class="client-logo-overlay">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora Group Logo">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Paintora Group Logo" loading="lazy">
                   </div>
                 </div>
               </div>
@@ -730,9 +751,9 @@
               <div class="left-slide-overlay"></div>
               <div class="left-slide-content">
                 <div class="avatar-ring-wrap">
-                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Keyur_gupta-280x280.jpg" alt="Keyur Gupta">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Keyur_gupta-280x280.jpg" alt="Keyur Gupta" loading="lazy">
                   <div class="client-logo-overlay">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="Ashtavinayak Traders Logo">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/12/pbc-distributors-logo-1.webp" alt="Ashtavinayak Traders Logo" loading="lazy">
                   </div>
                 </div>
               </div>
@@ -744,9 +765,9 @@
               <div class="left-slide-overlay"></div>
               <div class="left-slide-content">
                 <div class="avatar-ring-wrap">
-                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Satish-Sumbad-280x280.jpg" alt="Satish Sumbad">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Satish-Sumbad-280x280.jpg" alt="Satish Sumbad" loading="lazy">
                   <div class="client-logo-overlay">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="Chembur Mobile Zone Logo">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2026/01/u-s-elevators-co.webp" alt="Chembur Mobile Zone Logo" loading="lazy">
                   </div>
                 </div>
               </div>
@@ -758,9 +779,9 @@
               <div class="left-slide-overlay"></div>
               <div class="left-slide-content">
                 <div class="avatar-ring-wrap">
-                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/RightSourceAviation-testimonial-280x280.jpg" alt="Capt. Vishal Vijay Gandhi">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/RightSourceAviation-testimonial-280x280.jpg" alt="Capt. Vishal Vijay Gandhi" loading="lazy">
                   <div class="client-logo-overlay">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="Right Source Aviation Logo">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Rdiamonds.jpg" alt="Right Source Aviation Logo" loading="lazy">
                   </div>
                 </div>
               </div>
@@ -772,9 +793,9 @@
               <div class="left-slide-overlay"></div>
               <div class="left-slide-content">
                 <div class="avatar-ring-wrap">
-                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Hemant-vyas-280x280.jpg" alt="Hemant Vyas">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Hemant-vyas-280x280.jpg" alt="Hemant Vyas" loading="lazy">
                   <div class="client-logo-overlay">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Shree Online Logo">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Unikgifts.jpg" alt="Shree Online Logo" loading="lazy">
                   </div>
                 </div>
               </div>
@@ -786,9 +807,9 @@
               <div class="left-slide-overlay"></div>
               <div class="left-slide-content">
                 <div class="avatar-ring-wrap">
-                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Siddhi-penkar-280x280.jpg" alt="Siddhi Penkar">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/02/Siddhi-penkar-280x280.jpg" alt="Siddhi Penkar" loading="lazy">
                   <div class="client-logo-overlay">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Siddhi Penkar Logo">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/COTTON-STATES.jpg" alt="Siddhi Penkar Logo" loading="lazy">
                   </div>
                 </div>
               </div>
@@ -800,9 +821,9 @@
               <div class="left-slide-overlay"></div>
               <div class="left-slide-content">
                 <div class="avatar-ring-wrap">
-                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/07/Lal-Sabnani.png" alt="Lal Sabnani">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/07/Lal-Sabnani.png" alt="Lal Sabnani" loading="lazy">
                   <div class="client-logo-overlay">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Royal Printers Logo">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dev-trading.jpg" alt="Royal Printers Logo" loading="lazy">
                   </div>
                 </div>
               </div>
@@ -814,9 +835,9 @@
               <div class="left-slide-overlay"></div>
               <div class="left-slide-content">
                 <div class="avatar-ring-wrap">
-                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/07/VIshal-bhuta.png" alt="Vishal Bhuta">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2024/07/VIshal-bhuta.png" alt="Vishal Bhuta" loading="lazy">
                   <div class="client-logo-overlay">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="AIM Financial Services Logo">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/Dr.-Rajesh-Shaah.jpg" alt="AIM Financial Services Logo" loading="lazy">
                   </div>
                 </div>
               </div>
@@ -828,9 +849,9 @@
               <div class="left-slide-overlay"></div>
               <div class="left-slide-content">
                 <div class="avatar-ring-wrap">
-                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2025/08/Kalpesh-Karia-280x280.webp" alt="Mr. Kalpesh Karia">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2025/08/Kalpesh-Karia-280x280.webp" alt="Mr. Kalpesh Karia" loading="lazy">
                   <div class="client-logo-overlay">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Pure Mist Logo">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/ANDROMEDA.jpg" alt="Pure Mist Logo" loading="lazy">
                   </div>
                 </div>
               </div>
@@ -842,9 +863,9 @@
               <div class="left-slide-overlay"></div>
               <div class="left-slide-content">
                 <div class="avatar-ring-wrap">
-                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2025/08/Dr.-Dhanashree-More-280x280.webp" alt="Dr. Dhanashree More">
+                  <img class="client-avatar" src="https://mantrakaar.com/wp-content/uploads/2025/08/Dr.-Dhanashree-More-280x280.webp" alt="Dr. Dhanashree More" loading="lazy">
                   <div class="client-logo-overlay">
-                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan Diagnostic Centre Logo">
+                    <img src="https://mantrakaar.com/wp-content/uploads/2025/03/SAMADHAN.jpg" alt="Samadhan Diagnostic Centre Logo" loading="lazy">
                   </div>
                 </div>
               </div>
@@ -860,7 +881,7 @@
             <i class="fa-solid fa-chevron-up"></i>
           </button>
           <div class="divider-logo-badge">
-            <img class="divider-active-logo" src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Active Company Logo">
+            <img class="divider-active-logo" src="https://mantrakaar.com/wp-content/uploads/2025/12/paintora-logo.webp" alt="Active Company Logo" loading="lazy">
           </div>
           <button class="divider-nav-btn btn-down" aria-label="Next Testimonial">
             <i class="fa-solid fa-chevron-down"></i>
@@ -1031,7 +1052,7 @@
       </div>
 
       <!-- Bottom CTA Button -->
-      <div class="grid-container" style="padding-top: 45px; padding-bottom: 75px; text-align: center;">
+      <div class="grid-container" style="padding-top: 20px; padding-bottom: 40px; text-align: center;">
         <div class="reveal-element reveal-slide-up" data-delay="150ms">
           <div class="btn-magnetic-wrap">
             <a href="https://mantrakaar.com/testimonials/" class="btn-magnetic">
@@ -1049,89 +1070,62 @@
     <section class="contact-section-wrapper" id="contact-section">
       <div class="grid-container">
         
-        <div class="contact-layout">
-          
-          <!-- Left Office Information block -->
-          <div class="contact-info-block reveal-element reveal-slide-right" data-delay="0ms">
-            <h2 class="contact-slogan-title" data-i18n="contact_title">
-              Ready to take the big step towards Digital World? Get Connected
-            </h2>
-            <p style="font-size: 16px; line-height: 28px; margin-bottom: 40px; color: var(--text-primary);" data-i18n="contact_lead">
-              We welcome you to contact us for more information about any of our services. Let's make something amazing together.
-            </p>
-            
-            <!-- Offices grid -->
-            <div class="contact-offices-grid">
+        <!-- Heading and description center aligned on top of the section -->
+        <div class="contact-header reveal-element reveal-slide-up" data-delay="0ms" style="text-align: center; max-width: 800px; margin: 0 auto 25px auto;">
+          <h2 class="contact-slogan-title" style="text-align: center; margin-bottom: 20px; font-size: 36px; line-height: 1.3;" data-i18n="contact_title">
+            Ready to take the big step towards Digital World? Get Connected
+          </h2>
+          <p style="font-size: 16px; line-height: 28px; color: var(--text-primary); text-align: center;" data-i18n="contact_lead">
+            We welcome you to contact us for more information about any of our services. Let's make something amazing together.
+          </p>
+        </div>
+        
+        <!-- Sleek and center aligned form container -->
+        <div class="contact-form-card reveal-element reveal-slide-up" data-delay="150ms" style="max-width: 600px; margin: 0 auto;">
+          <form id="mantrakaar-contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
+            <div class="contact-form-grid-centered" style="display: flex; flex-direction: column; gap: 20px;">
               
-              <!-- India Office -->
-              <div class="office-info-card">
-                <h3 class="office-title">India Office</h3>
-                <ul class="office-details">
-                  <li><i class="fa-solid fa-phone"></i> +91 90910 91903</li>
-                  <li><i class="fa-solid fa-envelope"></i> <a href="mailto:parag@mantrakaar.com">parag@mantrakaar.com</a></li>
-                </ul>
+              <!-- Name -->
+              <div class="form-group">
+                <label for="form-name" data-i18n="contact_name">Name</label>
+                <input type="text" id="form-name" class="form-control" placeholder="Your Name" required>
               </div>
               
-              <!-- UK Office -->
-              <div class="office-info-card">
-                <h3 class="office-title">UK Office</h3>
-                <ul class="office-details">
-                  <li><i class="fa-solid fa-phone"></i> +44 7411 334480</li>
-                  <li><i class="fa-solid fa-envelope"></i> <a href="mailto:dipesh@mantrakaar.com">dipesh@mantrakaar.com</a></li>
-                </ul>
+              <!-- Email -->
+              <div class="form-group">
+                <label for="form-email" data-i18n="contact_email">Email</label>
+                <input type="email" id="form-email" class="form-control" placeholder="Your Email Address" required>
+              </div>
+              
+              <!-- Phone -->
+              <div class="form-group">
+                <label for="form-phone" data-i18n="contact_phone">Phone</label>
+                <input type="tel" id="form-phone" class="form-control" placeholder="Your Phone Number" required>
+              </div>
+              
+              <!-- Services Dropdown (Design, Development, Marketing, Consultancy) -->
+              <div class="form-group">
+                <label for="form-service" data-i18n="contact_service">Service Interest</label>
+                <select id="form-service" class="form-control" required style="width: 100%;">
+                  <option value="" disabled selected data-i18n="contact_service_placeholder">Select a Service</option>
+                  <option value="design" data-i18n="contact_service_design">Design</option>
+                  <option value="development" data-i18n="contact_service_development">Development</option>
+                  <option value="marketing" data-i18n="contact_service_marketing">Marketing</option>
+                  <option value="consultancy" data-i18n="contact_service_consultancy">Consultancy</option>
+                </select>
+              </div>
+              
+              <!-- Submit -->
+              <div class="form-submit-btn-wrap" style="margin-top: 10px; text-align: center;">
+                <div class="btn-magnetic-wrap" style="display: inline-block;">
+                  <button type="submit" class="btn-magnetic" data-i18n="contact_submit">
+                    <span>Get In Touch</span>
+                  </button>
+                </div>
               </div>
               
             </div>
-          </div>
-          
-          <!-- Right Contact Form Card -->
-          <div class="contact-form-card reveal-element reveal-slide-left" data-delay="150ms">
-            <form id="mantrakaar-contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
-              <div class="contact-form-grid">
-                
-                <!-- Name -->
-                <div class="form-group">
-                  <label for="form-name" data-i18n="contact_name">Name</label>
-                  <input type="text" id="form-name" class="form-control" placeholder="Your Name" required>
-                </div>
-                
-                <!-- Email -->
-                <div class="form-group">
-                  <label for="form-email" data-i18n="contact_email">Email</label>
-                  <input type="email" id="form-email" class="form-control" placeholder="Your Email Address" required>
-                </div>
-                
-                <!-- Phone -->
-                <div class="form-group">
-                  <label for="form-phone" data-i18n="contact_phone">Phone</label>
-                  <input type="tel" id="form-phone" class="form-control" placeholder="Your Phone Number">
-                </div>
-                
-                <!-- Subject -->
-                <div class="form-group">
-                  <label for="form-subject" data-i18n="contact_subject">Subject</label>
-                  <input type="text" id="form-subject" class="form-control" placeholder="How can we help?" required>
-                </div>
-                
-                <!-- Message -->
-                <div class="form-group contact-span-2">
-                  <label for="form-message" data-i18n="contact_message">Message</label>
-                  <textarea id="form-message" class="form-control" placeholder="Write your message here..." required></textarea>
-                </div>
-                
-                <!-- Submit -->
-                <div class="form-submit-btn-wrap contact-span-2">
-                  <div class="btn-magnetic-wrap">
-                    <button type="submit" class="btn-magnetic" data-i18n="contact_submit">
-                      <span>Get In Touch</span>
-                    </button>
-                  </div>
-                </div>
-                
-              </div>
-            </form>
-          </div>
-          
+          </form>
         </div>
         
       </div>
@@ -1149,7 +1143,7 @@
         <!-- Column 1: Logo & Social links (LinkedIn spelling corrected) -->
         <div class="footer-widget-column">
           <div class="footer-logo">
-            <img src="https://mantrakaar.com/wp-content/uploads/2024/01/LOGO_white_60.png" style="max-height: 40px;" alt="Mantrakaar White Logo">
+            <img src="https://mantrakaar.com/wp-content/uploads/2024/01/LOGO_white_60.png" style="max-height: 40px;" alt="Mantrakaar White Logo" loading="lazy">
           </div>
           <ul class="footer-social-links">
             <li><a href="https://facebook.com/mantrakaar" target="_blank" aria-label="Facebook Page"><i class="fa-brands fa-facebook"></i></a></li>
@@ -1222,7 +1216,7 @@
   <!-- Vivus.js for SVG path animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.6/vivus.min.js"></script>
   <!-- Core Custom Javascript -->
-  <script src="js/main.js?v=4.5"></script>
+  <script type="module" src="js/main.js?v=5.3"></script>
 
 </body>
 </html>

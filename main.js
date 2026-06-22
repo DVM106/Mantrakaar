@@ -1,3 +1,5 @@
+import initCircularGallery from './circular-gallery.js';
+
 /* ==========================================================================
    Mantrakaar Core Javascript - Animations & Interactions (Resilient Version)
    ========================================================================== */
@@ -52,16 +54,20 @@ document.addEventListener('DOMContentLoaded', () => {
       view_all_blogs: 'VIEW ALL BLOGS',
       view_all_testimonials: 'VIEW ALL TESTIMONIALS',
       client_title: 'Our Happy Clients',
-      client_hint: 'HOVER AT THE LOGO TO PAUSE',
+      client_hint: 'DRAG OR HOVER TO PAUSE GALLERY',
       client_cta: 'VIEW ALL CLIENTS',
       testimonial_title: 'Testimonial',
-      contact_title: 'Get Connected',
-      contact_lead: 'We welcome you to contact us for more information about any of our services.',
+      contact_title: 'Ready to take the big step towards Digital World? Get Connected',
+      contact_lead: "We welcome you to contact us for more information about any of our services. Let's make something amazing together.",
       contact_name: 'Name',
       contact_email: 'Email',
       contact_phone: 'Phone',
-      contact_subject: 'Subject',
-      contact_message: 'Message',
+      contact_service: 'Service Interest',
+      contact_service_placeholder: 'Select a Service',
+      contact_service_design: 'Design',
+      contact_service_development: 'Development',
+      contact_service_marketing: 'Marketing',
+      contact_service_consultancy: 'Consultancy',
       contact_submit: 'Get In Touch'
     },
     hi: {
@@ -102,72 +108,27 @@ document.addEventListener('DOMContentLoaded', () => {
       view_all_blogs: 'सभी ब्लॉग देखें',
       view_all_testimonials: 'सभी प्रशंसापत्र देखें',
       client_title: 'हमारे खुशहाल ग्राहक',
-      client_hint: 'रोकने के लिए लोगो पर होवर करें',
+      client_hint: 'रोकने के लिए खींचें या माउस ऊपर लाएं',
       client_cta: 'सभी ग्राहक देखें',
       testimonial_title: 'प्रशंसापत्र',
-      contact_title: 'कनेक्टेड रहें',
-      contact_lead: 'हम हमारी किसी भी सेवा के बारे में अधिक जानकारी के लिए हमसे संपर्क करने का स्वागत करते हैं।',
+      contact_title: 'क्या आप डिजिटल दुनिया की ओर बड़ा कदम उठाने के लिए तैयार हैं? हमसे जुड़ें',
+      contact_lead: 'हम हमारी किसी भी सेवा के बारे में अधिक जानकारी के लिए हमसे संपर्क करने का स्वागत करते हैं। आइए मिलकर कुछ अद्भुत बनाएं।',
       contact_name: 'नाम',
       contact_email: 'ईमेल',
       contact_phone: 'फ़ोन',
-      contact_subject: 'विषय',
-      contact_message: 'संदेश',
+      contact_service: 'रुचि की सेवा',
+      contact_service_placeholder: 'एक सेवा चुनें',
+      contact_service_design: 'डिजाइन',
+      contact_service_development: 'डेवलपमेंट',
+      contact_service_marketing: 'मार्केटिंग',
+      contact_service_consultancy: 'कंसल्टेंसी / परामर्श',
       contact_submit: 'संपर्क करें'
-    },
-    es: {
-      nav_home: 'Inicio',
-      nav_about: 'Nosotros',
-      nav_services: 'Servicios',
-      nav_projects: 'Proyectos',
-      nav_clients: 'Clientes',
-      nav_testimonials: 'Testimonios',
-      nav_career: 'Carrera',
-      nav_blogs: 'Blogs',
-      nav_contact: 'Contacto',
-      services_we_offer: 'SERVICIOS QUE OFRECEMOS',
-      elevate_your_vision: 'ELEVATE TU VISIÓN',
-      explore_our_work: 'Explorar Nuestro Trabajo',
-      spotlight_design: 'DISEÑO',
-      spotlight_development: 'DESARROLLO',
-      spotlight_marketing: 'MARKETING',
-      spotlight_strategy: 'ESTRATEGIA',
-      service_pretitle: 'EXPERIENCIA',
-      service_title: 'Nuestros Servicios',
-      service_lead: 'Sabemos que su competencia está a solo un clic de distancia y crear un sitio profesional, informativo y fácil de usar, en su presupuesto, es nuestra meta principal.',
-      service_btn: 'Saber Más',
-      service_card_1_tag: 'Diseño UX/UI',
-      service_card_1_title: 'Diseño de Marca e Interfaz',
-      service_card_1_desc: 'Creando interfaces digitales hermosas y centradas en el usuario. Diseñamos flujos fluidos, estructuramos layouts limpios y creamos sistemas de marca cohesivos.',
-      service_card_2_tag: 'Desarrollo de Sitios Web',
-      service_card_2_title: 'Desarrollo Frontend y Core',
-      service_card_2_desc: 'Construcción de sitios web modernos, rápidos y responsivos desde cero. Escribimos código de alta calidad, configuramos el enrutamiento de dominio, configuramos la gestión de contenido y optimizamos los sitios para un rendimiento óptimo.',
-      service_card_3_tag: 'Marketing',
-      service_card_3_title: 'Estrategia de Crecimiento y SEO',
-      service_card_3_desc: 'Aumentar la visibilidad online y la conversión de leads. Optimizamos metadatos SEO, ejecutamos campañas analíticas y medimos el crecimiento de usuarios.',
-      service_card_4_tag: 'Consultoría',
-      service_card_4_title: 'Consultoría y Auditorías',
-      service_card_4_desc: 'Entregar análisis arquitectónicos accionables, auditorías de salud de código, auditorías de conversión y estrategias de producto basadas en datos.',
-      work_title: 'Nuestro Trabajo',
-      work_more: 'Ver Más Trabajos',
-      view_all_blogs: 'VER TODOS LOS BLOGS',
-      view_all_testimonials: 'VER TODOS LOS TESTIMONIOS',
-      client_title: 'Nuestros Clientes Felices',
-      client_hint: 'CERNIR EN EL LOGO PARA PAUSAR',
-      client_cta: 'VER TODOS LOS CLIENTES',
-      testimonial_title: 'Testimonios',
-      contact_title: 'Conectarse',
-      contact_lead: 'Le invitamos a ponerse en contacto con nosotros para obtener más información sobre cualquiera de nuestros servicios.',
-      contact_name: 'Nombre',
-      contact_email: 'Email',
-      contact_phone: 'Teléfono',
-      contact_subject: 'Asunto',
-      contact_message: 'Message',
-      contact_submit: 'Ponerse en contacto'
     }
   };
 
   // Global States
   let currentLang = localStorage.getItem('mantrakaar-lang') || 'en';
+  if (currentLang === 'es') currentLang = 'en';
   let isDarkMode = localStorage.getItem('mantrakaar-theme') === 'dark';
   let heroSequenceTimeline = null;
   let heroSequenceTimeouts = [];
@@ -485,6 +446,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const tagline = document.querySelector('.hero-tagline');
     const line1 = document.getElementById('hero-brand-shimmer');
 
+    // Lock scroll instantly and scroll to top
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    window.scrollTo(0, 0);
+
+    function unlockScroll() {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      logDebug("Scroll unlocked.");
+    }
+
     // Helper: Resilient Native CSS/JS Animation Fallback (when GSAP is offline/blocked)
     function runJSAnimationFallback() {
       logDebug("GSAP not detected. Running native CSS/JS transition animation timeline.");
@@ -600,6 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scheduleHeroTimeout(() => {
         logDebug("Fallback Step 5: Mask hide, canvas transition to theme BG.");
         if (mask) mask.style.display = 'none';
+        unlockScroll();
         if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
       }, 11650);
 
@@ -676,6 +649,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function runStaticFallback() {
       console.log("Running static content fallback (reduced-motion).");
       if (mask) mask.style.display = 'none';
+      unlockScroll();
       if (flash) flash.style.display = 'none';
       if (grid) grid.style.opacity = '1';
       if (dottedSpotlight) dottedSpotlight.style.opacity = '1';
@@ -883,6 +857,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tl.add(() => {
       logDebug("GSAP: Transitioning mask canvas to theme");
       if (mask) mask.style.display = 'none';
+      unlockScroll();
       if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
     }, 11.65);
 
@@ -1264,218 +1239,348 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // 1. Blogs Slideshow Swiper
-    const blogsSwiper = new Swiper('.blogs-swiper', {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      grabCursor: true,
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 2,
-        },
-        1025: {
-          slidesPerView: 3,
-        }
-      },
-      a11y: {
-        enabled: true,
-        prevSlideMessage: 'Previous blog post',
-        nextSlideMessage: 'Next blog post',
-      }
-    });
-    // 2. Our Happy Clients Section: 3D Cylindrical Curved Carousel
-    function initClients3DCarousel() {
-      const viewport = document.querySelector('.clients-carousel-viewport');
-      const track = document.querySelector('.clients-carousel-track');
-      const cards = document.querySelectorAll('.clients-carousel-card');
-      const prevBtn = document.querySelector('.clients-carousel-btn.prev');
-      const nextBtn = document.querySelector('.clients-carousel-btn.next');
+    // 1. Blogs Quantum Card Stack Controller
+    function initBlogsQuantumDeck() {
+      const outerWrap = document.querySelector('.quantum-deck-outer-wrap');
+      const container = document.querySelector('.quantum-deck-container');
+      const cards = Array.from(document.querySelectorAll('.quantum-card'));
+      const prevBtn = document.querySelector('.quantum-deck-controls .prev-btn');
+      const nextBtn = document.querySelector('.quantum-deck-controls .next-btn');
+      const currIdxEl = document.querySelector('.quantum-deck-controls .curr-idx');
+      
+      if (!outerWrap || !container || cards.length === 0) return;
 
-      if (!viewport || !track || cards.length === 0) return;
-
-      const cardCount = cards.length;
-      const angleStep = 360 / cardCount; // 30 degrees
-      let currentRotation = 0; // in degrees
-      let isDragging = false;
-      let isHovered = false;
+      let activeIndex = 0; // The index of the top card (0-based)
       let isTransitioning = false;
-      let startX = 0;
-      let startRotation = 0;
-      let animationFrameId = null;
-      let transitionTimeout = null;
 
-      // Speed: degrees per frame (negative rotates left/counter-clockwise, about -3 degrees per second at 60fps)
-      const spinSpeed = -0.05;
-
-      function updateCardActiveState() {
-        // Track Rotation = -CardIndex * angleStep => CardIndex = Math.round(-currentRotation / angleStep)
-        const normalizedRotation = ((currentRotation % 360) + 360) % 360; // 0 to 360
-        const cardIndexFacingFront = Math.round((360 - normalizedRotation) / angleStep) % cardCount;
-
+      // Update card stack visual states based on data-index attributes
+      function updateStackLayout() {
+        const total = cards.length;
         cards.forEach((card, idx) => {
-          // Calculate the card's current angle in world space (relative to view front)
-          const cardAngle = (idx * angleStep) + currentRotation;
-          const cardAngleRad = cardAngle * Math.PI / 180;
-          const cosAngle = Math.cos(cardAngleRad); // 1 at front, 0 at sides, -1 at back
+          // Calculate the relative index in the circular stack starting from activeIndex
+          let relativeIndex = (idx - activeIndex + total) % total;
+          
+          card.setAttribute('data-index', relativeIndex);
+          card.classList.remove('active');
 
-          if (idx === cardIndexFacingFront) {
-            card.classList.add('active-card');
-          } else {
-            card.classList.remove('active-card');
+          if (relativeIndex === 0) {
+            card.classList.add('active');
+          }
+        });
+
+        // Update HUD pagination
+        if (currIdxEl) {
+          currIdxEl.textContent = activeIndex + 1;
+        }
+      }
+
+      // Cycle forward: Throw the top card away and slide it to the bottom
+      function swipeNext() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        const topCard = cards[activeIndex];
+        
+        // Parabolic fly-away animation
+        if (typeof gsap !== 'undefined') {
+          // Disable transition to avoid CSS fight
+          topCard.style.transition = 'none';
+
+          // Move index and update layout immediately for other cards
+          const nextActiveIndex = (activeIndex + 1) % cards.length;
+          cards.forEach((card, idx) => {
+            if (idx === activeIndex) {
+              // Keep swiping card at top base position during flight
+              card.setAttribute('data-index', 0);
+            } else {
+              let relativeIndex = (idx - nextActiveIndex + cards.length) % cards.length;
+              card.setAttribute('data-index', relativeIndex);
+            }
+          });
+
+          if (currIdxEl) {
+            currIdxEl.textContent = nextActiveIndex + 1;
           }
 
-          // Shading and depth of field based on Z-depth (cosAngle)
-          const depthProgress = Math.max(0, cosAngle); // clamp to [0, 1] for front half
+          gsap.fromTo(topCard, {
+            x: 0,
+            y: 0,
+            rotation: 0,
+            opacity: 1,
+            scale: 1
+          }, {
+            x: 500,
+            y: -80,
+            rotation: 25,
+            opacity: 0,
+            scale: 0.85,
+            duration: 0.6,
+            ease: 'power2.out',
+            onComplete: () => {
+              // Set inline opacity to 0 to prevent visual pop when clearing props
+              topCard.style.opacity = '0';
+              
+              // Now move the activeIndex and synchronize layouts
+              activeIndex = nextActiveIndex;
+              updateStackLayout();
+              
+              // Clear inline properties (but keep transition none)
+              gsap.set(topCard, { clearProps: "transform,scale,x,y,rotation" });
+              
+              // Force reflow
+              topCard.offsetHeight;
+              
+              // Restore transition
+              topCard.style.transition = '';
+              
+              // Smoothly fade card opacity back to its new CSS position's value
+              setTimeout(() => {
+                topCard.style.opacity = '';
+              }, 50);
+
+              isTransitioning = false;
+            }
+          });
+        } else {
+          // Fallback transitions
+          topCard.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+          topCard.style.transform = 'translate3d(300px, -50px, 0) rotate(20deg) scale(0.9)';
+          topCard.style.opacity = '0';
           
-          // Smooth opacity curve: front is 1.0, sides fade to 0.12, back is 0
-          const opacity = cosAngle > 0 
-            ? (0.12 + 0.88 * Math.pow(depthProgress, 1.5)) 
-            : 0.12 * (1 + cosAngle); // fades to 0 at back
+          const nextActiveIndex = (activeIndex + 1) % cards.length;
+          cards.forEach((card, idx) => {
+            if (idx === activeIndex) {
+              card.setAttribute('data-index', 0);
+            } else {
+              let relativeIndex = (idx - nextActiveIndex + cards.length) % cards.length;
+              card.setAttribute('data-index', relativeIndex);
+            }
+          });
 
-          // Depth blur (out of focus on sides)
-          const blurVal = (1 - depthProgress) * 2.5; // up to 2.5px blur
-          // Depth brightness (darker on sides)
-          const brightnessVal = 0.45 + 0.55 * depthProgress;
-          // Scale offset slightly to enhance perspective projection
-          const scaleVal = 0.82 + 0.18 * depthProgress;
+          if (currIdxEl) {
+            currIdxEl.textContent = nextActiveIndex + 1;
+          }
 
-          card.style.setProperty('--card-opacity', opacity.toFixed(3));
-          card.style.setProperty('--card-blur', `${blurVal.toFixed(2)}px`);
-          card.style.setProperty('--card-brightness', brightnessVal.toFixed(3));
-          card.style.setProperty('--card-scale', scaleVal.toFixed(3));
-        });
-      }
-
-      function rotateCarousel(angle) {
-        currentRotation = angle;
-        track.style.setProperty('--rotate-y', `${currentRotation}deg`);
-        updateCardActiveState();
-      }
-
-      function snapCarousel() {
-        isTransitioning = true;
-        track.classList.add('transitioning');
-        
-        // Snap to nearest 30deg increment
-        const snappedRotation = Math.round(currentRotation / angleStep) * angleStep;
-        rotateCarousel(snappedRotation);
-
-        if (transitionTimeout) clearTimeout(transitionTimeout);
-        transitionTimeout = setTimeout(() => {
-          track.classList.remove('transitioning');
-          isTransitioning = false;
-        }, 400); // matches the 0.4s transition duration
-      }
-
-      function rotateByCardCount(direction) {
-        isTransitioning = true;
-        track.classList.add('transitioning');
-
-        // direction: 1 for prev (clockwise/right), -1 for next (counter-clockwise/left)
-        const targetRotation = Math.round(currentRotation / angleStep) * angleStep + (direction * angleStep);
-        rotateCarousel(targetRotation);
-
-        if (transitionTimeout) clearTimeout(transitionTimeout);
-        transitionTimeout = setTimeout(() => {
-          track.classList.remove('transitioning');
-          isTransitioning = false;
-        }, 400); // matches the 0.4s transition duration
-      }
-
-      // Drag / Touch handlers
-      function handleDragStart(e) {
-        isDragging = true;
-        isTransitioning = false;
-        track.classList.remove('transitioning');
-        track.classList.add('dragging');
-
-        startX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
-        startRotation = currentRotation;
-      }
-
-      function handleDragMove(e) {
-        if (!isDragging) return;
-        
-        const currentX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
-        const deltaX = currentX - startX;
-        
-        // 1px drag = 0.15 degrees rotation
-        const rotationDelta = deltaX * 0.15;
-        const targetRotation = startRotation + rotationDelta;
-        
-        track.style.setProperty('--rotate-y', `${targetRotation}deg`);
-        currentRotation = targetRotation;
-        updateCardActiveState();
-      }
-
-      function handleDragEnd() {
-        if (!isDragging) return;
-        isDragging = false;
-        track.classList.remove('dragging');
-        snapCarousel();
-      }
-
-      // Mouse drag event bindings
-      viewport.addEventListener('mousedown', handleDragStart);
-      window.addEventListener('mousemove', handleDragMove);
-      window.addEventListener('mouseup', handleDragEnd);
-
-      // Touch swipe event bindings
-      viewport.addEventListener('touchstart', handleDragStart, { passive: true });
-      viewport.addEventListener('touchmove', handleDragMove, { passive: true });
-      viewport.addEventListener('touchend', handleDragEnd);
-
-      // Prevent images from ghost-dragging
-      viewport.addEventListener('dragstart', (e) => e.preventDefault());
-
-      // Navigation buttons
-      if (prevBtn) {
-        prevBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          rotateByCardCount(1);
-        });
-      }
-      if (nextBtn) {
-        nextBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          rotateByCardCount(-1);
-        });
-      }
-
-      // Hover triggers
-      viewport.addEventListener('mouseenter', () => {
-        isHovered = true;
-      });
-      viewport.addEventListener('mouseleave', () => {
-        isHovered = false;
-      });
-
-      // Smooth continuous animation loop
-      function animate() {
-        if (!isDragging && !isHovered && !isTransitioning) {
-          currentRotation += spinSpeed;
-          track.style.setProperty('--rotate-y', `${currentRotation}deg`);
-          updateCardActiveState();
+          setTimeout(() => {
+            topCard.style.transition = 'none';
+            
+            activeIndex = nextActiveIndex;
+            updateStackLayout();
+            
+            topCard.style.transform = '';
+            topCard.style.opacity = '0';
+            topCard.offsetHeight;
+            topCard.style.transition = '';
+            setTimeout(() => {
+              topCard.style.opacity = '';
+            }, 50);
+            isTransitioning = false;
+          }, 500);
         }
-        animationFrameId = requestAnimationFrame(animate);
       }
 
-      // Initial state
-      rotateCarousel(0);
-      animate();
+      // Cycle backward: Grab the bottom card and pull it to the top
+      function swipePrev() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        const total = cards.length;
+        const newActiveIndex = (activeIndex - 1 + total) % total;
+        const targetCard = cards[newActiveIndex];
+
+        // Prepare the target card offscreen instantly
+        if (typeof gsap !== 'undefined') {
+          // Disable transition to avoid GSAP fight
+          targetCard.style.transition = 'none';
+          gsap.set(targetCard, { x: -500, y: -80, rotation: -25, opacity: 0, scale: 0.85, zIndex: 10 });
+          targetCard.offsetHeight;
+
+          // Move index and update layout immediately for other cards
+          activeIndex = newActiveIndex;
+          updateStackLayout();
+          
+          // Animate it onto the top of the stack
+          gsap.to(targetCard, {
+            x: 0,
+            y: 0,
+            rotation: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            ease: 'back.out(1.1)',
+            onComplete: () => {
+              // Clear inline properties (but keep transition none)
+              gsap.set(targetCard, { clearProps: "transform,opacity,scale,x,y,rotation,zIndex" });
+              targetCard.offsetHeight;
+              
+              targetCard.style.transition = '';
+              isTransitioning = false;
+            }
+          });
+        } else {
+          // Fallback transition
+          targetCard.style.transition = 'none';
+          targetCard.style.transform = 'translate3d(-300px, -50px, 0) rotate(-20deg) scale(0.9)';
+          targetCard.style.opacity = '0';
+          targetCard.style.zIndex = '10';
+          targetCard.offsetHeight;
+
+          activeIndex = newActiveIndex;
+          updateStackLayout();
+
+          setTimeout(() => {
+            targetCard.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+            targetCard.style.transform = 'translate3d(0, 0, 0) scale(1) rotate(0deg)';
+            targetCard.style.opacity = '1';
+            
+            setTimeout(() => {
+              targetCard.style.transition = '';
+              targetCard.style.transform = '';
+              targetCard.style.opacity = '';
+              targetCard.style.zIndex = '';
+              isTransitioning = false;
+            }, 500);
+          }, 20);
+        }
+      }
+
+      // Trigger fanning on hover of the outer container (only on desktop hoverable devices)
+      outerWrap.addEventListener('mouseenter', () => {
+        const isHoverable = window.matchMedia('(hover: hover)').matches;
+        if (isHoverable && window.innerWidth > 768) {
+          container.classList.add('fanned-out');
+        }
+      });
+
+      outerWrap.addEventListener('mouseleave', () => {
+        const isHoverable = window.matchMedia('(hover: hover)').matches;
+        if (isHoverable && window.innerWidth > 768) {
+          container.classList.remove('fanned-out');
+        }
+      });
+
+      // Bind HUD controls
+      if (nextBtn) nextBtn.addEventListener('click', swipeNext);
+      if (prevBtn) prevBtn.addEventListener('click', swipePrev);
+
+      // Swipe / Drag Physics using GSAP or touch events
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let dragDistanceX = 0;
+      let dragDistanceY = 0;
+
+      container.addEventListener('touchstart', (e) => {
+        if (isTransitioning || container.classList.contains('fanned-out')) return;
+        const touch = e.touches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+        dragDistanceX = 0;
+        dragDistanceY = 0;
+      }, { passive: true });
+
+      container.addEventListener('touchmove', (e) => {
+        if (isTransitioning || container.classList.contains('fanned-out')) return;
+        const touch = e.touches[0];
+        dragDistanceX = touch.clientX - touchStartX;
+        dragDistanceY = touch.clientY - touchStartY;
+        
+        // Prevent page vertical scroll if user horizontal drag is major
+        if (Math.abs(dragDistanceX) > Math.abs(dragDistanceY) && Math.abs(dragDistanceX) > 10) {
+          if (e.cancelable) e.preventDefault();
+        }
+
+        const topCard = cards[activeIndex];
+        if (Math.abs(dragDistanceX) > 10) {
+          // Disable CSS transition during drag for responsive, lag-free tracking
+          topCard.style.transition = 'none';
+
+          const rotationAngle = (dragDistanceX / 20);
+          if (typeof gsap !== 'undefined') {
+            gsap.set(topCard, {
+              x: dragDistanceX * 0.6,
+              y: dragDistanceY * 0.2,
+              rotation: rotationAngle
+            });
+          }
+        }
+      }, { passive: false }); // Needs passive: false to allow preventDefault
+
+      container.addEventListener('touchend', () => {
+        if (isTransitioning || container.classList.contains('fanned-out')) return;
+        const topCard = cards[activeIndex];
+        
+        // If swiped significantly, throw card
+        if (Math.abs(dragDistanceX) > 100) {
+          swipeNext();
+        } else {
+          // Snap back
+          if (typeof gsap !== 'undefined') {
+            topCard.style.transition = 'none';
+            gsap.to(topCard, { 
+              x: 0, 
+              y: 0, 
+              rotation: 0, 
+              duration: 0.3, 
+              ease: 'power2.out',
+              onComplete: () => {
+                gsap.set(topCard, { clearProps: "transform,x,y,rotation" });
+                topCard.offsetHeight;
+                topCard.style.transition = '';
+              }
+            });
+          } else {
+            topCard.style.transform = 'translate3d(0, 0, 0) scale(1) rotate(0deg)';
+            topCard.style.transition = '';
+          }
+        }
+      });
+
+      // Initialize stack
+      const totalCountEl = document.querySelector('.quantum-deck-controls .total-count');
+      if (totalCountEl) {
+        totalCountEl.textContent = cards.length;
+      }
+      updateStackLayout();
+    }
+    initBlogsQuantumDeck();
+    // 2. Our Happy Clients Section: Circular Gallery Component from React Bits
+    function initClientsCircularGallery() {
+      const container = document.getElementById('circular-gallery-container');
+      if (!container) return;
+
+      const clientItems = [
+        { image: 'assets/clients/u-s-elevators-co.webp', text: 'U.S. Elevators Co.' },
+        { image: 'assets/clients/pbc-distributors-logo-1.webp', text: 'PBC Distributors' },
+        { image: 'assets/clients/paintora-logo.webp', text: 'Paintora' },
+        { image: 'assets/clients/Rdiamonds.jpg', text: 'R Diamonds' },
+        { image: 'assets/clients/COTTON-STATES.jpg', text: 'Cotton States' },
+        { image: 'assets/clients/Dev-trading.jpg', text: 'Dev Trading' },
+        { image: 'assets/clients/Dr.-Rajesh-Shaah.jpg', text: 'Dr. Rajesh Shah' },
+        { image: 'assets/clients/ANDROMEDA.jpg', text: 'Andromeda' },
+        { image: 'assets/clients/Unikgifts.jpg', text: 'Unikgifts' },
+        { image: 'assets/clients/MURUGAN.jpg', text: 'Murugan' },
+        { image: 'assets/clients/ATMOSSECURE.jpg', text: 'Atmossecure' },
+        { image: 'assets/clients/SAMADHAN.jpg', text: 'Samadhan' }
+      ];
+
+      initCircularGallery(container, {
+        items: clientItems,
+        bend: 3,
+        textColor: '#ffffff',
+        borderRadius: 0.05,
+        scrollSpeed: 2,
+        scrollEase: 0.05,
+        fontUrl: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap',
+        font: 'bold 24px Montserrat',
+        fitScale: 0.75,
+        cardWidth: 700,
+        cardHeight: 500,
+        autoScrollSpeed: 0.05
+      });
     }
 
-    // Initialize 3D carousel
-    initClients3DCarousel();
+    // Initialize Circular Gallery
+    initClientsCircularGallery();
 
 
     // 3. Custom Split-Screen Testimonials Slider
