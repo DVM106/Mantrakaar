@@ -1,0 +1,8 @@
+node_env/
+Home Page.zip
+*.zip
+*.log
+.system_generated/
+.tempmediaStorage/
+tmp/
+temp/
