@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Multi-Language Key-Value Store
   const translations = {
     en: {
+      menu_title: 'MENU',
+      menu_close: 'CLOSE',
+      theme_toggle: 'Toggle Theme',
       nav_home: 'Home',
       nav_about: 'About',
       nav_services: 'Services',
@@ -68,9 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
       contact_service_development: 'Development',
       contact_service_marketing: 'Marketing',
       contact_service_consultancy: 'Consultancy',
-      contact_submit: 'Get In Touch'
+      contact_submit: 'Get In Touch',
+      client_card_desc: 'A showcase of businesses and brands we have partnered with.',
+      testimonial_card_desc: 'Read reviews and stories from our clients about their experiences.'
     },
     hi: {
+      menu_title: 'मेन्यू',
+      menu_close: 'बंद करें',
+      theme_toggle: 'थीम बदलें',
       nav_home: 'मुख्य पृष्ठ',
       nav_about: 'हमारे बारे में',
       nav_services: 'सेवाएं',
@@ -122,7 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
       contact_service_development: 'डेवलपमेंट',
       contact_service_marketing: 'मार्केटिंग',
       contact_service_consultancy: 'कंसल्टेंसी / परामर्श',
-      contact_submit: 'संपर्क करें'
+      contact_submit: 'संपर्क करें',
+      client_card_desc: 'उन व्यवसायों और ब्रांडों का प्रदर्शन जिसके साथ हमने भागीदारी की है।',
+      testimonial_card_desc: 'हमारे अनुभवों के बारे में हमारे ग्राहकों की समीक्षाएं और कहानियां पढ़ें।'
     }
   };
 
@@ -198,6 +208,13 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error("Mobile Menu init error:", e);
   }
 
+  // 9.5. Liquid Portal Navigation Menu
+  try {
+    initLiquidMenu();
+  } catch (e) {
+    console.error("Liquid Menu init error:", e);
+  }
+
   // 10. Dotted Spotlight Grid Tracker
   try {
     initDottedSpotlight();
@@ -254,10 +271,10 @@ document.addEventListener('DOMContentLoaded', () => {
       isDarkMode = true;
     }
 
-    // Sync theme toggle icon in navbar
-    const themeBtn = document.querySelector('.theme-toggle-btn');
-    if (themeBtn) {
-      const icon = themeBtn.querySelector('i');
+    // Sync all theme toggle icons
+    const themeBtns = document.querySelectorAll('.theme-toggle-btn');
+    themeBtns.forEach(btn => {
+      const icon = btn.querySelector('i');
       if (icon) {
         if (isDarkMode) {
           icon.classList.replace('fa-moon', 'fa-sun');
@@ -265,12 +282,14 @@ document.addEventListener('DOMContentLoaded', () => {
           icon.classList.replace('fa-sun', 'fa-moon');
         }
       }
-    }
+    });
 
     // Language sync
     updateLanguageTexts(currentLang);
-    const langLabel = document.querySelector('.lang-toggle span');
-    if (langLabel) langLabel.textContent = currentLang.toUpperCase();
+    const langLabels = document.querySelectorAll('.lang-toggle span');
+    langLabels.forEach(lbl => {
+      lbl.textContent = currentLang.toUpperCase();
+    });
   }
 
   /* ==========================================================================
@@ -1161,9 +1180,9 @@ document.addEventListener('DOMContentLoaded', () => {
      Theme & Language Actions
      ========================================================================== */
   function initToggles() {
-    // Theme Toggle
-    const themeBtn = document.querySelector('.theme-toggle-btn');
-    if (themeBtn) {
+    // Theme Toggle (Supports multiple buttons)
+    const themeBtns = document.querySelectorAll('.theme-toggle-btn');
+    themeBtns.forEach(themeBtn => {
       themeBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         isDarkMode = document.body.classList.contains('dark-mode');
@@ -1177,19 +1196,21 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
 
-        // Switch icon between Sun & Moon
-        const icon = themeBtn.querySelector('i');
-        if (icon) {
-          if (isDarkMode) {
-            icon.classList.replace('fa-moon', 'fa-sun');
-          } else {
-            icon.classList.replace('fa-sun', 'fa-moon');
+        // Sync all theme icons
+        themeBtns.forEach(btn => {
+          const icon = btn.querySelector('i');
+          if (icon) {
+            if (isDarkMode) {
+              icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+              icon.classList.replace('fa-sun', 'fa-moon');
+            }
           }
-        }
+        });
       });
-    }
+    });
 
-    // Language Dropdown Links
+    // Language Dropdown Links (Supports multiple selector dropdowns)
     const langLinks = document.querySelectorAll('.lang-dropdown a');
     langLinks.forEach(link => {
       link.addEventListener('click', (e) => {
@@ -1198,9 +1219,11 @@ document.addEventListener('DOMContentLoaded', () => {
         currentLang = lang;
         localStorage.setItem('mantrakaar-lang', lang);
         
-        // Update language label
-        const langLabel = document.querySelector('.lang-toggle span');
-        if (langLabel) langLabel.textContent = lang.toUpperCase();
+        // Update all language labels
+        const langLabels = document.querySelectorAll('.lang-toggle span');
+        langLabels.forEach(lbl => {
+          lbl.textContent = lang.toUpperCase();
+        });
 
         updateLanguageTexts(lang);
       });
@@ -1218,7 +1241,9 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.forEach(elem => {
       const key = elem.getAttribute('data-i18n');
       if (keys[key]) {
-        if (elem.tagName === 'INPUT' || elem.tagName === 'TEXTAREA') {
+        if (key === 'menu_title' && document.getElementById('liquid-portal-nav')?.classList.contains('active')) {
+          elem.textContent = keys['menu_close'] || 'CLOSE';
+        } else if (elem.tagName === 'INPUT' || elem.tagName === 'TEXTAREA') {
           elem.placeholder = keys[key];
         } else if (elem.querySelector('.ut-btn-text')) {
           elem.querySelector('.ut-btn-text').textContent = keys[key];
@@ -1838,6 +1863,247 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
+     Liquid WebGL Portal Navigation (Concept 4)
+     ========================================================================== */
+  function initLiquidMenu() {
+    const trigger = document.getElementById('liquid-menu-trigger');
+    const overlay = document.getElementById('liquid-portal-nav');
+    const closeBtn = document.querySelector('.liquid-nav-close');
+    const menuLinks = document.querySelectorAll('.liquid-menu-item > a');
+    const submenuToggles = document.querySelectorAll('.submenu-toggle');
+    const blobs = document.querySelectorAll('.liquid-blob');
+
+    if (!trigger || !overlay) return;
+
+    // Split text into characters for the stagger liquid wave effect
+    menuLinks.forEach(link => {
+      const text = link.childNodes[0].textContent.trim();
+      link.childNodes[0].textContent = '';
+      
+      const charContainer = document.createElement('span');
+      charContainer.className = 'char-container';
+      
+      for (let i = 0; i < text.length; i++) {
+        const span = document.createElement('span');
+        span.className = 'char';
+        span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
+        charContainer.appendChild(span);
+      }
+      
+      link.insertBefore(charContainer, link.firstChild);
+
+      // Mouse Hover wave stagger animation
+      link.addEventListener('mouseenter', () => {
+        const chars = link.querySelectorAll('.char');
+        if (chars.length) {
+          gsap.fromTo(chars, 
+            { y: 0 },
+            { 
+              y: -8, 
+              duration: 0.25, 
+              stagger: 0.04, 
+              yoyo: true, 
+              repeat: 1, 
+              ease: "power1.inOut" 
+            }
+          );
+        }
+
+        // SVG displacement map water ripple distortion animation
+        link.style.filter = "url(#liquid-distortion)";
+        const dispMap = document.getElementById('displacement-map');
+        if (dispMap) {
+          const scaleObj = { value: 0 };
+          gsap.to(scaleObj, {
+            value: 12,
+            duration: 0.4,
+            yoyo: true,
+            repeat: 1,
+            ease: "sine.inOut",
+            onUpdate: () => {
+              dispMap.setAttribute('scale', scaleObj.value);
+            },
+            onComplete: () => {
+              link.style.filter = "none";
+            }
+          });
+        }
+      });
+    });
+
+    // Megamenu toggling inside overlay (Auto-collapse others on toggle)
+    const megamenuToggles = document.querySelectorAll('.megamenu-toggle');
+    megamenuToggles.forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const parent = toggle.closest('.liquid-menu-item');
+        
+        document.querySelectorAll('.liquid-menu-item.megamenu-active').forEach(activeItem => {
+          if (activeItem !== parent) {
+            activeItem.classList.remove('megamenu-active');
+            const activeToggle = activeItem.querySelector('.megamenu-toggle');
+            if (activeToggle) {
+              activeToggle.setAttribute('aria-expanded', 'false');
+            }
+          }
+        });
+
+        parent.classList.toggle('megamenu-active');
+        const isActive = parent.classList.contains('megamenu-active');
+        toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      });
+    });
+
+    // Close menu when clicking links (excluding megamenu toggles)
+    const activeLinks = document.querySelectorAll('.liquid-menu-item a:not(.megamenu-toggle), .liquid-megamenu a');
+    activeLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
+    // Click to Toggle: Open or Close Menu
+    trigger.addEventListener('click', (e) => {
+      if (overlay.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    function openMenu() {
+      const rect = trigger.getBoundingClientRect();
+      const clickX = rect.left + rect.width / 2;
+      const clickY = rect.top + rect.height / 2;
+
+      blobs.forEach(blob => {
+        blob.style.left = `${clickX}px`;
+        blob.style.top = `${clickY}px`;
+      });
+
+      overlay.classList.add('active');
+      trigger.classList.add('active');
+
+      // Update text to CLOSE with scale fade animation
+      const triggerText = trigger.querySelector('.trigger-text');
+      if (triggerText) {
+        const closeText = translations[currentLang]?.menu_close || 'CLOSE';
+        gsap.to(triggerText, {
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.15,
+          onComplete: () => {
+            triggerText.textContent = closeText;
+            gsap.to(triggerText, { opacity: 1, scale: 1, duration: 0.15 });
+          }
+        });
+      }
+
+      gsap.killTweensOf(blobs);
+      gsap.set(blobs, { scale: 0 });
+      gsap.to(blobs, {
+        scale: (i) => i === 0 ? 32 : 28,
+        duration: 1.2,
+        stagger: 0.08,
+        ease: "power2.inOut",
+        overwrite: "auto"
+      });
+
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Click to Close Menu (Runs fade and shrink in parallel for instant snappiness)
+    function closeMenu() {
+      const content = document.querySelector('.liquid-nav-content');
+      trigger.classList.remove('active');
+
+      // Update text back to MENU with scale fade animation
+      const triggerText = trigger.querySelector('.trigger-text');
+      if (triggerText) {
+        const menuText = translations[currentLang]?.menu_title || 'MENU';
+        gsap.to(triggerText, {
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.15,
+          onComplete: () => {
+            triggerText.textContent = menuText;
+            gsap.to(triggerText, { opacity: 1, scale: 1, duration: 0.15 });
+          }
+        });
+      }
+
+      // Fade out menu items immediately
+      gsap.to(content, {
+        opacity: 0,
+        y: 20,
+        duration: 0.3,
+        ease: "power1.inOut"
+      });
+
+      // Shrink blobs immediately in parallel (Zero delay!)
+      gsap.to(blobs, {
+        scale: 0,
+        duration: 0.8,
+        stagger: 0.04,
+        ease: "power2.inOut",
+        onComplete: () => {
+          overlay.classList.remove('active');
+          gsap.set(content, { clearProps: "all" });
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeMenu);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+
+    // Magnetic cursor hover on trigger button
+    trigger.addEventListener('mousemove', (e) => {
+      const rect = trigger.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left - rect.width / 2;
+      const mouseY = e.clientY - rect.top - rect.height / 2;
+
+      const blob2 = trigger.querySelector('.trigger-blob-2');
+      const blob3 = trigger.querySelector('.trigger-blob-3');
+
+      if (blob2 && blob3) {
+        gsap.to(blob2, {
+          x: mouseX * 0.4,
+          y: mouseY * 0.4,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+        gsap.to(blob3, {
+          x: mouseX * -0.3,
+          y: mouseY * -0.3,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      }
+    });
+
+    trigger.addEventListener('mouseleave', () => {
+      const blob2 = trigger.querySelector('.trigger-blob-2');
+      const blob3 = trigger.querySelector('.trigger-blob-3');
+      if (blob2 && blob3) {
+        gsap.to([blob2, blob3], {
+          x: 0,
+          y: 0,
+          duration: 0.5,
+          ease: "elastic.out(1, 0.3)"
+        });
+      }
+    });
+  }
+
+  /* ==========================================================================
      Dotted Spotlight Grid Tracking & Mobile Autoplay Loop
      ========================================================================== */
   function initDottedSpotlight() {
@@ -2395,6 +2661,26 @@ document.addEventListener('DOMContentLoaded', () => {
       track.addEventListener('click', (e) => {
         updateSlider(e.clientX);
       });
+    }
+  }
+
+  // Sticky transparent header scroll behavior
+  initTransparentHeaderScroll();
+
+  function initTransparentHeaderScroll() {
+    const header = document.getElementById('header-section');
+    const hero = document.getElementById('hero-section-container');
+    if (header && hero) {
+      const handleScroll = () => {
+        const triggerHeight = hero.offsetHeight - header.offsetHeight;
+        if (window.scrollY > triggerHeight) {
+          header.classList.remove('header-transparent');
+        } else {
+          header.classList.add('header-transparent');
+        }
+      };
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll(); // initial check
     }
   }
 });

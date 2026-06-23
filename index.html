@@ -16,7 +16,7 @@
   <link rel="icon" href="https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png" type="image/png">
   
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=5.3">
+  <link rel="stylesheet" href="css/main.css?v=6.1">
   
   <!-- Third-Party CDN Libraries -->
   <!-- Fonts -->
@@ -84,10 +84,135 @@
 
 
 
+  <!-- Liquid Portal Navigation Structure -->
+  <div class="liquid-portal-overlay" id="liquid-portal-nav">
+    <!-- SVG Gooey and Displacement Filters -->
+    <svg class="liquid-portal-svg-filters" xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+      <defs>
+        <filter id="gooey-portal">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="gooey" />
+          <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
+        </filter>
+        <filter id="liquid-distortion">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" id="displacement-map" />
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- Giant Blobs that expand organically -->
+    <div class="liquid-blobs-container">
+      <div class="liquid-blob blob-1"></div>
+      <div class="liquid-blob blob-2"></div>
+      <div class="liquid-blob blob-3"></div>
+      <div class="liquid-blob blob-4"></div>
+    </div>
+
+    <!-- Menu Content -->
+    <div class="liquid-nav-content">
+      <div class="liquid-nav-close-wrap">
+        <button class="liquid-nav-close" aria-label="Close Navigation">
+          <span class="close-line-1"></span>
+          <span class="close-line-2"></span>
+        </button>
+      </div>
+
+      <!-- Navigation links -->
+      <div class="liquid-nav-links-container">
+        <ul class="liquid-menu-links">
+          <li class="liquid-menu-item"><a href="#top" data-i18n="nav_home">Home</a></li>
+          <li class="liquid-menu-item"><a href="https://mantrakaar.com/about/" data-i18n="nav_about">About</a></li>
+          
+          <li class="liquid-menu-item liquid-menu-has-megamenu">
+            <a href="#" data-i18n="nav_services" class="megamenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="megamenu-services-content">Services</a>
+            <div class="liquid-megamenu megamenu-services" id="megamenu-services-content">
+              <div class="megamenu-grid-4">
+                <a href="https://mantrakaar.com/design/" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-compass-drafting megamenu-icon"></i>
+                  <span class="megamenu-card-tag" data-i18n="service_card_1_tag">UX/UI DESIGN</span>
+                  <h4 class="megamenu-card-title" data-i18n="spotlight_design">DESIGN</h4>
+                  <p class="megamenu-card-desc" data-i18n="service_card_1_desc">Brand & Interface Design. Beautiful, user-centered digital interfaces.</p>
+                </a>
+                <a href="https://mantrakaar.com/development/" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-code megamenu-icon"></i>
+                  <span class="megamenu-card-tag" data-i18n="service_card_2_tag">WEBSITE DEVELOPMENT</span>
+                  <h4 class="megamenu-card-title" data-i18n="spotlight_development">DEVELOPMENT</h4>
+                  <p class="megamenu-card-desc" data-i18n="service_card_2_desc">Frontend & Core Dev. Fast, secure, and modern websites from scratch.</p>
+                </a>
+                <a href="https://mantrakaar.com/marketing/" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-chart-line megamenu-icon"></i>
+                  <span class="megamenu-card-tag" data-i18n="service_card_3_tag">MARKETING</span>
+                  <h4 class="megamenu-card-title" data-i18n="spotlight_marketing">MARKETING</h4>
+                  <p class="megamenu-card-desc" data-i18n="service_card_3_desc">Growth & SEO Strategy. Boosting online visibility and lead conversion.</p>
+                </a>
+                <a href="https://mantrakaar.com/consultancy/" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-user-tie megamenu-icon"></i>
+                  <span class="megamenu-card-tag" data-i18n="service_card_4_tag">CONSULTING</span>
+                  <h4 class="megamenu-card-title" data-i18n="spotlight_strategy">STRATEGY</h4>
+                  <p class="megamenu-card-desc" data-i18n="service_card_4_desc">Consultancy & Audits. Actionable architectural analysis and code audits.</p>
+                </a>
+              </div>
+            </div>
+          </li>
+          
+          <li class="liquid-menu-item"><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+          
+          <li class="liquid-menu-item liquid-menu-has-megamenu">
+            <a href="#" data-i18n="nav_clients" class="megamenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="megamenu-clients-content">Clients</a>
+            <div class="liquid-megamenu megamenu-clients" id="megamenu-clients-content">
+              <div class="megamenu-grid-2">
+                <a href="#clients-section" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-users megamenu-icon"></i>
+                  <h4 class="megamenu-card-title" data-i18n="client_title">OUR CLIENTS</h4>
+                  <p class="megamenu-card-desc" data-i18n="client_card_desc">A showcase of businesses and brands we have partnered with.</p>
+                </a>
+                <a href="#testimonials-section" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-comments megamenu-icon"></i>
+                  <h4 class="megamenu-card-title" data-i18n="nav_testimonials">TESTIMONIALS</h4>
+                  <p class="megamenu-card-desc" data-i18n="testimonial_card_desc">Read reviews and stories from our clients about their experiences.</p>
+                </a>
+              </div>
+            </div>
+          </li>
+          
+          <li class="liquid-menu-item"><a href="https://mantrakaar.com/career/" data-i18n="nav_career">Career</a></li>
+          <li class="liquid-menu-item"><a href="https://mantrakaar.com/blog/" data-i18n="nav_blogs">Blogs</a></li>
+          <li class="liquid-menu-item"><a href="https://mantrakaar.com/contact/" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Mobile Controls inside Overlay -->
+      <div class="liquid-mobile-controls">
+        <!-- Dark Mode Toggle button -->
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <i class="fa-solid fa-moon"></i> <span data-i18n="theme_toggle">Toggle Theme</span>
+        </button>
+        
+        <!-- Language Selector -->
+        <div class="lang-selector">
+          <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+            <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
+          </button>
+          <ul class="lang-dropdown" aria-label="Languages">
+            <li><a href="#" data-lang="en">English</a></li>
+            <li><a href="#" data-lang="hi">Hindi (हिंदी)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ==========================================================================
        1. Navigation Bar (Visually identical to original layout, updated items)
        ========================================================================== */ -->
-  <header id="header-section" data-style="style-2" class="ha-header ut-header-floating fullwidth ut-primary-custom-skin">
+  <header id="header-section" data-style="style-2" class="ha-header ut-header-floating fullwidth ut-primary-custom-skin header-transparent">
     <div class="grid-container">
       <div class="ha-header-perspective">
         <div class="ha-header-front">
@@ -101,70 +226,50 @@
             </div>
           </div>
           
-          <!-- Desktop Horizontal Navigation Menu -->
-          <nav id="navigation" class="ut-horizontal-navigation grid-70" aria-label="Main Navigation">
-            <ul id="menu-main-menu_mantrakaar" class="ut-navigation-menu menu">
-              <li class="menu-item current-menu-item"><a href="#top" class="ut-main-navigation-link"><span data-i18n="nav_home">Home</span></a></li>
-              <li class="menu-item"><a href="https://mantrakaar.com/about/" class="ut-main-navigation-link"><span data-i18n="nav_about">About</span></a></li>
-              <li class="menu-item menu-item-has-children">
-                <a href="#" class="ut-main-navigation-link" aria-expanded="false" aria-haspopup="true"><span data-i18n="nav_services">Services</span></a>
-                <ul class="sub-menu" aria-label="Services Sub-menu">
-                  <li><a href="https://mantrakaar.com/design/">Design</a></li>
-                  <li><a href="https://mantrakaar.com/development/">Development</a></li>
-                  <li><a href="https://mantrakaar.com/marketing/">Marketing</a></li>
-                  <li><a href="https://mantrakaar.com/consultancy/">Consultancy</a></li>
-                </ul>
-              </li>
-              <li class="menu-item"><a href="projects.html" class="ut-main-navigation-link"><span data-i18n="nav_projects">Projects</span></a></li>
-              <li class="menu-item menu-item-has-children">
-                <a href="#" class="ut-main-navigation-link" aria-expanded="false" aria-haspopup="true"><span data-i18n="nav_clients">Clients</span></a>
-                <ul class="sub-menu" aria-label="Clients Sub-menu">
-                  <li><a href="#clients-section">Clients</a></li>
-                  <li><a href="#testimonials-section">Testimonials</a></li>
-                </ul>
-              </li>
-              <li class="menu-item"><a href="https://mantrakaar.com/career/" class="ut-main-navigation-link"><span data-i18n="nav_career">Career</span></a></li>
-              <li class="menu-item"><a href="https://mantrakaar.com/blog/" class="ut-main-navigation-link"><span data-i18n="nav_blogs">Blogs</span></a></li>
-              <li class="menu-item"><a href="https://mantrakaar.com/contact/" class="ut-main-navigation-link"><span data-i18n="nav_contact">Contact</span></a></li>
-            </ul>
-          </nav>
-          
-          <!-- Controls Area (Search, Toggles, Language, Hamburger) -->
-          <div class="nav-controls">
-            <!-- Inline Search Field (Expandable) -->
-            <div class="nav-search-container" role="search">
-              <div class="search-input-wrapper">
-                <input type="text" placeholder="Search site..." aria-label="Search through site content">
+          <!-- Right side controls (Search, Toggles, Language, and Liquid Trigger) -->
+          <div class="header-right-controls" style="display: flex; align-items: center; gap: 20px;">
+            
+            <!-- Controls Area (Search, Toggles, Language) -->
+            <div class="nav-controls">
+              <!-- Inline Search Field (Expandable) -->
+              <div class="nav-search-container" role="search">
+                <div class="search-input-wrapper">
+                  <input type="text" placeholder="Search site..." aria-label="Search through site content">
+                </div>
+                <button class="nav-search-btn" aria-label="Search" aria-expanded="false">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
               </div>
-              <button class="nav-search-btn" aria-label="Search" aria-expanded="false">
-                <i class="fa-solid fa-magnifying-glass"></i>
+              
+              <!-- Dark Mode Toggle button -->
+              <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+              </button>
+              
+              <!-- Language Selector Dropdown -->
+              <div class="lang-selector">
+                <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+                  <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
+                </button>
+                <ul class="lang-dropdown" aria-label="Languages">
+                  <li><a href="#" data-lang="en">English</a></li>
+                  <li><a href="#" data-lang="hi">Hindi (हिंदी)</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Liquid Menu Trigger Button -->
+            <div class="liquid-trigger-wrap">
+              <button id="liquid-menu-trigger" class="liquid-menu-trigger" aria-label="Open Navigation">
+                <div class="trigger-blobs-container">
+                  <div class="trigger-blob trigger-blob-1"></div>
+                  <div class="trigger-blob trigger-blob-2"></div>
+                  <div class="trigger-blob trigger-blob-3"></div>
+                </div>
+                <span class="trigger-text" data-i18n="menu_title">MENU</span>
               </button>
             </div>
-            
-            <!-- Dark Mode Toggle button -->
-            <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
-              <i class="fa-solid fa-moon"></i>
-            </button>
-            
-            <!-- Language Selector Dropdown -->
-            <div class="lang-selector">
-              <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
-                <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
-              </button>
-              <ul class="lang-dropdown" aria-label="Languages">
-                <li><a href="#" data-lang="en">English</a></li>
-                <li><a href="#" data-lang="hi">Hindi (हिंदी)</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <!-- Mobile Menu Trigger -->
-          <div class="tablet-grid-20 mobile-grid-30 hide-on-desktop">
-            <div class="ut-mm-trigger">
-              <button id="ut-open-mobile-menu" class="ut-hamburger" aria-label="Toggle Mobile Navigation" aria-expanded="false">
-                <span></span>
-              </button>
-            </div>
+
           </div>
           
         </div>
@@ -1216,7 +1321,7 @@
   <!-- Vivus.js for SVG path animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.6/vivus.min.js"></script>
   <!-- Core Custom Javascript -->
-  <script type="module" src="js/main.js?v=5.3"></script>
+  <script type="module" src="js/main.js?v=6.1"></script>
 
 </body>
 </html>
