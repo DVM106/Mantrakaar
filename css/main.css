@@ -4375,6 +4375,389 @@ body:not(.dark-mode) .megamenu-card-desc {
   border-bottom-color: transparent;
 }
 
+/* ── About Us Page Styles ── */
+.about-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+.about-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  padding: 0 20px;
+}
+.about-hero-overline {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--brand-purple);
+  margin-bottom: 20px;
+  animation: fade-in-up 0.8s ease-out;
+}
+.about-hero h1 {
+  font-size: clamp(52px, 8vw, 100px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  background: linear-gradient(to right, #ffffff, #dcdcdc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.about-hero p {
+  font-size: clamp(16px, 2vw, 20px);
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Who We Are & History */
+.about-who-section {
+  padding: 120px 0;
+  background-color: #0d0d0d;
+  position: relative;
+}
+.about-grid-2 {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+}
+.about-history-content h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin-bottom: 30px;
+}
+.about-history-content p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+.about-history-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Chakras / Core Values Card */
+.about-values-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s;
+}
+.about-values-card:hover {
+  border-color: rgba(170, 0, 211, 0.4);
+  box-shadow: 0 15px 50px rgba(170, 0, 211, 0.15);
+  transform: translateY(-5px);
+}
+.about-values-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+  letter-spacing: -0.02em;
+}
+.value-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+.value-item:last-child {
+  margin-bottom: 0;
+}
+.value-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(170, 0, 211, 0.15);
+  color: var(--brand-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.value-text h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+.value-text p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* Ambition Section */
+.about-ambition-section {
+  padding: 140px 0;
+  background-color: #080808;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.about-ambition-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(170, 0, 211, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.about-ambition-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.about-ambition-wrap h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+.about-ambition-wrap p {
+  font-size: clamp(16px, 1.8vw, 22px);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+}
+
+/* Stats Section */
+.about-stats-section {
+  padding: 100px 0;
+  background-color: #0b0b0b;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.stat-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 35px 25px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s, border-color 0.3s;
+}
+.stat-box:hover {
+  transform: translateY(-5px);
+  border-color: rgba(170, 0, 211, 0.3);
+}
+.stat-number-wrap {
+  font-size: clamp(48px, 6vw, 68px);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 12px;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #ffffff 30%, var(--brand-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Team Section */
+.about-team-section {
+  padding: 120px 0;
+  background-color: #080808;
+}
+.about-team-section h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  text-align: center;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+}
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.team-card {
+  width: calc(33.333% - 20px);
+  min-width: 290px;
+  max-width: 360px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+  display: flex;
+  flex-direction: column;
+}
+.team-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(170, 0, 211, 0.4);
+  box-shadow: 0 15px 40px rgba(170, 0, 211, 0.15);
+}
+.team-avatar-wrap {
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  position: relative;
+  background-color: #1a1a1a;
+}
+.team-avatar-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  font-weight: 800;
+  color: rgba(170, 0, 211, 0.1);
+  background: linear-gradient(135deg, #18002b 0%, #0d0d0d 100%);
+  user-select: none;
+}
+.team-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.team-card:hover .team-avatar-wrap img {
+  transform: scale(1.06);
+}
+.team-info {
+  padding: 25px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.team-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+.team-role {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--brand-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 15px;
+}
+.team-socials {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 15px;
+}
+.team-socials a {
+  color: var(--text-muted);
+  font-size: 14px;
+  transition: color 0.3s;
+}
+.team-socials a:hover {
+  color: #ffffff;
+}
+
+/* Get Started Section */
+.about-cta-section {
+  padding: 140px 0;
+  background-color: #0b0b0b;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+.about-cta-section::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 250px;
+  background: radial-gradient(ellipse at 50% 100%, rgba(170, 0, 211, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.about-cta-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.about-cta-wrap h2 {
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+.about-cta-wrap p {
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* Responsive Overrides */
+@media (max-width: 960px) {
+  .about-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .team-card {
+    width: calc(50% - 15px);
+  }
+}
+@media (max-width: 600px) {
+  .about-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-card {
+    width: 100%;
+    max-width: 100%;
+  }
+  .about-who-section, .about-ambition-section, .about-team-section, .about-cta-section {
+    padding: 80px 0;
+  }
+}
+
 
 
 

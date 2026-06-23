@@ -73,7 +73,16 @@ document.addEventListener('DOMContentLoaded', () => {
       contact_service_consultancy: 'Consultancy',
       contact_submit: 'Get In Touch',
       client_card_desc: 'A showcase of businesses and brands we have partnered with.',
-      testimonial_card_desc: 'Read reviews and stories from our clients about their experiences.'
+      testimonial_card_desc: 'Read reviews and stories from our clients about their experiences.',
+      about_hero_title: 'About Us',
+      about_who_we_are: 'Who We Are',
+      about_our_ambition: 'Our Ambition',
+      about_the_team: 'The Team of Mantrakaar',
+      about_stat_clients: 'Happy Clients',
+      about_stat_web: 'Web Solutions',
+      about_stat_design: 'Design Solutions',
+      about_stat_social: 'Social Media Solutions',
+      about_connect: 'Connect With Us'
     },
     hi: {
       menu_title: 'मेन्यू',
@@ -132,7 +141,16 @@ document.addEventListener('DOMContentLoaded', () => {
       contact_service_consultancy: 'कंसल्टेंसी / परामर्श',
       contact_submit: 'संपर्क करें',
       client_card_desc: 'उन व्यवसायों और ब्रांडों का प्रदर्शन जिसके साथ हमने भागीदारी की है।',
-      testimonial_card_desc: 'हमारे अनुभवों के बारे में हमारे ग्राहकों की समीक्षाएं और कहानियां पढ़ें।'
+      testimonial_card_desc: 'हमारे अनुभवों के बारे में हमारे ग्राहकों की समीक्षाएं और कहानियां पढ़ें।',
+      about_hero_title: 'हमारे बारे में',
+      about_who_we_are: 'हम कौन हैं',
+      about_our_ambition: 'हमारी महत्वाकांक्षा',
+      about_the_team: 'मंत्रकार की टीम',
+      about_stat_clients: 'खुश ग्राहक',
+      about_stat_web: 'वेब समाधान',
+      about_stat_design: 'डिजाइन समाधान',
+      about_stat_social: 'सोशल मीडिया समाधान',
+      about_connect: 'हमसे जुड़ें'
     }
   };
 
@@ -2666,6 +2684,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Sticky transparent header scroll behavior
   initTransparentHeaderScroll();
+  // Statistics Counter Animation
+  initStatsCounters();
 
   function initTransparentHeaderScroll() {
     const header = document.getElementById('header-section');
@@ -2682,5 +2702,51 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('scroll', handleScroll, { passive: true });
       handleScroll(); // initial check
     }
+  }
+
+  function initStatsCounters() {
+    const statsSection = document.querySelector('.about-stats-section');
+    const counters = document.querySelectorAll('.stat-number');
+    if (!statsSection || counters.length === 0) return;
+
+    const runCounter = (el) => {
+      const target = parseInt(el.getAttribute('data-target'), 10);
+      if (isNaN(target)) return;
+      
+      const duration = 2000; // 2 seconds
+      const startTime = performance.now();
+      
+      const update = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing out quadratic
+        const ease = progress * (2 - progress);
+        const currentVal = Math.floor(ease * target);
+        
+        el.textContent = currentVal;
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = target; // Ensure exact final value
+        }
+      };
+      
+      requestAnimationFrame(update);
+    };
+
+    let triggered = false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !triggered) {
+          triggered = true;
+          counters.forEach(counter => runCounter(counter));
+          observer.unobserve(entry.target); // Trigger only once
+        }
+      });
+    }, { threshold: 0.15 });
+
+    observer.observe(statsSection);
   }
 });
