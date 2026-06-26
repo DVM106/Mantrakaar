@@ -240,6 +240,13 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error("Dotted Spotlight Grid init error:", e);
   }
 
+  // 10.5. About Page Hero Spotlight Grid Tracker
+  try {
+    initAboutHeroSpotlight();
+  } catch (e) {
+    console.error("About Hero Spotlight Grid init error:", e);
+  }
+
   // 11. Scroll-Triggered Entrance Animations (Reveal System)
   try {
     initScrollReveals();
@@ -464,6 +471,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function initHeroSequence(forcePlay = false) {
     logDebug("Starting initHeroSequence... forcePlay=" + forcePlay);
+    
+    const mask = document.querySelector('.hero-mask');
+    if (!mask) return; // Early return on subpages to avoid scroll locking
+
     const isReducedMotion = false; // Always run the animation by default as requested
     
     // Selectors
@@ -472,7 +483,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const phrase2 = document.getElementById('phrase-2');
     const phrase3 = document.getElementById('phrase-3');
     const flare = document.querySelector('.cinematic-anamorphic-flare');
-    const mask = document.querySelector('.hero-mask');
     const flash = document.querySelector('.flashbang-overlay');
     const brandEl = document.getElementById('hero-brand-shimmer');
     const dotMatrix = document.querySelector('.trailing-dot-matrix');
@@ -2129,6 +2139,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const dottedSpotlight = document.querySelector('.hero-dotted-spotlight');
     if (!heroContainer || !dottedSpotlight) return;
 
+    // Skip if it's the about page hero (handled separately by initAboutHeroSpotlight)
+    if (heroContainer.classList.contains('about-hero')) return;
+
     let floatTween = null;
     const pos = { x: 50, y: 50 };
 
@@ -2173,6 +2186,79 @@ document.addEventListener('DOMContentLoaded', () => {
       // On mousemove, track the cursor coordinates relative to hero section
       heroContainer.addEventListener('mousemove', (e) => {
         stopFloating(); // Stop auto-floating while active hover controls it
+        
+        const rect = heroContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const xPct = (x / rect.width) * 100;
+        const yPct = (y / rect.height) * 100;
+
+        // Keep local position state in sync so mouseleave transition is seamless
+        pos.x = xPct;
+        pos.y = yPct;
+
+        dottedSpotlight.style.setProperty('--mouse-x', `${xPct}%`);
+        dottedSpotlight.style.setProperty('--mouse-y', `${yPct}%`);
+      });
+
+      // On mouseleave, resume automatic floating smoothly
+      heroContainer.addEventListener('mouseleave', () => {
+        startFloating();
+      });
+    }
+  }
+
+  /* ==========================================================================
+     About Page Hero Spotlight Cursor Tracking & Float Loop
+     ========================================================================== */
+  function initAboutHeroSpotlight() {
+    const heroContainer = document.querySelector('.about-hero');
+    const dottedSpotlight = document.querySelector('.about-hero .hero-dotted-spotlight');
+    if (!heroContainer || !dottedSpotlight) return;
+
+    let floatTween = null;
+    const pos = { x: 50, y: 50 };
+
+    // Function to run the auto-floating spotlight (touch/idle state)
+    function startFloating() {
+      if (typeof gsap === 'undefined') return;
+      
+      // Kill any active float tweens to avoid overlap
+      if (floatTween) floatTween.kill();
+
+      // Animate pos.x and pos.y smoothly to random spots within the grid
+      floatTween = gsap.to(pos, {
+        x: 'random(15, 85)',
+        y: 'random(20, 80)',
+        duration: 'random(4, 7)',
+        ease: 'sine.inOut',
+        onUpdate: () => {
+          dottedSpotlight.style.setProperty('--mouse-x', `${pos.x}%`);
+          dottedSpotlight.style.setProperty('--mouse-y', `${pos.y}%`);
+        },
+        onComplete: startFloating
+      });
+    }
+
+    function stopFloating() {
+      if (floatTween) {
+        floatTween.kill();
+        floatTween = null;
+      }
+    }
+
+    // Detect if device supports touch events primarily (mobile/tablet)
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+    if (isTouchDevice) {
+      startFloating();
+    } else {
+      startFloating();
+
+      // On mousemove, track the cursor coordinates relative to about hero section
+      heroContainer.addEventListener('mousemove', (e) => {
+        stopFloating();
         
         const rect = heroContainer.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -2687,6 +2773,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Statistics Counter Animation
   initStatsCounters();
 
+
   function initTransparentHeaderScroll() {
     const header = document.getElementById('header-section');
     const hero = document.getElementById('hero-section-container');
@@ -2749,4 +2836,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(statsSection);
   }
+
+
 });
