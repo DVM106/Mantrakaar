@@ -6,3 +6,6 @@ Home Page.zip
 .tempmediaStorage/
 tmp/
 temp/
+*.bak
+sunset-react/node_modules/
+sunset-react/dist/

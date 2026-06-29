@@ -1,10 +1,8 @@
-import initCircularGallery from './circular-gallery.js';
-
 /* ==========================================================================
    Mantrakaar Core Javascript - Animations & Interactions (Resilient Version)
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initializeMantrakaar() {
   console.log('Mantrakaar scripts initializing...');
   
   // Custom Debug Logger (Disabled for production)
@@ -1616,19 +1614,24 @@ document.addEventListener('DOMContentLoaded', () => {
         { image: 'assets/clients/SAMADHAN.jpg', text: 'Samadhan' }
       ];
 
-      initCircularGallery(container, {
-        items: clientItems,
-        bend: 3,
-        textColor: '#ffffff',
-        borderRadius: 0.05,
-        scrollSpeed: 2,
-        scrollEase: 0.05,
-        fontUrl: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap',
-        font: 'bold 24px Montserrat',
-        fitScale: 0.75,
-        cardWidth: 700,
-        cardHeight: 500,
-        autoScrollSpeed: 0.05
+      import('./circular-gallery.js').then(module => {
+        const initCircularGallery = module.default;
+        initCircularGallery(container, {
+          items: clientItems,
+          bend: 3,
+          textColor: '#ffffff',
+          borderRadius: 0.05,
+          scrollSpeed: 2,
+          scrollEase: 0.05,
+          fontUrl: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap',
+          font: 'bold 24px Montserrat',
+          fitScale: 0.75,
+          cardWidth: 700,
+          cardHeight: 500,
+          autoScrollSpeed: 0.05
+        });
+      }).catch(err => {
+        console.error("Failed to load circular gallery module:", err);
       });
     }
 
@@ -2772,6 +2775,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initTransparentHeaderScroll();
   // Statistics Counter Animation
   initStatsCounters();
+  // Interactive Profile Cards Setup
+  initProfileCards();
 
 
   function initTransparentHeaderScroll() {
@@ -2837,5 +2842,368 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(statsSection);
   }
 
+  function initProfileCards() {
+    const cards = document.querySelectorAll('.pc-card-wrapper');
+    if (cards.length === 0) return;
 
-});
+    const clamp = (v, min = 0, max = 100) => Math.min(Math.max(v, min), max);
+    const round = (v, precision = 3) => parseFloat(v.toFixed(precision));
+    const adjust = (v, fMin, fMax, tMin, tMax) => round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
+
+    const ANIMATION_CONFIG = {
+      INITIAL_DURATION: 1200,
+      INITIAL_X_OFFSET: 70,
+      INITIAL_Y_OFFSET: 60,
+      DEVICE_BETA_OFFSET: 20,
+      ENTER_TRANSITION_MS: 180
+    };
+
+    cards.forEach(wrap => {
+      const shell = wrap.querySelector('.pc-card-shell');
+      if (!shell) return;
+
+      let enterTimer = null;
+      let leaveRaf = null;
+
+      let rafId = null;
+      let running = false;
+      let lastTs = 0;
+
+      let currentX = 0;
+      let currentY = 0;
+      let targetX = 0;
+      let targetY = 0;
+
+      const DEFAULT_TAU = 0.14;
+      const INITIAL_TAU = 0.6;
+      let initialUntil = 0;
+
+      const setVarsFromXY = (x, y) => {
+        const width = shell.clientWidth || 1;
+        const height = shell.clientHeight || 1;
+
+        const percentX = clamp((100 / width) * x);
+        const percentY = clamp((100 / height) * y);
+
+        const centerX = percentX - 50;
+        const centerY = percentY - 50;
+
+        const properties = {
+          '--pointer-x': `${percentX}%`,
+          '--pointer-y': `${percentY}%`,
+          '--background-x': `${adjust(percentX, 0, 100, 35, 65)}%`,
+          '--background-y': `${adjust(percentY, 0, 100, 35, 65)}%`,
+          '--pointer-from-center': `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
+          '--pointer-from-top': `${percentY / 100}`,
+          '--pointer-from-left': `${percentX / 100}`,
+          '--rotate-x': `${round(-(centerX / 5))}deg`,
+          '--rotate-y': `${round(centerY / 4)}deg`
+        };
+
+        for (const [k, v] of Object.entries(properties)) {
+          wrap.style.setProperty(k, v);
+        }
+      };
+
+      const step = ts => {
+        if (!running) return;
+        if (lastTs === 0) lastTs = ts;
+        const dt = (ts - lastTs) / 1000;
+        lastTs = ts;
+
+        const tau = ts < initialUntil ? INITIAL_TAU : DEFAULT_TAU;
+        const k = 1 - Math.exp(-dt / tau);
+
+        currentX += (targetX - currentX) * k;
+        currentY += (targetY - currentY) * k;
+
+        setVarsFromXY(currentX, currentY);
+
+        const stillFar = Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05;
+
+        if (stillFar || document.hasFocus()) {
+          rafId = requestAnimationFrame(step);
+        } else {
+          running = false;
+          lastTs = 0;
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
+        }
+      };
+
+      const start = () => {
+        if (running) return;
+        running = true;
+        lastTs = 0;
+        rafId = requestAnimationFrame(step);
+      };
+
+      const tiltEngine = {
+        setImmediate(x, y) {
+          currentX = x;
+          currentY = y;
+          setVarsFromXY(currentX, currentY);
+        },
+        setTarget(x, y) {
+          targetX = x;
+          targetY = y;
+          start();
+        },
+        toCenter() {
+          this.setTarget(shell.clientWidth / 2, shell.clientHeight / 2);
+        },
+        beginInitial(durationMs) {
+          initialUntil = performance.now() + durationMs;
+          start();
+        },
+        getCurrent() {
+          return { x: currentX, y: currentY, tx: targetX, ty: targetY };
+        },
+        cancel() {
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = null;
+          running = false;
+          lastTs = 0;
+        }
+      };
+
+      const getOffsets = (evt, el) => {
+        const rect = el.getBoundingClientRect();
+        return { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
+      };
+
+      const handlePointerMove = event => {
+        const { x, y } = getOffsets(event, shell);
+        tiltEngine.setTarget(x, y);
+      };
+
+      const handlePointerEnter = event => {
+        shell.classList.add('active');
+        shell.classList.add('entering');
+        if (enterTimer) window.clearTimeout(enterTimer);
+        enterTimer = window.setTimeout(() => {
+          shell.classList.remove('entering');
+        }, ANIMATION_CONFIG.ENTER_TRANSITION_MS);
+
+        const { x, y } = getOffsets(event, shell);
+        tiltEngine.setTarget(x, y);
+      };
+
+      const handlePointerLeave = () => {
+        tiltEngine.toCenter();
+
+        const checkSettle = () => {
+          const { x, y, tx, ty } = tiltEngine.getCurrent();
+          const settled = Math.hypot(tx - x, ty - y) < 0.6;
+          if (settled) {
+            shell.classList.remove('active');
+            leaveRaf = null;
+          } else {
+            leaveRaf = requestAnimationFrame(checkSettle);
+          }
+        };
+        if (leaveRaf) cancelAnimationFrame(leaveRaf);
+        leaveRaf = requestAnimationFrame(checkSettle);
+      };
+
+      const handleDeviceOrientation = event => {
+        const { beta, gamma } = event;
+        if (beta == null || gamma == null) return;
+
+        const centerX = shell.clientWidth / 2;
+        const centerY = shell.clientHeight / 2;
+        const mobileTiltSensitivity = 5;
+        const x = clamp(centerX + gamma * mobileTiltSensitivity, 0, shell.clientWidth);
+        const y = clamp(
+          centerY + (beta - ANIMATION_CONFIG.DEVICE_BETA_OFFSET) * mobileTiltSensitivity,
+          0,
+          shell.clientHeight
+        );
+
+        tiltEngine.setTarget(x, y);
+      };
+
+      shell.addEventListener('pointerenter', handlePointerEnter);
+      shell.addEventListener('pointermove', handlePointerMove);
+      shell.addEventListener('pointerleave', handlePointerLeave);
+
+      const handleClick = () => {
+        const anyMotion = window.DeviceMotionEvent;
+        if (anyMotion && typeof anyMotion.requestPermission === 'function') {
+          anyMotion
+            .requestPermission()
+            .then(state => {
+              if (state === 'granted') {
+                window.addEventListener('deviceorientation', handleDeviceOrientation);
+              }
+            })
+            .catch(console.error);
+        } else {
+          window.addEventListener('deviceorientation', handleDeviceOrientation);
+        }
+      };
+      shell.addEventListener('click', handleClick);
+
+      // Trigger initial intro animation
+      const initX = (shell.clientWidth || 0) - ANIMATION_CONFIG.INITIAL_X_OFFSET;
+      const initY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
+      tiltEngine.setImmediate(initX, initY);
+      tiltEngine.toCenter();
+      tiltEngine.beginInitial(ANIMATION_CONFIG.INITIAL_DURATION);
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // Brand Pillars Section (Purpose, Promise, Mission, Values)
+  // --------------------------------------------------------------------------
+  function initBrandPillars() {
+    const section = document.getElementById('vision-mission-section');
+    if (!section) return;
+
+    const tabs = section.querySelectorAll('.tab-item');
+    
+    // Preload tab background images
+    tabs.forEach(tab => {
+      const img = tab.querySelector('img');
+      if (img && img.src) {
+        const preloader = new Image();
+        preloader.src = img.src;
+      }
+    });
+
+    function activateTab(activeTab) {
+      const isActive = activeTab.classList.contains('active');
+      const img = activeTab.querySelector('img');
+      const bg = img ? img.src : '';
+
+      if (bg) {
+        section.style.backgroundImage = `url('${bg}')`;
+      }
+
+      const isMobile = window.innerWidth < 992;
+
+      if (isActive && isMobile) {
+        // Toggle active off on mobile if clicked again
+        activeTab.classList.remove('active');
+        activeTab.setAttribute('aria-expanded', 'false');
+        activeTab.setAttribute('aria-selected', 'false');
+      } else {
+        // Deactivate all
+        tabs.forEach(tab => {
+          tab.classList.remove('active');
+          tab.setAttribute('aria-expanded', 'false');
+          tab.setAttribute('aria-selected', 'false');
+        });
+
+        // Activate clicked
+        activeTab.classList.add('active');
+        activeTab.setAttribute('aria-expanded', 'true');
+        activeTab.setAttribute('aria-selected', 'true');
+      }
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activateTab(tab);
+        }
+      });
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // FAQ Section (Accordion toggle logic)
+  // --------------------------------------------------------------------------
+  function initFAQ() {
+    const accordion = document.querySelector('.faq-accordion');
+    if (!accordion) return;
+
+    const items = accordion.querySelectorAll('.faq-item');
+
+    function toggleItem(item) {
+      const isActive = item.classList.contains('active');
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+
+      if (isActive) {
+        item.classList.remove('active');
+        if (question) question.setAttribute('aria-expanded', 'false');
+        if (answer) {
+          // Temporarily set height to scrollHeight, then transition to 0px
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          // Force reflow
+          answer.offsetHeight;
+          answer.style.maxHeight = '0px';
+          answer.style.opacity = '0';
+        }
+      } else {
+        // Collapse all others
+        items.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+            const otherQuestion = otherItem.querySelector('.faq-question');
+            const otherAnswer = otherItem.querySelector('.faq-answer');
+            if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
+            if (otherAnswer) {
+              otherAnswer.style.maxHeight = '0px';
+              otherAnswer.style.opacity = '0';
+            }
+          }
+        });
+
+        // Expand clicked
+        item.classList.add('active');
+        if (question) question.setAttribute('aria-expanded', 'true');
+        if (answer) {
+          answer.style.opacity = '1';
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          
+          // Clear max-height after transition completes to allow responsive layout
+          const handleTransitionEnd = (e) => {
+            if (e.propertyName === 'max-height' && item.classList.contains('active')) {
+              answer.style.maxHeight = 'none';
+            }
+            answer.removeEventListener('transitionend', handleTransitionEnd);
+          };
+          answer.addEventListener('transitionend', handleTransitionEnd);
+        }
+      }
+    }
+
+    items.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      if (question) {
+        question.addEventListener('click', () => toggleItem(item));
+        question.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleItem(item);
+          }
+        });
+      }
+    });
+  }
+
+  try {
+    initBrandPillars();
+  } catch (e) {
+    console.error("Brand Pillars init error:", e);
+  }
+
+  try {
+    initFAQ();
+  } catch (e) {
+    console.error("FAQ init error:", e);
+  }
+
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeMantrakaar);
+} else {
+  setTimeout(initializeMantrakaar, 0);
+}
