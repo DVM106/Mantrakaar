@@ -80,7 +80,12 @@ function initializeMantrakaar() {
       about_stat_web: 'Web Solutions',
       about_stat_design: 'Design Solutions',
       about_stat_social: 'Social Media Solutions',
-      about_connect: 'Connect With Us'
+      about_connect: 'Connect With Us',
+      blog_hero_title: 'Our Blog',
+      blog_hero_desc: 'Insights, articles, and guides on design, development, and digital strategy.',
+      blog_search_placeholder: 'Search articles...',
+      blog_filter_all: 'All',
+      blog_read_more: 'Read More'
     },
     hi: {
       menu_title: 'मेन्यू',
@@ -148,7 +153,12 @@ function initializeMantrakaar() {
       about_stat_web: 'वेब समाधान',
       about_stat_design: 'डिजाइन समाधान',
       about_stat_social: 'सोशल मीडिया समाधान',
-      about_connect: 'हमसे जुड़ें'
+      about_connect: 'हमसे जुड़ें',
+      blog_hero_title: 'हमारा ब्लॉग',
+      blog_hero_desc: 'डिजाइन, डेवलपमेंट और डिजिटल रणनीति पर अंतर्दृष्टि, लेख और गाइड।',
+      blog_search_placeholder: 'लेख खोजें...',
+      blog_filter_all: 'सभी',
+      blog_read_more: 'और पढ़ें'
     }
   };
 
@@ -3188,6 +3198,84 @@ function initializeMantrakaar() {
     });
   }
 
+  // --------------------------------------------------------------------------
+  // Blog Page Search & Category Filter
+  // --------------------------------------------------------------------------
+  function initBlogFilter() {
+    const grid = document.getElementById('blog-posts-grid');
+    const filterBtns = document.querySelectorAll('.blog-filter-btn');
+    const posts = document.querySelectorAll('.blog-card-wrapper');
+
+    if (posts.length === 0) return; // Not on the blog page
+
+    let activeCategory = 'all';
+
+    // Parse URL parameter on load to filter posts automatically
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    if (categoryParam) {
+      const allowedCategories = ['design', 'development', 'marketing', 'strategy'];
+      if (allowedCategories.includes(categoryParam.toLowerCase())) {
+        activeCategory = categoryParam.toLowerCase();
+        // Update active class on filter buttons
+        filterBtns.forEach(btn => {
+          if (btn.getAttribute('data-category') === activeCategory) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    function filterPosts() {
+      // Toggle magazine-mode class on the grid based on active category
+      if (grid) {
+        if (activeCategory === 'all') {
+          grid.classList.add('magazine-mode');
+        } else {
+          grid.classList.remove('magazine-mode');
+        }
+      }
+
+      posts.forEach(post => {
+        const category = post.getAttribute('data-category');
+        const matchesCategory = (activeCategory === 'all' || category === activeCategory);
+
+        if (matchesCategory) {
+          post.style.display = 'block';
+          // Force a reflow to trigger reveal animations
+          post.offsetHeight;
+          post.style.opacity = '1';
+          post.style.transform = 'translateY(0)';
+        } else {
+          post.style.opacity = '0';
+          post.style.transform = 'translateY(20px)';
+          // Hide after transition ends to avoid layout gaps
+          setTimeout(() => {
+            if (post.style.opacity === '0') {
+              post.style.display = 'none';
+            }
+          }, 300);
+        }
+      });
+    }
+
+    // Run initial filter on load
+    filterPosts();
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCategory = btn.getAttribute('data-category');
+        filterPosts();
+      });
+    });
+  }
+
+
+
   try {
     initBrandPillars();
   } catch (e) {
@@ -3199,6 +3287,14 @@ function initializeMantrakaar() {
   } catch (e) {
     console.error("FAQ init error:", e);
   }
+
+  try {
+    initBlogFilter();
+  } catch (e) {
+    console.error("Blog Filter init error:", e);
+  }
+
+
 
 }
 

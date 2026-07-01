@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Blog Preview — Mantrakaar</title>
+  <meta name="description" content="Discover Mantrakaar — an independent digital agency transforming imaginations into reality across India and the UK. Learn about our history, ambition, and core team.">
+  <meta property="og:title" content="About Us — Mantrakaar">
+  <meta property="og:description" content="Discover Mantrakaar — an independent digital agency transforming imaginations into reality. Learn about our history, ambition, and core team.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mantrakaar.com/about">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png" type="image/png">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/css/main.css?v=6.8">
+  
+
+  
+  <!-- Third-Party CDN Libraries -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+  
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
+  <!-- Structured Data (Schema.org JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Mantrakaar",
+    "description": "Discover Mantrakaar — an independent digital agency transforming imaginations into reality across India and the UK.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mantrakaar",
+      "logo": "https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png"
+    }
+  }
+  </script></head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Liquid Portal Navigation Structure -->
+  <div class="liquid-portal-overlay" id="liquid-portal-nav">
+    <!-- SVG Gooey and Displacement Filters -->
+    <svg class="liquid-portal-svg-filters" xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+      <defs>
+        <filter id="gooey-portal">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="gooey" />
+          <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
+        </filter>
+        <filter id="liquid-distortion">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" id="displacement-map" />
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- Giant Blobs that expand organically -->
+    <div class="liquid-blobs-container">
+      <div class="liquid-blob blob-1"></div>
+      <div class="liquid-blob blob-2"></div>
+      <div class="liquid-blob blob-3"></div>
+      <div class="liquid-blob blob-4"></div>
+    </div>
+
+    <!-- Menu Content -->
+    <div class="liquid-nav-content">
+      <div class="liquid-nav-close-wrap">
+        <button class="liquid-nav-close" aria-label="Close Navigation">
+          <span class="close-line-1"></span>
+          <span class="close-line-2"></span>
+        </button>
+      </div>
+
+      <!-- Navigation links -->
+      <div class="liquid-nav-links-container">
+        <ul class="liquid-menu-links">
+          <li class="liquid-menu-item"><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li class="liquid-menu-item"><a href="about.html" data-i18n="nav_about">About</a></li>
+          
+          <li class="liquid-menu-item liquid-menu-has-megamenu">
+            <a href="#" data-i18n="nav_services" class="megamenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="megamenu-services-content">Services</a>
+            <div class="liquid-megamenu megamenu-services" id="megamenu-services-content">
+              <div class="megamenu-grid-4">
+                <a href="https://mantrakaar.com/design/" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-compass-drafting megamenu-icon"></i>
+                  <span class="megamenu-card-tag" data-i18n="service_card_1_tag">UX/UI DESIGN</span>
+                  <h4 class="megamenu-card-title" data-i18n="spotlight_design">DESIGN</h4>
+                  <p class="megamenu-card-desc" data-i18n="service_card_1_desc">Brand & Interface Design. Beautiful, user-centered digital interfaces.</p>
+                </a>
+                <a href="https://mantrakaar.com/development/" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-code megamenu-icon"></i>
+                  <span class="megamenu-card-tag" data-i18n="service_card_2_tag">WEBSITE DEVELOPMENT</span>
+                  <h4 class="megamenu-card-title" data-i18n="spotlight_development">DEVELOPMENT</h4>
+                  <p class="megamenu-card-desc" data-i18n="service_card_2_desc">Frontend & Core Dev. Fast, secure, and modern websites from scratch.</p>
+                </a>
+                <a href="https://mantrakaar.com/marketing/" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-chart-line megamenu-icon"></i>
+                  <span class="megamenu-card-tag" data-i18n="service_card_3_tag">MARKETING</span>
+                  <h4 class="megamenu-card-title" data-i18n="spotlight_marketing">MARKETING</h4>
+                  <p class="megamenu-card-desc" data-i18n="service_card_3_desc">Growth & SEO Strategy. Boosting online visibility and lead conversion.</p>
+                </a>
+                <a href="https://mantrakaar.com/consultancy/" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-user-tie megamenu-icon"></i>
+                  <span class="megamenu-card-tag" data-i18n="service_card_4_tag">CONSULTING</span>
+                  <h4 class="megamenu-card-title" data-i18n="spotlight_strategy">STRATEGY</h4>
+                  <p class="megamenu-card-desc" data-i18n="service_card_4_desc">Consultancy & Audits. Actionable architectural analysis and code audits.</p>
+                </a>
+              </div>
+            </div>
+          </li>
+          
+          <li class="liquid-menu-item"><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+          
+          <li class="liquid-menu-item liquid-menu-has-megamenu">
+            <a href="#" data-i18n="nav_clients" class="megamenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="megamenu-clients-content">Clients</a>
+            <div class="liquid-megamenu megamenu-clients" id="megamenu-clients-content">
+              <div class="megamenu-grid-2">
+                <a href="index.html#clients-section" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-users megamenu-icon"></i>
+                  <h4 class="megamenu-card-title" data-i18n="client_title">OUR CLIENTS</h4>
+                  <p class="megamenu-card-desc" data-i18n="client_card_desc">A showcase of businesses and brands we have partnered with.</p>
+                </a>
+                <a href="#testimonials" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-comments megamenu-icon"></i>
+                  <h4 class="megamenu-card-title" data-i18n="nav_testimonials">TESTIMONIALS</h4>
+                  <p class="megamenu-card-desc" data-i18n="testimonial_card_desc">Read reviews and stories from our clients about their experiences.</p>
+                </a>
+              </div>
+            </div>
+          </li>
+          
+          <li class="liquid-menu-item"><a href="https://mantrakaar.com/career/" data-i18n="nav_career">Career</a></li>
+          <li class="liquid-menu-item"><a href="blog.html" data-i18n="nav_blogs">Blogs</a></li>
+          <li class="liquid-menu-item"><a href="index.html#contact-section" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Mobile Controls inside Overlay -->
+      <div class="liquid-mobile-controls">
+        <!-- Dark Mode Toggle button -->
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <i class="fa-solid fa-moon"></i> <span data-i18n="theme_toggle">Toggle Theme</span>
+        </button>
+        
+        <!-- Language Selector -->
+        <div class="lang-selector">
+          <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+            <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
+          </button>
+          <ul class="lang-dropdown" aria-label="Languages">
+            <li><a href="#" data-lang="en">English</a></li>
+            <li><a href="#" data-lang="hi">Hindi (हिंदी)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       1. Navigation Header (transparent state)
+       ========================================================================== */ -->
+  <header id="header-section" data-style="style-2" class="ha-header ut-header-floating fullwidth ut-primary-custom-skin header-transparent">
+    <div class="grid-container">
+      <div class="ha-header-perspective">
+        <div class="ha-header-front">
+
+          <div class="site-logo-wrap">
+            <div class="site-logo">
+              <a href="index.html" rel="home" aria-label="Mantrakaar Home">
+                <img src="LOGO_white_120.png" alt="Mantrakaar logo" width="120" height="40" class="brand-logo-img">
+              </a>
+            </div>
+          </div>
+
+          <div class="header-right-controls" style="display: flex; align-items: center; gap: 20px;">
+            <div class="nav-controls">
+              <!-- Search bar toggle -->
+              <div class="nav-search-container" role="search">
+                <div class="search-input-wrapper">
+                  <input type="text" placeholder="Search site..." aria-label="Search through site content">
+                </div>
+                <button class="nav-search-btn" aria-label="Search" aria-expanded="false">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+
+              <!-- Theme Switch Toggle -->
+              <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+              </button>
+
+              <!-- Language selector dropdown -->
+              <div class="lang-selector">
+                <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+                  <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
+                </button>
+                <ul class="lang-dropdown" aria-label="Languages">
+                  <li><a href="#" data-lang="en">English</a></li>
+                  <li><a href="#" data-lang="hi">Hindi (हिंदी)</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Liquid Menu Trigger Button -->
+            <div class="liquid-trigger-wrap">
+              <button id="liquid-menu-trigger" class="liquid-menu-trigger" aria-label="Open Navigation">
+                <div class="trigger-blobs-container">
+                  <div class="trigger-blob trigger-blob-1"></div>
+                  <div class="trigger-blob trigger-blob-2"></div>
+                  <div class="trigger-blob trigger-blob-3"></div>
+                </div>
+                <span class="trigger-text" data-i18n="menu_title">MENU</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile navigation menu -->
+  <nav class="mobile-nav-menu hide-on-desktop" aria-label="Mobile Navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li>
+        <a href="#">Services</a>
+        <ul class="sub-menu">
+          <li><a href="https://mantrakaar.com/design/">Design</a></li>
+          <li><a href="https://mantrakaar.com/development/">Development</a></li>
+          <li><a href="https://mantrakaar.com/marketing/">Marketing</a></li>
+          <li><a href="https://mantrakaar.com/consultancy/">Consultancy</a></li>
+        </ul>
+      </li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="https://mantrakaar.com/career/">Career</a></li>
+      <li><a href="blog.html">Blogs</a></li>
+      <li><a href="index.html#contact-section">Contact</a></li>
+    </ul>
+    <div class="mobile-nav-controls">
+      <button class="theme-toggle-btn" style="font-size:20px;display:inline-flex;gap:10px;align-items:center;background:none;border:none;color:var(--text-heading);">
+        <i class="fa-solid fa-moon"></i> Toggle Theme
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <!-- ==========================================================================
+         2. Blog Hero Section (Supports multiple canvas & video backgrounds)
+         ========================================================================== */ -->
+    <section id="hero-section-container" class="blog-hero">
+      <!-- Canvas for WebGL/2D Animations -->
+
+      <!-- Gradient overlay -->
+      <div class="about-hero-overlay-gradient"></div>
+
+      <!-- Grid & Spotlight overlays -->
+      <div class="hero-layout-grid"></div>
+      <div class="hero-dotted-spotlight"></div>
+
+      <!-- Hero Content -->
+      <div class="about-hero-content">
+        <h1 data-i18n="blog_hero_title">Our Blog</h1>
+        <p data-i18n="blog_hero_desc">Insights, articles, and guides on design, development, and digital strategy.</p>
+      </div>
+
+      <!-- Scroll Down Guide -->
+      <div class="hero-scroll-down" aria-hidden="true">
+        <i class="fa-solid fa-arrow-down"></i>
+      </div>
+    </section>
+    <!-- ==========================================================================
+         3. Interactive Active/Inactive Blog Archive Grid
+         ========================================================================== */ -->
+    <section class="blog-archive-section">
+      <div class="grid-container">
+        
+        <!-- Active Blog Slot (Spans full width, horizontal split layout) -->
+        <div class="active-blog-container reveal-element reveal-scale-up" id="active-blog-container">
+          <!-- Populated dynamically via swap logic -->
+        </div>
+
+        <!-- Section Title Divider -->
+        <div class="archive-section-header reveal-element reveal-slide-up">
+          <h3 class="archive-title">From the archive</h3>
+          <div class="archive-divider-line"></div>
+        </div>
+
+        <!-- Inactive Blogs Grid (Archive at bottom) -->
+        <div class="inactive-blogs-grid" id="inactive-blogs-grid">
+          <!-- Populated dynamically via swap logic -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Swapping interactive script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Authentic Mantrakaar blog database
+        const blogsData = [
+          {
+            id: 0,
+            title: `Building a Human Brand: The "About Us" Section as Your Website's Heart`,
+            excerpt: `In a digital world that can sometimes feel cold and automated, your "About Us" page is where the pulse of your brand resides. It's the handshake, the smile, and the human voice.`,
+            cover: `https://mantrakaar.com/wp-content/uploads/2026/02/blog-.jpg-1500x1250.jpeg`,
+            category: `Strategy`,
+            categoryClass: `strat`,
+            author: `Mantrakaar Team`,
+            date: `February 18, 2026`,
+            link: `https://mantrakaar.com/building-a-human-brand-the-about-us-section-as-your-websites-heart/`
+          },
+          {
+            id: 1,
+            title: `Your Digital Practice: Why Doctors Need a Strong Online Presence`,
+            excerpt: `As a digital agency, we understand that for doctors, building trust and credibility is paramount. In today's digital age, your online presence is key to connecting with patients.`,
+            cover: `https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-2-1500x1250.jpg`,
+            category: `Marketing`,
+            categoryClass: `mkt`,
+            author: `Mantrakaar Team`,
+            date: `May 15, 2025`,
+            link: `https://mantrakaar.com/your-digital-practice-why-doctors-need-a-strong-online-presence/`
+          },
+          {
+            id: 2,
+            title: `Your Digital Portfolio: How SEO Elevates Specialist Doctors Online`,
+            excerpt: `For specialist doctors, a website isn't just a digital presence; it's a comprehensive portfolio, a testament to years of expertise, and a tool for growth and patient education.`,
+            cover: `https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-1-1500x1250.jpg`,
+            category: `Development`,
+            categoryClass: `dev`,
+            author: `Mantrakaar Team`,
+            date: `May 10, 2025`,
+            link: `https://mantrakaar.com/your-digital-portfolio-how-seo-elevates-specialist-doctors-online/`
+          },
+          {
+            id: 3,
+            title: `Your Digital Footprint: How Social Media Can Land You Your Dream Job`,
+            excerpt: `As a digital agency owner, I've seen firsthand how social media has transformed the way we connect, communicate, and even recruit talent. Your footprint matters.`,
+            cover: `https://mantrakaar.com/wp-content/uploads/2025/04/4-1500x1250.jpg`,
+            category: `Marketing`,
+            categoryClass: `mkt`,
+            author: `Mantrakaar Team`,
+            date: `April 20, 2025`,
+            link: `https://mantrakaar.com/your-digital-footprint-how-social-media-can-land-you-your-dream-job/`
+          },
+          {
+            id: 4,
+            title: `The Digital Forge: Why Indian Manufacturers Must Embrace the Power of a Website`,
+            excerpt: `The COVID-19 pandemic irrevocably shifted the global business landscape, forcing industries to adapt and embrace digital transformation. For Indian manufacturers, a site is critical.`,
+            cover: `https://mantrakaar.com/wp-content/uploads/2025/04/web-7-1500x1250.jpg`,
+            category: `Strategy`,
+            categoryClass: `strat`,
+            author: `Mantrakaar Team`,
+            date: `April 5, 2025`,
+            link: `https://mantrakaar.com/the-digital-forge-why-indian-manufacturers-must-embrace-the-power-of-a-website/`
+          },
+          {
+            id: 5,
+            title: `Your Digital Handshake: Why Your Website Defines You`,
+            excerpt: `As the owner of a Digital Agency, I've witnessed firsthand the transformative power of a well-crafted website. It's not just a page; it is your ultimate brand handshake.`,
+            cover: `https://mantrakaar.com/wp-content/uploads/2025/03/2-1500x1250.jpg`,
+            category: `Design`,
+            categoryClass: `design`,
+            author: `Mantrakaar Team`,
+            date: `March 12, 2025`,
+            link: `https://mantrakaar.com/your-digital-handshake-why-your-website-defines-you/`
+          }
+        ];
+
+        let activeId = 0; // State: ID of currently active blog card
+
+        const activeContainer = document.getElementById('active-blog-container');
+        const inactiveGrid = document.getElementById('inactive-blogs-grid');
+
+        function renderArchive(initiallyFaded = false) {
+          // Find the active blog
+          const activeBlog = blogsData.find(b => b.id === activeId);
+          // Find the inactive blogs
+          const inactiveBlogs = blogsData.filter(b => b.id !== activeId);
+
+          const fadeClass = initiallyFaded ? 'fade-out' : '';
+
+          // 1. Render Active Blog card content
+          activeContainer.innerHTML = `
+            <div class="active-blog-card ${fadeClass}">
+              <div class="active-blog-image" style="background-image: url('${activeBlog.cover}')"></div>
+              <div class="active-blog-content">
+                <span class="active-blog-category ${activeBlog.categoryClass}">${activeBlog.category}</span>
+                <h2 class="active-blog-title">${activeBlog.title}</h2>
+                <p class="active-blog-desc">${activeBlog.excerpt}</p>
+                <div class="active-blog-meta">
+                  <span class="active-blog-author">${activeBlog.author}</span>
+                  <span class="active-blog-divider">•</span>
+                  <span class="active-blog-date">${activeBlog.date}</span>
+                </div>
+                <div class="active-blog-action">
+                  <a href="${activeBlog.link}" target="_blank" class="active-blog-link">
+                    <span>Read Full Post</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+
+          // 2. Render Inactive Blog cards inside grid
+          inactiveGrid.innerHTML = inactiveBlogs.map(blog => `
+            <div class="inactive-blog-card ${fadeClass}" data-id="${blog.id}">
+              <div class="inactive-blog-image" style="background-image: url('${blog.cover}')"></div>
+              <div class="inactive-blog-content">
+                <span class="inactive-blog-date">${blog.date}</span>
+                <h4 class="inactive-blog-title">${blog.title}</h4>
+                <span class="inactive-blog-author">${blog.author}</span>
+              </div>
+            </div>
+          `).join('');
+
+          // 3. Attach click event listeners for swapping
+          const cards = inactiveGrid.querySelectorAll('.inactive-blog-card');
+          cards.forEach(card => {
+            card.addEventListener('click', () => {
+              const newActiveId = parseInt(card.getAttribute('data-id'), 10);
+              swapActiveBlog(newActiveId);
+            });
+          });
+        }
+
+        function swapActiveBlog(newId) {
+          const activeCard = activeContainer.querySelector('.active-blog-card');
+          const inactiveCards = inactiveGrid.querySelectorAll('.inactive-blog-card');
+
+          // Snappy localized fade out
+          if (activeCard) activeCard.classList.add('fade-out');
+          inactiveCards.forEach(c => c.classList.add('fade-out'));
+
+          setTimeout(() => {
+            // Update active state
+            activeId = newId;
+            
+            // Re-render new content in faded-out state (no height collapse!)
+            renderArchive(true);
+
+            // Snappy localized fade in on next frame
+            setTimeout(() => {
+              const newActiveCard = activeContainer.querySelector('.active-blog-card');
+              const newInactiveCards = inactiveGrid.querySelectorAll('.inactive-blog-card');
+              
+              if (newActiveCard) {
+                newActiveCard.offsetHeight; // Force reflow
+                newActiveCard.classList.remove('fade-out');
+              }
+              newInactiveCards.forEach(c => {
+                c.classList.remove('fade-out');
+              });
+            }, 30);
+          }, 180);
+        }
+
+        // Initial render
+        renderArchive();
+      });
+    </script>
+
+
+    <!-- ==========================================================================
+         5. Newsletter Subscription CTA
+         ========================================================================== */ -->
+    <section class="blog-newsletter-section">
+      <div class="grid-container">
+        <div class="blog-newsletter-card reveal-element reveal-scale-up">
+          <h2>Subscribe to our Digital Insights</h2>
+          <p>Get senior-level insights on design trends, codebase audits, growth strategies, and premium UI tips directly in your inbox. No spam. Unsubscribe anytime.</p>
+          <form class="blog-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+            <input type="email" placeholder="Enter your email address" required aria-label="Email address">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. Floating Interactive Control Panel for Previews
+         ========================================================================== */ -->
+    
+</main>
+
+  <!-- ==========================================================================
+       8. Footer (Identical structure to index.html)
+       ========================================================================== */ -->
+  <footer data-cursor-skin="global" class="footer-widgets-wrapper">
+    <div class="grid-container">
+      <div class="footer-grid">
+        
+        <!-- Column 1: Logo & Social links -->
+        <div class="footer-widget-column">
+          <div class="footer-logo">
+            <img src="https://mantrakaar.com/wp-content/uploads/2024/01/LOGO_white_60.png" style="max-height: 40px;" alt="Mantrakaar White Logo" loading="lazy">
+          </div>
+          <ul class="footer-social-links">
+            <li><a href="https://facebook.com/mantrakaar" target="_blank" aria-label="Facebook Page"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/mantrakaar/" target="_blank" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/mantrakaar" target="_blank" aria-label="LinkedIn Company Page"><i class="fa-brands fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 2: India Office -->
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">India Office</h3>
+          <p style="margin-bottom: 8px;"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +91 90910 91903</p>
+          <p><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> <a href="mailto:parag@mantrakaar.com" style="color:#888888;">parag@mantrakaar.com</a></p>
+        </div>
+        
+        <!-- Column 3: UK Office -->
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">UK Office</h3>
+          <p style="margin-bottom: 8px;"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +44 7411 334480</p>
+          <p><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> <a href="mailto:dipesh@mantrakaar.com" style="color:#888888;">dipesh@mantrakaar.com</a></p>
+        </div>
+        
+        <!-- Column 4: Links -->
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">Navigation</h3>
+          <ul class="footer-links-list">
+            <li><a href="https://mantrakaar.com/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="https://mantrakaar.com/terms-and-conditions/">Terms and Conditions</a></li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sub-footer (Copyright block) -->
+  <div class="sub-footer-wrapper">
+    <div class="grid-container">
+      <div class="sub-footer-content">
+        <div>Copyright &copy; 2026 Mantrakaar. All rights reserved</div>
+        <div>Mantrakaar POWERED BY <a href="http://unitedthemes.com/" target="_blank" rel="designer">United Themes</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Social Controls Stack -->
+  <div class="floating-social-stack">
+    <a href="https://wa.me/919091091903" target="_blank" class="floating-social-btn floating-whatsapp" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/company/mantrakaar" target="_blank" class="floating-social-btn floating-linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://www.instagram.com/mantrakaar/" target="_blank" class="floating-social-btn floating-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+
+  <!-- Custom pointer visual ring -->
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="custom-cursor-dot" aria-hidden="true"></div>
+
+  <!-- Custom Core Module Logic -->
+  <script type="module" src="/js/main.js?v=6.8"></script>
+
+</body>
+</html>
