@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -111,12 +111,6 @@
       text-shadow: 0 2px 40px rgba(0,0,0,0.8);
     }
     .ph-title .ph-accent {
-      background: linear-gradient(120deg, #ffffff 5%, #aa00d3 40%, #e200ff 60%, #ffffff 90%);
-      background-size: 300% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: ph-shimmer 3.5s linear infinite;
       display: block;
     }
     @keyframes ph-shimmer {
@@ -217,7 +211,7 @@
       margin-bottom: 50px;
     }
     .projects-filter-bar .filter-btn {
-      display: flex; flex-direction: column; align-items: center; gap: 5px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
       padding: 16px 28px;
       border-radius: 14px;
       background: rgba(255,255,255,0.03);
@@ -225,6 +219,7 @@
       cursor: pointer;
       transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
       min-width: 110px;
+      min-height: 83px;
     }
     .projects-filter-bar .filter-btn:hover {
       background: rgba(170,0,211,0.08);
@@ -238,30 +233,21 @@
       transform: translateY(-3px);
       box-shadow: 0 8px 28px rgba(170,0,211,0.28);
     }
-    .filter-count {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px; line-height: 1;
-      color: rgba(255,255,255,0.18);
-      display: block;
-      transition: color 0.25s;
-    }
-    .projects-filter-bar .filter-btn.active .filter-count {
-      color: #fff;
-    }
     .filter-label {
-      font-size: 9px; font-weight: 700;
+      font-size: 14px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
-      color: rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.65);
       transition: color 0.25s;
     }
     .projects-filter-bar .filter-btn.active .filter-label {
-      color: #aa00d3;
+      color: #fff;
     }
 
-    /* ── Projects grid — Masonry ── */
+    /* ── Projects grid — CSS Grid ── */
     .projects-grid {
-      columns: 3;
-      column-gap: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
       margin-bottom: 80px;
     }
 
@@ -271,15 +257,15 @@
       background: #161616;
       transition: border-color 0.35s, transform 0.35s;
       cursor: pointer;
-      break-inside: avoid;
-      margin-bottom: 16px;
       display: block;
     }
     .proj-card:hover { border-color: rgba(170,0,211,0.5); transform: translateY(-5px); }
 
     .proj-photo {
       width: 100%;
-      height: auto;
+      height: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
       display: block;
       transition: transform 0.65s;
     }
@@ -440,11 +426,11 @@
     }
 
     @media (max-width: 960px) {
-      .projects-grid { columns: 2; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
       #projects-filter .grid-container { padding-left: 24px; padding-right: 24px; }
     }
     @media (max-width: 600px) {
-      .projects-grid { columns: 1; }
+      .projects-grid { grid-template-columns: 1fr; }
       #projects-filter .grid-container { padding-left: 16px; padding-right: 16px; }
       .ph-title { font-size: clamp(64px, 18vw, 110px); margin-bottom: 24px; }
       .ph-ticker-item { font-size: 17px; }
@@ -667,19 +653,18 @@
 
         <div class="projects-filter-bar">
           <button class="filter-btn active" data-filter="all">
-            <span class="filter-count">44</span>
             <span class="filter-label">All</span>
           </button>
           <button class="filter-btn" data-filter="web">
-            <span class="filter-count">25</span>
             <span class="filter-label">Web Design</span>
           </button>
+          <button class="filter-btn" data-filter="dev">
+            <span class="filter-label">Web Development</span>
+          </button>
           <button class="filter-btn" data-filter="branding">
-            <span class="filter-count">11</span>
             <span class="filter-label">Branding</span>
           </button>
           <button class="filter-btn" data-filter="social">
-            <span class="filter-count">8</span>
             <span class="filter-label">Social Media</span>
           </button>
         </div>
@@ -790,21 +775,7 @@
 
   </main>
 
-  <!-- ── Project Modal ── -->
-  <div class="proj-modal-backdrop" id="projModal" role="dialog" aria-modal="true" aria-label="Project details">
-    <div class="proj-modal" id="projModalInner">
-      <button class="proj-modal-close" id="projModalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-      <img class="proj-modal-img" id="projModalImg" src="" alt="">
-      <div class="proj-modal-body">
-        <span class="proj-modal-tag" id="projModalTag"></span>
-        <div class="proj-modal-title" id="projModalTitle"></div>
-        <div class="proj-modal-caps" id="projModalCaps"></div>
-        <a class="proj-modal-cta" id="projModalCta" href="#" target="_blank" rel="noopener">
-          Visit Full Case Study &nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-      </div>
-    </div>
-  </div>
+
 
   <!-- ── Footer (identical to index.html) ── -->
   <footer data-cursor-skin="global" class="footer-widgets-wrapper">
@@ -874,121 +845,30 @@
         const filter = btn.dataset.filter;
         let visible = 0;
         cards.forEach(card => {
-          const match = filter === 'all' || card.dataset.category === filter;
+          const cat = card.dataset.category;
+          const match = filter === 'all' || cat === filter || (filter === 'dev' && cat === 'web') || (filter === 'web' && cat === 'dev');
           card.classList.toggle('hidden', !match);
           if (match) visible++;
         });
         if (countEl) countEl.textContent = visible;
         noResults.classList.toggle('visible', visible === 0);
-        requestAnimationFrame(equalizeMasonryBottom);
       });
     });
 
-    /* ── Masonry bottom equalizer ── */
-    function equalizeMasonryBottom() {
-      const grid = document.getElementById('projects-grid');
-      if (!grid) return;
-      const visible = [...grid.querySelectorAll('.proj-card:not(.hidden)')];
-      if (!visible.length) return;
-
-      // Reset margins before measuring
-      visible.forEach(c => c.style.marginBottom = '16px');
-
-      requestAnimationFrame(() => {
-        // Group cards into columns using a 10px left-position tolerance
-        // (CSS columns can have sub-pixel differences between cards in the same column)
-        const cols = [];
-        visible.forEach(c => {
-          const left = c.getBoundingClientRect().left;
-          let matched = cols.find(col => Math.abs(col.x - left) < 10);
-          if (!matched) { matched = { x: left, cards: [] }; cols.push(matched); }
-          matched.cards.push(c);
-        });
-
-        if (cols.length < 2) return; // single column — nothing to equalize
-
-        // Sort each column top→bottom by their top position
-        cols.forEach(col => col.cards.sort((a, b) =>
-          a.getBoundingClientRect().top - b.getBoundingClientRect().top
-        ));
-
-        // Bottom of the last card in each column
-        const lastBottoms = cols.map(col => {
-          const last = col.cards[col.cards.length - 1];
-          return { card: last, bottom: last.getBoundingClientRect().bottom };
-        });
-
-        const maxBottom = Math.max(...lastBottoms.map(x => x.bottom));
-
-        lastBottoms.forEach(({ card, bottom }) => {
-          const diff = maxBottom - bottom;
-          if (diff > 1) card.style.marginBottom = `${16 + Math.ceil(diff)}px`;
-        });
-      });
-    }
-
-    // Run after all images have loaded so heights are accurate
-    window.addEventListener('load', equalizeMasonryBottom);
-    // Also run on resize in case viewport changes column count
-    window.addEventListener('resize', equalizeMasonryBottom);
-
-    /* ── Project Modal ── */
-    const modal       = document.getElementById('projModal');
-    const modalClose  = document.getElementById('projModalClose');
-    const modalImg    = document.getElementById('projModalImg');
-    const modalTag    = document.getElementById('projModalTag');
-    const modalTitle  = document.getElementById('projModalTitle');
-    const modalCaps   = document.getElementById('projModalCaps');
-    const modalCta    = document.getElementById('projModalCta');
-
-    function openModal(card) {
-      const img   = card.querySelector('.proj-photo');
-      const tag   = card.querySelector('.proj-tag');
-      const title = card.querySelector('.proj-title');
-      const caps  = card.querySelectorAll('.proj-cap');
-      const link  = card.querySelector('.proj-link');
-
-      modalImg.src          = img ? img.src : '';
-      modalImg.alt          = title ? title.textContent : '';
-      modalTag.textContent  = tag   ? tag.textContent   : '';
-      modalTitle.textContent= title ? title.textContent : '';
-      modalCta.href         = link  ? link.href          : '#';
-
-      modalCaps.innerHTML = '';
-      caps.forEach(c => {
-        const s = document.createElement('span');
-        s.className = 'proj-modal-cap';
-        s.textContent = c.textContent;
-        modalCaps.appendChild(s);
-      });
-
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // Intercept all "View Project" link clicks
-    document.querySelectorAll('.proj-link').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        openModal(link.closest('.proj-card'));
-      });
-    });
-
-    // Also open modal when clicking anywhere on the card
+    /* ── Project Redirect ── */
     document.querySelectorAll('.proj-card').forEach(card => {
-      card.addEventListener('click', e => {
-        if (!e.target.closest('.proj-link')) openModal(card);
-      });
+      const link = card.querySelector('.proj-link');
+      if (link) {
+        card.addEventListener('click', e => {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          const match = href.match(/portfolio-item\/([^\/]+)/);
+          if (match) {
+            window.location.href = 'project-details.html?id=' + match[1];
+          }
+        });
+      }
     });
-
-    modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   </script>
 
 </body>

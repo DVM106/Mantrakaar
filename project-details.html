@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details — Mantrakaar</title>
+  <link rel="icon" href="https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png" type="image/png">
+  <link rel="stylesheet" href="/css/main.css?v=6.1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .pd-header {
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(0,0,0,0.5);
+    }
+    .pd-back {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.25s;
+      cursor: pointer;
+    }
+    .pd-back:hover {
+      color: #aa00d3;
+    }
+    .pd-container {
+      max-width: 1300px;
+      margin: 120px auto 60px;
+      padding: 0 30px;
+      display: grid;
+      grid-template-columns: 60% 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+    
+    /* Left Gallery */
+    .pd-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .pd-main-img-wrap {
+      position: relative;
+      width: 100%;
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .pd-main-img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .pd-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(170,0,211,0.8);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s;
+      border: none;
+      font-size: 16px;
+    }
+    .pd-main-img-wrap:hover .pd-arrow {
+      opacity: 1;
+    }
+    .pd-arrow:hover {
+      background: #fff;
+      color: #aa00d3;
+    }
+    .pd-arrow-left { left: 15px; }
+    .pd-arrow-right { right: 15px; }
+
+    .pd-thumbs {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+    .pd-thumb {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      opacity: 0.6;
+      transition: all 0.25s;
+    }
+    .pd-thumb.active, .pd-thumb:hover {
+      border-color: #aa00d3;
+      opacity: 1;
+    }
+
+    /* Right Info */
+    .pd-info {
+      padding-top: 10px;
+    }
+    .pd-title {
+      font-size: 38px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      margin: 0 0 15px;
+      line-height: 1.2;
+    }
+    .pd-divider {
+      height: 2px;
+      background: #aa00d3;
+      width: 100%;
+      margin: 15px 0 25px;
+      opacity: 0.5;
+    }
+    .pd-subtitle {
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .pd-section-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 15px;
+    }
+    
+    .pd-services {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 40px;
+    }
+    .pd-services li {
+      color: rgba(255,255,255,0.6);
+      font-size: 15px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pd-services li::before {
+      content: "-";
+    }
+
+    .pd-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .pd-link-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .pd-link-item strong {
+      font-size: 14px;
+    }
+    .pd-link-item a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.25s;
+      word-break: break-all;
+      cursor: pointer;
+    }
+    .pd-link-item a:hover {
+      color: #aa00d3;
+    }
+
+    /* Navigation Bar */
+    .pd-nav-bar {
+      max-width: 1300px;
+      margin: 40px auto 0;
+      padding: 40px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .pd-nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.25s;
+      cursor: pointer;
+    }
+    .pd-nav-link:hover { color: #aa00d3; }
+    .pd-nav-grid {
+      color: #fff;
+      font-size: 24px;
+      transition: color 0.25s;
+    }
+    .pd-nav-grid:hover { color: #aa00d3; }
+
+    @media (max-width: 900px) {
+      .pd-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin: 40px auto;
+      }
+      .pd-title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body data-cursor-skin="global">
+
+  <!-- ── Navigation (identical to index.html) ── -->
+  <header id="header-section" data-style="style-2" class="ha-header ut-header-floating fullwidth ut-primary-custom-skin header-transparent">
+    <div class="grid-container">
+      <div class="ha-header-perspective">
+        <div class="ha-header-front">
+
+          <div class="site-logo-wrap">
+            <div class="site-logo">
+              <a href="/" rel="home" aria-label="Mantrakaar Home">
+                <img src="/LOGO_white_120.png" alt="Mantrakaar logo" width="120" height="40" class="brand-logo-img">
+              </a>
+            </div>
+          </div>
+
+          <nav id="navigation" class="ut-horizontal-navigation grid-70" aria-label="Main Navigation">
+            <ul id="menu-main-menu_mantrakaar" class="ut-navigation-menu menu">
+              <li class="menu-item"><a href="/" class="ut-main-navigation-link"><span>Home</span></a></li>
+              <li class="menu-item"><a href="/about.html" class="ut-main-navigation-link"><span>About</span></a></li>
+              <li class="menu-item menu-item-has-children">
+                <a href="#" class="ut-main-navigation-link" aria-expanded="false" aria-haspopup="true"><span>Services</span></a>
+                <ul class="sub-menu" aria-label="Services Sub-menu">
+                  <li><a href="https://mantrakaar.com/design/">Design</a></li>
+                  <li><a href="https://mantrakaar.com/development/">Development</a></li>
+                  <li><a href="https://mantrakaar.com/marketing/">Marketing</a></li>
+                  <li><a href="https://mantrakaar.com/consultancy/">Consultancy</a></li>
+                </ul>
+              </li>
+              <li class="menu-item"><a href="/projects.html" class="ut-main-navigation-link"><span>Projects</span></a></li>
+              <li class="menu-item"><a href="https://mantrakaar.com/career/" class="ut-main-navigation-link"><span>Career</span></a></li>
+              <li class="menu-item"><a href="https://mantrakaar.com/blog/" class="ut-main-navigation-link"><span>Blogs</span></a></li>
+              <li class="menu-item"><a href="https://mantrakaar.com/contact/" class="ut-main-navigation-link"><span>Contact</span></a></li>
+            </ul>
+          </nav>
+
+          <div class="nav-controls">
+            <div class="nav-search-container" role="search">
+              <div class="search-input-wrapper">
+                <input type="text" placeholder="Search site..." aria-label="Search through site content">
+              </div>
+              <button class="nav-search-btn" aria-label="Search" aria-expanded="false">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+            <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="lang-selector">
+              <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+                <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
+              </button>
+              <ul class="lang-dropdown" aria-label="Languages">
+                <li><a href="#" data-lang="en">English</a></li>
+                <li><a href="#" data-lang="hi">Hindi (हिंदी)</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tablet-grid-20 mobile-grid-30 hide-on-desktop">
+            <div class="ut-mm-trigger">
+              <button id="ut-open-mobile-menu" class="ut-hamburger" aria-label="Toggle Mobile Navigation" aria-expanded="false">
+                <span></span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav-menu hide-on-desktop" aria-label="Mobile Navigation">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li>
+        <a href="#">Services</a>
+        <ul class="sub-menu">
+          <li><a href="https://mantrakaar.com/design/">Design</a></li>
+          <li><a href="https://mantrakaar.com/development/">Development</a></li>
+          <li><a href="https://mantrakaar.com/marketing/">Marketing</a></li>
+          <li><a href="https://mantrakaar.com/consultancy/">Consultancy</a></li>
+        </ul>
+      </li>
+      <li><a href="/projects.html">Projects</a></li>
+      <li><a href="https://mantrakaar.com/career/">Career</a></li>
+      <li><a href="https://mantrakaar.com/blog/">Blogs</a></li>
+      <li><a href="https://mantrakaar.com/contact/">Contact</a></li>
+    </ul>
+    <div class="mobile-nav-controls">
+      <button class="theme-toggle-btn" style="font-size:20px;display:inline-flex;gap:10px;align-items:center;background:none;border:none;color:var(--text-heading);">
+        <i class="fa-solid fa-moon"></i> Toggle Theme
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content" style="padding-top: 0;">
+
+  <div class="pd-container" id="projectContainer">
+    <div style="text-align: center; grid-column: 1 / -1; padding: 100px;">
+      <i class="fa-solid fa-circle-notch fa-spin fa-3x" style="color: #aa00d3;"></i>
+    </div>
+  </div>
+
+  <div class="pd-nav-bar" id="pdNavBar" style="display:none;">
+    <a href="#" id="prevProjectLink" class="pd-nav-link"><i class="fa-solid fa-angle-left"></i> <span>Prev</span></a>
+    <a href="projects.html" class="pd-nav-grid" aria-label="Back to Grid"><i class="fa-solid fa-table-cells"></i></a>
+    <a href="#" id="nextProjectLink" class="pd-nav-link"><span>Next</span> <i class="fa-solid fa-angle-right"></i></a>
+  </div>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer data-cursor-skin="global" class="footer-widgets-wrapper">
+    <div class="grid-container">
+      <div class="footer-grid">
+        <div class="footer-widget-column">
+          <div class="footer-logo">
+            <img src="https://mantrakaar.com/wp-content/uploads/2024/01/LOGO_white_60.png" style="max-height: 40px;" alt="Mantrakaar White Logo" loading="lazy">
+          </div>
+          <ul class="footer-social-links">
+            <li><a href="https://facebook.com/mantrakaar" target="_blank" aria-label="Facebook Page"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/mantrakaar/" target="_blank" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/mantrakaar" target="_blank" aria-label="LinkedIn Company Page"><i class="fa-brands fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">India Office</h3>
+          <p style="margin-bottom:8px;"><i class="fa-solid fa-phone" style="margin-right:8px;"></i> +91 90910 91903</p>
+          <p><i class="fa-solid fa-envelope" style="margin-right:8px;"></i> <a href="mailto:parag@mantrakaar.com" style="color:#888888;">parag@mantrakaar.com</a></p>
+        </div>
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">UK Office</h3>
+          <p style="margin-bottom:8px;"><i class="fa-solid fa-phone" style="margin-right:8px;"></i> +44 7411 334480</p>
+          <p><i class="fa-solid fa-envelope" style="margin-right:8px;"></i> <a href="mailto:dipesh@mantrakaar.com" style="color:#888888;">dipesh@mantrakaar.com</a></p>
+        </div>
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">Navigation</h3>
+          <ul class="footer-links-list">
+            <li><a href="https://mantrakaar.com/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="https://mantrakaar.com/terms-and-conditions/">Terms and Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sub-footer-wrapper">
+    <div class="grid-container">
+      <div class="sub-footer-content">
+        <div>Copyright &copy; 2026 Mantrakaar. All rights reserved</div>
+        <div>Mantrakaar POWERED BY <a href="http://unitedthemes.com/" target="_blank" rel="designer">United Themes</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="floating-social-stack">
+    <a href="https://wa.me/919091091903" target="_blank" class="floating-social-btn floating-whatsapp" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/company/mantrakaar" target="_blank" class="floating-social-btn floating-linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://www.instagram.com/mantrakaar/" target="_blank" class="floating-social-btn floating-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="custom-cursor-dot" aria-hidden="true"></div>
+
+  <script type="module" src="/js/main.js?v=6.1"></script>
+  <script>
+    let currentGallery = [];
+    let currentIndex = 0;
+    let slideInterval = null;
+
+    function startSlideshow() {
+      if (slideInterval) clearInterval(slideInterval);
+      if (currentGallery.length > 1) {
+        slideInterval = setInterval(() => {
+          nextImage();
+        }, 3000);
+      }
+    }
+
+    async function loadProject() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      
+      if (!id) {
+        window.location.href = 'projects.html';
+        return;
+      }
+
+      try {
+        const res = await fetch('projects-data.json');
+        const data = await res.json();
+        const project = data[id];
+
+        if (!project) {
+          document.getElementById('projectContainer').innerHTML = '<h2>Project not found</h2>';
+          return;
+        }
+
+        document.title = project.title + ' — Mantrakaar';
+
+        // Build Gallery
+        currentGallery = project.images && project.images.length > 0 ? project.images : [project.image];
+        currentIndex = 0;
+        
+        let thumbsHtml = '';
+        let arrowsHtml = '';
+        if (currentGallery.length > 1) {
+          thumbsHtml = `<div class="pd-thumbs">` + currentGallery.map((img, i) => `
+            <img src="${img}" class="pd-thumb ${i===0?'active':''}" onclick="setGalleryIndex(${i}, true)" id="thumb-${i}">
+          `).join('') + `</div>`;
+
+          arrowsHtml = `
+            <button class="pd-arrow pd-arrow-left" onclick="prevImage(true)"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="pd-arrow pd-arrow-right" onclick="nextImage(true)"><i class="fa-solid fa-chevron-right"></i></button>
+          `;
+        }
+
+        // Build Services
+        const servicesHtml = project.services && project.services.length > 0 
+          ? project.services.map(s => `<li>${s}</li>`).join('')
+          : project.caps.map(c => `<li>${c}</li>`).join('');
+
+        // Build Links
+        let linksHtml = '';
+        if (project.links && project.links.website) linksHtml += `<div class="pd-link-item"><strong>Website:</strong><a href="${project.links.website}" target="_blank">${project.links.website}</a></div>`;
+        if (project.links && project.links.facebook) linksHtml += `<div class="pd-link-item"><strong>Facebook:</strong><a href="${project.links.facebook}" target="_blank">${project.links.facebook}</a></div>`;
+        if (project.links && project.links.instagram) linksHtml += `<div class="pd-link-item"><strong>Instagram:</strong><a href="${project.links.instagram}" target="_blank">${project.links.instagram}</a></div>`;
+        if (project.links && project.links.linkedin) linksHtml += `<div class="pd-link-item"><strong>Linkedin:</strong><a href="${project.links.linkedin}" target="_blank">${project.links.linkedin}</a></div>`;
+        
+        if (!linksHtml) {
+          linksHtml = `<div class="pd-link-item"><strong>Live Project:</strong><a href="${project.originalUrl}" target="_blank">${project.originalUrl}</a></div>`;
+        }
+
+        document.getElementById('projectContainer').innerHTML = `
+          <!-- Left: Gallery -->
+          <div class="pd-gallery">
+            <div class="pd-main-img-wrap">
+              <img src="${currentGallery[0]}" id="mainProjectImg" class="pd-main-img" alt="${project.title}">
+              ${arrowsHtml}
+            </div>
+            ${thumbsHtml}
+          </div>
+
+          <!-- Right: Info -->
+          <div class="pd-info">
+            <h1 class="pd-title">${project.title}</h1>
+            <div class="pd-divider"></div>
+            ${project.description ? `<div class="pd-subtitle">${project.description}</div>` : ''}
+            
+            <h3 class="pd-section-title">Services Provided:</h3>
+            <ul class="pd-services">
+              ${servicesHtml}
+            </ul>
+
+            <div class="pd-links">
+              ${linksHtml}
+            </div>
+          </div>
+        `;
+
+        // Configure Prev/Next Navigation
+        const projectKeys = Object.keys(data);
+        const currentIndexInKeys = projectKeys.indexOf(id);
+        
+        if (currentIndexInKeys !== -1) {
+          const prevId = projectKeys[currentIndexInKeys - 1] || projectKeys[projectKeys.length - 1];
+          const nextId = projectKeys[currentIndexInKeys + 1] || projectKeys[0];
+          
+          document.getElementById('prevProjectLink').href = `project-details.html?id=${prevId}`;
+          document.getElementById('prevProjectLink').querySelector('span').textContent = data[prevId].title;
+          
+          document.getElementById('nextProjectLink').href = `project-details.html?id=${nextId}`;
+          document.getElementById('nextProjectLink').querySelector('span').textContent = data[nextId].title;
+          
+          document.getElementById('pdNavBar').style.display = 'flex';
+        }
+
+        // We re-initialize cursors manually for newly injected DOM elements just to be safe
+        if(window.initCursors) window.initCursors();
+
+        startSlideshow();
+      } catch (err) {
+        console.error('Error loading project data:', err);
+        document.getElementById('projectContainer').innerHTML = '<h2>Error loading data.</h2>';
+      }
+    }
+
+    window.setGalleryIndex = function(index, manual = false) {
+      if (!currentGallery.length) return;
+      currentIndex = index;
+      document.getElementById('mainProjectImg').src = currentGallery[currentIndex];
+      
+      document.querySelectorAll('.pd-thumb').forEach(el => el.classList.remove('active'));
+      const activeThumb = document.getElementById('thumb-' + currentIndex);
+      if(activeThumb) activeThumb.classList.add('active');
+
+      if (manual) startSlideshow();
+    };
+
+    window.nextImage = function(manual = false) {
+      let nextIndex = currentIndex + 1;
+      if (nextIndex >= currentGallery.length) nextIndex = 0;
+      setGalleryIndex(nextIndex, manual);
+    };
+
+    window.prevImage = function(manual = false) {
+      let prevIndex = currentIndex - 1;
+      if (prevIndex < 0) prevIndex = currentGallery.length - 1;
+      setGalleryIndex(prevIndex, manual);
+    };
+
+    loadProject();
+  </script>
+</body>
+</html>
