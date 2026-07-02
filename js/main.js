@@ -3090,6 +3090,11 @@ function initializeMantrakaar() {
 
       if (bg) {
         section.style.backgroundImage = `url('${bg}')`;
+        if (bg.includes('brand-pillar-mission')) {
+          section.style.backgroundPosition = '85% center';
+        } else {
+          section.style.backgroundPosition = 'center center';
+        }
       }
 
       const isMobile = window.innerWidth < 992;
