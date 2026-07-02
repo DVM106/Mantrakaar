@@ -649,8 +649,9 @@ body.dark-mode .brand-logo-img {
   z-index: 1;
 }
 
-/* Hero Background Video */
-.hero-bg-video {
+/* Hero Background Video & Image */
+.hero-bg-video,
+.hero-bg-image {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -4422,7 +4423,8 @@ body:not(.dark-mode) .megamenu-card-desc {
 }
 
 /* About Page Hero Spotlight & Background Overrides */
-.about-hero .hero-bg-video {
+.about-hero .hero-bg-video,
+.about-hero .hero-bg-image {
   opacity: 0.75;
   z-index: 0;
 }
