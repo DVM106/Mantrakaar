@@ -3088,16 +3088,18 @@ function initializeMantrakaar() {
       const img = activeTab.querySelector('img');
       const bg = img ? img.src : '';
 
+      const isMobile = window.innerWidth < 992;
+
       if (bg) {
         section.style.backgroundImage = `url('${bg}')`;
-        if (bg.includes('brand-pillar-mission')) {
-          section.style.backgroundPosition = '85% center';
+        if (bg.includes('brand-pillar-mission') && !isMobile) {
+          section.style.backgroundPosition = '90% center';
+          section.style.backgroundSize = '180% auto';
         } else {
           section.style.backgroundPosition = 'center center';
+          section.style.backgroundSize = 'cover';
         }
       }
-
-      const isMobile = window.innerWidth < 992;
 
       if (isActive && isMobile) {
         // Toggle active off on mobile if clicked again
