@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO Meta Tags -->
-  <title>Blog Preview — Mantrakaar</title>
+  <title>Consulting Strategy — Mantrakaar</title>
   <meta name="description" content="Discover Mantrakaar — an independent digital agency transforming imaginations into reality across India and the UK. Learn about our history, ambition, and core team.">
   <meta property="og:title" content="About Us — Mantrakaar">
   <meta property="og:description" content="Discover Mantrakaar — an independent digital agency transforming imaginations into reality. Learn about our history, ambition, and core team.">
@@ -16,9 +16,7 @@
   <link rel="icon" href="https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png" type="image/png">
   
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="/css/main.css?v=6.8">
-  
-
+  <link rel="stylesheet" href="/css/main.css?v=6.2">
   
   <!-- Third-Party CDN Libraries -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +40,8 @@
       "logo": "https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png"
     }
   }
-  </script></head>
+  </script>
+</head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -262,242 +261,103 @@
   </nav>
 
   <main id="main-content">
-    <!-- ==========================================================================
-         2. Blog Hero Section (Supports multiple canvas & video backgrounds)
-         ========================================================================== */ -->
-    <section id="hero-section-container" class="blog-hero">
-      <!-- Canvas for WebGL/2D Animations -->
 
-      <!-- Gradient overlay -->
-      <div class="about-hero-overlay-gradient"></div>
-
-      <!-- Grid & Spotlight overlays -->
-      <div class="hero-layout-grid"></div>
-      <div class="hero-dotted-spotlight"></div>
-
-      <!-- Hero Content -->
-      <div class="about-hero-content">
-        <h1 data-i18n="blog_hero_title">Our Blog</h1>
-        <p data-i18n="blog_hero_desc">Insights, articles, and guides on design, development, and digital strategy.</p>
+    <style>
+      .hero-consult { position: relative; height: 100vh; background: #0a0a0a; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; }
+      #orbits-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+      .hero-consult-content { position: relative; z-index: 10; color: #fff; pointer-events: none; }
+      .hero-consult h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 20px; text-transform: uppercase; line-height: 1; }
+      .hero-consult p { font-size: 1.5rem; opacity: 0.8; max-width: 600px; margin: 0 auto; }
+    </style>
+    <section class="hero-consult">
+      <canvas id="orbits-canvas"></canvas>
+      <div class="hero-consult-content">
+        <h1>Consultancy</h1>
+        <p>Strategic perspectives mapping your digital future.</p>
       </div>
-
-      <!-- Scroll Down Guide -->
-      <div class="hero-scroll-down" aria-hidden="true">
-        <i class="fa-solid fa-arrow-down"></i>
-      </div>
+      <div class="hero-scroll-down"><i class="fa-solid fa-arrow-down"></i></div>
     </section>
-    <!-- ==========================================================================
-         3. Interactive Active/Inactive Blog Archive Grid
-         ========================================================================== */ -->
-    <section class="blog-archive-section">
-      <div class="grid-container">
-        
-        <!-- Active Blog Slot (Spans full width, horizontal split layout) -->
-        <div class="active-blog-container reveal-element reveal-scale-up" id="active-blog-container">
-          <!-- Populated dynamically via swap logic -->
-        </div>
-
-        <!-- Section Title Divider -->
-        <div class="archive-section-header reveal-element reveal-slide-up">
-          <h3 class="archive-title">From the archive</h3>
-          <div class="archive-divider-line"></div>
-        </div>
-
-        <!-- Inactive Blogs Grid (Archive at bottom) -->
-        <div class="inactive-blogs-grid" id="inactive-blogs-grid">
-          <!-- Populated dynamically via swap logic -->
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Swapping interactive script -->
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // Authentic Mantrakaar blog database
-        const blogsData = [
-          {
-            id: 0,
-            title: `Building a Human Brand: The "About Us" Section as Your Website's Heart`,
-            excerpt: `In a digital world that can sometimes feel cold and automated, your "About Us" page is where the pulse of your brand resides. It's the handshake, the smile, and the human voice.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2026/02/blog-.jpg-1500x1250.jpeg`,
-            category: `Strategy`,
-            categoryClass: `strat`,
-            author: `Mantrakaar Team`,
-            date: `February 18, 2026`,
-            link: `https://mantrakaar.com/building-a-human-brand-the-about-us-section-as-your-websites-heart/`
-          },
-          {
-            id: 1,
-            title: `Your Digital Practice: Why Doctors Need a Strong Online Presence`,
-            excerpt: `As a digital agency, we understand that for doctors, building trust and credibility is paramount. In today's digital age, your online presence is key to connecting with patients.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-2-1500x1250.jpg`,
-            category: `Marketing`,
-            categoryClass: `mkt`,
-            author: `Mantrakaar Team`,
-            date: `May 15, 2025`,
-            link: `https://mantrakaar.com/your-digital-practice-why-doctors-need-a-strong-online-presence/`
-          },
-          {
-            id: 2,
-            title: `Your Digital Portfolio: How SEO Elevates Specialist Doctors Online`,
-            excerpt: `For specialist doctors, a website isn't just a digital presence; it's a comprehensive portfolio, a testament to years of expertise, and a tool for growth and patient education.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-1-1500x1250.jpg`,
-            category: `Development`,
-            categoryClass: `dev`,
-            author: `Mantrakaar Team`,
-            date: `May 10, 2025`,
-            link: `https://mantrakaar.com/your-digital-portfolio-how-seo-elevates-specialist-doctors-online/`
-          },
-          {
-            id: 3,
-            title: `Your Digital Footprint: How Social Media Can Land You Your Dream Job`,
-            excerpt: `As a digital agency owner, I've seen firsthand how social media has transformed the way we connect, communicate, and even recruit talent. Your footprint matters.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2025/04/4-1500x1250.jpg`,
-            category: `Marketing`,
-            categoryClass: `mkt`,
-            author: `Mantrakaar Team`,
-            date: `April 20, 2025`,
-            link: `https://mantrakaar.com/your-digital-footprint-how-social-media-can-land-you-your-dream-job/`
-          },
-          {
-            id: 4,
-            title: `The Digital Forge: Why Indian Manufacturers Must Embrace the Power of a Website`,
-            excerpt: `The COVID-19 pandemic irrevocably shifted the global business landscape, forcing industries to adapt and embrace digital transformation. For Indian manufacturers, a site is critical.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2025/04/web-7-1500x1250.jpg`,
-            category: `Strategy`,
-            categoryClass: `strat`,
-            author: `Mantrakaar Team`,
-            date: `April 5, 2025`,
-            link: `https://mantrakaar.com/the-digital-forge-why-indian-manufacturers-must-embrace-the-power-of-a-website/`
-          },
-          {
-            id: 5,
-            title: `Your Digital Handshake: Why Your Website Defines You`,
-            excerpt: `As the owner of a Digital Agency, I've witnessed firsthand the transformative power of a well-crafted website. It's not just a page; it is your ultimate brand handshake.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2025/03/2-1500x1250.jpg`,
-            category: `Design`,
-            categoryClass: `design`,
-            author: `Mantrakaar Team`,
-            date: `March 12, 2025`,
-            link: `https://mantrakaar.com/your-digital-handshake-why-your-website-defines-you/`
-          }
-        ];
+      const cOrb = document.getElementById("orbits-canvas");
+      if(cOrb) {
+        const ctxOrb = cOrb.getContext("2d");
+        cOrb.width = window.innerWidth; cOrb.height = window.innerHeight;
+        window.addEventListener('resize', () => { cOrb.width = window.innerWidth; cOrb.height = window.innerHeight; });
 
-        let activeId = 0; // State: ID of currently active blog card
+        let orbs = [];
+        for (let i = 0; i < 500; i++) {
+          let angle = Math.random() * Math.PI * 2;
+          let radiusX = Math.random() * 450 + 50;
+          let radiusY = radiusX * (0.3 + Math.random() * 0.5);
+          let speed = (0.002 + Math.random() * 0.005) * (Math.random() > 0.5 ? 1 : -1);
+          let tilt = (Math.random() - 0.5) * 1.2;
+          orbs.push({ angle, radiusX, radiusY, speed, tilt, size: Math.random() * 2 + 0.5 });
+        }
 
-        const activeContainer = document.getElementById('active-blog-container');
-        const inactiveGrid = document.getElementById('inactive-blogs-grid');
+        function drawOrbits() {
+          ctxOrb.fillStyle = 'rgba(10, 10, 10, 0.06)';
+          ctxOrb.fillRect(0, 0, cOrb.width, cOrb.height);
+          const cx = cOrb.width / 2;
+          const cy = cOrb.height / 2;
 
-        function renderArchive(initiallyFaded = false) {
-          // Find the active blog
-          const activeBlog = blogsData.find(b => b.id === activeId);
-          // Find the inactive blogs
-          const inactiveBlogs = blogsData.filter(b => b.id !== activeId);
+          let glow = ctxOrb.createRadialGradient(cx, cy, 0, cx, cy, 100);
+          glow.addColorStop(0, 'rgba(170, 0, 211, 0.08)');
+          glow.addColorStop(1, 'rgba(170, 0, 211, 0)');
+          ctxOrb.beginPath();
+          ctxOrb.arc(cx, cy, 100, 0, Math.PI * 2);
+          ctxOrb.fillStyle = glow;
+          ctxOrb.fill();
 
-          const fadeClass = initiallyFaded ? 'fade-out' : '';
-
-          // 1. Render Active Blog card content
-          activeContainer.innerHTML = `
-            <div class="active-blog-card ${fadeClass}">
-              <div class="active-blog-image" style="background-image: url('${activeBlog.cover}')"></div>
-              <div class="active-blog-content">
-                <span class="active-blog-category ${activeBlog.categoryClass}">${activeBlog.category}</span>
-                <h2 class="active-blog-title">${activeBlog.title}</h2>
-                <p class="active-blog-desc">${activeBlog.excerpt}</p>
-                <div class="active-blog-meta">
-                  <span class="active-blog-author">${activeBlog.author}</span>
-                  <span class="active-blog-divider">•</span>
-                  <span class="active-blog-date">${activeBlog.date}</span>
-                </div>
-                <div class="active-blog-action">
-                  <a href="${activeBlog.link}" target="_blank" class="active-blog-link">
-                    <span>Read Full Post</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          `;
-
-          // 2. Render Inactive Blog cards inside grid
-          inactiveGrid.innerHTML = inactiveBlogs.map(blog => `
-            <div class="inactive-blog-card ${fadeClass}" data-id="${blog.id}">
-              <div class="inactive-blog-image" style="background-image: url('${blog.cover}')"></div>
-              <div class="inactive-blog-content">
-                <span class="inactive-blog-date">${blog.date}</span>
-                <h4 class="inactive-blog-title">${blog.title}</h4>
-                <span class="inactive-blog-author">${blog.author}</span>
-              </div>
-            </div>
-          `).join('');
-
-          // 3. Attach click event listeners for swapping
-          const cards = inactiveGrid.querySelectorAll('.inactive-blog-card');
-          cards.forEach(card => {
-            card.addEventListener('click', () => {
-              const newActiveId = parseInt(card.getAttribute('data-id'), 10);
-              swapActiveBlog(newActiveId);
-            });
+          orbs.forEach(o => {
+            o.angle += o.speed;
+            let x = cx + Math.cos(o.angle) * o.radiusX;
+            let y = cy + Math.sin(o.angle) * o.radiusY + Math.cos(o.angle) * o.tilt * 80;
+            let dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
+            let alpha = Math.max(0.1, 1 - dist / 500);
+            ctxOrb.beginPath();
+            ctxOrb.arc(x, y, o.size, 0, Math.PI * 2);
+            ctxOrb.fillStyle = 'rgba(170, 0, 211, ' + alpha + ')';
+            ctxOrb.fill();
           });
+          requestAnimationFrame(drawOrbits);
         }
-
-        function swapActiveBlog(newId) {
-          const activeCard = activeContainer.querySelector('.active-blog-card');
-          const inactiveCards = inactiveGrid.querySelectorAll('.inactive-blog-card');
-
-          // Snappy localized fade out
-          if (activeCard) activeCard.classList.add('fade-out');
-          inactiveCards.forEach(c => c.classList.add('fade-out'));
-
-          setTimeout(() => {
-            // Update active state
-            activeId = newId;
-            
-            // Re-render new content in faded-out state (no height collapse!)
-            renderArchive(true);
-
-            // Snappy localized fade in on next frame
-            setTimeout(() => {
-              const newActiveCard = activeContainer.querySelector('.active-blog-card');
-              const newInactiveCards = inactiveGrid.querySelectorAll('.inactive-blog-card');
-              
-              if (newActiveCard) {
-                newActiveCard.offsetHeight; // Force reflow
-                newActiveCard.classList.remove('fade-out');
-              }
-              newInactiveCards.forEach(c => {
-                c.classList.remove('fade-out');
-              });
-            }, 30);
-          }, 180);
-        }
-
-        // Initial render
-        renderArchive();
-      });
+        drawOrbits();
+      }
     </script>
-
-
-    <!-- ==========================================================================
-         5. Newsletter Subscription CTA
-         ========================================================================== */ -->
-    <section class="blog-newsletter-section">
-      <div class="grid-container">
-        <div class="blog-newsletter-card reveal-element reveal-scale-up">
-          <h2>Subscribe to our Digital Insights</h2>
-          <p>Get senior-level insights on design trends, codebase audits, growth strategies, and premium UI tips directly in your inbox. No spam. Unsubscribe anytime.</p>
-          <form class="blog-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
-            <input type="email" placeholder="Enter your email address" required aria-label="Email address">
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         6. Floating Interactive Control Panel for Previews
-         ========================================================================== */ -->
     
+<div class="grid-container" style="padding: 80px 15px 40px;"><h2 style="font-size: clamp(40px, 5vw, 66px); margin-bottom: 30px; text-align: center; color: var(--text-heading);">What We Do</h2></div><div class="grid-container" style="padding: 0 15px 80px;"><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center;"><div style="font-size: 18px; color: var(--text-body); line-height: 1.8;"><p style="margin-bottom: 20px;">Elevate your brand with our comprehensive consultancy services, covering design, marketing, and analytics. We offer expert guidance in creating compelling ad campaigns, crafting persuasive ad copy, and optimizing PPC strategies.</p><p style="margin-bottom: 20px;">Our team ensures your brand’s message resonates with your target audience, driving engagement and delivering measurable results. Contact us to maximize your marketing impact.</p><p style="margin-bottom: 20px;">We specialize in developing targeted digital strategies, leveraging online advertising, and maximizing your brand’s visibility. Our expert guidance will help you identify your target market, create a distinctive brand, and effectively promote your services, ensuring a competitive edge in the consulting industry</p></div><div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.4);"><img src="assets/feature/feature_consultancy.png?v=1783094618414" alt="Feature" style="width:100%; display:block; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div></div></div><div style="background: var(--bg-card); padding: 80px 0;"><div class="grid-container" style="padding: 0 15px;"><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;"><div style="background: var(--bg-main); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;" onmouseover="this.style.borderColor='var(--text-accent)'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'">
+                <svg version="1.1" class="ut-vivus-draw" data-settings="{&quot;draw_svg_icons&quot;:&quot;yes&quot;,&quot;draw_svg_type&quot;:&quot;oneByOne&quot;,&quot;draw_svg_delay&quot;:&quot;0&quot;,&quot;draw_svg_duration&quot;:&quot;100&quot;}" id="ut-svg-6a46b2fb39ba8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" style="width: 60px; height: 60px; margin-bottom: 20px; stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawSvg 2.5s ease-out forwards;">
+<g style="stroke: rgb(170, 0, 211); stroke-width: 2; fill: transparent;">
+<polygon fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" points="32,1 26,1 26,10 20,12 14,6 6,14 12,20
+10,26 1,26 1,38 10,38 12,44 6,50 14,58 20,52 26,54 26,63 32,63 38,63 38,54 44,52 50,58 58,50 52,44 54,38 63,38 63,26 54,26
+52,20 58,14 50,6 44,12 38,10 38,1 	" style="stroke: rgb(170, 0, 211); stroke-width: 2; fill: transparent;"></polygon>
+<circle fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="6" style="stroke: rgb(170, 0, 211); stroke-width: 2; fill: transparent;"></circle>
+</g>
+</svg>
+                <style>@keyframes drawSvg { to { stroke-dashoffset: 0; } }</style>
+                <h3 style="font-size: 20px; color: var(--text-heading); margin-bottom: 15px;">Strategy</h3>
+                <p style="font-size: 15px; color: var(--text-body); line-height: 1.7;">We specialize in developing targeted digital strategies, leveraging online advertising, and maximizing your brand’s visibility. Our expert guidance will help you identify your target market, create a distinctive brand, and effectively promote your services, ensuring a competitive edge in the consulting industry</p>
+              </div><div style="background: var(--bg-main); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;" onmouseover="this.style.borderColor='var(--text-accent)'; this.style.transform='translateY(-5px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)'">
+                <svg class="ut-vivus-draw" data-settings="{&quot;draw_svg_icons&quot;:&quot;yes&quot;,&quot;draw_svg_type&quot;:&quot;oneByOne&quot;,&quot;draw_svg_delay&quot;:&quot;0&quot;,&quot;draw_svg_duration&quot;:&quot;100&quot;}" id="ut-svg-6a46b2fb3af4a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title" aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" style="width: 60px; height: 60px; margin-bottom: 20px; stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawSvg 2.5s ease-out forwards;">
+<ellipse data-name="layer2" cx="25" cy="10" rx="23" ry="8" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="stroke: rgb(170, 0, 211); stroke-width: 2; fill: transparent;"></ellipse>
+<path data-name="layer2" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M48 32V10m0 12c0 4.4-10.3 8-23 8S2 26.4 2 22m30.9 19.5a63.3 63.3 0 0 1-7.9.5c-12.7 0-23-3.6-23-8" style="stroke: rgb(170, 0, 211); stroke-width: 2; fill: transparent;"></path>
+<path data-name="layer2" d="M33.1 53.5a63.2 63.2 0 0 1-8.1.5c-12.7 0-23-3.6-23-8V10" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="stroke: rgb(170, 0, 211); stroke-width: 2; fill: transparent;"></path>
+<circle data-name="layer1" cx="46.8" cy="47" r="5" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="stroke: rgb(170, 0, 211); stroke-width: 2; fill: transparent;"></circle>
+<path data-name="layer1" d="M62 51l-3.4-2a11.8 11.8 0 0 0 .2-2.1 11.9 11.9 0 0 0-.2-2.3l3.1-1.6-4-6.9-3.1 1.8a12 12 0 0 0-3.7-2.1V32h-8v3.7a12 12 0 0 0-3.7 2.1L36 36l-4 7 3 1.7a11.7 11.7 0 0 0-.2 2.3 11.9 11.9 0 0 0 .2 2.1L31.7 51l4 6.9 3.3-1.8a12 12 0 0 0 3.8 2.2V62h8v-3.7a12.1 12.1 0 0 0 3.9-2.3l3.3 2z" fill="none" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="stroke: rgb(170, 0, 211); stroke-width: 2; fill: transparent;"></path>
+</svg>
+                <style>@keyframes drawSvg { to { stroke-dashoffset: 0; } }</style>
+                <h3 style="font-size: 20px; color: var(--text-heading); margin-bottom: 15px;">Analytics</h3>
+                <p style="font-size: 15px; color: var(--text-body); line-height: 1.7;">Maximize your business’s potential with our analytics consultancy services. We specialize in leveraging data to drive revenue growth, refine marketing strategies, and optimize go-to-market models. Our experts provide valuable insights and recommendations to enhance your business’s performance, reduce risk, and achieve your growth and profitability goals. Partner with us to unlock the full potential of your data and drive strategic decision-making.</p>
+              </div></div></div></div>
+  <section style="background: #1c1c1c; padding: 100px 20px; text-align: center; color: #ffffff;">
+    <div class="grid-container" style="max-width: 800px; margin: 0 auto;">
+      <h2 style="font-size: clamp(50px, 8vw, 80px); font-weight: 900; color: #ffffff; margin-bottom: 20px; letter-spacing: -2px;">Get Started</h2>
+      <div style="width: 120px; height: 3px; background: rgba(255,255,255,0.2); margin: 0 auto 40px;"></div>
+      <p style="font-size: 22px; color: rgba(255,255,255,0.8); margin: 0 auto 10px;">Dive Into the Extraordinary</p>
+      <p style="font-size: 22px; color: rgba(255,255,255,0.8); margin: 0 auto 50px;">Contact Us to Begin Your Journey.</p>
+      <a href="/contact.html" style="display: inline-block; background: #360655; color: #fff; padding: 18px 45px; border-radius: 40px; font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 20px rgba(170,0,211,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">GET IN TOUCH</a>
+    </div>
+  </section>
 </main>
 
   <!-- ==========================================================================

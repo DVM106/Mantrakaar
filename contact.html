@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO Meta Tags -->
-  <title>Blog Preview — Mantrakaar</title>
+  <title>Contact Us — Mantrakaar</title>
   <meta name="description" content="Discover Mantrakaar — an independent digital agency transforming imaginations into reality across India and the UK. Learn about our history, ambition, and core team.">
   <meta property="og:title" content="About Us — Mantrakaar">
   <meta property="og:description" content="Discover Mantrakaar — an independent digital agency transforming imaginations into reality. Learn about our history, ambition, and core team.">
@@ -16,9 +16,7 @@
   <link rel="icon" href="https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png" type="image/png">
   
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="/css/main.css?v=6.8">
-  
-
+  <link rel="stylesheet" href="/css/main.css?v=6.2">
   
   <!-- Third-Party CDN Libraries -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +40,8 @@
       "logo": "https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png"
     }
   }
-  </script></head>
+  </script>
+</head>
 <body>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -262,242 +261,94 @@
   </nav>
 
   <main id="main-content">
-    <!-- ==========================================================================
-         2. Blog Hero Section (Supports multiple canvas & video backgrounds)
-         ========================================================================== */ -->
-    <section id="hero-section-container" class="blog-hero">
-      <!-- Canvas for WebGL/2D Animations -->
 
-      <!-- Gradient overlay -->
-      <div class="about-hero-overlay-gradient"></div>
+<div class="grid-container" style="padding: 100px 15px 150px; max-width: 1200px;">
+  
+  <div style="text-align: center; margin-bottom: 80px;">
+    <h2 style="font-size: clamp(40px, 6vw, 60px); color: var(--text-heading); margin-bottom: 15px;">Contact Us</h2>
+    <p style="font-size: 20px; color: var(--text-body); max-width: 600px; margin: 0 auto; opacity: 0.8;">Let's build something extraordinary together. Reach out to our offices below or send us a message.</p>
+  </div>
 
-      <!-- Grid & Spotlight overlays -->
-      <div class="hero-layout-grid"></div>
-      <div class="hero-dotted-spotlight"></div>
-
-      <!-- Hero Content -->
-      <div class="about-hero-content">
-        <h1 data-i18n="blog_hero_title">Our Blog</h1>
-        <p data-i18n="blog_hero_desc">Insights, articles, and guides on design, development, and digital strategy.</p>
-      </div>
-
-      <!-- Scroll Down Guide -->
-      <div class="hero-scroll-down" aria-hidden="true">
-        <i class="fa-solid fa-arrow-down"></i>
-      </div>
-    </section>
-    <!-- ==========================================================================
-         3. Interactive Active/Inactive Blog Archive Grid
-         ========================================================================== */ -->
-    <section class="blog-archive-section">
-      <div class="grid-container">
-        
-        <!-- Active Blog Slot (Spans full width, horizontal split layout) -->
-        <div class="active-blog-container reveal-element reveal-scale-up" id="active-blog-container">
-          <!-- Populated dynamically via swap logic -->
-        </div>
-
-        <!-- Section Title Divider -->
-        <div class="archive-section-header reveal-element reveal-slide-up">
-          <h3 class="archive-title">From the archive</h3>
-          <div class="archive-divider-line"></div>
-        </div>
-
-        <!-- Inactive Blogs Grid (Archive at bottom) -->
-        <div class="inactive-blogs-grid" id="inactive-blogs-grid">
-          <!-- Populated dynamically via swap logic -->
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Swapping interactive script -->
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // Authentic Mantrakaar blog database
-        const blogsData = [
-          {
-            id: 0,
-            title: `Building a Human Brand: The "About Us" Section as Your Website's Heart`,
-            excerpt: `In a digital world that can sometimes feel cold and automated, your "About Us" page is where the pulse of your brand resides. It's the handshake, the smile, and the human voice.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2026/02/blog-.jpg-1500x1250.jpeg`,
-            category: `Strategy`,
-            categoryClass: `strat`,
-            author: `Mantrakaar Team`,
-            date: `February 18, 2026`,
-            link: `https://mantrakaar.com/building-a-human-brand-the-about-us-section-as-your-websites-heart/`
-          },
-          {
-            id: 1,
-            title: `Your Digital Practice: Why Doctors Need a Strong Online Presence`,
-            excerpt: `As a digital agency, we understand that for doctors, building trust and credibility is paramount. In today's digital age, your online presence is key to connecting with patients.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-2-1500x1250.jpg`,
-            category: `Marketing`,
-            categoryClass: `mkt`,
-            author: `Mantrakaar Team`,
-            date: `May 15, 2025`,
-            link: `https://mantrakaar.com/your-digital-practice-why-doctors-need-a-strong-online-presence/`
-          },
-          {
-            id: 2,
-            title: `Your Digital Portfolio: How SEO Elevates Specialist Doctors Online`,
-            excerpt: `For specialist doctors, a website isn't just a digital presence; it's a comprehensive portfolio, a testament to years of expertise, and a tool for growth and patient education.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2025/05/mantrakaar-web-image-1-1500x1250.jpg`,
-            category: `Development`,
-            categoryClass: `dev`,
-            author: `Mantrakaar Team`,
-            date: `May 10, 2025`,
-            link: `https://mantrakaar.com/your-digital-portfolio-how-seo-elevates-specialist-doctors-online/`
-          },
-          {
-            id: 3,
-            title: `Your Digital Footprint: How Social Media Can Land You Your Dream Job`,
-            excerpt: `As a digital agency owner, I've seen firsthand how social media has transformed the way we connect, communicate, and even recruit talent. Your footprint matters.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2025/04/4-1500x1250.jpg`,
-            category: `Marketing`,
-            categoryClass: `mkt`,
-            author: `Mantrakaar Team`,
-            date: `April 20, 2025`,
-            link: `https://mantrakaar.com/your-digital-footprint-how-social-media-can-land-you-your-dream-job/`
-          },
-          {
-            id: 4,
-            title: `The Digital Forge: Why Indian Manufacturers Must Embrace the Power of a Website`,
-            excerpt: `The COVID-19 pandemic irrevocably shifted the global business landscape, forcing industries to adapt and embrace digital transformation. For Indian manufacturers, a site is critical.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2025/04/web-7-1500x1250.jpg`,
-            category: `Strategy`,
-            categoryClass: `strat`,
-            author: `Mantrakaar Team`,
-            date: `April 5, 2025`,
-            link: `https://mantrakaar.com/the-digital-forge-why-indian-manufacturers-must-embrace-the-power-of-a-website/`
-          },
-          {
-            id: 5,
-            title: `Your Digital Handshake: Why Your Website Defines You`,
-            excerpt: `As the owner of a Digital Agency, I've witnessed firsthand the transformative power of a well-crafted website. It's not just a page; it is your ultimate brand handshake.`,
-            cover: `https://mantrakaar.com/wp-content/uploads/2025/03/2-1500x1250.jpg`,
-            category: `Design`,
-            categoryClass: `design`,
-            author: `Mantrakaar Team`,
-            date: `March 12, 2025`,
-            link: `https://mantrakaar.com/your-digital-handshake-why-your-website-defines-you/`
-          }
-        ];
-
-        let activeId = 0; // State: ID of currently active blog card
-
-        const activeContainer = document.getElementById('active-blog-container');
-        const inactiveGrid = document.getElementById('inactive-blogs-grid');
-
-        function renderArchive(initiallyFaded = false) {
-          // Find the active blog
-          const activeBlog = blogsData.find(b => b.id === activeId);
-          // Find the inactive blogs
-          const inactiveBlogs = blogsData.filter(b => b.id !== activeId);
-
-          const fadeClass = initiallyFaded ? 'fade-out' : '';
-
-          // 1. Render Active Blog card content
-          activeContainer.innerHTML = `
-            <div class="active-blog-card ${fadeClass}">
-              <div class="active-blog-image" style="background-image: url('${activeBlog.cover}')"></div>
-              <div class="active-blog-content">
-                <span class="active-blog-category ${activeBlog.categoryClass}">${activeBlog.category}</span>
-                <h2 class="active-blog-title">${activeBlog.title}</h2>
-                <p class="active-blog-desc">${activeBlog.excerpt}</p>
-                <div class="active-blog-meta">
-                  <span class="active-blog-author">${activeBlog.author}</span>
-                  <span class="active-blog-divider">•</span>
-                  <span class="active-blog-date">${activeBlog.date}</span>
-                </div>
-                <div class="active-blog-action">
-                  <a href="${activeBlog.link}" target="_blank" class="active-blog-link">
-                    <span>Read Full Post</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          `;
-
-          // 2. Render Inactive Blog cards inside grid
-          inactiveGrid.innerHTML = inactiveBlogs.map(blog => `
-            <div class="inactive-blog-card ${fadeClass}" data-id="${blog.id}">
-              <div class="inactive-blog-image" style="background-image: url('${blog.cover}')"></div>
-              <div class="inactive-blog-content">
-                <span class="inactive-blog-date">${blog.date}</span>
-                <h4 class="inactive-blog-title">${blog.title}</h4>
-                <span class="inactive-blog-author">${blog.author}</span>
-              </div>
-            </div>
-          `).join('');
-
-          // 3. Attach click event listeners for swapping
-          const cards = inactiveGrid.querySelectorAll('.inactive-blog-card');
-          cards.forEach(card => {
-            card.addEventListener('click', () => {
-              const newActiveId = parseInt(card.getAttribute('data-id'), 10);
-              swapActiveBlog(newActiveId);
-            });
-          });
-        }
-
-        function swapActiveBlog(newId) {
-          const activeCard = activeContainer.querySelector('.active-blog-card');
-          const inactiveCards = inactiveGrid.querySelectorAll('.inactive-blog-card');
-
-          // Snappy localized fade out
-          if (activeCard) activeCard.classList.add('fade-out');
-          inactiveCards.forEach(c => c.classList.add('fade-out'));
-
-          setTimeout(() => {
-            // Update active state
-            activeId = newId;
-            
-            // Re-render new content in faded-out state (no height collapse!)
-            renderArchive(true);
-
-            // Snappy localized fade in on next frame
-            setTimeout(() => {
-              const newActiveCard = activeContainer.querySelector('.active-blog-card');
-              const newInactiveCards = inactiveGrid.querySelectorAll('.inactive-blog-card');
-              
-              if (newActiveCard) {
-                newActiveCard.offsetHeight; // Force reflow
-                newActiveCard.classList.remove('fade-out');
-              }
-              newInactiveCards.forEach(c => {
-                c.classList.remove('fade-out');
-              });
-            }, 30);
-          }, 180);
-        }
-
-        // Initial render
-        renderArchive();
-      });
-    </script>
-
-
-    <!-- ==========================================================================
-         5. Newsletter Subscription CTA
-         ========================================================================== */ -->
-    <section class="blog-newsletter-section">
-      <div class="grid-container">
-        <div class="blog-newsletter-card reveal-element reveal-scale-up">
-          <h2>Subscribe to our Digital Insights</h2>
-          <p>Get senior-level insights on design trends, codebase audits, growth strategies, and premium UI tips directly in your inbox. No spam. Unsubscribe anytime.</p>
-          <form class="blog-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
-            <input type="email" placeholder="Enter your email address" required aria-label="Email address">
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         6. Floating Interactive Control Panel for Previews
-         ========================================================================== */ -->
+  <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between;">
     
+    <!-- Contact Info Cards -->
+    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 30px;">
+      
+      <!-- India Office -->
+      <div style="background: rgba(255,255,255,0.02); border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.3); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <h3 style="color: var(--text-heading); font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+          <i class="fa-solid fa-building" style="color: #aa00d3;"></i> India Office
+        </h3>
+        <p style="color: var(--text-body); font-size: 16px; margin-bottom: 15px; display: flex; gap: 15px; align-items: flex-start;">
+          <i class="fa-solid fa-map-location-dot" style="color: var(--text-accent); margin-top: 5px; opacity: 0.8;"></i>
+          <span>D/8, Jai Sai Dham, Sodawala Lane,<br>Borivali (West), Mumbai 400092</span>
+        </p>
+        <p style="color: var(--text-body); font-size: 16px; margin-bottom: 15px; display: flex; gap: 15px; align-items: center;">
+          <i class="fa-solid fa-phone" style="color: var(--text-accent); opacity: 0.8;"></i>
+          <a href="tel:+919091091903" style="color: var(--text-body); text-decoration: none;">+91 9091091903</a>
+        </p>
+        <p style="color: var(--text-body); font-size: 16px; margin-bottom: 0; display: flex; gap: 15px; align-items: center;">
+          <i class="fa-solid fa-envelope" style="color: var(--text-accent); opacity: 0.8;"></i>
+          <a href="mailto:parag@mantrakaar.com" style="color: var(--text-body); text-decoration: none;">parag@mantrakaar.com</a>
+        </p>
+      </div>
+
+      <!-- UK Office -->
+      <div style="background: rgba(255,255,255,0.02); border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.3); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+        <h3 style="color: var(--text-heading); font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+          <i class="fa-solid fa-building" style="color: #aa00d3;"></i> UK Office
+        </h3>
+        <p style="color: var(--text-body); font-size: 16px; margin-bottom: 15px; display: flex; gap: 15px; align-items: flex-start;">
+          <i class="fa-solid fa-map-location-dot" style="color: var(--text-accent); margin-top: 5px; opacity: 0.8;"></i>
+          <span>3, Barncluith Road,<br>Hamilton ML3 7DQ</span>
+        </p>
+        <p style="color: var(--text-body); font-size: 16px; margin-bottom: 15px; display: flex; gap: 15px; align-items: center;">
+          <i class="fa-solid fa-phone" style="color: var(--text-accent); opacity: 0.8;"></i>
+          <a href="tel:+447411334480" style="color: var(--text-body); text-decoration: none;">+44 7411334480</a>
+        </p>
+        <p style="color: var(--text-body); font-size: 16px; margin-bottom: 0; display: flex; gap: 15px; align-items: center;">
+          <i class="fa-solid fa-envelope" style="color: var(--text-accent); opacity: 0.8;"></i>
+          <a href="mailto:dipesh@mantrakaar.com" style="color: var(--text-body); text-decoration: none;">dipesh@mantrakaar.com</a>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Contact Form -->
+    <div style="flex: 1.5; min-width: 300px; background: rgba(255,255,255,0.02); border-radius: 20px; padding: 50px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
+      <h3 style="color: var(--text-heading); font-size: 28px; margin-bottom: 30px;">Send a Message</h3>
+      <form style="display: flex; flex-direction: column; gap: 25px;" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+        
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 200px;">
+            <label style="display: block; color: var(--text-body); font-size: 14px; margin-bottom: 8px;">Your Name (Required)</label>
+            <input type="text" required style="width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 15px 20px; border-radius: 8px; color: #fff; font-size: 16px; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='#aa00d3'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          </div>
+          <div style="flex: 1; min-width: 200px;">
+            <label style="display: block; color: var(--text-body); font-size: 14px; margin-bottom: 8px;">Email Address (Required)</label>
+            <input type="email" required style="width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 15px 20px; border-radius: 8px; color: #fff; font-size: 16px; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='#aa00d3'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          </div>
+        </div>
+
+        <div>
+          <label style="display: block; color: var(--text-body); font-size: 14px; margin-bottom: 8px;">Phone Number (Required)</label>
+          <input type="tel" required style="width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 15px 20px; border-radius: 8px; color: #fff; font-size: 16px; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='#aa00d3'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        </div>
+
+        <div>
+          <label style="display: block; color: var(--text-body); font-size: 14px; margin-bottom: 8px;">Message</label>
+          <textarea rows="5" placeholder="Write your message here..." required style="width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 15px 20px; border-radius: 8px; color: #fff; font-size: 16px; outline: none; resize: vertical; transition: border-color 0.3s;" onfocus="this.style.borderColor='#aa00d3'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        </div>
+
+        <button type="submit" style="margin-top: 10px; background: #360655; color: #fff; border: none; padding: 18px 45px; border-radius: 40px; font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; align-self: flex-start;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 20px rgba(54,6,85,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          Send Message
+        </button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
 </main>
 
   <!-- ==========================================================================

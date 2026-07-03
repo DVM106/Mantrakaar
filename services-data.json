@@ -1,0 +1,196 @@
+{
+  "design": {
+    "heroTitle": "Design Solution",
+    "sections": [
+      {
+        "title": "Design"
+      },
+      {
+        "title": "Design Work",
+        "lead": "We believe your website should be as unique as you are."
+      },
+      {
+        "title": "Get Connected.",
+        "lead": "We welcome you to contact us for more information\nabout any of our products or services."
+      },
+      {
+        "title": "Get Started",
+        "lead": "Dive Into the Extraordinary\nContact Us to Begin Your Journey."
+      }
+    ],
+    "features": [
+      {
+        "title": "Branding",
+        "desc": "Our team specializes in creating your brand from the ground up, or enhancing and optimising your existing brand, with a strong vision as to what your brand could become in the future."
+      },
+      {
+        "title": "Landing pages",
+        "desc": "We know how important it is to create that perfect landing page that will help achieve your performance metrics be it lead generation, engagement or sales."
+      },
+      {
+        "title": "Content",
+        "desc": "Our Content Creation team will help you create engaging content that will result in enticing your target audience to take various actions such as buying inquiring or downloading. Whatever your target metric is our content creative team will meet your needs."
+      },
+      {
+        "title": "Campaign creatives",
+        "desc": "We take pride in collaborating closely with you to refine your market positioning and craft the most compelling product messages. Once we’ve ensured our ideas align with your brief, we diligently apply creative direction to maintain that alignment."
+      },
+      {
+        "title": "Customer experience",
+        "desc": "Our consultants are experts in creating end-to-end customer experience designs for both digital and traditional channels. Our design team wireframes every element to ensure each customer journey is catered for. We use a range of tools to measure and gain insight into what drives your customer’s engagement and what leads to increased goal conversions."
+      },
+      {
+        "title": "Branding",
+        "desc": "Our team specializes in creating your brand from the ground up, or enhancing and optimising your existing brand, with a strong vision as to what your brand could become in the future."
+      },
+      {
+        "title": "Landing pages",
+        "desc": "We know how important it is to create that perfect landing page that will help achieve your performance metrics be it lead generation, engagement or sales."
+      },
+      {
+        "title": "Content",
+        "desc": "Our Content Creation team will help you create engaging content that will result in enticing your target audience to take various actions such as buying inquiring or downloading. Whatever your target metric is our content creative team will meet your needs."
+      },
+      {
+        "title": "Campaign creatives",
+        "desc": "We take pride in collaborating closely with you to refine your market positioning and craft the most compelling product messages. Once we’ve ensured our ideas align with your brief, we diligently apply creative direction to maintain that alignment."
+      }
+    ],
+    "paragraphs": [
+      "We will collaborate with you, to design captivating and accessible solutions for your products and services. Our goal is to attract your audience, generate interest, and foster brand desire, advocacy, and loyalty.",
+      "Our talented design experts offer a broad spectrum of solutions for your need to attract and engage your target audience. We can support you with developing Brand Identity, designing campaign creatives, enhancing customer experience, and producing creative copywriting for digital and print media. We thrive in customizing the design that is accessible first.",
+      "We utilize cutting-edge technology to maximize the effectiveness of design and provide an efficient return on investment."
+    ]
+  },
+  "development": {
+    "heroTitle": "Development",
+    "sections": [
+      {
+        "title": "Development"
+      },
+      {
+        "title": "Development Work"
+      },
+      {
+        "title": "Development Work",
+        "lead": "We believe your website should be as unique as you are."
+      },
+      {
+        "title": "Get Connected.",
+        "lead": "We welcome you to contact us for more information\nabout any of our products or services."
+      },
+      {
+        "title": "Get Started",
+        "lead": "Dive Into the Extraordinary\nContact Us to Begin Your Journey."
+      }
+    ],
+    "features": [
+      {
+        "title": "Website & e-commerce",
+        "desc": "Our team of web developers is ready to partner with you to ensure your business is accessible through an engaging and operational website. We leverage the best open-source platforms to build websites, providing your business with security and keeping it on the cutting edge of technology. We design and develop e-commerce websites using all major platforms, including WordPress and Shopify."
+      },
+      {
+        "title": "Conversion rate optimisaiton (CRO) & personalisation",
+        "desc": "Our CRO and personalisation service is offer scalable solutions even if you are just starting the journey of optimization or you already have a mature culture in experimentation. Our CRO consultants have designed and delivered optimisation solution for design, look and feel, funnel, content, forms and customer journeys.\nWe work with our clients to understand their need for optimisation and then create various hypothesis based on solid analytics and insight. This enables us to create very targeted personalisations and optimisations campaigns."
+      },
+      {
+        "title": "Website & e-commerce",
+        "desc": "Our team of web developers is ready to partner with you to ensure your business is accessible through an engaging and operational website. We leverage the best open-source platforms to build websites, providing your business with security and keeping it on the cutting edge of technology. We design and develop e-commerce websites using all major platforms, including WordPress and Shopify."
+      },
+      {
+        "title": "Conversion rate optimisaiton (CRO) & personalisation",
+        "desc": "Our CRO and personalisation service is offer scalable solutions even if you are just starting the journey of optimization or you already have a mature culture in experimentation. Our CRO consultants have designed and delivered optimisation solution for design, look and feel, funnel, content, forms and customer journeys.\nWe work with our clients to understand their need for optimisation and then create various hypothesis based on solid analytics and insight. This enables us to create very targeted personalisations and optimisations campaigns."
+      }
+    ],
+    "paragraphs": [
+      "We specialize in creating websites or e-commerce stores that are custom-built to fit your specific requirements. Our team is proficient in full-stack web development, ensuring that your site or application is robust, secure, and efficient.",
+      "We also offer support with accessibility remediation, a process that involves making digital content more accessible to people with disabilities. This is crucial for ensuring that your website or e-commerce store is inclusive and compliant with accessibility standards."
+    ]
+  },
+  "marketing": {
+    "heroTitle": "Marketing",
+    "sections": [
+      {
+        "title": "Marketing"
+      },
+      {
+        "title": "Marketing Work"
+      },
+      {
+        "title": "Marketing Work",
+        "lead": "We believe your website should be as unique as you are."
+      },
+      {
+        "title": "Testimonial",
+        "lead": "We believe your website should be as unique as you are."
+      },
+      {
+        "title": "Get Started",
+        "lead": "Dive Into the Extraordinary\nContact Us to Begin Your Journey."
+      }
+    ],
+    "features": [
+      {
+        "title": "Digital Marketing",
+        "desc": "Our performance marketing services specialise in lead generation, search engine marketing, email marketing, and social media marketing. We offer cost-effective marketing programs that generate high-quality engagement, leads and sales. We have a track record of improving conversion rates."
+      },
+      {
+        "title": "Traditional Marketing",
+        "desc": "Maximize your brand’s reach with our traditional marketing expertise. We craft impactful campaigns through brochures, billboards, print ads, and direct mail, ensuring your message resonates with a broad audience. Our strategies are designed to captivate and engage, creating lasting impressions and driving results. Partner with us for marketing that stands the test of time."
+      }
+    ],
+    "paragraphs": [
+      "We offer a comprehensive suite of services to help businesses thrive in the digital landscape. Our team of digital marketing experts are adept at creating and managing targeted campaigns that increase your online performance. We leverage various paid media strategies, including Google Ads, to ensure your business stands out. Our services extend beyond just getting your ads to appear at the top of search engine results pages (SERPs). We also focus on creating engaging content that resonates with your target audience, driving brand awareness and sales.",
+      "In addition to digital marketing, we offer brochure, print, and billboard advertising services, providing a holistic approach to your marketing needs. At Mantrakaar, we are committed to helping your business reach its full potential. Let us help you navigate the digital landscape and achieve your business goals."
+    ]
+  },
+  "consultancy": {
+    "heroTitle": "Consultancy",
+    "sections": [
+      {
+        "title": "Consultancy"
+      },
+      {
+        "title": "Get Connected.",
+        "lead": "We welcome you to contact us for more information\nabout any of our products or services."
+      },
+      {
+        "title": "Testimonial"
+      },
+      {
+        "title": "Get Started",
+        "lead": "Dive Into the Extraordinary\nContact Us to Begin Your Journey."
+      }
+    ],
+    "features": [
+      {
+        "title": "Strategy",
+        "desc": "We specialize in developing targeted digital strategies, leveraging online advertising, and maximizing your brand’s visibility. Our expert guidance will help you identify your target market, create a distinctive brand, and effectively promote your services, ensuring a competitive edge in the consulting industry"
+      },
+      {
+        "title": "Customer experience",
+        "desc": "We specialize in enhancing customer interactions, from initial ad engagement to post-purchase support. Our expert guidance and tailored strategies ensure a seamless and satisfying customer journey, leading to increased loyalty and brand advocacy. Partner with us to elevate your customer experience and drive long-term business success."
+      },
+      {
+        "title": "Analytics",
+        "desc": "Maximize your business’s potential with our analytics consultancy services. We specialize in leveraging data to drive revenue growth, refine marketing strategies, and optimize go-to-market models. Our experts provide valuable insights and recommendations to enhance your business’s performance, reduce risk, and achieve your growth and profitability goals. Partner with us to unlock the full potential of your data and drive strategic decision-making."
+      },
+      {
+        "title": "Strategy",
+        "desc": "We specialize in developing targeted digital strategies, leveraging online advertising, and maximizing your brand’s visibility. Our expert guidance will help you identify your target market, create a distinctive brand, and effectively promote your services, ensuring a competitive edge in the consulting industry"
+      },
+      {
+        "title": "Customer experience",
+        "desc": "We specialize in enhancing customer interactions, from initial ad engagement to post-purchase support. Our expert guidance and tailored strategies ensure a seamless and satisfying customer journey, leading to increased loyalty and brand advocacy. Partner with us to elevate your customer experience and drive long-term business success."
+      },
+      {
+        "title": "Analytics",
+        "desc": "Maximize your business’s potential with our analytics consultancy services. We specialize in leveraging data to drive revenue growth, refine marketing strategies, and optimize go-to-market models. Our experts provide valuable insights and recommendations to enhance your business’s performance, reduce risk, and achieve your growth and profitability goals. Partner with us to unlock the full potential of your data and drive strategic decision-making."
+      }
+    ],
+    "paragraphs": [
+      "Elevate your brand with our comprehensive consultancy services, covering design, marketing, and analytics. We offer expert guidance in creating compelling ad campaigns, crafting persuasive ad copy, and optimizing PPC strategies.",
+      "Our team ensures your brand’s message resonates with your target audience, driving engagement and delivering measurable results. Contact us to maximize your marketing impact."
+    ]
+  }
+}
