@@ -499,12 +499,11 @@ function initializeMantrakaar() {
     const tagline = document.querySelector('.hero-tagline');
     const line1 = document.getElementById('hero-brand-shimmer');
 
-    // Check navigation type: clear intro flag on reload OR fresh navigate (not back/forward)
+    // Check navigation type: clear intro flag only on explicit page reload
     const navEntries = typeof performance !== 'undefined' && performance.getEntriesByType ? performance.getEntriesByType("navigation") : [];
-    const navType = navEntries.length > 0 ? navEntries[0].type : 'navigate';
-    const isFreshLoad = navType === "reload" || navType === "navigate";
+    const isPageReload = navEntries.length > 0 && navEntries[0].type === "reload";
 
-    if (isFreshLoad) {
+    if (isPageReload) {
       sessionStorage.removeItem('mantrakaar-session-intro-played');
     }
 
@@ -523,9 +522,11 @@ function initializeMantrakaar() {
       if (flash) flash.style.display = 'none';
       if (brandEl) {
         brandEl.style.opacity = '1';
-        brandEl.style.transform = 'scale(1)';
+        brandEl.style.transform = 'translateY(0)';
         brandEl.style.filter = 'none';
       }
+      const heroContentWrap = document.querySelector('.hero-content-wrapper');
+      if (heroContentWrap) heroContentWrap.style.opacity = '1';
       if (tagline) tagline.style.opacity = '1';
       if (scrollDown) scrollDown.style.opacity = '1';
       if (grid) grid.style.opacity = '1';
@@ -554,6 +555,24 @@ function initializeMantrakaar() {
       logDebug("Scroll unlocked.");
     }
 
+    if (mask) {
+      mask.style.cursor = 'pointer';
+      mask.addEventListener('click', () => {
+        mask.style.display = 'none';
+        unlockScroll();
+        if (brandEl) {
+          brandEl.style.opacity = '1';
+          brandEl.style.transform = 'translateY(0)';
+        }
+        const heroContentWrap = document.querySelector('.hero-content-wrapper');
+        if (heroContentWrap) heroContentWrap.style.opacity = '1';
+        if (grid) grid.style.opacity = '1';
+        if (dottedSpotlight) dottedSpotlight.style.opacity = '1';
+        if (scrollDown) scrollDown.style.opacity = '1';
+        startHeroTypewriter();
+      });
+    }
+
     // Helper: Resilient Native CSS/JS Animation Fallback (when GSAP is offline/blocked)
     function runJSAnimationFallback() {
       logDebug("GSAP not detected. Running native CSS/JS transition animation timeline.");
@@ -576,6 +595,26 @@ function initializeMantrakaar() {
       scheduleHeroTimeout(() => {
         if (phrase1) phrase1.classList.remove('glitching');
       }, 1350);
+
+      // Fast auto-dismiss mask to show hero section promptly
+      scheduleHeroTimeout(() => {
+        if (mask) {
+          mask.style.transition = 'opacity 0.6s ease';
+          mask.style.opacity = '0';
+          setTimeout(() => { mask.style.display = 'none'; }, 600);
+        }
+        if (flash) flash.style.display = 'none';
+        unlockScroll();
+        if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
+        if (grid) grid.style.opacity = '1';
+        if (dottedSpotlight) dottedSpotlight.style.opacity = '1';
+        const brandElFallback = document.getElementById('hero-brand-shimmer');
+        if (brandElFallback) {
+          brandElFallback.style.opacity = '1';
+          brandElFallback.style.transform = 'translateY(0)';
+        }
+        startHeroTypewriter();
+      }, 1800);
 
       // Step 1.5: Fade-out and blur phrase 1 (2.2s -> 3.2s)
       scheduleHeroTimeout(() => {

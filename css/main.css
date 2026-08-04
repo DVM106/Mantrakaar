@@ -1254,8 +1254,8 @@ body.dark-mode .hero-dotted-spotlight::after {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: brand-shimmer 4s linear infinite;
-  opacity: 0;
-  transform: translateY(12px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -3973,13 +3973,14 @@ select.form-control option {
 
 .liquid-menu-trigger {
   position: relative;
-  background: linear-gradient(135deg, #aa00d3, #7b00a0);
-  border: none;
+  background: rgba(170, 0, 211, 0.2) !important;
+  border: 1.5px solid rgba(226, 88, 255, 0.5) !important;
+  backdrop-filter: blur(10px);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 22px;
+  padding: 10px 24px;
   border-radius: 30px;
   outline: none;
   font-family: 'Poppins', sans-serif;
@@ -3988,9 +3989,9 @@ select.form-control option {
   letter-spacing: 2px;
   color: #ffffff !important;
   overflow: visible;
-  transition: color 0.3s, box-shadow 0.3s, background 0.3s;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   margin-left: 10px;
-  box-shadow: 0 4px 20px rgba(170, 0, 211, 0.4);
+  box-shadow: 0 0 18px rgba(170, 0, 211, 0.35);
   text-shadow: none;
 }
 
@@ -4043,8 +4044,9 @@ select.form-control option {
 
 .liquid-menu-trigger:hover {
   color: #ffffff !important;
-  background: linear-gradient(135deg, #cc00ff, #9900cc);
-  box-shadow: 0 4px 28px rgba(170, 0, 211, 0.65);
+  background: rgba(170, 0, 211, 0.4) !important;
+  border-color: rgba(226, 88, 255, 0.9) !important;
+  box-shadow: 0 0 28px rgba(226, 88, 255, 0.6);
   text-shadow: none;
 }
 
@@ -4053,8 +4055,10 @@ body:not(.dark-mode) .liquid-menu-trigger {
   text-shadow: none;
 }
 
-.liquid-menu-trigger.active .trigger-blob {
-  background: var(--brand-purple-glow, #ff0055) !important;
+.liquid-menu-trigger.active {
+  background: linear-gradient(135deg, #aa00d3 0%, #ff0055 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 30px rgba(255, 0, 85, 0.7) !important;
 }
 
 /* ── Fullscreen Liquid Overlay ── */
@@ -7209,6 +7213,9 @@ body:not(.dark-mode) .testimonial-glass-card {
   color: #ffffff !important;
   box-shadow: 0 0 20px rgba(170, 0, 211, 0.35) !important;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  z-index: 50 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
 }
 
 .swiper-button-next::after,
