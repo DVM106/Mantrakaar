@@ -1,0 +1,848 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>About Us â€” Mantrakaar</title>
+  <meta name="description" content="Discover Mantrakaar â€” an independent digital agency transforming imaginations into reality across India and the UK. Learn about our history, ambition, and core team.">
+  <meta property="og:title" content="About Us â€” Mantrakaar">
+  <meta property="og:description" content="Discover Mantrakaar â€” an independent digital agency transforming imaginations into reality. Learn about our history, ambition, and core team.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mantrakaar.com/about">
+  
+  <!-- Favicons -->
+  <link rel="icon" href="https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png" type="image/png">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/css/main.css?v=6.2">
+  
+  <!-- Third-Party CDN Libraries -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+  
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
+  <!-- Structured Data (Schema.org JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Mantrakaar",
+    "description": "Discover Mantrakaar â€” an independent digital agency transforming imaginations into reality across India and the UK.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mantrakaar",
+      "logo": "https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Liquid Portal Navigation Structure -->
+  <div class="liquid-portal-overlay" id="liquid-portal-nav">
+    <!-- SVG Gooey and Displacement Filters -->
+    <svg class="liquid-portal-svg-filters" xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+      <defs>
+        <filter id="gooey-portal">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="gooey" />
+          <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
+        </filter>
+        <filter id="liquid-distortion">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" id="displacement-map" />
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- Giant Blobs that expand organically -->
+    <div class="liquid-blobs-container">
+      <div class="liquid-blob blob-1"></div>
+      <div class="liquid-blob blob-2"></div>
+      <div class="liquid-blob blob-3"></div>
+      <div class="liquid-blob blob-4"></div>
+    </div>
+
+    <!-- Menu Content -->
+    <div class="liquid-nav-content">
+      </div>
+          </li>
+          
+          <li class="liquid-menu-item"><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+          
+          <li class="liquid-menu-item liquid-menu-has-megamenu">
+            <a href="#" data-i18n="nav_clients" class="megamenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="megamenu-clients-content">Clients</a>
+            <div class="liquid-megamenu megamenu-clients" id="megamenu-clients-content">
+              <div class="megamenu-grid-2">
+                <a href="clients.html" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-users megamenu-icon"></i>
+                  <h4 class="megamenu-card-title" data-i18n="client_title">OUR CLIENTS</h4>
+                  <p class="megamenu-card-desc" data-i18n="client_card_desc">A showcase of businesses and brands we have partnered with.</p>
+                </a>
+                <a href="#testimonials" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-comments megamenu-icon"></i>
+                  <h4 class="megamenu-card-title" data-i18n="nav_testimonials">TESTIMONIALS</h4>
+                  <p class="megamenu-card-desc" data-i18n="testimonial_card_desc">Read reviews and stories from our clients about their experiences.</p>
+                </a>
+              </div>
+            </div>
+          </li>
+          
+          <li class="liquid-menu-item"><a href="career.html" data-i18n="nav_career">Career</a></li>
+          <li class="liquid-menu-item"><a href="blog.html" data-i18n="nav_blogs">Blogs</a></li>
+          <li class="liquid-menu-item"><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Mobile Controls inside Overlay -->
+      <div class="liquid-mobile-controls">
+        <!-- Dark Mode Toggle button -->
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <i class="fa-solid fa-moon"></i> <span data-i18n="theme_toggle">Toggle Theme</span>
+        </button>
+        
+        <!-- Language Selector -->
+        <div class="lang-selector">
+          <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+            <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
+          </button>
+          <ul class="lang-dropdown" aria-label="Languages">
+            <li><a href="#" data-lang="en">English</a></li>
+            <li><a href="#" data-lang="hi">Hindi (à¤¹à¤¿à¤‚à¤¦à¥€)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       1. Navigation Header (transparent state)
+       ========================================================================== */ -->
+  <header id="header-section" data-style="style-2" class="ha-header ut-header-floating fullwidth ut-primary-custom-skin header-transparent">
+    <div class="grid-container">
+      <div class="ha-header-perspective">
+        <div class="ha-header-front">
+
+          <div class="site-logo-wrap">
+            <div class="site-logo">
+              <a href="index.html" rel="home" aria-label="Mantrakaar Home">
+                <img src="LOGO_white_120.png" alt="Mantrakaar logo" width="120" height="40" class="brand-logo-img">
+              </a>
+            </div>
+          </div>
+
+          <div class="header-right-controls" style="display: flex; align-items: center; gap: 20px;">
+            <div class="nav-controls">
+              <!-- Search bar toggle -->
+              <div class="nav-search-container" role="search">
+                <div class="search-input-wrapper">
+                  <input type="text" placeholder="Search site..." aria-label="Search through site content">
+                </div>
+                <button class="nav-search-btn" aria-label="Search" aria-expanded="false">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+
+              <!-- Theme Switch Toggle -->
+              <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+              </button>
+
+              <!-- Language selector dropdown -->
+              <div class="lang-selector">
+                <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+                  <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
+                </button>
+                <ul class="lang-dropdown" aria-label="Languages">
+                  <li><a href="#" data-lang="en">English</a></li>
+                  <li><a href="#" data-lang="hi">Hindi (à¤¹à¤¿à¤‚à¤¦à¥€)</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Liquid Menu Trigger Button -->
+            <div class="liquid-trigger-wrap">
+              <button id="liquid-menu-trigger" class="liquid-menu-trigger" aria-label="Open Navigation">
+                <div class="trigger-blobs-container">
+                  <div class="trigger-blob trigger-blob-1"></div>
+                  <div class="trigger-blob trigger-blob-2"></div>
+                  <div class="trigger-blob trigger-blob-3"></div>
+                </div>
+                <span class="trigger-text" data-i18n="menu_title">MENU</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile navigation menu -->
+  <nav class="mobile-nav-menu hide-on-desktop" aria-label="Mobile Navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li>
+        <a href="#">Services</a>
+        <ul class="sub-menu">
+          <li><a href="design.html">Design</a></li>
+          <li><a href="development.html">Development</a></li>
+          <li><a href="marketing.html">Marketing</a></li>
+          <li><a href="consultancy.html">Consultancy</a></li>
+        </ul>
+      </li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="career.html">Career</a></li>
+      <li><a href="blog.html">Blogs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="mobile-nav-controls">
+      <button class="theme-toggle-btn" style="font-size:20px;display:inline-flex;gap:10px;align-items:center;background:none;border:none;color:var(--text-heading);">
+        <i class="fa-solid fa-moon"></i> Toggle Theme
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ==========================================================================
+         2. Hero Section (Replicates home page hero)
+         ========================================================================== */ -->
+    <section id="hero-section-container" class="about-hero">
+      <!-- Background Image -->
+      <img class="hero-bg-image" src="/assets/about-hero-bg.jpg" alt="About Us Background">
+
+      <!-- Gradient overlay -->
+      <div class="about-hero-overlay-gradient"></div>
+
+      <!-- Grid & Spotlight overlays -->
+      <div class="hero-layout-grid"></div>
+      <div class="hero-dotted-spotlight"></div>
+
+      <!-- Hero Content -->
+      <div class="about-hero-content">
+        <h1 data-i18n="about_hero_title">About Us</h1>
+        <p>Igniting creative energy to shape timeless brand stories and craft high-performance digital solutions.</p>
+      </div>
+
+      <!-- Scroll Down Guide -->
+      <div class="hero-scroll-down" aria-hidden="true">
+        <i class="fa-solid fa-arrow-down"></i>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         3. Who We Are Section (Company History & Chakras)
+         ========================================================================== */ -->
+    <section class="about-who-section">
+      <div class="grid-container">
+        <div class="about-grid-2">
+          
+          <!-- History Narrative -->
+          <div class="about-history-content reveal-element reveal-slide-up">
+            <h2 data-i18n="about_who_we_are">Who We Are</h2>
+            <p>Mantrakaar is an independent and forward-thinking digital agency. We specialize in bespoke UI/UX design, high-fidelity web development, conversion-centric search engine optimization (SEO), and data-driven consultancy services.</p>
+            <p>Founded by Parag Gogari, who brings over 23 years of industry-leading experience, Mantrakaar was established to bridge the gap between complex digital architectures and user-first brand experiences. We don't just build websites; we design digital products that solve real business problems and help companies connect meaningfully with their audience.</p>
+            <p>With a global footprint spanning operational hubs in both India and the United Kingdom, we collaborate with businesses across healthcare, real estate, manufacturing, hospitality, and retail. Our philosophy is rooted in structural transparency, design aesthetics, and technical excellence.</p>
+          </div>
+
+          <!-- Core Values (Three Chakras) Card -->
+          <div class="about-values-card reveal-element reveal-scale-up" data-delay="100ms">
+            <h3>Our Foundation</h3>
+            <div class="values-list">
+              
+              <!-- Chakra 1 -->
+              <div class="value-item">
+                <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <div class="value-text">
+                  <h4>Innovation</h4>
+                  <p>Continuously pushing the boundaries of technology to build custom web experiences that are clean, fast, and interactive.</p>
+                </div>
+              </div>
+
+              <!-- Chakra 2 -->
+              <div class="value-item">
+                <div class="value-icon"><i class="fa-solid fa-crown"></i></div>
+                <div class="value-text">
+                  <h4>Leadership</h4>
+                  <p>Leveraging decades of collective expertise to guide brands through successful digital transformations with certainty.</p>
+                </div>
+              </div>
+
+              <!-- Chakra 3 -->
+              <div class="value-item">
+                <div class="value-icon"><i class="fa-solid fa-seedling"></i></div>
+                <div class="value-text">
+                  <h4>Sustainability</h4>
+                  <p>Writing highly modular, maintainable codebases that ensure long-term scalability and robust performance as you grow.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. Statistics Section (Counters with dynamic count-up)
+         ========================================================================== */ -->
+    <section class="about-stats-section">
+      <div class="grid-container">
+        <div class="about-stats-grid">
+          
+          <!-- Stat 1: Clients -->
+          <div class="stat-box reveal-element reveal-slide-up" data-delay="0ms">
+            <div class="stat-number-wrap"><span class="stat-number" data-target="44">0</span>+</div>
+            <div class="stat-label" data-i18n="nav_clients">Happy Clients</div>
+          </div>
+
+          <!-- Stat 2: Web Solutions -->
+          <div class="stat-box reveal-element reveal-slide-up" data-delay="100ms">
+            <div class="stat-number-wrap"><span class="stat-number" data-target="25">0</span>+</div>
+            <div class="stat-label" data-i18n="about_stat_web">Web Solutions</div>
+          </div>
+
+          <!-- Stat 3: Design Solutions -->
+          <div class="stat-box reveal-element reveal-slide-up" data-delay="200ms">
+            <div class="stat-number-wrap"><span class="stat-number" data-target="11">0</span>+</div>
+            <div class="stat-label" data-i18n="about_stat_design">Design Solutions</div>
+          </div>
+
+          <!-- Stat 4: Social Media Solutions -->
+          <div class="stat-box reveal-element reveal-slide-up" data-delay="300ms">
+            <div class="stat-number-wrap"><span class="stat-number" data-target="8">0</span>+</div>
+            <div class="stat-label" data-i18n="about_stat_social">Social Media Solutions</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. The Team of Mantrakaar Section
+         ========================================================================== */ -->
+    <section class="about-team-section">
+      <div class="grid-container">
+        <h2 data-i18n="about_the_team">The Team of Mantrakaar</h2>
+        
+        <div class="team-container">
+          
+          <!-- Member 1: Parag -->
+          <div class="pc-card-wrapper team-card reveal-element reveal-slide-up" data-delay="0ms" style="--inner-gradient: linear-gradient(135deg, rgba(140, 83, 29, 0.15) 0%, #121212 100%);">
+            <div class="pc-card-shell">
+              <section class="pc-card">
+                <div class="pc-inside">
+                  <div class="pc-glare"></div>
+                  <div class="pc-content pc-avatar-content">
+                    <img
+                      class="avatar"
+                      src="https://mantrakaar.com/wp-content/uploads/2024/02/Parag-gogari.jpg"
+                      alt="Parag Gogari avatar"
+                      loading="lazy"
+                      onerror="this.style.display='none';"
+                    />
+                    <div class="pc-user-info">
+                      <div class="pc-user-details">
+                        <div class="pc-mini-avatar">
+                          <img
+                            src="https://mantrakaar.com/wp-content/uploads/2024/02/Parag-gogari.jpg"
+                            alt="Parag Gogari mini avatar"
+                            loading="lazy"
+                            onerror="this.style.opacity='0.5'; this.src='https://mantrakaar.com/wp-content/uploads/2024/02/Parag-gogari.jpg';"
+                          />
+                        </div>
+                        <div class="pc-user-text">
+                          <div class="pc-handle">@paraggogari</div>
+                          <div class="pc-status">Online</div>
+                        </div>
+                      </div>
+                      <a
+                        class="pc-contact-btn"
+                        href="https://linkedin.com/in/paraggogari"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Contact Parag Gogari"
+                        style="pointer-events: auto;"
+                      >
+                        Contact
+                      </a>
+                    </div>
+                  </div>
+                  <div class="pc-content">
+                    <div class="pc-details">
+                      <h3>Parag Gogari</h3>
+                      <p>Founder &amp; Creative Director</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <!-- Member 2: Dipesh -->
+          <div class="pc-card-wrapper team-card reveal-element reveal-slide-up" data-delay="100ms" style="--inner-gradient: linear-gradient(135deg, rgba(54, 96, 132, 0.15) 0%, #121212 100%);">
+            <div class="pc-card-shell">
+              <section class="pc-card">
+                <div class="pc-inside">
+                  <div class="pc-glare"></div>
+                  <div class="pc-content pc-avatar-content">
+                    <img
+                      class="avatar"
+                      src="https://mantrakaar.com/wp-content/uploads/2024/02/dipesh-profile.jpg"
+                      alt="Dipesh Gosar avatar"
+                      loading="lazy"
+                      onerror="this.style.display='none';"
+                    />
+                    <div class="pc-user-info">
+                      <div class="pc-user-details">
+                        <div class="pc-mini-avatar">
+                          <img
+                            src="https://mantrakaar.com/wp-content/uploads/2024/02/dipesh-profile.jpg"
+                            alt="Dipesh Gosar mini avatar"
+                            loading="lazy"
+                            onerror="this.style.opacity='0.5'; this.src='https://mantrakaar.com/wp-content/uploads/2024/02/dipesh-profile.jpg';"
+                          />
+                        </div>
+                        <div class="pc-user-text">
+                          <div class="pc-handle">@dipeshg</div>
+                          <div class="pc-status">Online</div>
+                        </div>
+                      </div>
+                      <a
+                        class="pc-contact-btn"
+                        href="https://linkedin.com/in/dipeshg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Contact Dipesh Gosar"
+                        style="pointer-events: auto;"
+                      >
+                        Contact
+                      </a>
+                    </div>
+                  </div>
+                  <div class="pc-content">
+                    <div class="pc-details">
+                      <h3>Dipesh Gosar</h3>
+                      <p>Co-Founder &amp; Tech Lead</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <!-- Member 3: Manisha -->
+          <div class="pc-card-wrapper team-card reveal-element reveal-slide-up" data-delay="200ms" style="--inner-gradient: linear-gradient(135deg, rgba(201, 170, 150, 0.15) 0%, #121212 100%);">
+            <div class="pc-card-shell">
+              <section class="pc-card">
+                <div class="pc-inside">
+                  <div class="pc-glare"></div>
+                  <div class="pc-content pc-avatar-content">
+                    <img
+                      class="avatar"
+                      src="https://mantrakaar.com/wp-content/uploads/2024/02/Manisha-Gosar.jpg"
+                      alt="Manisha Gosar avatar"
+                      loading="lazy"
+                      onerror="this.style.display='none';"
+                    />
+                    <div class="pc-user-info">
+                      <div class="pc-user-details">
+                        <div class="pc-mini-avatar">
+                          <img
+                            src="https://mantrakaar.com/wp-content/uploads/2024/02/Manisha-Gosar.jpg"
+                            alt="Manisha Gosar mini avatar"
+                            loading="lazy"
+                            onerror="this.style.opacity='0.5'; this.src='https://mantrakaar.com/wp-content/uploads/2024/02/Manisha-Gosar.jpg';"
+                          />
+                        </div>
+                        <div class="pc-user-text">
+                          <div class="pc-handle">@manishag</div>
+                          <div class="pc-status">Online</div>
+                        </div>
+                      </div>
+                      <a
+                        class="pc-contact-btn"
+                        href="https://linkedin.com/in/manisha-g-b6140539"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Contact Manisha Gosar"
+                        style="pointer-events: auto;"
+                      >
+                        Contact
+                      </a>
+                    </div>
+                  </div>
+                  <div class="pc-content">
+                    <div class="pc-details">
+                      <h3>Manisha Gosar</h3>
+                      <p>Co-Founder &amp; UI/UX Director</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <!-- Member 4: Bhadra -->
+          <div class="pc-card-wrapper team-card reveal-element reveal-slide-up" data-delay="300ms" style="--inner-gradient: linear-gradient(135deg, rgba(181, 169, 153, 0.15) 0%, #121212 100%);">
+            <div class="pc-card-shell">
+              <section class="pc-card">
+                <div class="pc-inside">
+                  <div class="pc-glare"></div>
+                  <div class="pc-content pc-avatar-content">
+                    <img
+                      class="avatar"
+                      src="https://mantrakaar.com/wp-content/uploads/2024/02/Bhadra_gogari.jpg"
+                      alt="Bhadra Gogari avatar"
+                      loading="lazy"
+                      onerror="this.style.display='none';"
+                    />
+                    <div class="pc-user-info">
+                      <div class="pc-user-details">
+                        <div class="pc-mini-avatar">
+                          <img
+                            src="https://mantrakaar.com/wp-content/uploads/2024/02/Bhadra_gogari.jpg"
+                            alt="Bhadra Gogari mini avatar"
+                            loading="lazy"
+                            onerror="this.style.opacity='0.5'; this.src='https://mantrakaar.com/wp-content/uploads/2024/02/Bhadra_gogari.jpg';"
+                          />
+                        </div>
+                        <div class="pc-user-text">
+                          <div class="pc-handle">@bhadra-gogari</div>
+                          <div class="pc-status">Online</div>
+                        </div>
+                      </div>
+                      <a
+                        class="pc-contact-btn"
+                        href="https://linkedin.com/in/bhadra-gogari-5a858399"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Contact Bhadra Gogari"
+                        style="pointer-events: auto;"
+                      >
+                        Contact
+                      </a>
+                    </div>
+                  </div>
+                  <div class="pc-content">
+                    <div class="pc-details">
+                      <h3>Bhadra Gogari</h3>
+                      <p>Co-Founder &amp; Operations Director</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <!-- Member 5: Payal -->
+          <div class="pc-card-wrapper team-card reveal-element reveal-slide-up" data-delay="400ms" style="--inner-gradient: linear-gradient(135deg, rgba(222, 55, 73, 0.15) 0%, #121212 100%);">
+            <div class="pc-card-shell">
+              <section class="pc-card">
+                <div class="pc-inside">
+                  <div class="pc-glare"></div>
+                  <div class="pc-content pc-avatar-content">
+                    <img
+                      class="avatar"
+                      src="https://mantrakaar.com/wp-content/uploads/2024/02/payal-shah.jpg"
+                      alt="Payal Shah avatar"
+                      loading="lazy"
+                      onerror="this.style.display='none';"
+                    />
+                    <div class="pc-user-info">
+                      <div class="pc-user-details">
+                        <div class="pc-mini-avatar">
+                          <img
+                            src="https://mantrakaar.com/wp-content/uploads/2024/02/payal-shah.jpg"
+                            alt="Payal Shah mini avatar"
+                            loading="lazy"
+                            onerror="this.style.opacity='0.5'; this.src='https://mantrakaar.com/wp-content/uploads/2024/02/payal-shah.jpg';"
+                          />
+                        </div>
+                        <div class="pc-user-text">
+                          <div class="pc-handle">@payalshah</div>
+                          <div class="pc-status">Online</div>
+                        </div>
+                      </div>
+                      <a
+                        class="pc-contact-btn"
+                        href="https://linkedin.com/in/payal-shah-44a03b2b4"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Contact Payal Shah"
+                        style="pointer-events: auto;"
+                      >
+                        Contact
+                      </a>
+                    </div>
+                  </div>
+                  <div class="pc-content">
+                    <div class="pc-details">
+                      <h3>Payal Shah</h3>
+                      <p>Senior Web Developer</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. Our Ambition Section (Full-width spotlight statement)
+         ========================================================================== */ -->
+    <section class="about-ambition-section">
+      <div class="grid-container">
+        <div class="about-ambition-wrap reveal-element reveal-scale-up">
+          <h2 data-i18n="about_our_ambition">Our Ambition</h2>
+          <p>"We look forward to igniting energy to create timeless stories. Our ultimate target is to make premium, high-fidelity web design accessible to forward-thinking brands, crafting user-first interfaces that push the boundaries of interactivity, performance, and accessibility worldwide."</p>
+        </div>
+      </div>
+
+      <!-- Nested Brand Pillars Section (Purpose, Promise, Mission, Values) -->
+      <div id="vision-mission-section" class="vision-mission-section" style="background-image: url('/assets/brand-pillar-purpose.png')">
+        <div class="overlay"></div>
+        <div class="content container">
+          <div class="tabs row text-white" role="tablist">
+            
+            <!-- Purpose Tab -->
+            <div class="tab-item active" role="tab" aria-selected="true" aria-expanded="true" tabindex="0">
+              <img src="/assets/brand-pillar-purpose.png" rel="preload" alt="Mantrakaar Brand Pillar - Our Purpose" />
+              <h3>Purpose</h3>
+              <div class="tab-inner-content">
+                <div class="tab-content-box">
+                  <p>
+                    We ignite creative energy to shape timeless stories. Our ultimate target is to make premium, high-fidelity web experiences accessible to forward-thinking brands, crafting user-first interfaces that push the boundaries of interactivity, performance, and accessibility.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Promise Tab -->
+            <div class="tab-item" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
+              <img src="/assets/brand-pillar-promise.png" rel="preload" alt="Mantrakaar Brand Pillar - Our Promise" />
+              <h3>Promise</h3>
+              <div class="tab-inner-content">
+                <div class="tab-content-box">
+                  <p>Transforming Imaginations into Reality.</p>
+                  <div class="btn-box">
+                    <a href="projects.html"><button class="btn btn-primary">Our Projects</button></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mission Tab -->
+            <div class="tab-item" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
+              <img src="/assets/brand-pillar-mission.png" rel="preload" alt="Mantrakaar Brand Pillar - Our Mission" />
+              <h3>Mission</h3>
+              <div class="tab-inner-content">
+                <div class="tab-content-box">
+                  <p>
+                    We unlock transformative growth for our clients by building custom, robust digital products that bridge the gap between complex digital architectures and user-first brand experiences.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Values Tab -->
+            <div class="tab-item" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
+              <img src="/assets/brand-pillar-value.png" rel="preload" alt="Mantrakaar Brand Pillar - Our Values" />
+              <h3>Values</h3>
+              <div class="tab-inner-content">
+                <div class="tab-content-box">
+                  <ul>
+                    <li>
+                      Innovation<br />
+                      <span>Continuously pushing the boundaries of technology to build custom web experiences that are clean, fast, and interactive.</span>
+                    </li>
+                    <li>
+                      Leadership<br />
+                      <span>Leveraging decades of collective expertise to guide brands through successful digital transformations with certainty.</span>
+                    </li>
+                    <li>
+                      Sustainability<br />
+                      <span>Writing highly modular, maintainable codebases that ensure long-term scalability and robust performance as you grow.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6b. Frequently Asked Questions Section
+         ========================================================================== */ -->
+    <section class="about-faq-section">
+      <div class="grid-container">
+        <h2 class="faq-section-title">Frequently Asked Questions</h2>
+        
+        <div class="faq-accordion">
+          
+          <!-- FAQ Item 1 -->
+          <div class="faq-item">
+            <div class="faq-question" role="button" aria-expanded="false" tabindex="0">
+              <h3>Why does Mantrakaar focus on custom development over pre-built templates?</h3>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>Custom development guarantees blazing-fast load speeds, robust security protocols, and absolute design flexibility. Pre-built templates often bundle heavy dependencies, slow styling frameworks, and security risks, which degrade the premium feel of your brand.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="faq-item">
+            <div class="faq-question" role="button" aria-expanded="false" tabindex="0">
+              <h3>What does 'independent agency' mean for our partnership?</h3>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>It means direct senior-level focus, transparent communication, and agility. We work without large corporate layers, letting our engineers and designers collaborate directly with your team for speed and precision.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item">
+            <div class="faq-question" role="button" aria-expanded="false" tabindex="0">
+              <h3>How do you ensure our website is accessible and compliant?</h3>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>We write semantic HTML5, implement correct ARIA landmarks, optimize keyboard navigation, and target WCAG 2.1 AA guidelines. This ensures your digital products are fully inclusive and performant for everyone.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-item">
+            <div class="faq-question" role="button" aria-expanded="false" tabindex="0">
+              <h3>What is involved in a codebase audit or technical consultancy?</h3>
+            </div>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>We conduct deep reviews of your existing system's performance, code cleanliness, security gaps, and hosting infrastructure. You receive an actionable roadmap detailing optimizations, security patches, and future-proofing recommendations.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. Get Started / CTA Section
+         ========================================================================== */ -->
+    <section class="about-cta-section">
+      <div class="grid-container">
+        <div class="about-cta-wrap reveal-element reveal-scale-up">
+          <h2>Ready to Create Something Extraordinary?</h2>
+          <p>Let's collaborate to build high-performance interfaces, shape your brand story, and take your digital presence to a global scale.</p>
+          <div class="btn-magnetic-wrap" style="display:inline-block;">
+            <a href="https://wa.me/919091091903" target="_blank" class="btn-magnetic" data-i18n="about_connect">
+              <span>Connect With Us</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       8. Footer (Identical structure to index.html)
+       ========================================================================== */ -->
+  <footer data-cursor-skin="global" class="footer-widgets-wrapper">
+    <div class="grid-container">
+      <div class="footer-grid">
+        
+        <!-- Column 1: Logo & Social links -->
+        <div class="footer-widget-column">
+          <div class="footer-logo">
+            <img src="https://mantrakaar.com/wp-content/uploads/2024/01/LOGO_white_60.png" style="max-height: 40px;" alt="Mantrakaar White Logo" loading="lazy">
+          </div>
+          <ul class="footer-social-links">
+            <li><a href="https://facebook.com/mantrakaar" target="_blank" aria-label="Facebook Page"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/mantrakaar/" target="_blank" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/mantrakaar" target="_blank" aria-label="LinkedIn Company Page"><i class="fa-brands fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 2: India Office -->
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">India Office</h3>
+          <p style="margin-bottom: 8px;"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +91 90910 91903</p>
+          <p><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> <a href="mailto:parag@mantrakaar.com" style="color:#888888;">parag@mantrakaar.com</a></p>
+        </div>
+        
+        <!-- Column 3: UK Office -->
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">UK Office</h3>
+          <p style="margin-bottom: 8px;"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +44 7411 334480</p>
+          <p><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> <a href="mailto:dipesh@mantrakaar.com" style="color:#888888;">dipesh@mantrakaar.com</a></p>
+        </div>
+        
+        <!-- Column 4: Links -->
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">Navigation</h3>
+          <ul class="footer-links-list">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sub-footer (Copyright block) -->
+  <div class="sub-footer-wrapper">
+    <div class="grid-container">
+      <div class="sub-footer-content">
+        <div>Copyright &copy; 2026 Mantrakaar. All rights reserved</div>
+        <div>Mantrakaar POWERED BY <a href="http://unitedthemes.com/" target="_blank" rel="designer">United Themes</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Social Controls Stack -->
+  <div class="floating-social-stack">
+    <a href="https://wa.me/919091091903" target="_blank" class="floating-social-btn floating-whatsapp" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/company/mantrakaar" target="_blank" class="floating-social-btn floating-linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://www.instagram.com/mantrakaar/" target="_blank" class="floating-social-btn floating-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+
+  <!-- Custom pointer visual ring -->
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="custom-cursor-dot" aria-hidden="true"></div>
+
+  <!-- Custom Core Module Logic -->
+  <script type="module" src="/js/main.js?v=6.8"></script>
+
+</body>
+</html>
+
+
+
+

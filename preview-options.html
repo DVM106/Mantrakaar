@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pick a Consultancy Photo</title>
+  <style>
+    body { margin: 0; padding: 40px; background: #0a0a0a; color: #fff; font-family: 'Poppins', sans-serif; }
+    h1 { text-align: center; margin-bottom: 40px; font-size: 28px; opacity: 0.8; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto; }
+    .card { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s, border-color 0.3s; cursor: pointer; }
+    .card:hover { transform: translateY(-5px); border-color: #aa00d3; }
+    .card img { width: 100%; height: 300px; object-fit: cover; display: block; }
+    .card .label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); padding: 20px; }
+    .card .label span { font-size: 24px; font-weight: 800; color: #aa00d3; }
+    .card .label p { margin: 5px 0 0; font-size: 14px; opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <h1>Pick a Photo for the Consultancy Section (Tell me the number)</h1>
+  <div class="grid">
+    <div class="card"><img src="assets/feature/consult_option_1.jpg"><div class="label"><span>Option 1</span><p>Team strategy whiteboard session</p></div></div>
+    <div class="card"><img src="assets/feature/consult_option_2.jpg"><div class="label"><span>Option 2</span><p>Corporate boardroom presentation</p></div></div>
+    <div class="card"><img src="assets/feature/consult_option_3.jpg"><div class="label"><span>Option 3</span><p>Business planning with sticky notes</p></div></div>
+    <div class="card"><img src="assets/feature/consult_option_4.jpg"><div class="label"><span>Option 4</span><p>Consultants collaborating at desk</p></div></div>
+    <div class="card"><img src="assets/feature/consult_option_5.jpg"><div class="label"><span>Option 5</span><p>Team analyzing data together</p></div></div>
+    <div class="card"><img src="assets/feature/consult_option_6.jpg"><div class="label"><span>Option 6</span><p>Business analytics on laptop</p></div></div>
+    <div class="card"><img src="assets/feature/consult_option_7.jpg"><div class="label"><span>Option 7</span><p>Woman presenting strategy on screen</p></div></div>
+    <div class="card"><img src="assets/feature/consult_option_8.jpg"><div class="label"><span>Option 8</span><p>Professional business discussion</p></div></div>
+    <div class="card"><img src="assets/feature/consult_option_9.jpg"><div class="label"><span>Option 9</span><p>Modern office strategy session</p></div></div>
+    <div class="card"><img src="assets/feature/consult_option_10.jpg"><div class="label"><span>Option 10</span><p>Conference room meeting</p></div></div>
+  </div>
+</body>
+</html>
+
+

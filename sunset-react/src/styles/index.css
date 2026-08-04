@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0c1a2e;
+  }
+}
+
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+}
+
+/* Reduced motion fallback: stop animations and display a serene static sunset state */
+@media (prefers-reduced-motion: reduce) {
+  .animate-sky-shift,
+  .animate-sun-float,
+  .animate-cloud-drift-slow,
+  .animate-cloud-drift-fast,
+  .animate-wave-parallax-1,
+  .animate-wave-parallax-2,
+  .animate-wave-parallax-3,
+  .animate-wave-bob-1,
+  .animate-wave-bob-2,
+  .animate-sparkle-fast,
+  .animate-sparkle-slow {
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  /* Retain static offsets for design coherence */
+  .sun-disk-element {
+    transform: translateY(-4px) scale(1) !important;
+  }
+}
+
+/* Programmatic pause capability based on React prop */
+.animation-paused * {
+  animation-play-state: paused !important;
+}

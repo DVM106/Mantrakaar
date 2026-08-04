@@ -1,0 +1,984 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Projects ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Mantrakaar</title>
+  <meta name="description" content="Browse all projects by Mantrakaar ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â web design, branding, social media and more across 44+ clients worldwide.">
+  <link rel="icon" href="https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png" type="image/png">
+  <link rel="stylesheet" href="/css/main.css?v=6.1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Projects Hero (Scrolling Mosaic) ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+    .ph-hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 620px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ph-mosaic {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 12px 0;
+      z-index: 0;
+      transform: rotate(-4deg) scale(1.12);
+    }
+    .ph-row {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .ph-row img {
+      height: 160px;
+      width: 260px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .ph-row:nth-child(odd)  { animation: ph-scroll-left  28s linear infinite; }
+    .ph-row:nth-child(even) { animation: ph-scroll-right 32s linear infinite; }
+    @keyframes ph-scroll-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes ph-scroll-right {
+      0%   { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    .ph-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.82) 100%);
+      z-index: 1;
+    }
+    .ph-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 55% 40% at 50% 50%, rgba(170,0,211,0.18) 0%, transparent 70%);
+      z-index: 2;
+      pointer-events: none;
+    }
+    /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ I-5: Full-bleed content ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+    .ph-content {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      width: 100%;
+      animation: ph-fade-in 1s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes ph-fade-in {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .ph-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(170,0,211,0.15);
+      border: 1px solid rgba(170,0,211,0.35);
+      border-radius: 50px;
+      padding: 7px 18px;
+      margin-bottom: 24px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+    .ph-pill-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #aa00d3;
+      box-shadow: 0 0 8px #aa00d3;
+    }
+    .ph-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(80px, 14vw, 170px);
+      line-height: 0.82;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 36px;
+      text-shadow: 0 2px 40px rgba(0,0,0,0.8);
+    }
+    .ph-title .ph-accent {
+      display: block;
+    }
+    @keyframes ph-shimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 300% center; }
+    }
+    /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Ticker strip ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+    .ph-ticker-wrap {
+      width: 120%;
+      margin-left: -10%;
+      overflow: hidden;
+      background: rgba(0,0,0,0.62);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 14px 0;
+      margin-bottom: 36px;
+      transform: rotate(3deg);
+    }
+    .ph-ticker-inner {
+      display: flex;
+      white-space: nowrap;
+      animation: ph-ticker 14s linear infinite;
+    }
+    .ph-ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding-right: 52px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.05em;
+      color: #fff;
+    }
+    .ph-ticker-item .ph-t-dot { color: #aa00d3; font-size: 10px; }
+    .ph-ticker-item .ph-t-num {
+      background: linear-gradient(120deg, #ffffff 5%, #aa00d3 40%, #e200ff 60%, #ffffff 90%);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: ph-shimmer 3.5s linear infinite;
+    }
+    @keyframes ph-ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ph-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 34px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .ph-cta-btn:hover {
+      border-color: rgba(170,0,211,0.6);
+      box-shadow: 0 8px 30px rgba(170,0,211,0.35);
+      transform: translateY(-3px);
+      color: #fff;
+    }
+    .ph-scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 6;
+      color: rgba(255,255,255,0.25);
+      font-size: 18px;
+      animation: ph-bounce 2s infinite ease-in-out;
+    }
+    @keyframes ph-bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(7px); }
+    }
+    @media (max-width: 600px) {
+      .ph-title { font-size: clamp(64px, 18vw, 110px); margin-bottom: 24px; }
+      .ph-ticker-item { font-size: 17px; }
+      .ph-row img { height: 110px; width: 180px; }
+    }
+
+    /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Filter bar ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+    .projects-filter-bar {
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+      padding: 30px 0 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 50px;
+    }
+    .projects-filter-bar .filter-btn {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      padding: 16px 28px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+      min-width: 110px;
+      min-height: 83px;
+    }
+    .projects-filter-bar .filter-btn:hover {
+      background: rgba(170,0,211,0.08);
+      border-color: rgba(170,0,211,0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(170,0,211,0.2);
+    }
+    .projects-filter-bar .filter-btn.active {
+      background: rgba(170,0,211,0.12);
+      border-color: rgba(170,0,211,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(170,0,211,0.28);
+    }
+    .filter-label {
+      font-size: 14px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.25s;
+    }
+    .projects-filter-bar .filter-btn.active .filter-label {
+      color: #fff;
+    }
+
+    /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Projects grid ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â JS Masonry ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+    .projects-grid {
+      position: relative;
+      width: 100%;
+      margin-bottom: 80px;
+      transition: height 0.4s ease;
+    }
+
+    .proj-card {
+      position: absolute;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: #161616;
+      transition: border-color 0.35s, transform 0.35s, left 0.4s cubic-bezier(0.25, 1, 0.5, 1), top 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      cursor: pointer;
+      margin-bottom: 0;
+      display: block;
+    }
+    .proj-card:hover { border-color: rgba(170,0,211,0.5); transform: translateY(-5px); }
+
+    .proj-photo {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.65s;
+    }
+    .proj-card:hover .proj-photo { transform: scale(1.06); }
+
+    /* Gradient placeholder for cards without real photos */
+    .proj-placeholder {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .proj-placeholder-letter {
+      font-size: 80px; font-weight: 800; letter-spacing: -0.05em;
+      color: rgba(170,0,211,0.15); line-height: 1;
+      user-select: none;
+    }
+
+    .proj-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+    }
+    .proj-glow {
+      position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
+      width: 160px; height: 80px;
+      background: radial-gradient(ellipse, rgba(170,0,211,0.5), transparent 70%);
+      opacity: 0; transition: opacity 0.4s; pointer-events: none;
+    }
+    .proj-card:hover .proj-glow { opacity: 1; }
+
+    .proj-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 20px 22px; z-index: 2;
+    }
+    .proj-tag {
+      display: inline-block; font-size: 9px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 5px;
+    }
+    .proj-title {
+      font-size: clamp(14px, 1.6vw, 18px); font-weight: 700; color: #fff;
+      letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px;
+    }
+    .proj-caps { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
+    .proj-cap {
+      font-size: 8px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--brand-purple); background: rgba(170,0,211,0.1);
+      border: 1px solid rgba(170,0,211,0.2); padding: 3px 8px; border-radius: 100px;
+    }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.25s, gap 0.25s;
+    }
+    .proj-card:hover .proj-link { color: #fff; gap: 9px; }
+
+    /* Gradient themes for placeholders */
+    .g-purple  { background: linear-gradient(135deg, #1a003a 0%, #0d0d0d 100%); }
+    .g-blue    { background: linear-gradient(135deg, #001a35 0%, #0d0d0d 100%); }
+    .g-green   { background: linear-gradient(135deg, #001a14 0%, #0d0d0d 100%); }
+    .g-red     { background: linear-gradient(135deg, #2d0000 0%, #0d0d0d 100%); }
+    .g-amber   { background: linear-gradient(135deg, #2d1a00 0%, #0d0d0d 100%); }
+    .g-teal    { background: linear-gradient(135deg, #001a2d 0%, #0d0d0d 100%); }
+
+    /* Hidden state for filter */
+    .proj-card.hidden { display: none; }
+
+    /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Project Modal ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+    .proj-modal-backdrop {
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .proj-modal-backdrop.open {
+      opacity: 1; pointer-events: all;
+    }
+    .proj-modal {
+      position: relative;
+      width: min(820px, 92vw);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      transform: translateY(28px) scale(0.97);
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+      scrollbar-width: none;
+    }
+    .proj-modal::-webkit-scrollbar { display: none; }
+    .proj-modal-backdrop.open .proj-modal {
+      transform: translateY(0) scale(1);
+    }
+    .proj-modal-img {
+      width: 100%; height: auto; display: block;
+      border-radius: 20px 20px 0 0;
+    }
+    .proj-modal-body {
+      padding: 32px 36px 36px;
+    }
+    .proj-modal-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      margin-bottom: 10px; display: block;
+    }
+    .proj-modal-title {
+      font-size: clamp(22px, 4vw, 36px); font-weight: 800;
+      color: #fff; letter-spacing: -0.03em; line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .proj-modal-caps {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px;
+    }
+    .proj-modal-cap {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #aa00d3;
+      background: rgba(170,0,211,0.1); border: 1px solid rgba(170,0,211,0.25);
+      padding: 5px 12px; border-radius: 100px;
+    }
+    .proj-modal-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 32px; border-radius: 50px;
+      background: #aa00d3; color: #fff;
+      font-family: 'Poppins', sans-serif; font-size: 12px;
+      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .proj-modal-cta:hover {
+      background: #c400f5;
+      box-shadow: 0 8px 32px rgba(170,0,211,0.5);
+      transform: translateY(-2px); color: #fff;
+    }
+    .proj-modal-close {
+      position: absolute; top: 16px; right: 16px; z-index: 10;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.12);
+      color: #fff; font-size: 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .proj-modal-close:hover { background: rgba(170,0,211,0.4); }
+
+    /* No results message */
+    .no-results {
+      grid-column: 1 / -1; text-align: center;
+      padding: 60px 20px; color: var(--text-muted);
+      font-size: 14px; display: none;
+    }
+    .no-results.visible { display: block; }
+
+    /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Widen grid section to use full viewport width ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+    #projects-filter .grid-container {
+      max-width: none;
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+
+    @media (max-width: 960px) {
+      #projects-filter .grid-container { padding-left: 24px; padding-right: 24px; }
+    }
+    @media (max-width: 600px) {
+      #projects-filter .grid-container { padding-left: 16px; padding-right: 16px; }
+      .ph-title { font-size: clamp(64px, 18vw, 110px); margin-bottom: 24px; }
+      .ph-ticker-item { font-size: 17px; }
+      .ph-row img { height: 110px; width: 180px; }
+    }
+  </style>
+  <!-- Structured Data (Schema.org JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mantrakaar",
+    "url": "https://mantrakaar.com/",
+    "logo": "https://mantrakaar.com/wp-content/uploads/2024/01/Icon.png",
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-90910-91903",
+        "contactType": "sales",
+        "areaServed": "IN"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+44-7411-334480",
+        "contactType": "sales",
+        "areaServed": "GB"
+      }
+    ],
+    "sameAs": [
+      "https://facebook.com/mantrakaar",
+      "https://www.instagram.com/mantrakaar/",
+      "https://www.linkedin.com/company/mantrakaar"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Keyboard Navigation Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Liquid Portal Navigation Structure -->
+  <div class="liquid-portal-overlay" id="liquid-portal-nav">
+    <!-- SVG Gooey and Displacement Filters -->
+    <svg class="liquid-portal-svg-filters" xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+      <defs>
+        <filter id="gooey-portal">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="gooey" />
+          <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
+        </filter>
+        <filter id="liquid-distortion">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" id="displacement-map" />
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- Giant Blobs that expand organically -->
+    <div class="liquid-blobs-container">
+      <div class="liquid-blob blob-1"></div>
+      <div class="liquid-blob blob-2"></div>
+      <div class="liquid-blob blob-3"></div>
+      <div class="liquid-blob blob-4"></div>
+    </div>
+
+    <!-- Menu Content -->
+    <div class="liquid-nav-content">
+      </div>
+          </li>
+          
+          <li class="liquid-menu-item"><a href="projects.html" data-i18n="nav_projects" style="color: var(--brand-purple);">Projects</a></li>
+          
+          <li class="liquid-menu-item liquid-menu-has-megamenu">
+            <a href="#" data-i18n="nav_clients" class="megamenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="megamenu-clients-content">Clients</a>
+            <div class="liquid-megamenu megamenu-clients" id="megamenu-clients-content">
+              <div class="megamenu-grid-2">
+                <a href="clients.html" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-users megamenu-icon"></i>
+                  <h4 class="megamenu-card-title" data-i18n="client_title">OUR CLIENTS</h4>
+                  <p class="megamenu-card-desc" data-i18n="client_card_desc">A showcase of businesses and brands we have partnered with.</p>
+                </a>
+                <a href="testimonials.html" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-comments megamenu-icon"></i>
+                  <h4 class="megamenu-card-title" data-i18n="nav_testimonials">TESTIMONIALS</h4>
+                  <p class="megamenu-card-desc" data-i18n="testimonial_card_desc">Read reviews and stories from our clients about their experiences.</p>
+                </a>
+              </div>
+            </div>
+          </li>
+          
+          <li class="liquid-menu-item"><a href="career.html" data-i18n="nav_career">Career</a></li>
+          <li class="liquid-menu-item"><a href="blog.html" data-i18n="nav_blogs">Blogs</a></li>
+          <li class="liquid-menu-item"><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Mobile Controls inside Overlay -->
+      <div class="liquid-mobile-controls">
+        <!-- Dark Mode Toggle button -->
+        <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+          <i class="fa-solid fa-moon"></i> <span data-i18n="theme_toggle">Toggle Theme</span>
+        </button>
+        
+        <!-- Language Selector -->
+        <div class="lang-selector">
+          <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+            <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
+          </button>
+          <ul class="lang-dropdown" aria-label="Languages">
+            <li><a href="#" data-lang="en">English</a></li>
+            <li><a href="#" data-lang="hi">Hindi (Hindi)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Header (transparent state) -->
+  <header id="header-section" data-style="style-2" class="ha-header ut-header-floating fullwidth ut-primary-custom-skin header-transparent">
+    <div class="grid-container">
+      <div class="ha-header-perspective">
+        <div class="ha-header-front">
+
+          <div class="site-logo-wrap">
+            <div class="site-logo">
+              <a href="index.html" rel="home" aria-label="Mantrakaar Home">
+                <img src="LOGO_white_120.png" alt="Mantrakaar logo" width="120" height="40" class="brand-logo-img">
+              </a>
+            </div>
+          </div>
+
+          <div class="header-right-controls" style="display: flex; align-items: center; gap: 20px;">
+            <div class="nav-controls">
+              <!-- Search bar toggle -->
+              <div class="nav-search-container" role="search">
+                <div class="search-input-wrapper">
+                  <input type="text" placeholder="Search site..." aria-label="Search through site content">
+                </div>
+                <button class="nav-search-btn" aria-label="Search" aria-expanded="false">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+
+              <!-- Theme Switch Toggle -->
+              <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+              </button>
+
+              <!-- Language selector dropdown -->
+              <div class="lang-selector">
+                <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
+                  <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
+                </button>
+                <ul class="lang-dropdown" aria-label="Languages">
+                  <li><a href="#" data-lang="en">English</a></li>
+                  <li><a href="#" data-lang="hi">Hindi (Hindi)</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Liquid Menu Trigger Button -->
+            <div class="liquid-trigger-wrap">
+              <button id="liquid-menu-trigger" class="liquid-menu-trigger" aria-label="Open Navigation">
+                <div class="trigger-blobs-container">
+                  <div class="trigger-blob trigger-blob-1"></div>
+                  <div class="trigger-blob trigger-blob-2"></div>
+                  <div class="trigger-blob trigger-blob-3"></div>
+                </div>
+                <span class="trigger-text" data-i18n="menu_title">MENU</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+  <main id="main-content" style="padding-top: 0;">
+
+    <!-- ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Hero: Scrolling Mosaic ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ -->
+    <section class="ph-hero">
+
+      <!-- Scrolling project image rows -->
+      <div class="ph-mosaic">
+        <div class="ph-row">
+          <img src="https://mantrakaar.com/wp-content/uploads/2025/05/jsk.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/09/Pure-mist-1.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2026/01/uselevators.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/09/trade4welath-1.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/09/Nexus-2.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/02/RSA1300x837.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/02/Wow-1.jpg" alt="">
+          <img src="https://mantrakaar.com/wp-content/uploads/2025/05/jsk.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/09/Pure-mist-1.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2026/01/uselevators.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/09/trade4welath-1.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/09/Nexus-2.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/02/RSA1300x837.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/02/Wow-1.jpg" alt="">
+        </div>
+        <div class="ph-row">
+          <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Bliss-01.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/04/Samadhan-1.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/04/AtmosSecure-1.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/12/1.-COTTON-STATE-Website-Mockups-1300-x-867-px.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/07/Royalprinters-website.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/04/PS1300x837.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/05/Rdiamond.jpg" alt="">
+          <img src="https://mantrakaar.com/wp-content/uploads/2024/02/Bliss-01.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/04/Samadhan-1.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/04/AtmosSecure-1.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/12/1.-COTTON-STATE-Website-Mockups-1300-x-867-px.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/07/Royalprinters-website.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/04/PS1300x837.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/05/Rdiamond.jpg" alt="">
+        </div>
+        <div class="ph-row">
+          <img src="https://mantrakaar.com/wp-content/uploads/2024/07/AIM-for-website.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/10/DR.-VIJAY-WEBSITE-PROJECT-MANTRAKAAR.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/04/Andromeda-International-K12.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/02/CemburMobilezone.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/04/AS1300x837.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/04/pioneer-1.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/10/Jeevan-Chemicals-1.jpg" alt="">
+          <img src="https://mantrakaar.com/wp-content/uploads/2024/07/AIM-for-website.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/10/DR.-VIJAY-WEBSITE-PROJECT-MANTRAKAAR.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/04/Andromeda-International-K12.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/02/CemburMobilezone.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/04/AS1300x837.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/04/pioneer-1.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/10/Jeevan-Chemicals-1.jpg" alt="">
+        </div>
+        <div class="ph-row">
+          <img src="https://mantrakaar.com/wp-content/uploads/2026/01/PBC-web-mockup.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/09/Interbuild-1.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/02/Shree-Online-1.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/02/AT1300x837.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/12/SDCC-website-mockup-2.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/05/Murugan.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/05/Anmol-Residency-1.jpg" alt="">
+          <img src="https://mantrakaar.com/wp-content/uploads/2026/01/PBC-web-mockup.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/09/Interbuild-1.webp" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/02/Shree-Online-1.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/02/AT1300x837.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2024/12/SDCC-website-mockup-2.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/05/Murugan.jpg" alt=""><img src="https://mantrakaar.com/wp-content/uploads/2025/05/Anmol-Residency-1.jpg" alt="">
+        </div>
+      </div>
+
+      <!-- Overlays -->
+      <div class="ph-overlay"></div>
+      <div class="ph-glow"></div>
+
+      <!-- Full-bleed hero content (I-5) -->
+      <div class="ph-content">
+        <div><div class="ph-pill"><div class="ph-pill-dot"></div>Our Portfolio</div></div>
+        <h1 class="ph-title">
+          All Our<br>
+          <span class="ph-accent">Projects</span>
+        </h1>
+        <div class="ph-ticker-wrap">
+          <div class="ph-ticker-inner">
+            <!-- set A ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â repeated 4ÃƒÆ’Ã¢â‚¬â€ so one set is always wider than any viewport -->
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">25+</span>&nbsp;Web Design</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">11+</span>&nbsp;Branding</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">8+</span>&nbsp;Social Media</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">44+</span>&nbsp;Total Projects</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">25+</span>&nbsp;Web Design</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">11+</span>&nbsp;Branding</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">8+</span>&nbsp;Social Media</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">44+</span>&nbsp;Total Projects</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">25+</span>&nbsp;Web Design</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">11+</span>&nbsp;Branding</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">8+</span>&nbsp;Social Media</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">44+</span>&nbsp;Total Projects</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">25+</span>&nbsp;Web Design</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">11+</span>&nbsp;Branding</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">8+</span>&nbsp;Social Media</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">44+</span>&nbsp;Total Projects</span>
+            <!-- set B ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â exact duplicate of set A so the loop snaps invisibly -->
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">25+</span>&nbsp;Web Design</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">11+</span>&nbsp;Branding</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">8+</span>&nbsp;Social Media</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">44+</span>&nbsp;Total Projects</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">25+</span>&nbsp;Web Design</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">11+</span>&nbsp;Branding</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">8+</span>&nbsp;Social Media</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">44+</span>&nbsp;Total Projects</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">25+</span>&nbsp;Web Design</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">11+</span>&nbsp;Branding</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">8+</span>&nbsp;Social Media</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">44+</span>&nbsp;Total Projects</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">25+</span>&nbsp;Web Design</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">11+</span>&nbsp;Branding</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">8+</span>&nbsp;Social Media</span>
+            <span class="ph-ticker-item"><span class="ph-t-dot">ÃƒÂ¢Ã…â€œÃ‚Â¦</span>&nbsp;<span class="ph-t-num">44+</span>&nbsp;Total Projects</span>
+          </div>
+        </div>
+        <a href="#projects-filter" class="ph-cta-btn">Explore Work &nbsp;<i class="fa-solid fa-arrow-down"></i></a>
+      </div>
+
+      <div class="ph-scroll-hint"><i class="fa-solid fa-chevron-down"></i></div>
+
+    </section>
+
+    <!-- ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Filter + Grid ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ -->
+    <section id="projects-filter" style="padding-bottom: 80px; background: var(--bg-primary);">
+      <div class="grid-container">
+
+        <div class="projects-filter-bar">
+          <button class="filter-btn active" data-filter="all">
+            <span class="filter-label">All</span>
+          </button>
+          <button class="filter-btn" data-filter="web">
+            <span class="filter-label">Web Design</span>
+          </button>
+          <button class="filter-btn" data-filter="dev">
+            <span class="filter-label">Web Development</span>
+          </button>
+          <button class="filter-btn" data-filter="branding">
+            <span class="filter-label">Branding</span>
+          </button>
+          <button class="filter-btn" data-filter="social">
+            <span class="filter-label">Social Media</span>
+          </button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+
+          <!-- 1 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/05/jsk.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Dubai ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Real Estate</span><div class="proj-title">JSK Global Real Estate L.L.C</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">Logo</span><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/jsk-global-real-estate-l-l-c/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 2 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/09/Pure-mist-1.webp" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Bedding Brand</span><div class="proj-title">Pure Mist</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">Logo</span><span class="proj-cap">Stationery</span></div><a href="https://mantrakaar.com/portfolio-item/pure-mist/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 3 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2026/01/uselevators.webp" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Industrial Ãƒâ€šÃ‚Â· Elevators</span><div class="proj-title">U.S. Elevators Co.</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">SEO</span></div><a href="https://mantrakaar.com/portfolio-item/u-s-elevators-co/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 4 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2026/01/PBC-web-mockup.webp" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Education Distribution</span><div class="proj-title">PBC Distributors</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/pbc-distributors/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 5 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/09/trade4welath-1.webp" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Finance &amp; Trading</span><div class="proj-title">Trade4Wealth</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">UI/UX</span></div><a href="https://mantrakaar.com/portfolio-item/trade4wealth/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 6 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/09/Nexus-2.webp" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Professional Services</span><div class="proj-title">Nexus Wizard</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/nexus-wizard/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 7 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/09/Interbuild-1.webp" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Construction</span><div class="proj-title">Innterbuild Solutions</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/innterbuild-solutions/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 8 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/04/Andromeda-International-K12.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Education</span><div class="proj-title">Andromeda International K12</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/andromeda-international-k12/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 9 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/04/AtmosSecure-1.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Security</span><div class="proj-title">AtmosSecure</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/atmossecure/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 10 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/04/Samadhan-1.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Healthcare</span><div class="proj-title">Samadhan Diagnostic Centre</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/samadhan-diagnostic-centre/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 11 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/04/pioneer-1.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Travel</span><div class="proj-title">Pioneer Travel Desk</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/pioneer-travel-desk/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 12 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/05/Rdiamond.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Luxury Jewellery Ãƒâ€šÃ‚Â· Switzerland</span><div class="proj-title">Rdiamond</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/rdiamond/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 13 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/05/Anmol-Residency-1.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Real Estate</span><div class="proj-title">Anmol Residency</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/anmol-residency/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 14 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/05/Murugan.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Retail Ãƒâ€šÃ‚Â· Textiles</span><div class="proj-title">Murugan Cloth Stores</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/murugan-cloth-stores/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 15 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/09/Sanemi-logo-BG.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Design &amp; Branding</span><div class="proj-title">Sanemi</div><div class="proj-caps"><span class="proj-cap">Logo Design</span><span class="proj-cap">Stationery</span></div><a href="https://mantrakaar.com/portfolio-item/sanemi/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 16 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/05/Gamta.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Organic Products</span><div class="proj-title">Gamta Organic Incense</div><div class="proj-caps"><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/gamta-organic-incense/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 17 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/04/Dev-trading-1.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Furniture &amp; Trading</span><div class="proj-title">Dev Trading Co</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/dev-trading-co/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 18 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/04/Unikgift.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Gifts &amp; Retail</span><div class="proj-title">Unikgifts</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/unikgifts/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 19 --><div class="proj-card" data-category="social"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/04/Sheetalply.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Building Materials</span><div class="proj-title">Sheetal Ply-N-Veneer</div><div class="proj-caps"><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/sheetal-ply-n-veneer/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 20 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/12/SDCC-website-mockup-2.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Design &amp; Consultancy</span><div class="proj-title">SOINTA Design &amp; Consultancy</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/sointa-design-consultancy-company-sdcc/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 21 --><div class="proj-card" data-category="social"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/12/DR.-Rajesh-Website.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Healthcare Ãƒâ€šÃ‚Â· Paediatrics</span><div class="proj-title">Dr. Rajesh Shah</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/dr-rajesh-shah/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 22 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/05/viva-1.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Luxury Makeup</span><div class="proj-title">Viva</div><div class="proj-caps"><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/viva/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 23 --><div class="proj-card" data-category="social"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2025/04/Kokan-kinara.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Hospitality Ãƒâ€šÃ‚Â· Restaurant</span><div class="proj-title">Kokan Kinara</div><div class="proj-caps"><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/kokan-kinara/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 24 --><div class="proj-card" data-category="social"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/04/ER1300x837.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Men's Fashion</span><div class="proj-title">Eden Rose</div><div class="proj-caps"><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/eden-rose/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 25 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/04/PS1300x837.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Custom Jewellery</span><div class="proj-title">Pierson &amp; CO</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/pierson-co/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 26 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/04/AS1300x837.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Real Estate</span><div class="proj-title">Asset Realty</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/asset-realty/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 27 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/04/NP1300x837.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Vegan Leather</span><div class="proj-title">Nepri</div><div class="proj-caps"><span class="proj-cap">Social Media</span></div><a href="https://mantrakaar.com/portfolio-item/nepri/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 28 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/iaa-1300X867.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Aviation Ãƒâ€šÃ‚Â· Florida</span><div class="proj-title">International Aero Academy</div><div class="proj-caps"><span class="proj-cap">Brochure Design</span></div><a href="https://mantrakaar.com/portfolio-item/international-aero-academy/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 29 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/NS1300x837.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Counselling &amp; Therapy Ãƒâ€šÃ‚Â· UK</span><div class="proj-title">North Star</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">Stationery</span></div><a href="https://mantrakaar.com/portfolio-item/north-star/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 30 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/VE1300x837.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Construction</span><div class="proj-title">Verma Enterprise</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/verma-enterprise/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 31 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/Rushabh.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">UPVC Windows</span><div class="proj-title">Rushabh Upvc Solution</div><div class="proj-caps"><span class="proj-cap">Logo Design</span></div><a href="https://mantrakaar.com/portfolio-item/rushabh-upvc-solution/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 32 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/Feni-Savla.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Resin Art</span><div class="proj-title">Shades By Feni</div><div class="proj-caps"><span class="proj-cap">Brand Collateral</span></div><a href="https://mantrakaar.com/portfolio-item/shades-by-feni/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 33 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/National-Book-Stall.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Retail Ãƒâ€šÃ‚Â· Books</span><div class="proj-title">National Book Stall</div><div class="proj-caps"><span class="proj-cap">Brand Collateral</span></div><a href="https://mantrakaar.com/portfolio-item/national-book-stall/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 34 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/07/Royalprinters-website.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Printing Solutions</span><div class="proj-title">Royal Printers</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">SEO</span></div><a href="https://mantrakaar.com/portfolio-item/royal-printers/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 35 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/07/AIM-for-website.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Financial Services</span><div class="proj-title">AIM Financial Services</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/aim-financial-services/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 36 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/12/1.-COTTON-STATE-Website-Mockups-1300-x-867-px.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Real Estate</span><div class="proj-title">Cotton State</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/cotton-state/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 37 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/10/DR.-VIJAY-WEBSITE-PROJECT-MANTRAKAAR.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Healthcare Ãƒâ€šÃ‚Â· Cardiology</span><div class="proj-title">Dr. Vijay Dsilva</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/dr-vijay-dsilva/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 38 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/10/Jeevan-Chemicals-1.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Chemicals</span><div class="proj-title">Jeevan Chemicals</div><div class="proj-caps"><span class="proj-cap">Web Dev</span></div><a href="https://mantrakaar.com/portfolio-item/jeevan-chemicals/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 39 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/RSA1300x837.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Aviation Ãƒâ€šÃ‚Â· Pilot Training</span><div class="proj-title">Right Source Aviation</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">Brand Collateral</span></div><a href="https://mantrakaar.com/portfolio-item/right-source-aviation/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 40 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/Wow-1.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Travel Agency</span><div class="proj-title">WOW Trip Makers</div><div class="proj-caps"><span class="proj-cap">Brand Collateral</span></div><a href="https://mantrakaar.com/portfolio-item/wow-trip-makers/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 41 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/AT1300x837.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Hair Accessories</span><div class="proj-title">Astavinayak Traders</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">Brochure</span><span class="proj-cap">Stationery</span></div><a href="https://mantrakaar.com/portfolio-item/astavinayak-traders/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 42 --><div class="proj-card" data-category="web"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/CemburMobilezone.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Mobile Retail</span><div class="proj-title">Chembur Mobile Zone</div><div class="proj-caps"><span class="proj-cap">Web Dev</span><span class="proj-cap">Branding</span></div><a href="https://mantrakaar.com/portfolio-item/chembur-mobile-zone/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 43 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/Shree-Online-1.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Travel Agency</span><div class="proj-title">Shree Online</div><div class="proj-caps"><span class="proj-cap">Branding</span><span class="proj-cap">Logo Redesign</span></div><a href="https://mantrakaar.com/portfolio-item/shree-online/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <!-- 44 --><div class="proj-card" data-category="branding"><img class="proj-photo" src="https://mantrakaar.com/wp-content/uploads/2024/02/Bliss-01.jpg" alt="" loading="lazy"><div class="proj-overlay"></div><div class="proj-glow"></div><div class="proj-content"><span class="proj-tag">Skincare</span><div class="proj-title">Bliss By Bhadra</div><div class="proj-caps"><span class="proj-cap">Brand Collateral</span></div><a href="https://mantrakaar.com/portfolio-item/bliss/" class="proj-link">View Project <i class="fa-solid fa-arrow-right"></i></a></div></div>
+
+          <div class="no-results" id="no-results">No projects found for this filter.</div>
+
+        </div><!-- /projects-grid -->
+
+        <!-- CTA -->
+        <div style="text-align:center; margin-top: 20px;">
+          <a href="contact.html" class="btn-magnetic">
+            <span>Start Your Project</span> <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+
+  <!-- ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Footer (identical to index.html) ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ -->
+  <footer data-cursor-skin="global" class="footer-widgets-wrapper">
+    <div class="grid-container">
+      <div class="footer-grid">
+        <div class="footer-widget-column">
+          <div class="footer-logo">
+            <img src="https://mantrakaar.com/wp-content/uploads/2024/01/LOGO_white_60.png" style="max-height: 40px;" alt="Mantrakaar White Logo" loading="lazy">
+          </div>
+          <ul class="footer-social-links">
+            <li><a href="https://facebook.com/mantrakaar" target="_blank" aria-label="Facebook Page"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/mantrakaar/" target="_blank" aria-label="Instagram Profile"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/mantrakaar" target="_blank" aria-label="LinkedIn Company Page"><i class="fa-brands fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">India Office</h3>
+          <p style="margin-bottom:8px;"><i class="fa-solid fa-phone" style="margin-right:8px;"></i> +91 90910 91903</p>
+          <p><i class="fa-solid fa-envelope" style="margin-right:8px;"></i> <a href="mailto:parag@mantrakaar.com" style="color:#888888;">parag@mantrakaar.com</a></p>
+        </div>
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">UK Office</h3>
+          <p style="margin-bottom:8px;"><i class="fa-solid fa-phone" style="margin-right:8px;"></i> +44 7411 334480</p>
+          <p><i class="fa-solid fa-envelope" style="margin-right:8px;"></i> <a href="mailto:dipesh@mantrakaar.com" style="color:#888888;">dipesh@mantrakaar.com</a></p>
+        </div>
+        <div class="footer-widget-column">
+          <h3 class="footer-widget-title">Navigation</h3>
+          <ul class="footer-links-list">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sub-footer-wrapper">
+    <div class="grid-container">
+      <div class="sub-footer-content">
+        <div>Copyright &copy; 2026 Mantrakaar. All rights reserved</div>
+        <div>Mantrakaar POWERED BY <a href="http://unitedthemes.com/" target="_blank" rel="designer">United Themes</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="floating-social-stack">
+    <a href="https://wa.me/919091091903" target="_blank" class="floating-social-btn floating-whatsapp" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/company/mantrakaar" target="_blank" class="floating-social-btn floating-linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://www.instagram.com/mantrakaar/" target="_blank" class="floating-social-btn floating-instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="custom-cursor-dot" aria-hidden="true"></div>
+
+  <script type="module" src="/js/main.js?v=6.8"></script>
+  <script>
+    /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Filter logic & Masonry Grid ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+    const filterBtns = document.querySelectorAll('.projects-filter-bar .filter-btn');
+    const cards = document.querySelectorAll('.proj-card');
+    const countEl = document.getElementById('visible-count');
+    const noResults = document.getElementById('no-results');
+
+    function layoutMasonry() {
+      const grid = document.getElementById('projects-grid');
+      if (!grid) return;
+      const visibleCards = [...grid.querySelectorAll('.proj-card:not(.hidden)')];
+      if (!visibleCards.length) {
+        grid.style.height = '0px';
+        return;
+      }
+      const width = grid.clientWidth;
+      let numCols = 3;
+      if (width < 640) {
+        numCols = 1;
+      } else if (width < 960) {
+        numCols = 2;
+      }
+      const gap = 16;
+      const colWidth = (width - (gap * (numCols - 1))) / numCols;
+      const colHeights = Array(numCols).fill(0);
+
+      visibleCards.forEach(card => {
+        card.style.width = colWidth + 'px';
+        let minCol = 0;
+        for (let i = 1; i < numCols; i++) {
+          if (colHeights[i] < colHeights[minCol]) minCol = i;
+        }
+        const leftPos = minCol * (colWidth + gap);
+        const topPos = colHeights[minCol];
+        card.style.left = leftPos + 'px';
+        card.style.top = topPos + 'px';
+        colHeights[minCol] += card.offsetHeight + gap;
+      });
+
+      grid.style.height = (Math.max(...colHeights) - gap) + 'px';
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        let visible = 0;
+        cards.forEach(card => {
+          const cat = card.dataset.category;
+          const match = filter === 'all' || cat === filter || (filter === 'dev' && cat === 'web') || (filter === 'web' && cat === 'dev');
+          card.classList.toggle('hidden', !match);
+          if (match) visible++;
+        });
+        if (countEl) countEl.textContent = visible;
+        noResults.classList.toggle('visible', visible === 0);
+        setTimeout(layoutMasonry, 50);
+      });
+    });
+
+    // Run layout on load, resize, and after each image loads
+    window.addEventListener('load', layoutMasonry);
+    window.addEventListener('resize', layoutMasonry);
+    document.querySelectorAll('.proj-card img').forEach(img => {
+      if (img.complete) {
+        layoutMasonry();
+      } else {
+        img.addEventListener('load', layoutMasonry);
+      }
+    });
+
+    /* ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ Project Redirect ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ÃƒÂ¢Ã¢â‚¬ÂÃ¢â€šÂ¬ */
+    document.querySelectorAll('.proj-card').forEach(card => {
+      const link = card.querySelector('.proj-link');
+      if (link) {
+        card.addEventListener('click', e => {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          const match = href ? href.match(/portfolio-item\/([^\/]+)/) : null;
+          if (match) {
+            window.location.href = 'project-details.html?id=' + match[1];
+          }
+        });
+      }
+    });
+  </script>
+
+  <!-- Custom pointer visual ring & dot -->
+  <div class="custom-cursor" aria-hidden="true"></div>
+  <div class="custom-cursor-dot" aria-hidden="true"></div>
+
+  <!-- Main JavaScript Module -->
+  <script type="module" src="/js/main.js?v=6.8"></script>
+
+</body>
+</html>
+
+
+
+
+
