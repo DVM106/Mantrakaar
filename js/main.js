@@ -512,7 +512,9 @@ function initializeMantrakaar() {
     // Skip Intro Button Handler (No box by default, appears on hover)
     const skipBtn = document.getElementById('skip-intro-btn');
     const dismissIntro = () => {
-      if (heroSequenceTimeline) heroSequenceTimeline.kill();
+      if (heroSequenceTimeline) {
+        try { heroSequenceTimeline.kill(); } catch (e) {}
+      }
       if (mask) {
         mask.style.transition = 'opacity 0.4s ease';
         mask.style.opacity = '0';
@@ -533,6 +535,15 @@ function initializeMantrakaar() {
       floatingIcons.forEach(icon => {
         icon.style.opacity = '0.75';
         icon.style.transform = 'scale(1)';
+      });
+      startHeroTypewriter();
+    };
+
+    if (skipBtn) {
+      skipBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dismissIntro();
       });
     }
 
