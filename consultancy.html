@@ -74,59 +74,77 @@
 
     <!-- Menu Content -->
     <div class="liquid-nav-content">
-      </div>
-          </li>
-          
-          <li class="liquid-menu-item"><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
-          
+      <div class="liquid-nav-links-container">
+        <ul class="liquid-menu-links">
+          <li class="liquid-menu-item"><a href="index.html">Home</a></li>
+          <li class="liquid-menu-item"><a href="about.html">About</a></li>
           <li class="liquid-menu-item liquid-menu-has-megamenu">
-            <a href="#" data-i18n="nav_clients" class="megamenu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="megamenu-clients-content">Clients</a>
-            <div class="liquid-megamenu megamenu-clients" id="megamenu-clients-content">
-              <div class="megamenu-grid-2">
-                <a href="clients.html" class="megamenu-card">
+            <a href="#" class="megamenu-toggle" aria-haspopup="true" aria-expanded="false">Services</a>
+            <div class="liquid-megamenu megamenu-services">
+              <div class="megamenu-grid-4">
+                <a href="design.html" class="megamenu-card">
                   <div class="megamenu-card-glow"></div>
-                  <i class="fa-solid fa-users megamenu-icon"></i>
-                  <h4 class="megamenu-card-title" data-i18n="client_title">OUR CLIENTS</h4>
-                  <p class="megamenu-card-desc" data-i18n="client_card_desc">A showcase of businesses and brands we have partnered with.</p>
+                  <i class="fa-solid fa-compass-drafting megamenu-icon"></i>
+                  <span class="megamenu-card-tag">UX/UI DESIGN</span>
+                  <h4 class="megamenu-card-title">DESIGN</h4>
+                  <p class="megamenu-card-desc">Brand &amp; Interface Design.</p>
                 </a>
-                <a href="#testimonials" class="megamenu-card">
+                <a href="development.html" class="megamenu-card">
                   <div class="megamenu-card-glow"></div>
-                  <i class="fa-solid fa-comments megamenu-icon"></i>
-                  <h4 class="megamenu-card-title" data-i18n="nav_testimonials">TESTIMONIALS</h4>
-                  <p class="megamenu-card-desc" data-i18n="testimonial_card_desc">Read reviews and stories from our clients about their experiences.</p>
+                  <i class="fa-solid fa-code megamenu-icon"></i>
+                  <span class="megamenu-card-tag">WEBSITE DEVELOPMENT</span>
+                  <h4 class="megamenu-card-title">DEVELOPMENT</h4>
+                  <p class="megamenu-card-desc">Frontend &amp; Core Dev.</p>
+                </a>
+                <a href="marketing.html" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-chart-line megamenu-icon"></i>
+                  <span class="megamenu-card-tag">MARKETING</span>
+                  <h4 class="megamenu-card-title">MARKETING</h4>
+                  <p class="megamenu-card-desc">Growth &amp; SEO Strategy.</p>
+                </a>
+                <a href="consultancy.html" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-user-tie megamenu-icon"></i>
+                  <span class="megamenu-card-tag">CONSULTING</span>
+                  <h4 class="megamenu-card-title">STRATEGY</h4>
+                  <p class="megamenu-card-desc">Consultancy &amp; Audits.</p>
                 </a>
               </div>
             </div>
           </li>
-          
-          <li class="liquid-menu-item"><a href="career.html" data-i18n="nav_career">Career</a></li>
-          <li class="liquid-menu-item"><a href="blog.html" data-i18n="nav_blogs">Blogs</a></li>
-          <li class="liquid-menu-item"><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+          <li class="liquid-menu-item"><a href="projects.html">Projects</a></li>
+          <li class="liquid-menu-item liquid-menu-has-megamenu">
+            <a href="#" class="megamenu-toggle" aria-haspopup="true" aria-expanded="false">Clients</a>
+            <div class="liquid-megamenu megamenu-clients">
+              <div class="megamenu-grid-2">
+                <a href="clients.html" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-users megamenu-icon"></i>
+                  <h4 class="megamenu-card-title">OUR CLIENTS</h4>
+                  <p class="megamenu-card-desc">A showcase of businesses and brands we have partnered with.</p>
+                </a>
+                <a href="testimonials.html" class="megamenu-card">
+                  <div class="megamenu-card-glow"></div>
+                  <i class="fa-solid fa-comments megamenu-icon"></i>
+                  <h4 class="megamenu-card-title">TESTIMONIALS</h4>
+                  <p class="megamenu-card-desc">Read reviews and stories from our clients about their experiences.</p>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="liquid-menu-item"><a href="career.html">Career</a></li>
+          <li class="liquid-menu-item"><a href="blog.html">Blogs</a></li>
+          <li class="liquid-menu-item"><a href="contact.html">Contact</a></li>
         </ul>
       </div>
-
-      <!-- Mobile Controls inside Overlay -->
       <div class="liquid-mobile-controls">
-        <!-- Dark Mode Toggle button -->
         <button class="theme-toggle-btn" aria-label="Toggle Dark Mode">
-          <i class="fa-solid fa-moon"></i> <span data-i18n="theme_toggle">Toggle Theme</span>
+          <i class="fa-solid fa-moon"></i> <span>Toggle Theme</span>
         </button>
-        
-        <!-- Language Selector -->
-        <div class="lang-selector">
-          <button class="lang-toggle" aria-label="Select Language" aria-expanded="false" aria-haspopup="true">
-            <span>EN</span> <i class="fa-solid fa-chevron-down" style="font-size: 8px;"></i>
-          </button>
-          <ul class="lang-dropdown" aria-label="Languages">
-            <li><a href="#" data-lang="en">English</a></li>
-            <li><a href="#" data-lang="hi">Hindi (Ã Â¤Â¹Ã Â¤Â¿Ã Â¤â€šÃ Â¤Â¦Ã Â¥â‚¬)</a></li>
-          </ul>
-        </div>
       </div>
     </div>
-  </div>
-
-  <!-- ==========================================================================
+  </div><!-- ==========================================================================
        1. Navigation Header (transparent state)
        ========================================================================== */ -->
   <header id="header-section" data-style="style-2" class="ha-header ut-header-floating fullwidth ut-primary-custom-skin header-transparent">
