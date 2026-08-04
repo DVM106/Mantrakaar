@@ -497,7 +497,6 @@ function initializeMantrakaar() {
     const scrollDown = document.querySelector('.hero-scroll-down');
     const floatingIcons = document.querySelectorAll('.marketing-icon-floating');
     const tagline = document.querySelector('.hero-tagline');
-    const line1 = document.getElementById('hero-brand-shimmer');
 
     // Lock scroll instantly and scroll to top for cinematic loading sequence
     document.documentElement.style.overflow = 'hidden';
@@ -510,272 +509,27 @@ function initializeMantrakaar() {
       logDebug("Scroll unlocked.");
     }
 
-    if (mask) {
-      mask.style.cursor = 'pointer';
-      mask.addEventListener('click', () => {
-        mask.style.display = 'none';
-        unlockScroll();
-        if (brandEl) {
-          brandEl.style.opacity = '1';
-          brandEl.style.transform = 'translateY(0)';
-        }
-        const heroContentWrap = document.querySelector('.hero-content-wrapper');
-        if (heroContentWrap) heroContentWrap.style.opacity = '1';
-        if (grid) grid.style.opacity = '1';
-        if (dottedSpotlight) dottedSpotlight.style.opacity = '1';
-        if (scrollDown) scrollDown.style.opacity = '1';
-        startHeroTypewriter();
-      });
-    }
-
-    // Helper: Resilient Native CSS/JS Animation Fallback (when GSAP is offline/blocked)
-    function runJSAnimationFallback() {
-      logDebug("GSAP not detected. Running native CSS/JS transition animation timeline.");
-      
-      // Step 1: Fade-in, scale, and focus phrase 1 (0.0s -> 1.4s)
-      scheduleHeroTimeout(() => {
-        if (phrase1) {
-          phrase1.style.transition = 'opacity 1.4s ease-in-out, transform 1.4s ease-in-out, letter-spacing 1.4s ease-in-out, filter 1.4s ease-in-out';
-          phrase1.style.opacity = '1';
-          phrase1.style.transform = 'scale(1)';
-          phrase1.style.letterSpacing = '0.35em';
-          phrase1.style.filter = 'blur(0px)';
-        }
-      }, 50);
-
-      // Step 1.2: Glitch phrase 1 in middle
-      scheduleHeroTimeout(() => {
-        if (phrase1) phrase1.classList.add('glitching');
-      }, 1000);
-      scheduleHeroTimeout(() => {
-        if (phrase1) phrase1.classList.remove('glitching');
-      }, 1350);
-
-      // Fast auto-dismiss mask to show hero section promptly
-      scheduleHeroTimeout(() => {
-        if (mask) {
-          mask.style.transition = 'opacity 0.6s ease';
-          mask.style.opacity = '0';
-          setTimeout(() => { mask.style.display = 'none'; }, 600);
-        }
-        if (flash) flash.style.display = 'none';
-        unlockScroll();
-        if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
-        if (grid) grid.style.opacity = '1';
-        if (dottedSpotlight) dottedSpotlight.style.opacity = '1';
-        const brandElFallback = document.getElementById('hero-brand-shimmer');
-        if (brandElFallback) {
-          brandElFallback.style.opacity = '1';
-          brandElFallback.style.transform = 'translateY(0)';
-        }
-        startHeroTypewriter();
-      }, 1800);
-
-      // Step 1.5: Fade-out and blur phrase 1 (2.2s -> 3.2s)
-      scheduleHeroTimeout(() => {
-        if (phrase1) {
-          phrase1.style.transition = 'opacity 1.0s ease-in-out, transform 1.0s ease-in-out, letter-spacing 1.0s ease-in-out, filter 1.0s ease-in-out';
-          phrase1.style.opacity = '0';
-          phrase1.style.transform = 'scale(1.08)';
-          phrase1.style.letterSpacing = '0.5em';
-          phrase1.style.filter = 'blur(20px)';
-        }
-      }, 2200);
-
-      // Step 2: Fade-in, scale, and focus phrase 2 (3.5s -> 4.9s)
-      scheduleHeroTimeout(() => {
-        if (phrase2) {
-          phrase2.style.transition = 'opacity 1.4s ease-in-out, transform 1.4s ease-in-out, letter-spacing 1.4s ease-in-out, filter 1.4s ease-in-out';
-          phrase2.style.opacity = '1';
-          phrase2.style.transform = 'scale(1)';
-          phrase2.style.letterSpacing = '0.35em';
-          phrase2.style.filter = 'blur(0px)';
-        }
-      }, 3500);
-
-      // Step 2.2: Glitch phrase 2 in middle
-      scheduleHeroTimeout(() => {
-        if (phrase2) phrase2.classList.add('glitching');
-      }, 4500);
-      scheduleHeroTimeout(() => {
-        if (phrase2) phrase2.classList.remove('glitching');
-      }, 4850);
-
-      // Step 2.5: Fade-out and blur phrase 2 (5.7s -> 6.7s)
-      scheduleHeroTimeout(() => {
-        if (phrase2) {
-          phrase2.style.transition = 'opacity 1.0s ease-in-out, transform 1.0s ease-in-out, letter-spacing 1.0s ease-in-out, filter 1.0s ease-in-out';
-          phrase2.style.opacity = '0';
-          phrase2.style.transform = 'scale(1.08)';
-          phrase2.style.letterSpacing = '0.5em';
-          phrase2.style.filter = 'blur(20px)';
-        }
-      }, 5700);
-
-      // Step 3: Fade-in, scale, and focus phrase 3 (7.0s -> 8.4s)
-      scheduleHeroTimeout(() => {
-        if (phrase3) {
-          phrase3.style.transition = 'opacity 1.4s ease-in-out, transform 1.4s ease-in-out, letter-spacing 1.4s ease-in-out, filter 1.4s ease-in-out';
-          phrase3.style.opacity = '1';
-          phrase3.style.transform = 'scale(1)';
-          phrase3.style.letterSpacing = '0.35em';
-          phrase3.style.filter = 'blur(0px)';
-        }
-        if (flare) {
-          flare.style.transition = 'opacity 1.4s ease-in-out';
-          flare.style.opacity = '0.85';
-        }
-      }, 7000);
-
-      // Step 3.2: Glitch phrase 3 in middle
-      scheduleHeroTimeout(() => {
-        if (phrase3) phrase3.classList.add('glitching');
-      }, 8000);
-      scheduleHeroTimeout(() => {
-        if (phrase3) phrase3.classList.remove('glitching');
-      }, 8350);
-
-      // Step 3.5: Fade-out, blur phrase 3 and flare (9.2s -> 10.2s)
-      scheduleHeroTimeout(() => {
-        if (phrase3) {
-          phrase3.style.transition = 'opacity 1.0s ease-in-out, transform 1.0s ease-in-out, letter-spacing 1.0s ease-in-out, filter 1.0s ease-in-out';
-          phrase3.style.opacity = '0';
-          phrase3.style.transform = 'scale(1.08)';
-          phrase3.style.letterSpacing = '0.5em';
-          phrase3.style.filter = 'blur(20px)';
-        }
-        if (flare) {
-          flare.style.transition = 'opacity 1.0s ease-out';
-          flare.style.opacity = '0';
-        }
-      }, 9200);
-
-      // Step 4: Flashbang overlay bloom (11.4s -> 11.65s)
-      scheduleHeroTimeout(() => {
-        logDebug("Fallback Step 4: Flashbang Peak start.");
-        if (flash) {
-          flash.style.transition = 'opacity 0.25s ease-in';
-          flash.style.opacity = '1';
-        }
-      }, 11400);
-
-      // Step 5: Hide mask & set container background (11.65s)
-      scheduleHeroTimeout(() => {
-        logDebug("Fallback Step 5: Mask hide, canvas transition to theme BG.");
-        if (mask) mask.style.display = 'none';
-        unlockScroll();
-        if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
-      }, 11650);
-
-      // Step 6: Fade out flashbang and animate clock, lamp, and desk (11.65s -> 12.15s)
-      scheduleHeroTimeout(() => {
-        logDebug("Fallback Step 6: Flashbang fadeout & desk/clock/lamp entry start.");
-        if (flash) {
-          flash.style.transition = 'opacity 0.5s ease-out';
-          flash.style.opacity = '0';
-        }
-        
-        const lamp = document.getElementById('hero-lamp');
-        const clock = document.getElementById('wall-clock');
-        const deskEl = document.querySelector('.hero-desk');
-        
-        if (lamp) {
-          lamp.style.transition = 'top 1.2s cubic-bezier(0.25, 0.8, 0.25, 1.15), opacity 1.2s ease';
-          lamp.style.top = '0';
-          lamp.style.opacity = '1';
-        }
-        if (clock) {
-          clock.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1.5), opacity 0.8s ease';
-          clock.style.opacity = '1';
-          clock.style.transform = 'scale(1)';
-        }
-        if (deskEl) {
-          deskEl.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease';
-          deskEl.style.opacity = '1';
-          deskEl.style.transform = 'translateY(0)';
-        }
-      }, 11650);
-
-      // Step 7: Reveal grid and start typewriter text loops (12.15s)
-      scheduleHeroTimeout(() => {
-        logDebug("Fallback Step 7: Grid reveal & start typewriter loops.");
-        if (grid) {
-          grid.style.transition = 'opacity 0.4s ease-out';
-          grid.style.opacity = '1';
-        }
-        if (dottedSpotlight) {
-          dottedSpotlight.style.transition = 'opacity 0.4s ease-out';
-          dottedSpotlight.style.opacity = '1';
-        }
-        
-        // Reveal gradient shimmer brand logo
-        if (dotMatrix) {
-          dotMatrix.style.transition = 'opacity 0.5s ease';
-          dotMatrix.style.opacity = '0.6';
-          dotMatrix.classList.add('active');
-        }
-        const brandElFallback = document.getElementById('hero-brand-shimmer');
-        if (brandElFallback) {
-          brandElFallback.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
-          brandElFallback.style.opacity = '1';
-          brandElFallback.style.transform = 'translateY(0)';
-          setTimeout(() => {
-            startHeroTypewriter();
-            if (scrollDown) {
-              scrollDown.style.transition = 'opacity 0.6s ease';
-              scrollDown.style.opacity = '1';
-            }
-            floatingIcons.forEach(icon => {
-              icon.style.transition = 'opacity 1s ease, transform 1s ease';
-              icon.style.opacity = '0.75';
-              icon.style.transform = 'scale(1)';
-            });
-            logDebug("All hero reveals complete.");
-          }, 900);
-        }
-      }, 12150);
-    }
-
-    // Helper: Static Instant Reveal (for prefers-reduced-motion users)
-    function runStaticFallback() {
-      console.log("Running static content fallback (reduced-motion).");
-      if (mask) mask.style.display = 'none';
-      unlockScroll();
+    // Skip Intro Button Handler (No box by default, appears on hover)
+    const skipBtn = document.getElementById('skip-intro-btn');
+    const dismissIntro = () => {
+      if (heroSequenceTimeline) heroSequenceTimeline.kill();
+      if (mask) {
+        mask.style.transition = 'opacity 0.4s ease';
+        mask.style.opacity = '0';
+        setTimeout(() => { mask.style.display = 'none'; }, 400);
+      }
       if (flash) flash.style.display = 'none';
+      unlockScroll();
+      if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
+      if (brandEl) {
+        brandEl.style.opacity = '1';
+        brandEl.style.transform = 'translateY(0)';
+      }
+      const heroContentWrap = document.querySelector('.hero-content-wrapper');
+      if (heroContentWrap) heroContentWrap.style.opacity = '1';
       if (grid) grid.style.opacity = '1';
       if (dottedSpotlight) dottedSpotlight.style.opacity = '1';
-      if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
-      
-      const lamp = document.getElementById('hero-lamp');
-      if (lamp) {
-        lamp.style.top = '0';
-        lamp.style.opacity = '1';
-      }
-      const clock = document.getElementById('wall-clock');
-      if (clock) {
-        clock.style.opacity = '1';
-        clock.style.transform = 'scale(1)';
-      }
-      const deskEl = document.querySelector('.hero-desk');
-      if (deskEl) {
-        deskEl.style.opacity = '1';
-        deskEl.style.transform = 'translateY(0)';
-      }
-      
-      if (dotMatrix) {
-        dotMatrix.style.opacity = '0.5';
-        dotMatrix.classList.add('active');
-      }
-      if (tagline) tagline.style.opacity = '1';
-      if (scrollDown) {
-        scrollDown.style.opacity = '1';
-        scrollDown.style.transform = 'translateX(-50%) translateY(0)';
-      }
-      const brandElStatic = document.getElementById('hero-brand-shimmer');
-      if (brandElStatic) { brandElStatic.style.opacity = '1'; brandElStatic.style.transform = 'translateY(0)'; }
-      const twWrapStatic = document.getElementById('hero-typewriter-wrap');
-      if (twWrapStatic) { twWrapStatic.classList.add('visible'); document.getElementById('hero-typewriter-text').textContent = 'We Build What You Imagine.'; }
-
+      if (scrollDown) scrollDown.style.opacity = '1';
       floatingIcons.forEach(icon => {
         icon.style.opacity = '0.75';
         icon.style.transform = 'scale(1)';
@@ -848,116 +602,7 @@ function initializeMantrakaar() {
       }
     }, 2.1);
 
-    // Phase 4: Suspenseful black screen pause before launch (10.2s -> 11.4s)
-    // Handled by adding the next animation at absolute timestamp 11.4s
 
-    // Phase 5: Flashbang overlay bloom - 11.4s -> 11.65s
-    if (flash) {
-      tl.to(flash, {
-        opacity: 1,
-        duration: 0.25,
-        ease: 'power2.in',
-        onStart: () => {
-          logDebug("GSAP: Flashbang bloom peak");
-        }
-      }, 11.4);
-    }
-
-    // Phase 6: Settle background and hide mask instantly at flash peak - 11.65s
-    tl.add(() => {
-      logDebug("GSAP: Transitioning mask canvas to theme");
-      if (mask) mask.style.display = 'none';
-      unlockScroll();
-      if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
-    }, 11.65);
-
-    // Phase 6.5: Fade out flashbang and animate clock, lamp, and desk - 11.65s -> 12.15s
-    if (flash) {
-      tl.to(flash, {
-        opacity: 0,
-        duration: 0.5,
-        ease: 'power1.out',
-        onStart: () => {
-          logDebug("GSAP: Fading out flashbang");
-        }
-      }, 11.65);
-    }
-
-    // Parallel animations for clock, lamp, and desk
-    tl.add(() => {
-      const lamp = document.getElementById('hero-lamp');
-      const clock = document.getElementById('wall-clock');
-      const deskEl = document.querySelector('.hero-desk');
-
-      if (lamp) {
-        gsap.to(lamp, {
-          top: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: 'back.out(1.15)'
-        });
-      }
-      if (clock) {
-        gsap.to(clock, {
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          ease: 'back.out(1.5)'
-        });
-      }
-      if (deskEl) {
-        gsap.to(deskEl, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out'
-        });
-      }
-    }, 11.65);
-
-    // Phase 6.6: Reveal grid and spotlight (11.65s)
-    if (grid || dottedSpotlight) {
-      const revealTargets = [];
-      if (grid) revealTargets.push(grid);
-      if (dottedSpotlight) revealTargets.push(dottedSpotlight);
-      
-      tl.to(revealTargets, {
-        opacity: 1,
-        duration: 0.5,
-        onStart: () => {
-          logDebug("GSAP: Revealing technical grid and dotted spotlight");
-        }
-      }, 11.65);
-    }
-
-    // Phase 7: Reveal gradient shimmer brand logo & start typewriter - 12.15s
-    tl.add(() => {
-      logDebug("GSAP: Revealing brand shimmer logo");
-      if (dotMatrix) {
-        gsap.to(dotMatrix, { opacity: 0.6, duration: 0.5 });
-        dotMatrix.classList.add('active');
-      }
-      if (brandEl) {
-        gsap.to(brandEl, {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          ease: 'power2.out',
-          onComplete: () => {
-            startHeroTypewriter();
-            if (scrollDown) gsap.to(scrollDown, { opacity: 1, y: 0, duration: 0.6 });
-            floatingIcons.forEach((icon, i) => {
-              gsap.to(icon, { opacity: 0.75, scale: 1, y: 0, duration: 1, delay: i * 0.15, ease: 'power2.out' });
-              floatIconLoop(icon);
-            });
-            logDebug("GSAP: Hero sequence completed");
-          }
-        });
-      } else {
-        if (tagline) gsap.to(tagline, { opacity: 1, y: 0, duration: 0.6, ease: 'back.out(1.7)' });
-        if (scrollDown) gsap.to(scrollDown, { opacity: 1, y: 0, duration: 0.6 });
-      }
-    }, 12.15);
 
     // Sequence runner for single-line typewriter effect (defined inside scope for closure access)
     function executeTypewriterSequence(onComplete) {
