@@ -499,52 +499,7 @@ function initializeMantrakaar() {
     const tagline = document.querySelector('.hero-tagline');
     const line1 = document.getElementById('hero-brand-shimmer');
 
-    // Check navigation type: clear intro flag only on explicit page reload
-    const navEntries = typeof performance !== 'undefined' && performance.getEntriesByType ? performance.getEntriesByType("navigation") : [];
-    const isPageReload = navEntries.length > 0 && navEntries[0].type === "reload";
-
-    if (isPageReload) {
-      sessionStorage.removeItem('mantrakaar-session-intro-played');
-    }
-
-    const hasPlayedSessionIntro = sessionStorage.getItem('mantrakaar-session-intro-played');
-
-    // If intro has already played during this session and it's not a reload, skip loading screen
-    if (hasPlayedSessionIntro && !forcePlay) {
-      logDebug("Intro already played in session. Skipping homepage loading sequence.");
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-      if (mask) mask.style.display = 'none';
-      if (phrase1) phrase1.style.display = 'none';
-      if (phrase2) phrase2.style.display = 'none';
-      if (phrase3) phrase3.style.display = 'none';
-      if (flare) flare.style.display = 'none';
-      if (flash) flash.style.display = 'none';
-      if (brandEl) {
-        brandEl.style.opacity = '1';
-        brandEl.style.transform = 'translateY(0)';
-        brandEl.style.filter = 'none';
-      }
-      const heroContentWrap = document.querySelector('.hero-content-wrapper');
-      if (heroContentWrap) heroContentWrap.style.opacity = '1';
-      if (tagline) tagline.style.opacity = '1';
-      if (scrollDown) scrollDown.style.opacity = '1';
-      if (grid) grid.style.opacity = '1';
-      if (dottedSpotlight) dottedSpotlight.style.opacity = '1';
-      if (floatingIcons.length) {
-        floatingIcons.forEach(icon => {
-          icon.style.opacity = '0.75';
-          floatIconLoop(icon);
-        });
-      }
-      startHeroTypewriter();
-      return;
-    }
-
-    // Mark intro as played for current session
-    sessionStorage.setItem('mantrakaar-session-intro-played', 'true');
-
-    // Lock scroll instantly and scroll to top
+    // Lock scroll instantly and scroll to top for cinematic loading sequence
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     window.scrollTo(0, 0);
@@ -854,125 +809,44 @@ function initializeMantrakaar() {
       }, delayFromStart + 0.35);
     }
 
-    // Phase 1: Phrase 1 ("GET READY!") - 0.0s -> 3.2s
+    // Phase 1: Phrase 1 ("GET READY!") - 0.0s -> 0.7s
     if (phrase1) {
-      tl.to(phrase1, {
-        opacity: 1,
-        scale: 1.0,
-        letterSpacing: '0.45em',
-        filter: 'blur(0px)',
-        duration: 1.4,
-        ease: 'sine.inOut',
-        onStart: () => {
-          logDebug("GSAP: phrase1 fade-in start");
-        }
-      }, 0.0);
-      
-      // Trigger a glitch in the middle
-      queueGlitch(phrase1, 1.0);
-
-      // Letter-spacing drift & zoom hold
-      tl.to(phrase1, {
-        scale: 1.03,
-        letterSpacing: '0.55em',
-        duration: 0.8,
-        ease: 'none'
-      }, 1.4);
-
-      // Defocus & fade-out
-      tl.to(phrase1, {
-        opacity: 0,
-        scale: 1.08,
-        letterSpacing: '0.65em',
-        filter: 'blur(20px)',
-        duration: 1.0,
-        ease: 'sine.inOut'
-      }, 2.2);
+      tl.to(phrase1, { opacity: 1, scale: 1.0, letterSpacing: '0.35em', filter: 'blur(0px)', duration: 0.4, ease: 'sine.inOut' }, 0.0)
+        .to(phrase1, { opacity: 0, scale: 1.05, filter: 'blur(15px)', duration: 0.3, ease: 'sine.inOut' }, 0.4);
     }
 
-    // Phase 2: Phrase 2 ("TO DIVE IN") - 3.5s -> 6.7s
+    // Phase 2: Phrase 2 ("TO DIVE IN") - 0.7s -> 1.4s
     if (phrase2) {
-      tl.to(phrase2, {
-        opacity: 1,
-        scale: 1.0,
-        letterSpacing: '0.45em',
-        filter: 'blur(0px)',
-        duration: 1.4,
-        ease: 'sine.inOut'
-      }, 3.5);
-      
-      // Trigger a glitch in the middle
-      queueGlitch(phrase2, 4.5);
-
-      // Letter-spacing drift & zoom hold
-      tl.to(phrase2, {
-        scale: 1.03,
-        letterSpacing: '0.55em',
-        duration: 0.8,
-        ease: 'none'
-      }, 4.9);
-
-      // Defocus & fade-out
-      tl.to(phrase2, {
-        opacity: 0,
-        scale: 1.08,
-        letterSpacing: '0.65em',
-        filter: 'blur(20px)',
-        duration: 1.0,
-        ease: 'sine.inOut'
-      }, 5.7);
+      tl.to(phrase2, { opacity: 1, scale: 1.0, letterSpacing: '0.35em', filter: 'blur(0px)', duration: 0.4, ease: 'sine.inOut' }, 0.7)
+        .to(phrase2, { opacity: 0, scale: 1.05, filter: 'blur(15px)', duration: 0.3, ease: 'sine.inOut' }, 1.1);
     }
 
-    // Phase 3: Phrase 3 ("THE WORLD OF") - 7.0s -> 10.2s
+    // Phase 3: Phrase 3 ("THE WORLD OF") - 1.4s -> 2.1s
     if (phrase3) {
-      tl.to(phrase3, {
-        opacity: 1,
-        scale: 1.0,
-        letterSpacing: '0.45em',
-        filter: 'blur(0px)',
-        duration: 1.4,
-        ease: 'sine.inOut'
-      }, 7.0);
-      
-      if (flare) {
-        tl.to(flare, {
-          opacity: 0.85,
-          scaleX: 1.2,
-          duration: 1.4,
-          ease: 'sine.inOut'
-        }, 7.0);
-      }
-      
-      // Trigger a glitch in the middle
-      queueGlitch(phrase3, 8.0);
-
-      // Letter-spacing drift & zoom hold
-      tl.to(phrase3, {
-        scale: 1.03,
-        letterSpacing: '0.55em',
-        duration: 0.8,
-        ease: 'none'
-      }, 8.4);
-
-      // Defocus & fade-out
-      tl.to(phrase3, {
-        opacity: 0,
-        scale: 1.08,
-        letterSpacing: '0.65em',
-        filter: 'blur(20px)',
-        duration: 1.0,
-        ease: 'sine.inOut'
-      }, 9.2);
-
-      if (flare) {
-        tl.to(flare, {
-          opacity: 0,
-          scaleX: 0.8,
-          duration: 1.0,
-          ease: 'sine.inOut'
-        }, 9.2);
-      }
+      tl.to(phrase3, { opacity: 1, scale: 1.0, letterSpacing: '0.35em', filter: 'blur(0px)', duration: 0.4, ease: 'sine.inOut' }, 1.4);
+      if (flare) tl.to(flare, { opacity: 0.85, duration: 0.4, ease: 'sine.inOut' }, 1.4);
+      tl.to(phrase3, { opacity: 0, scale: 1.05, filter: 'blur(15px)', duration: 0.3, ease: 'sine.inOut' }, 1.8);
+      if (flare) tl.to(flare, { opacity: 0, duration: 0.3, ease: 'sine.inOut' }, 1.8);
     }
+
+    // Phase 4: Fade out mask & unlock scroll - 2.1s -> 2.5s
+    tl.to(mask, {
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+      onComplete: () => {
+        mask.style.display = 'none';
+        unlockScroll();
+        if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
+        if (brandEl) gsap.to(brandEl, { opacity: 1, y: 0, duration: 0.6 });
+        const heroContentWrap = document.querySelector('.hero-content-wrapper');
+        if (heroContentWrap) gsap.to(heroContentWrap, { opacity: 1, duration: 0.6 });
+        if (grid) gsap.to(grid, { opacity: 1, duration: 0.5 });
+        if (dottedSpotlight) gsap.to(dottedSpotlight, { opacity: 1, duration: 0.5 });
+        if (scrollDown) gsap.to(scrollDown, { opacity: 1, duration: 0.5 });
+        startHeroTypewriter();
+      }
+    }, 2.1);
 
     // Phase 4: Suspenseful black screen pause before launch (10.2s -> 11.4s)
     // Handled by adding the next animation at absolute timestamp 11.4s
@@ -2008,32 +1882,44 @@ function initializeMantrakaar() {
     startAutoplay();
 
     // 4. Service Pages Portfolio Carousels (.mySwiper-design, .mySwiper-development, .mySwiper-marketing, .mySwiper-consultancy)
-    const serviceSliders = [
-      { sel: '.mySwiper-design', prev: '.mySwiper-design .swiper-button-prev', next: '.mySwiper-design .swiper-button-next', pag: '.mySwiper-design .swiper-pagination' },
-      { sel: '.mySwiper-development', prev: '.mySwiper-development .swiper-button-prev', next: '.mySwiper-development .swiper-button-next', pag: '.mySwiper-development .swiper-pagination' },
-      { sel: '.mySwiper-marketing', prev: '.mySwiper-marketing .swiper-button-prev', next: '.mySwiper-marketing .swiper-button-next', pag: '.mySwiper-marketing .swiper-pagination' },
-      { sel: '.mySwiper-consultancy', prev: '.mySwiper-consultancy .swiper-button-prev', next: '.mySwiper-consultancy .swiper-button-next', pag: '.mySwiper-consultancy .swiper-pagination' }
-    ];
+    const serviceSliderClasses = ['.mySwiper-design', '.mySwiper-development', '.mySwiper-marketing', '.mySwiper-consultancy'];
 
-    serviceSliders.forEach(slider => {
-      const sliderEl = document.querySelector(slider.sel);
+    serviceSliderClasses.forEach(cls => {
+      const sliderEl = document.querySelector(cls);
       if (sliderEl) {
-        new Swiper(slider.sel, {
+        const wrapper = sliderEl.closest('.service-carousel-wrapper') || sliderEl.parentElement;
+        const prevBtn = wrapper.querySelector('.swiper-button-prev') || sliderEl.querySelector('.swiper-button-prev');
+        const nextBtn = wrapper.querySelector('.swiper-button-next') || sliderEl.querySelector('.swiper-button-next');
+        const pagEl = sliderEl.querySelector('.swiper-pagination');
+
+        const swiperInstance = new Swiper(sliderEl, {
           slidesPerView: 1,
           spaceBetween: 20,
           loop: true,
           autoplay: { delay: 2500, disableOnInteraction: false },
-          pagination: { el: slider.pag, clickable: true },
-          navigation: {
-            nextEl: slider.next,
-            prevEl: slider.prev
-          },
+          pagination: pagEl ? { el: pagEl, clickable: true } : false,
+          navigation: (prevBtn && nextBtn) ? { nextEl: nextBtn, prevEl: prevBtn } : false,
           breakpoints: {
             640: { slidesPerView: 2, spaceBetween: 20 },
             900: { slidesPerView: 3, spaceBetween: 30 },
             1200: { slidesPerView: 4, spaceBetween: 30 }
           }
         });
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            swiperInstance.slidePrev();
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            swiperInstance.slideNext();
+          });
+        }
       }
     });
   }

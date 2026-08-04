@@ -3973,80 +3973,37 @@ select.form-control option {
 
 .liquid-menu-trigger {
   position: relative;
-  background: rgba(170, 0, 211, 0.2) !important;
-  border: 1.5px solid rgba(226, 88, 255, 0.5) !important;
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, #aa00d3 0%, #7b00a0 100%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 30px !important;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 24px;
-  border-radius: 30px;
+  padding: 10px 24px !important;
   outline: none;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 2px;
   color: #ffffff !important;
-  overflow: visible;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   margin-left: 10px;
-  box-shadow: 0 0 18px rgba(170, 0, 211, 0.35);
+  box-shadow: 0 4px 20px rgba(170, 0, 211, 0.4) !important;
   text-shadow: none;
 }
 
 .liquid-menu-trigger .trigger-blobs-container {
-  position: absolute;
-  inset: -5px;
-  background: transparent;
-  filter: url(#gooey-portal);
-  z-index: -1;
-  border-radius: 40px;
-  overflow: visible;
-  pointer-events: none;
-}
-
-.liquid-menu-trigger .trigger-blob {
-  position: absolute;
-  background: var(--brand-purple, #aa00d3);
-  border-radius: 50%;
-  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.3s;
-}
-
-.liquid-menu-trigger .trigger-blob-1 {
-  inset: 5px;
-  border-radius: 30px;
-}
-
-.liquid-menu-trigger .trigger-blob-2 {
-  width: 32px;
-  height: 32px;
-  right: 15px;
-  top: 50%;
-  transform: translate(0, -50%) scale(0.8);
-}
-
-.liquid-menu-trigger .trigger-blob-3 {
-  width: 28px;
-  height: 28px;
-  left: 15px;
-  top: 50%;
-  transform: translate(0, -50%) scale(0.8);
-}
-
-.liquid-menu-trigger:hover .trigger-blob-2 {
-  transform: translate(14px, -50%) scale(1.1);
-}
-
-.liquid-menu-trigger:hover .trigger-blob-3 {
-  transform: translate(-14px, -50%) scale(1.1);
+  display: none !important;
 }
 
 .liquid-menu-trigger:hover {
   color: #ffffff !important;
-  background: rgba(170, 0, 211, 0.4) !important;
-  border-color: rgba(226, 88, 255, 0.9) !important;
-  box-shadow: 0 0 28px rgba(226, 88, 255, 0.6);
+  background: linear-gradient(135deg, #c400f5 0%, #9400bf 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 25px rgba(226, 88, 255, 0.6) !important;
+  transform: translateY(-1px);
   text-shadow: none;
 }
 
@@ -4058,7 +4015,7 @@ body:not(.dark-mode) .liquid-menu-trigger {
 .liquid-menu-trigger.active {
   background: linear-gradient(135deg, #aa00d3 0%, #ff0055 100%) !important;
   border-color: #ffffff !important;
-  box-shadow: 0 0 30px rgba(255, 0, 85, 0.7) !important;
+  box-shadow: 0 0 25px rgba(255, 0, 85, 0.7) !important;
 }
 
 /* ── Fullscreen Liquid Overlay ── */
@@ -7388,6 +7345,55 @@ body:not(.dark-mode) .testimonial-glass-card {
     gap: 10px !important;
     text-align: center !important;
   }
+}
+
+/* Custom Service Slider Navigation Arrows */
+.service-slider-btn,
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute !important;
+  top: 42% !important;
+  transform: translateY(-50%) !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #aa00d3 0%, #7b00a0 100%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 18px !important;
+  z-index: 100 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  box-shadow: 0 4px 20px rgba(170, 0, 211, 0.4) !important;
+  transition: all 0.3s ease !important;
+  outline: none !important;
+}
+
+.service-slider-btn.prev,
+.swiper-button-prev {
+  left: 0 !important;
+}
+
+.service-slider-btn.next,
+.swiper-button-next {
+  right: 0 !important;
+}
+
+.service-slider-btn:hover,
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: linear-gradient(135deg, #c400f5 0%, #9400bf 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 25px rgba(226, 88, 255, 0.6) !important;
+  transform: translateY(-50%) scale(1.12) !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none !important;
 }
 
 
