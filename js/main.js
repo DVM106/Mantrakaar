@@ -499,11 +499,12 @@ function initializeMantrakaar() {
     const tagline = document.querySelector('.hero-tagline');
     const line1 = document.getElementById('hero-brand-shimmer');
 
-    // Check if page was explicitly reloaded vs navigated back
+    // Check navigation type: clear intro flag on reload OR fresh navigate (not back/forward)
     const navEntries = typeof performance !== 'undefined' && performance.getEntriesByType ? performance.getEntriesByType("navigation") : [];
-    const isPageReload = navEntries.length > 0 && navEntries[0].type === "reload";
+    const navType = navEntries.length > 0 ? navEntries[0].type : 'navigate';
+    const isFreshLoad = navType === "reload" || navType === "navigate";
 
-    if (isPageReload) {
+    if (isFreshLoad) {
       sessionStorage.removeItem('mantrakaar-session-intro-played');
     }
 
