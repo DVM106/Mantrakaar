@@ -1528,41 +1528,30 @@ function initializeMantrakaar() {
 
     serviceSliderClasses.forEach(cls => {
       const sliderEl = document.querySelector(cls);
-      if (sliderEl) {
-        const wrapper = sliderEl.closest('.service-carousel-wrapper') || sliderEl.parentElement;
-        const prevBtn = wrapper.querySelector('.swiper-button-prev') || sliderEl.querySelector('.swiper-button-prev');
-        const nextBtn = wrapper.querySelector('.swiper-button-next') || sliderEl.querySelector('.swiper-button-next');
-        const pagEl = sliderEl.querySelector('.swiper-pagination');
+      if (!sliderEl) return;
 
-        const swiperInstance = new Swiper(sliderEl, {
-          slidesPerView: 1,
-          spaceBetween: 20,
-          loop: true,
-          autoplay: { delay: 2500, disableOnInteraction: false },
-          pagination: pagEl ? { el: pagEl, clickable: true } : false,
-          navigation: (prevBtn && nextBtn) ? { nextEl: nextBtn, prevEl: prevBtn } : false,
-          breakpoints: {
-            640: { slidesPerView: 2, spaceBetween: 20 },
-            900: { slidesPerView: 3, spaceBetween: 30 },
-            1200: { slidesPerView: 4, spaceBetween: 30 }
-          }
-        });
+      // Use .svc-arrow-prev/.svc-arrow-next — NOT .swiper-button-prev/next to avoid Swiper CSS conflicts
+      const wrap    = sliderEl.closest('.svc-work-carousel-wrap') || sliderEl.parentElement;
+      const prevBtn = wrap ? wrap.querySelector('.svc-arrow-prev') : null;
+      const nextBtn = wrap ? wrap.querySelector('.svc-arrow-next') : null;
 
-        if (prevBtn) {
-          prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            swiperInstance.slidePrev();
-          });
+      const swiperInstance = new Swiper(sliderEl, {
+        slidesPerView: 2,
+        spaceBetween: 12,
+        loop: true,
+        speed: 500,
+        grabCursor: true,
+        autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
+        // Pass elements directly so Swiper owns the click logic (no double-firing)
+        navigation: (prevBtn && nextBtn) ? { prevEl: prevBtn, nextEl: nextBtn } : false,
+        breakpoints: {
+          480:  { slidesPerView: 2, spaceBetween: 12 },
+          768:  { slidesPerView: 3, spaceBetween: 16 },
+          1024: { slidesPerView: 4, spaceBetween: 18 },
+          1280: { slidesPerView: 5, spaceBetween: 20 },
+          1600: { slidesPerView: 6, spaceBetween: 20 }
         }
-        if (nextBtn) {
-          nextBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            swiperInstance.slideNext();
-          });
-        }
-      }
+      });
     });
   }
 

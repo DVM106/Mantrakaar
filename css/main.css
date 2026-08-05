@@ -7382,54 +7382,140 @@ body:not(.dark-mode) .testimonial-glass-card {
   }
 }
 
-/* Custom Service Slider Navigation Arrows */
-.service-slider-btn,
-.swiper-button-next,
-.swiper-button-prev {
-  position: absolute !important;
-  top: 42% !important;
-  transform: translateY(-50%) !important;
-  width: 50px !important;
-  height: 50px !important;
-  border-radius: 50% !important;
-  background: linear-gradient(135deg, #aa00d3 0%, #7b00a0 100%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
-  color: #ffffff !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: 18px !important;
-  z-index: 100 !important;
-  cursor: pointer !important;
-  pointer-events: auto !important;
-  box-shadow: 0 4px 20px rgba(170, 0, 211, 0.4) !important;
-  transition: all 0.3s ease !important;
-  outline: none !important;
+/* ============================================================
+   SERVICE PAGES — OUR WORK SECTION (svc-our-work-section)
+   ============================================================ */
+
+.svc-our-work-section {
+  padding: 90px 0 80px;
+  position: relative;
+  background: var(--bg-body, #0b0b0e);
 }
 
-.service-slider-btn.prev,
-.swiper-button-prev {
-  left: 0 !important;
+.svc-work-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  text-align: center;
+  color: var(--text-heading, #fff);
+  margin-bottom: 48px;
+  letter-spacing: -0.5px;
 }
 
-.service-slider-btn.next,
-.swiper-button-next {
-  right: 0 !important;
+/* Wrapper: arrow buttons + swiper side-by-side */
+.svc-work-carousel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-.service-slider-btn:hover,
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background: linear-gradient(135deg, #c400f5 0%, #9400bf 100%) !important;
-  border-color: #ffffff !important;
-  box-shadow: 0 0 25px rgba(226, 88, 255, 0.6) !important;
-  transform: translateY(-50%) scale(1.12) !important;
+/* The swiper takes remaining space */
+.svc-work-carousel-wrap .svc-work-swiper {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
+/* ---- Arrow Buttons ---- */
+.svc-arrow {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #aa00d3 0%, #7b00a0 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(170, 0, 211, 0.4);
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  outline: none;
+  position: relative;
+  z-index: 10;
+}
+
+.svc-arrow:hover {
+  background: linear-gradient(135deg, #c400f5 0%, #9400bf 100%);
+  border-color: #fff;
+  box-shadow: 0 0 28px rgba(226, 88, 255, 0.65);
+  transform: scale(1.1);
+}
+
+.svc-arrow:active {
+  transform: scale(0.96);
+}
+
+/* Swiper disables arrows at loop edges — keep them visible */
+.svc-arrow.swiper-button-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* ---- Slide cards ---- */
+.svc-work-card {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.svc-work-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #111;
+}
+
+.svc-work-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.svc-work-card:hover .svc-work-img-wrap img {
+  transform: scale(1.07);
+}
+
+.svc-work-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+  display: flex;
+  align-items: flex-end;
+  padding: 12px 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.svc-work-card:hover .svc-work-overlay {
+  opacity: 1;
+}
+
+.svc-work-overlay span {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+
+/* Responsive: tighten spacing on mobile */
+@media (max-width: 600px) {
+  .svc-arrow { width: 36px; height: 36px; font-size: 13px; }
+  .svc-work-carousel-wrap { gap: 8px; }
+}
+
+/* Remove Swiper's native arrow pseudo-elements globally (harmless) */
 .swiper-button-next::after,
 .swiper-button-prev::after {
   display: none !important;
 }
-
 
 
