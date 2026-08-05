@@ -479,26 +479,25 @@ function initializeMantrakaar() {
 
   function initHeroSequence(forcePlay = false) {
     logDebug("Starting initHeroSequence... forcePlay=" + forcePlay);
-    
-    const mask = document.querySelector('.hero-mask');
-    if (!mask) return; // Early return on subpages to avoid scroll locking
 
-    // Selectors
+    const mask = document.querySelector('.hero-mask');
+    if (!mask) return; // Not homepage — skip
+
+    // All DOM selectors
     const heroContainer = document.getElementById('hero-section-container');
     const phrase1 = document.getElementById('phrase-1');
     const phrase2 = document.getElementById('phrase-2');
     const phrase3 = document.getElementById('phrase-3');
-    const flare = document.querySelector('.cinematic-anamorphic-flare');
-    const flash = document.querySelector('.flashbang-overlay');
-    const brandEl = document.getElementById('hero-brand-shimmer');
-    const dotMatrix = document.querySelector('.trailing-dot-matrix');
-    const grid = document.querySelector('.hero-layout-grid');
+    const flare    = document.querySelector('.cinematic-anamorphic-flare');
+    const flash    = document.querySelector('.flashbang-overlay');
+    const brandEl  = document.getElementById('hero-brand-shimmer');
+    const grid     = document.querySelector('.hero-layout-grid');
     const dottedSpotlight = document.querySelector('.hero-dotted-spotlight');
     const scrollDown = document.querySelector('.hero-scroll-down');
     const floatingIcons = document.querySelectorAll('.marketing-icon-floating');
-    const tagline = document.querySelector('.hero-tagline');
+    const heroContentWrap = document.querySelector('.hero-content-wrapper');
 
-    // Lock scroll instantly and scroll to top for cinematic loading sequence
+    // Lock scroll for cinematic loading
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     window.scrollTo(0, 0);
@@ -506,39 +505,37 @@ function initializeMantrakaar() {
     function unlockScroll() {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
-      logDebug("Scroll unlocked.");
     }
 
-    // Skip Intro Button Handler (No box by default, appears on hover)
-    const skipBtn = document.getElementById('skip-intro-btn');
-    const dismissIntro = () => {
-      if (heroSequenceTimeline) {
-        try { heroSequenceTimeline.kill(); } catch (e) {}
-      }
-      if (mask) {
-        mask.style.transition = 'opacity 0.4s ease';
-        mask.style.opacity = '0';
-        setTimeout(() => { mask.style.display = 'none'; }, 400);
-      }
-      if (flash) flash.style.display = 'none';
+    // Reveal hero content after preloader completes
+    function revealHero() {
+      mask.style.display = 'none';
       unlockScroll();
       if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
-      if (brandEl) {
-        brandEl.style.opacity = '1';
-        brandEl.style.transform = 'translateY(0)';
-      }
-      const heroContentWrap = document.querySelector('.hero-content-wrapper');
       if (heroContentWrap) heroContentWrap.style.opacity = '1';
+      if (brandEl) { brandEl.style.opacity = '1'; brandEl.style.transform = 'translateY(0)'; }
       if (grid) grid.style.opacity = '1';
       if (dottedSpotlight) dottedSpotlight.style.opacity = '1';
       if (scrollDown) scrollDown.style.opacity = '1';
-      floatingIcons.forEach(icon => {
-        icon.style.opacity = '0.75';
-        icon.style.transform = 'scale(1)';
-      });
+      floatingIcons.forEach(icon => { icon.style.opacity = '0.75'; icon.style.transform = 'scale(1)'; });
       startHeroTypewriter();
-    };
+    }
 
+    // Dismiss via skip button
+    function dismissIntro() {
+      if (heroSequenceTimeline) {
+        try { heroSequenceTimeline.kill(); } catch(e) {}
+        heroSequenceTimeline = null;
+      }
+      heroSequenceTimeouts.forEach(t => clearTimeout(t));
+      heroSequenceTimeouts = [];
+      mask.style.transition = 'opacity 0.35s ease';
+      mask.style.opacity = '0';
+      setTimeout(() => revealHero(), 350);
+    }
+
+    // Wire up skip button
+    const skipBtn = document.getElementById('skip-intro-btn');
     if (skipBtn) {
       skipBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -547,118 +544,107 @@ function initializeMantrakaar() {
       });
     }
 
-    // Prefers-reduced-motion fallback
-    if (isReducedMotion) {
-      runStaticFallback();
+    // --- Pure CSS/JS fallback (no GSAP) ---
+    function runCSSFallback() {
+      const dur = 800;
+      const delay = 900;
+
+      function showPhrase(el, startMs) {
+        if (!el) return;
+        scheduleHeroTimeout(() => {
+          el.style.transition = 'opacity 0.6s ease, filter 0.6s ease, transform 0.6s ease';
+          el.style.opacity = '1';
+          el.style.filter = 'blur(0px)';
+          el.style.transform = 'scale(1)';
+        }, startMs);
+        scheduleHeroTimeout(() => {
+          el.style.opacity = '0';
+          el.style.filter = 'blur(20px)';
+          el.style.transform = 'scale(1.06)';
+        }, startMs + dur);
+      }
+
+      showPhrase(phrase1, 100);
+      showPhrase(phrase2, 100 + delay);
+      showPhrase(phrase3, 100 + delay * 2);
+
+      scheduleHeroTimeout(() => {
+        mask.style.transition = 'opacity 0.5s ease';
+        mask.style.opacity = '0';
+        setTimeout(() => revealHero(), 500);
+      }, 100 + delay * 2 + dur + 400);
+    }
+
+    // --- Reduced motion: instant reveal ---
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      revealHero();
       return;
     }
 
-    // Check if GSAP is available in scope
+    // --- No GSAP: use CSS fallback ---
     if (typeof gsap === 'undefined') {
-      console.warn("GSAP is not loaded. Falling back to native CSS/JS transition animations.");
-      runJSAnimationFallback();
+      console.warn('[Mantrakaar] GSAP not loaded — using CSS fallback for preloader.');
+      runCSSFallback();
       return;
     }
 
-    // GSAP Timeline Sequencing
+    // --- GSAP cinematic timeline (3-phrase, ~2.7s total) ---
     const tl = gsap.timeline();
     heroSequenceTimeline = tl;
 
-    // Helper to add glitch to a phrase
-    function queueGlitch(phrase, delayFromStart) {
-      tl.add(() => {
-        if (phrase) phrase.classList.add('glitching');
-      }, delayFromStart);
-      tl.add(() => {
-        if (phrase) phrase.classList.remove('glitching');
-      }, delayFromStart + 0.35);
-    }
-
-    // Phase 1: Phrase 1 ("GET READY!") - 0.0s -> 0.7s
+    // Phrase 1: GET READY! (0.0s → 0.9s)
     if (phrase1) {
-      tl.to(phrase1, { opacity: 1, scale: 1.0, letterSpacing: '0.35em', filter: 'blur(0px)', duration: 0.4, ease: 'sine.inOut' }, 0.0)
-        .to(phrase1, { opacity: 0, scale: 1.05, filter: 'blur(15px)', duration: 0.3, ease: 'sine.inOut' }, 0.4);
+      tl.fromTo(phrase1,
+        { opacity: 0, scale: 0.92, filter: 'blur(25px)' },
+        { opacity: 1, scale: 1.0, filter: 'blur(0px)', letterSpacing: '0.35em', duration: 0.55, ease: 'power2.out' },
+        0.0
+      ).to(phrase1, { opacity: 0, scale: 1.06, filter: 'blur(20px)', duration: 0.35, ease: 'power2.in' }, 0.55);
     }
 
-    // Phase 2: Phrase 2 ("TO DIVE IN") - 0.7s -> 1.4s
+    // Phrase 2: TO DIVE IN (0.9s → 1.8s)
     if (phrase2) {
-      tl.to(phrase2, { opacity: 1, scale: 1.0, letterSpacing: '0.35em', filter: 'blur(0px)', duration: 0.4, ease: 'sine.inOut' }, 0.7)
-        .to(phrase2, { opacity: 0, scale: 1.05, filter: 'blur(15px)', duration: 0.3, ease: 'sine.inOut' }, 1.1);
+      tl.fromTo(phrase2,
+        { opacity: 0, scale: 0.92, filter: 'blur(25px)' },
+        { opacity: 1, scale: 1.0, filter: 'blur(0px)', letterSpacing: '0.35em', duration: 0.55, ease: 'power2.out' },
+        0.9
+      ).to(phrase2, { opacity: 0, scale: 1.06, filter: 'blur(20px)', duration: 0.35, ease: 'power2.in' }, 1.45);
     }
 
-    // Phase 3: Phrase 3 ("THE WORLD OF") - 1.4s -> 2.1s
+    // Phrase 3: THE WORLD OF (1.8s → 2.7s)
     if (phrase3) {
-      tl.to(phrase3, { opacity: 1, scale: 1.0, letterSpacing: '0.35em', filter: 'blur(0px)', duration: 0.4, ease: 'sine.inOut' }, 1.4);
-      if (flare) tl.to(flare, { opacity: 0.85, duration: 0.4, ease: 'sine.inOut' }, 1.4);
-      tl.to(phrase3, { opacity: 0, scale: 1.05, filter: 'blur(15px)', duration: 0.3, ease: 'sine.inOut' }, 1.8);
-      if (flare) tl.to(flare, { opacity: 0, duration: 0.3, ease: 'sine.inOut' }, 1.8);
+      tl.fromTo(phrase3,
+        { opacity: 0, scale: 0.92, filter: 'blur(25px)' },
+        { opacity: 1, scale: 1.0, filter: 'blur(0px)', letterSpacing: '0.35em', duration: 0.55, ease: 'power2.out' },
+        1.8
+      );
+      if (flare) tl.fromTo(flare, { opacity: 0, scaleX: 0.5 }, { opacity: 0.9, scaleX: 1.3, duration: 0.55, ease: 'power2.out' }, 1.8);
+      tl.to(phrase3, { opacity: 0, scale: 1.06, filter: 'blur(20px)', duration: 0.35, ease: 'power2.in' }, 2.35);
+      if (flare) tl.to(flare, { opacity: 0, scaleX: 0.5, duration: 0.35, ease: 'power2.in' }, 2.35);
     }
 
-    // Phase 4: Fade out mask & unlock scroll - 2.1s -> 2.5s
+    // Phase 4: mask fade out → reveal landing (2.7s → 3.2s)
     tl.to(mask, {
       opacity: 0,
       duration: 0.5,
       ease: 'power2.out',
       onComplete: () => {
+        if (typeof gsap !== 'undefined') {
+          if (brandEl) gsap.to(brandEl, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' });
+          if (heroContentWrap) gsap.to(heroContentWrap, { opacity: 1, duration: 0.7 });
+          if (grid) gsap.to(grid, { opacity: 1, duration: 0.5 });
+          if (dottedSpotlight) gsap.to(dottedSpotlight, { opacity: 1, duration: 0.5 });
+          if (scrollDown) gsap.to(scrollDown, { opacity: 1, duration: 0.5 });
+          floatingIcons.forEach((icon, i) => {
+            gsap.to(icon, { opacity: 0.75, scale: 1, y: 0, duration: 0.8, delay: i * 0.1, ease: 'power2.out' });
+            floatIconLoop(icon);
+          });
+        }
         mask.style.display = 'none';
         unlockScroll();
         if (heroContainer) heroContainer.style.backgroundColor = 'transparent';
-        if (brandEl) gsap.to(brandEl, { opacity: 1, y: 0, duration: 0.6 });
-        const heroContentWrap = document.querySelector('.hero-content-wrapper');
-        if (heroContentWrap) gsap.to(heroContentWrap, { opacity: 1, duration: 0.6 });
-        if (grid) gsap.to(grid, { opacity: 1, duration: 0.5 });
-        if (dottedSpotlight) gsap.to(dottedSpotlight, { opacity: 1, duration: 0.5 });
-        if (scrollDown) gsap.to(scrollDown, { opacity: 1, duration: 0.5 });
         startHeroTypewriter();
       }
-    }, 2.1);
-
-
-
-    // Sequence runner for single-line typewriter effect (defined inside scope for closure access)
-    function executeTypewriterSequence(onComplete) {
-      if (!line1) return;
-      
-      // 1. Type IMAGINE
-      typeText(line1, 'IMAGINE', 80, () => {
-        // Reveal the dot-matrix grid above the text
-        if (dotMatrix) {
-          if (typeof gsap !== 'undefined') {
-            gsap.to(dotMatrix, { opacity: 0.6, duration: 0.5 });
-          } else {
-            dotMatrix.style.transition = 'opacity 0.5s ease';
-            dotMatrix.style.opacity = '0.6';
-          }
-          dotMatrix.classList.add('active');
-        }
-        
-        // Pause 1s so the user can read IMAGINE
-        scheduleHeroTimeout(() => {
-          // 2. Erase IMAGINE
-          deleteText(line1, 40, () => {
-            // Pause 0.3s before typing the next word
-            scheduleHeroTimeout(() => {
-              // 3. Type DESIGN
-              typeText(line1, 'DESIGN', 80, () => {
-                // Pause 1s so the user can read DESIGN
-                scheduleHeroTimeout(() => {
-                  // 4. Erase DESIGN
-                  deleteText(line1, 40, () => {
-                    // Pause 0.3s before typing final text
-                    scheduleHeroTimeout(() => {
-                      // 5. Type WITH MANTRAKAAR
-                      typeText(line1, 'WITH MANTRAKAAR', 60, () => {
-                        if (onComplete) onComplete();
-                      });
-                    }, 300);
-                  });
-                }, 1000);
-              });
-            }, 300);
-          });
-        }, 1000);
-      });
-    }
+    }, 2.7);
   }
 
   // Typewriter Helper - Types text character-by-character
