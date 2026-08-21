@@ -1537,21 +1537,34 @@ function initializeMantrakaar() {
 
       const swiperInstance = new Swiper(sliderEl, {
         slidesPerView: 2,
-        spaceBetween: 12,
+        spaceBetween: 16,
         loop: true,
-        speed: 500,
+        speed: 600,
         grabCursor: true,
         autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
-        // Pass elements directly so Swiper owns the click logic (no double-firing)
         navigation: (prevBtn && nextBtn) ? { prevEl: prevBtn, nextEl: nextBtn } : false,
         breakpoints: {
-          480:  { slidesPerView: 2, spaceBetween: 12 },
-          768:  { slidesPerView: 3, spaceBetween: 16 },
-          1024: { slidesPerView: 4, spaceBetween: 18 },
-          1280: { slidesPerView: 5, spaceBetween: 20 },
-          1600: { slidesPerView: 6, spaceBetween: 20 }
+          480:  { slidesPerView: 3, spaceBetween: 14 },
+          768:  { slidesPerView: 4, spaceBetween: 16 },
+          1024: { slidesPerView: 5, spaceBetween: 18 },
+          1280: { slidesPerView: 6, spaceBetween: 20 }
         }
       });
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          swiperInstance.slidePrev();
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          swiperInstance.slideNext();
+        });
+      }
     });
   }
 
