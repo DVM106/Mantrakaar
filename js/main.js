@@ -1530,24 +1530,24 @@ function initializeMantrakaar() {
       const sliderEl = document.querySelector(cls);
       if (!sliderEl) return;
 
-      // Use .svc-arrow-prev/.svc-arrow-next — NOT .swiper-button-prev/next to avoid Swiper CSS conflicts
       const wrap    = sliderEl.closest('.svc-work-carousel-wrap') || sliderEl.parentElement;
       const prevBtn = wrap ? wrap.querySelector('.svc-arrow-prev') : null;
       const nextBtn = wrap ? wrap.querySelector('.svc-arrow-next') : null;
 
       const swiperInstance = new Swiper(sliderEl, {
         slidesPerView: 2,
-        spaceBetween: 16,
+        slidesPerGroup: 1,
+        spaceBetween: 12,
         loop: true,
         speed: 600,
         grabCursor: true,
-        autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
+        autoplay: { delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true },
         navigation: (prevBtn && nextBtn) ? { prevEl: prevBtn, nextEl: nextBtn } : false,
         breakpoints: {
-          480:  { slidesPerView: 3, spaceBetween: 14 },
-          768:  { slidesPerView: 4, spaceBetween: 16 },
-          1024: { slidesPerView: 5, spaceBetween: 18 },
-          1280: { slidesPerView: 6, spaceBetween: 20 }
+          480:  { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 14 },
+          768:  { slidesPerView: 4, slidesPerGroup: 1, spaceBetween: 16 },
+          1024: { slidesPerView: 6, slidesPerGroup: 1, spaceBetween: 18 },
+          1280: { slidesPerView: 6, slidesPerGroup: 1, spaceBetween: 20 }
         }
       });
 
